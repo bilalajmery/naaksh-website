@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Hoodies",
+        "image": "/category/Hoodies/img.jpg"
+    },
+    {
+        "name": "Denim Jackets",
+        "image": "/category/Denim Jackets/img.jpg"
+    },
+    {
+        "name": "Classic Polo Shirts",
+        "image": "/category/Classic Polo Shirts/img.jpg"
+    },
+    {
+        "name": "Knitted Polo Tees",
+        "image": "/category/Knitted Polo T-Shirts/img.jpg"
+    },
+    {
+        "name": "Normal Basic Tees",
+        "image": "/category/Normal Basic T-shirts/img.jpg"
+    },
+    {
+        "name": "Drop Shoulder Tees",
+        "image": "/category/Drop Shoulder T-shirts/img.jpg"
+    },
+    {
+        "name": "Cargo Trouzer",
+        "image": "/category/Cargo Trouzer/img.jpg"
+    },
+    {
+        "name": "Sweat Shirt",
+        "image": "/category/Sweat Shirt/img.jpg"
+    }
+]

@@ -57,7 +57,7 @@ export default function About() {
           </div>
           <div className="relative">
             <img
-              src="/logo.png"
+              src="/logo/lg.png"
               alt="NAAKSH Story"
               className="rounded-2xl shadow-2xl w-full object-cover"
             />
@@ -67,21 +67,35 @@ export default function About() {
 
       {/* 3. BUILT ON DISCIPLINE - LIGHT BG */}
       <section className="py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-20">
-            BUILT ON <span className="text-yellow-400">DISCIPLINE</span>
-          </h2>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-24">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tight mb-6">
+              BUILT ON <span className="text-yellow-400">DISCIPLINE</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Every piece we create embodies our commitment to excellence, authenticity, and uncompromising standards.
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "QUALITY OVER EVERYTHING", desc: "Premium fabrics. Clean cuts. Built to last — not just look good on day one." },
-              { title: "PAKISTANI & PROUD", desc: "Designed in Pakistan. Made for the world. We rep our roots in every design." },
-              { title: "NO COMPROMISE", desc: "We don’t follow trends. We set them. Limited drops. Zero mass production." }
+              {
+                title: "QUALITY OVER EVERYTHING",
+                desc: "Premium materials. Precision craftsmanship. Engineered to endure — delivering excellence that stands the test of time."
+              },
+              {
+                title: "PAKISTANI & PROUD",
+                desc: "Rooted in Pakistan. Designed for the world. Every creation honors our heritage while pushing boundaries."
+              },
+              {
+                title: "NO COMPROMISE",
+                desc: "We don't chase trends — we define them. Exclusive releases. Deliberately limited. Always exceptional."
+              }
             ].map((item, i) => (
               <div key={i} className="group">
-                <div className="bg-gray-50 border border-gray-200 rounded-2xl p-10 hover:bg-gray-100 hover:shadow-xl transition-all duration-500">
-                  <h3 className="text-2xl font-bold mb-4 tracking-wider">{item.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                <div className="bg-gray-50 border border-gray-200 rounded-xl p-12 hover:bg-gray-100 hover:border-gray-300 transition-all duration-300 h-full">
+                  <h3 className="text-2xl font-bold mb-6 tracking-tight leading-tight">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed text-lg">{item.desc}</p>
                 </div>
               </div>
             ))}

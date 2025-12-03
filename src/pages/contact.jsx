@@ -140,7 +140,7 @@ export default function Contact() {
             < section className="py-32 bg-black text-white text-center" >
                 <div className="max-w-7xl mx-auto px-6">
                     <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-16">
-                        FIND US IN <span className="text-yellow-400">LAHORE</span>
+                        FIND US IN <span className="text-yellow-400">KARACHI</span>
                     </h2>
 
                     {/* Placeholder for Google Maps or Image */}
@@ -152,12 +152,119 @@ export default function Contact() {
                         />
                         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                             <p className="text-4xl font-bold tracking-wider">
-                                Coming Soon – Physical Store 2025
+                                Coming Soon – Physical Store 2026
                             </p>
                         </div>
                     </div>
                 </div>
             </section >
+
+            {/* WHY CHOOSE NAAKSH - LIGHT THEME */}
+            <section className="py-32 bg-gradient-to-b from-white to-gray-50">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="text-center mb-20">
+                        <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
+                            WHY CHOOSE <span className="text-yellow-400">NAAKSH?</span>
+                        </h2>
+                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                            We're not just another streetwear brand. Here's what makes us different.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {/* Card 1 */}
+                        <div className="group bg-white rounded-2xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-yellow-400/50">
+                            <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold mb-4 tracking-tight">Premium Quality</h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                Every piece is crafted with high-grade fabrics and attention to detail. We don't compromise on quality, ever.
+                            </p>
+                        </div>
+
+                        {/* Card 2 */}
+                        <div className="group bg-white rounded-2xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-yellow-400/50">
+                            <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold mb-4 tracking-tight">Lightning Fast Delivery</h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                Order today, wear it tomorrow. Express shipping across Pakistan ensures you get your drip ASAP.
+                            </p>
+                        </div>
+
+                        {/* Card 3 */}
+                        <div className="group bg-white rounded-2xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-yellow-400/50">
+                            <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold mb-4 tracking-tight">Best Price Guarantee</h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                Premium streetwear without the premium markup. Quality gear at prices that make sense.
+                            </p>
+                        </div>
+
+                        {/* Card 4 */}
+                        <div className="group bg-white rounded-2xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-yellow-400/50">
+                            <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold mb-4 tracking-tight">Easy Returns & Exchanges</h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                Not feeling it? No worries. Hassle-free returns and exchanges within 7 days. Your satisfaction matters.
+                            </p>
+                        </div>
+
+                        {/* Card 5 */}
+                        <div className="group bg-white rounded-2xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-yellow-400/50">
+                            <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold mb-4 tracking-tight">24/7 Customer Support</h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                Questions at 2 AM? We got you. Our team is always ready to help via WhatsApp, email, or DM.
+                            </p>
+                        </div>
+
+                        {/* Card 6 */}
+                        <div className="group bg-white rounded-2xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-yellow-400/50">
+                            <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                                </svg>
+                            </div>
+                            <h3 className="text-2xl font-bold mb-4 tracking-tight">Trusted by Thousands</h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                Join the NAAKSH family. Thousands of satisfied customers across Pakistan trust us for their streetwear needs.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="text-center mt-20">
+                        <p className="text-2xl font-bold mb-8 text-gray-800">
+                            Ready to upgrade your wardrobe?
+                        </p>
+                        <NavLink
+                            to="/shop"
+                            className="inline-block bg-black text-white px-12 py-5 text-lg font-bold tracking-wider hover:bg-yellow-400 hover:text-black transition-all duration-300 rounded-xl"
+                        >
+                            SHOP NOW
+                        </NavLink>
+                    </div>
+                </div>
+            </section>
         </>
     );
 }

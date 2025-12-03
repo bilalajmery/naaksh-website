@@ -1,4 +1,5 @@
-import { useState } from 'react';
+// src/pages/Home.js
+import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay, EffectFade, Pagination } from 'swiper/modules';
 import { NavLink } from 'react-router-dom';
@@ -11,181 +12,135 @@ import 'swiper/css/effect-fade';
 
 export default function Home() {
     const [selectedColors, setSelectedColors] = useState({});
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    // CHANGE ONLY THIS ONE LINE → FULL COLLECTION SECTION CHANGES
+    const featuredCategory = "Hoodies"; // e.g., "Hoodies", "T-Shirts", "Winter", etc.
 
     const handleColorClick = (productId, colorIndex) => {
         setSelectedColors(prev => ({ ...prev, [productId]: colorIndex }));
     };
 
-    const products = [
-        {
-            id: 1,
-            slug: "discipline-hoodie",
-            name: "Discipline Hoodie",
-            category: "Hoodies",
-            price: "PKR 1,199",
-            original: "PKR 2,399",
-            badge: "SALE",
-            colors: [
-                { hex: "#ffffff", images: ["https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800", "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=800"] },
-                { hex: "#000000", images: ["https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800", "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=800"] }
-            ]
-        },
-        {
-            id: 2,
-            slug: "luxury-hoodie",
-            name: "Luxury Hoodie",
-            category: "Hoodies",
-            price: "PKR 3,999",
-            original: "PKR 7,999",
-            badge: "SALE",
-            colors: [{ hex: "#000000", images: ["https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=800", "https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=800"] }]
-        },
-        {
-            id: 3,
-            slug: "premium-jacket",
-            name: "Premium Jacket",
-            category: "Jackets",
-            price: "PKR 5,999",
-            badge: "NEW",
-            colors: [{ hex: "#2F4F4F", images: ["https://images.unsplash.com/photo-1551028719-00167b16ebc5?w=800"] }]
-        },
-        {
-            id: 4,
-            slug: "classic-overshirt",
-            name: "Classic Overshirt",
-            category: "Shirts",
-            price: "PKR 3,699",
-            original: "PKR 5,499",
-            badge: "SALE",
-            colors: [{ hex: "#000000", images: ["https://images.unsplash.com/photo-1596777684687-81ce907fb5ec?w=800"] }]
-        },
-        {
-            id: 5,
-            slug: "minimal-tshirt",
-            name: "Minimal T-Shirt",
-            category: "T-Shirts",
-            price: "PKR 1,999",
-            badge: "NEW",
-            colors: [{ hex: "#ffffff", images: ["https://images.unsplash.com/photo-1578932750294-708afda11a11?w=800"] }]
-        },
-        {
-            id: 6,
-            slug: "urban-hoodie",
-            name: "Urban Hoodie",
-            category: "Hoodies",
-            price: "PKR 4,299",
-            colors: [{ hex: "#1a1a1a", images: ["https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=800"] }]
-        },
-        {
-            id: 7,
-            slug: "street-jacket",
-            name: "Street Jacket",
-            category: "Jackets",
-            price: "PKR 5,999",
-            badge: "SALE",
-            colors: [{ hex: "#696969", images: ["https://images.unsplash.com/photo-1539533057440-7814baea1002?w=800"] }]
-        },
-        {
-            id: 8,
-            slug: "premium-joggers",
-            name: "Premium Joggers",
-            category: "Bottoms",
-            price: "PKR 2,299",
-            badge: "NEW",
-            colors: [{ hex: "#000000", images: ["https://images.unsplash.com/photo-1506629082847-11d3e392e175?w=800"] }]
-        },
-    ];
+    // Fetch Products + Categories in Parallel
+    useEffect(() => {
+        Promise.all([
+            fetch('/product/data.json').then(r => r.ok ? r.json() : []),
+            fetch('/category/data.json').then(r => r.ok ? r.json() : [])
+        ])
+            .then(([productData, categoryData]) => {
+                // Sort products newest first
+                const sortedProducts = productData.sort((a, b) => (b.id || 0) - (a.id || 0));
+                setProducts(sortedProducts);
+                setCategories(categoryData);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error("Failed to load data:", err);
+                setLoading(false);
+            });
+    }, []);
 
-    // WINTER COLLECTION - ALAG SE BEAUTIFUL ARRAY
-    const winterProducts = [
-        {
-            id: 101,
-            slug: "puffer-jacket-black",
-            name: "Premium Puffer Jacket",
-            category: "Jackets",
-            price: "PKR 8,999",
-            original: "PKR 14,999",
-            badge: "SALE",
-            colors: [
-                { hex: "#000000", images: ["https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=800", "https://images.unsplash.com/photo-1551028719-00167b16ebc5?w=800"] },
-                { hex: "#2d2d2d", images: ["https://images.unsplash.com/photo-1604176354204-9268737828e4?w=800"] }
-            ]
-        },
-        {
-            id: 102,
-            slug: "arctic-hoodie",
-            name: "Arctic Fleece Hoodie",
-            category: "Hoodies",
-            price: "PKR 4,999",
-            badge: "NEW",
-            colors: [
-                { hex: "#1e293b", images: ["https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=800"] },
-                { hex: "#475569", images: ["https://images.unsplash.com/photo-1622445275576-904b19c709b9?w=800"] }
-            ]
-        },
-        {
-            id: 103,
-            slug: "wool-blend-coat",
-            name: "Wool Blend Overcoat",
-            category: "Jackets",
-            price: "PKR 12,999",
-            badge: "LIMITED",
-            colors: [{ hex: "#1c1917", images: ["https://images.unsplash.com/photo-1592878844890-9ba3dd8c95a9?w=800"] }]
-        },
-        {
-            id: 104,
-            slug: "sherpa-lined-hoodie",
-            name: "Sherpa Lined Hoodie",
-            category: "Hoodies",
-            price: "PKR 5,499",
-            original: "PKR 7,999",
-            badge: "SALE",
-            colors: [
-                { hex: "#8b7355", images: ["https://images.unsplash.com/photo-1605346435043-7c2c1d7d37a2?w=800"] },
-                { hex: "#292524", images: ["https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=800"] }
-            ]
-        },
-        {
-            id: 105,
-            slug: "cargo-winter-pants",
-            name: "Insulated Cargo Pants",
-            category: "Bottoms",
-            price: "PKR 4,299",
-            badge: "NEW",
-            colors: [{ hex: "#1a1a1a", images: ["https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800"] }]
-        },
-        {
-            id: 106,
-            slug: "bomber-jacket-premium",
-            name: "Leather Touch Bomber",
-            category: "Jackets",
-            price: "PKR 9,999",
-            badge: "BEST SELLER",
-            colors: [{ hex: "#0f0f0f", images: ["https://images.unsplash.com/photo-1520975954732-35dd22299614?w=800"] }]
-        },
-        {
-            id: 107,
-            slug: "thermal-hoodie-grey",
-            name: "Thermal Tech Hoodie",
-            category: "Hoodies",
-            price: "PKR 4,799",
-            badge: "NEW",
-            colors: [
-                { hex: "#374151", images: ["https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800"] },
-                { hex: "#111111", images: ["https://images.unsplash.com/photo-1622445275576-904b19c709b9?w=800"] }
-            ]
-        },
-        {
-            id: 108,
-            slug: "parka-jacket-olive",
-            name: "Heavy Duty Parka",
-            category: "Jackets",
-            price: "PKR 11,999",
-            original: "PKR 18,999",
-            badge: "SALE",
-            colors: [{ hex: "#3f4e3a", images: ["https://images.unsplash.com/photo-1517423732874-6d9cb7ab03e8?w=800"] }]
-        }
-    ];
+    // Latest 8 products → New Arrivals
+    const newArrivals = products.slice(0, 8);
+
+    // Latest 8 from featured category
+    const featuredProducts = products
+        .filter(p => p.category === featuredCategory)
+        .slice(0, 8);
+
+    const ProductCard = ({ product }) => {
+        const [hoverImgIndex, setHoverImgIndex] = useState(0);
+        const selectedColorIndex = selectedColors[product.id] ?? 0;
+        const selectedColor = product.colors?.[selectedColorIndex] || { images: [] };
+        const images = selectedColor.images || [];
+        const currentImage = images[hoverImgIndex] || images[0] || '/placeholder.jpg';
+
+        return (
+            <NavLink
+                to={`/product/${product.slug}`}
+                className="block group"
+                onMouseEnter={() => images.length > 1 && setHoverImgIndex(1)}
+                onMouseLeave={() => setHoverImgIndex(0)}
+            >
+                <div className="relative bg-white overflow-hidden transition-all duration-300">
+                    {product.badge && (
+                        <div className={`absolute top-3 left-3 px-2.5 py-1 text-[9px] font-bold tracking-widest z-10 uppercase bg-black text-white`}>
+                            {product.badge}
+                        </div>
+                    )}
+
+                    <div className="relative aspect-square overflow-hidden bg-gray-50">
+                        <img
+                            src={currentImage}
+                            alt={product.name}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    alert(`Added ${product.name} to cart!`);
+                                }}
+                                className="w-full bg-black text-white py-3 text-sm font-medium tracking-wider hover:bg-gray-900 uppercase"
+                            >
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="pt-4 pb-2">
+                        <p className="text-[10px] font-medium tracking-widest text-gray-500 mb-2 uppercase">
+                            {product.category}
+                        </p>
+                        <h3 className="text-sm font-medium mb-2 text-gray-900 group-hover:text-black">
+                            {product.name}
+                        </h3>
+
+                        {product.colors && product.colors.length > 1 && (
+                            <div className="flex gap-1.5 mb-3">
+                                {product.colors.map((color, i) => (
+                                    <button
+                                        key={i}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            handleColorClick(product.id, i);
+                                        }}
+                                        className={`w-5 h-5 rounded-full border transition-all ${selectedColorIndex === i
+                                            ? 'border-2 border-black ring-1 ring-gray-300'
+                                            : 'border border-gray-300 hover:border-gray-400'
+                                            }`}
+                                        style={{ backgroundColor: color.hex }}
+                                    />
+                                ))}
+                            </div>
+                        )}
+
+                        <div className="flex items-baseline gap-2">
+                            <span className="text-base font-semibold text-black">{product.price}</span>
+                            {product.original && (
+                                <span className="text-xs text-gray-400 line-through">{product.original}</span>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </NavLink>
+        );
+    };
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-white">
+                <div className="text-center">
+                    <div className="w-16 h-16 border-4 border-black border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-xl font-medium">Loading amazing products...</p>
+                </div>
+            </div>
+        );
+    }
 
     const bannerImages = [
         "/hero-section/1.jpg",
@@ -195,177 +150,34 @@ export default function Home() {
     ];
 
     const testimonials = [
-        {
-            text: "Working with NAAKSH transformed our business approach. Their innovative solutions and dedicated team exceeded every expectation we had.",
-            name: "Sarah Mitchell",
-            title: "CEO, TechVision Inc.",
-            avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
-        },
-        {
-            text: "The level of professionalism and expertise NAAKSH brings is unmatched. They delivered results that significantly impacted our growth trajectory.",
-            name: "Michael Chen",
-            title: "Director of Operations, Innovate Labs",
-            avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
-        },
-        {
-            text: "NAAKSH's commitment to excellence is evident in every interaction. They've become an invaluable partner in our success story.",
-            name: "Emily Rodriguez",
-            title: "Founder, Creative Solutions",
-            avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop"
-        },
-        {
-            text: "Their strategic insights and execution capabilities have positioned us ahead of the competition. Truly exceptional service.",
-            name: "David Thompson",
-            title: "VP of Strategy, Global Dynamics",
-            avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
-        }
+        { text: "Working with NAAKSH transformed our business approach...", name: "Sarah Mitchell", title: "CEO, TechVision Inc.", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" },
+        { text: "The level of professionalism and expertise NAAKSH brings is unmatched...", name: "Michael Chen", title: "Director of Operations, Innovate Labs", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop" },
+        { text: "NAAKSH's commitment to excellence is evident in every interaction...", name: "Emily Rodriguez", title: "Founder, Creative Solutions", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" },
+        { text: "Their strategic insights and execution capabilities have positioned us ahead...", name: "David Thompson", title: "VP of Strategy, Global Dynamics", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" },
     ];
-
-    const ProductCard = ({ product }) => {
-        const [currentImageIndex, setCurrentImageIndex] = useState(0);
-        const selectedColorIndex = selectedColors[product.id] ?? 0;
-        const selectedColor = product.colors[selectedColorIndex];
-
-        // Get all images for the selected color
-        const images = selectedColor.images || [selectedColor.image];
-        const currentImage = images[currentImageIndex] || selectedColor.image;
-
-        return (
-            <NavLink
-                to={`/product/${product.slug}`}
-                className="block group"
-                onMouseEnter={() => images.length > 1 && setCurrentImageIndex(1)}
-                onMouseLeave={() => setCurrentImageIndex(0)}
-            >
-                <div className="relative bg-white overflow-hidden transition-all duration-300">
-
-                    {/* Badge */}
-                    {product.badge && (
-                        <div className={`absolute top-3 left-3 px-2.5 py-1 text-[9px] font-bold tracking-widest z-10 uppercase ${product.badge === 'SALE'
-                            ? 'bg-black text-white'
-                            : 'bg-white text-black border border-black'
-                            }`}>
-                            {product.badge}
-                        </div>
-                    )}
-
-                    {/* Product Image */}
-                    <div className="relative aspect-square overflow-hidden bg-gray-50">
-                        <img
-                            src={currentImage}
-                            alt={product.name}
-                            className="w-full h-full object-cover"
-                        />
-
-                        {/* Quick Add Button - Appears on Hover */}
-                        <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                            <button
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    // Add to cart logic
-                                }}
-                                className="w-full bg-black text-white py-3 text-sm font-medium tracking-wider hover:bg-gray-900 transition-colors uppercase"
-                            >
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Product Info */}
-                    <div className="pt-4 pb-2">
-                        {/* Category */}
-                        <p className="text-[10px] font-medium tracking-widest text-gray-500 mb-2 uppercase">
-                            {product.category}
-                        </p>
-
-                        {/* Product Name */}
-                        <h3 className="text-sm font-medium mb-2 text-gray-900 group-hover:text-black transition-colors">
-                            {product.name}
-                        </h3>
-
-                        {/* Color Swatches */}
-                        {product.colors.length > 1 && (
-                            <div className="flex gap-1.5 mb-3">
-                                {product.colors.map((color, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            e.stopPropagation();
-                                            handleColorClick(product.id, index);
-                                        }}
-                                        className={`w-5 h-5 rounded-full border transition-all ${selectedColorIndex === index
-                                            ? 'border-2 border-black ring-1 ring-gray-300'
-                                            : 'border border-gray-300 hover:border-gray-400'
-                                            }`}
-                                        style={{ backgroundColor: color.hex }}
-                                        aria-label={`Color option ${index + 1}`}
-                                    />
-                                ))}
-                            </div>
-                        )}
-
-                        {/* Price */}
-                        <div className="flex items-baseline gap-2">
-                            <span className="text-base font-semibold text-black">
-                                {product.price}
-                            </span>
-                            {product.original && (
-                                <span className="text-xs text-gray-400 line-through">
-                                    {product.original}
-                                </span>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            </NavLink>
-        );
-    };
 
     return (
         <>
             <div className="pt-18">
 
-                {/* BANNER SLIDER */}
+                {/* HERO BANNER */}
                 <section className="relative h-screen">
-                    <Swiper
-                        modules={[Navigation, Autoplay, EffectFade]}
-                        effect="fade"
-                        loop={true}
-                        autoplay={{ delay: 4000, disableOnInteraction: false }}
-                        speed={1200}
-                        navigation={{
-                            prevEl: '.custom-swiper-button-prev',
-                            nextEl: '.custom-swiper-button-next',
-                        }}
-                        pagination={{ clickable: true }}
-                        className="h-full"
-                    >
+                    <Swiper modules={[Navigation, Autoplay, EffectFade]} effect="fade" loop autoplay={{ delay: 4000 }} speed={1200}
+                        navigation={{ prevEl: '.prev', nextEl: '.next' }} pagination={{ clickable: true }} className="h-full">
                         {bannerImages.map((img, i) => (
                             <SwiperSlide key={i}>
-                                <div className="relative h-full w-full">
+                                <div className="relative h-full">
                                     <img src={img} alt="" className="absolute inset-0 w-full h-full object-cover" />
-                                    <div className="absolute inset-0 bg-black opacity-10"></div>
+                                    <div className="absolute inset-0 bg-black opacity-10" />
                                 </div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
-
-                    <div className="custom-swiper-button-prev absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 cursor-pointer">
-                        <div className="w-14 h-14 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300">
-                            <ChevronLeft size={32} className="text-white" />
-                        </div>
+                    <div className="prev absolute left-8 top-1/2 -translate-y-1/2 z-20 cursor-pointer">
+                        <div className="w-14 h-14 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center"><ChevronLeft size={32} className="text-white" /></div>
                     </div>
-
-                    <div className="custom-swiper-button-next absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 cursor-pointer">
-                        <div className="w-14 h-14 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300">
-                            <ChevronRight size={32} className="text-white" />
-                        </div>
-                    </div>
-
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-                        <div className="swiper-pagination !w-auto"></div>
+                    <div className="next absolute right-8 top-1/2 -translate-y-1/2 z-20 cursor-pointer">
+                        <div className="w-14 h-14 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center"><ChevronRight size={32} className="text-white" /></div>
                     </div>
                 </section>
 
@@ -376,53 +188,40 @@ export default function Home() {
                             NEW <span className="text-yellow-400">ARRIVALS</span>
                         </h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-                            {products.map(p => <ProductCard key={p.id} product={p} />)}
+                            {newArrivals.map(p => <ProductCard key={p.id} product={p} />)}
                         </div>
-
-                        {/* See All Button */}
-                        <div className="flex justify-center mt-18">
-                            <NavLink
-                                to="/products"
-                                className="bg-black text-white px-12 py-4 text-sm font-medium tracking-wider hover:bg-gray-900 transition-colors uppercase rounded-[5px]"
-                            >
-                                <span className="text-yellow-400"> See All Products</span>
+                        <div className="text-center mt-16">
+                            <NavLink to="/shop" className="inline-block bg-black text-white px-12 py-4 text-sm font-medium tracking-wider hover:bg-gray-900 uppercase rounded">
+                                <span className="text-yellow-400">See All Products</span>
                             </NavLink>
                         </div>
                     </div>
                 </section>
 
-                {/* SHOP BY CATEGORY */}
+                {/* SHOP BY CATEGORY → FROM /category/data.json */}
                 <section className="py-24 bg-black text-white">
                     <div className="max-w-7xl mx-auto px-6">
                         <h2 className="text-5xl md:text-7xl font-black text-center mb-16 tracking-tighter">
                             SHOP BY <span className="text-yellow-400">CATEGORY</span>
                         </h2>
 
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                            {[
-                                { name: 'HOODIES', slug: 'shop?category=Hoodies', img: '/product/discipline-hoddie/white.jpg' },
-                                { name: 'JACKETS', slug: 'jackets', img: 'https://images.unsplash.com/photo-1551028719-00167b16ebc5?w=800' },
-                                { name: 'T-SHIRTS', slug: 'tshirts', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800' },
-                                { name: 'JOGGERS', slug: 'joggers', img: 'https://images.unsplash.com/photo-1506629082847-11d3e392e175?w=800' },
-                                { name: 'SHIRTS', slug: 'shirts', img: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800' },
-                                { name: 'ACCESSORIES', slug: 'accessories', img: 'https://images.unsplash.com/photo-1523177778857-3e9e8e162dc9?w=800' }
-                            ].map((cat) => (
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 place-items-center">
+                            {categories.map(cat => (
                                 <NavLink
                                     key={cat.slug}
-                                    to={`/${cat.slug}`}
+                                    to={`/shop?category=${cat.name}`}
                                     className="group relative overflow-hidden rounded-2xl aspect-square bg-gray-900 border border-gray-800 hover:border-yellow-600 transition-all duration-500"
                                 >
                                     <img
-                                        src={cat.img}
+                                        src={cat.image}
                                         alt={cat.name}
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
-                                        <h3 className="text-2xl font-bold tracking-wider">{cat.name}</h3>
-                                        <p className="text-yellow-400 text-sm mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            Shop Now →
-                                        </p>
+                                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center w-full">
+                                        <h3 className="text-white-400 text-sm mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            {cat.name.toUpperCase()}
+                                        </h3>
                                     </div>
                                 </NavLink>
                             ))}
@@ -430,26 +229,69 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* WINTER COLLECTION - CLEAN & SEPARATE */}
+                {/* DYNAMIC COLLECTION SECTION */}
                 <section className="py-24 bg-white">
                     <div className="max-w-7xl mx-auto px-6">
                         <h2 className="text-5xl md:text-7xl font-black text-center mb-16 tracking-tighter">
-                            WINTER <span className="text-yellow-400">COLLECTION</span>
+                            {featuredCategory.toUpperCase()} <span className="text-yellow-400">COLLECTION</span>
                         </h2>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-                            {winterProducts.map(product => (
-                                <ProductCard key={product.id} product={product} />
-                            ))}
-                        </div>
+                        {featuredProducts.length > 0 ? (
+                            <>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+                                    {featuredProducts.map(p => <ProductCard key={p.id} product={p} />)}
+                                </div>
+                                <div className="text-center mt-16">
+                                    <NavLink
+                                        to={`/shop?category=${featuredCategory}`}
+                                        className="inline-block bg-black text-white px-12 py-4 text-sm font-medium tracking-wider hover:bg-gray-900 uppercase rounded"
+                                    >
+                                        <span className="text-yellow-400">Shop {featuredCategory} Collection</span>
+                                    </NavLink>
+                                </div>
+                            </>
+                        ) : (
+                            <p className="text-center text-gray-600 text-xl">No products in {featuredCategory} yet.</p>
+                        )}
+                    </div>
+                </section>
 
-                        <div className="flex justify-center mt-18">
-                            <NavLink
-                                to="/shop?collection=winter"
-                                className="bg-black text-white px-12 py-4 text-sm font-medium tracking-wider hover:bg-gray-900 transition-colors uppercase rounded-[5px]"
-                            >
-                                <span className="text-yellow-400">Shop Winter Collection</span>
-                            </NavLink>
+                {/* VIDEO SECTION */}
+                <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                    >
+                        <source src="https://viewnshop.com/assets/sample-DP2YW5i1.mp4" type="video/mp4" />
+                    </video>
+
+                    <div className="absolute inset-0 bg-black/50"></div>
+
+                    <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
+                        <div className="max-w-4xl">
+                            <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter">
+                                STYLE MEETS <span className="text-yellow-400">COMFORT</span>
+                            </h2>
+                            <p className="text-white/90 text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
+                                Experience premium streetwear designed for the modern lifestyle. Quality fabrics, timeless designs, unbeatable comfort.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <NavLink
+                                    to="/shop"
+                                    className="bg-yellow-400 text-black px-10 py-4 text-sm font-bold tracking-wider hover:bg-yellow-500 transition-colors uppercase rounded-[5px]"
+                                >
+                                    Shop Now
+                                </NavLink>
+                                <NavLink
+                                    to="/about"
+                                    className="bg-white/10 backdrop-blur-sm text-white border-2 border-white px-10 py-4 text-sm font-bold tracking-wider hover:bg-white/20 transition-colors uppercase rounded-[5px]"
+                                >
+                                    Our Story
+                                </NavLink>
+                            </div>
                         </div>
                     </div>
                 </section>

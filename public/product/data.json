@@ -1,0 +1,137 @@
+[
+    {
+        "id": 1,
+        "slug": "discipline-hoodie",
+        "name": "Premium DISCIPLINE Minimalist Hoodie",
+        "price": "PKR 1,199",
+        "priceNum": 1199,
+        "original": "PKR 2,400",
+        "originalNum": 2400,
+        "badge": "50% OFF",
+        "rating": 4.8,
+        "category": "Hoodies",
+        "description": "Stay motivated and comfortable with our premium “DISCIPLINE” hoodie...",
+        "features": [
+            "Bold “DISCIPLINE” text for a clean, modern look",
+            "Soft, breathable, and warm for all-day comfort",
+            "Designed to flatter all body types",
+            "Spacious front pocket for convenience and warmth",
+            "Built to last through daily wear",
+            "Provides customizable coverage and style",
+            "Ideal for gym wear, casual outings, or motivation apparel"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "colors": [
+            {
+                "name": "White",
+                "hex": "#ffffff",
+                "images": [
+                    "/product/discipline-hoddie/1.jpg"
+                ]
+            }
+        ],
+        "reviews": [
+            {
+                "name": "Ahmed Khan",
+                "star": 4,
+                "review": "Quality is really good. Fabric is soft and comfortable, especially for winter evenings. Delivery was also on time."
+            },
+            {
+                "name": "Junaid Hashmi",
+                "star": 5,
+                "review": "Loved the minimal design! The ‘DISCIPLINE’ print looks premium and the fitting is perfect. Totally worth the price."
+            },
+            {
+                "name": "Bilal Siddiqui",
+                "star": 5,
+                "review": "Honestly didn’t expect this level of quality. Hoodie is warm, stitching is neat, and size is exactly as described."
+            },
+            {
+                "name": "Usman Raza",
+                "star": 3,
+                "review": "Product is good but the color was slightly different from what I expected. Still comfortable to wear."
+            },
+            {
+                "name": "Hamza Tariq",
+                "star": 4,
+                "review": "Very comfortable and stylish. Wore it to university and got compliments. Just wish the delivery was a bit faster."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "slug": "focus-hoodie",
+        "name": "Premium DISCIPLINE Minimalist Hoodie",
+        "price": "PKR 1,199",
+        "priceNum": 1199,
+        "original": "PKR 2,400",
+        "originalNum": 2400,
+        "badge": "50% OFF",
+        "rating": 4.8,
+        "category": "Hoodies",
+        "description": "Stay motivated and comfortable with our premium “DISCIPLINE” hoodie...",
+        "features": [
+            "Bold “DISCIPLINE” text for a clean, modern look",
+            "Soft, breathable, and warm for all-day comfort",
+            "Designed to flatter all body types",
+            "Spacious front pocket for convenience and warmth",
+            "Built to last through daily wear",
+            "Provides customizable coverage and style",
+            "Ideal for gym wear, casual outings, or motivation apparel"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "colors": [
+            {
+                "name": "White",
+                "hex": "#ffffff",
+                "images": [
+                    "/product/focus-hoodie/1.jpg"
+                ]
+            },
+            {
+                "name": "Black",
+                "hex": "#000000",
+                "images": [
+                    "/product/focus-hoodie/2.jpg"
+                ]
+            }
+        ],
+        "reviews": [
+            {
+                "name": "Ali Raza",
+                "star": 5,
+                "review": "Bhai bohot zabardast hoodie hai! Fabric premium lag raha hai, bilkul soft aur warm. Winter mein perfect hai. Worth every penny!"
+            },
+            {
+                "name": "Hassan Sheikh",
+                "star": 4,
+                "review": "Quality top-notch hai, stitching bohot clean hai. Bas size chart thora carefully dekhna parta hai, maine M liya tha perfect fit aya."
+            },
+            {
+                "name": "Zain Malik",
+                "star": 5,
+                "review": "Yaar print fade nahi hua 5 washes ke baad bhi! Color bilkul same hai. Ab toh maine black bhi order kar diya."
+            },
+            {
+                "name": "Abdullah Khan",
+                "star": 4,
+                "review": "Bohot comfortable hai, university mein pehna toh sab pooch rahe thay kahan se liya. Delivery thodi late thi lekin product mast hai."
+            },
+            {
+                "name": "Saad Ahmed",
+                "star": 5,
+                "review": "Honestly best hoodie jo ab tak online mangwaya hai. Heavy GSM, kangaroo pocket perfect, aur embroidery bohot premium lag rahi hai. Highly recommended!"
+            }
+        ]
+    }
+]

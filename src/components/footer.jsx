@@ -1,7 +1,14 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Instagram, Facebook, Twitter, Send } from 'lucide-react';
+import { useEffect } from 'react';
 
 function Footer() {
+  const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  },[location.pathname])
+
   return (
     <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-6 py-16">
@@ -37,7 +44,7 @@ function Footer() {
             <ul className="space-y-4 text-gray-300">
               <li><NavLink to="/" className="hover:text-yellow-400 transition">Home</NavLink></li>
               <li><NavLink to="/about" className="hover:text-yellow-400 transition">About</NavLink></li>
-              <li><NavLink to="/shop" className="hover:text-yellow-400 transition">Shop All</NavLink></li>
+              <li><NavLink to="/shop" className="hover:text-yellow-400 transition">Shop</NavLink></li>
               <li><NavLink to="/contact" className="hover:text-yellow-400 transition">Contact</NavLink></li>
             </ul>
           </div>
@@ -46,7 +53,7 @@ function Footer() {
           <div className="lg:col-span-2">
             <h3 className="font-bold text-yellow-400 text-lg mb-6 tracking-wider">CATEGORIES</h3>
             <ul className="space-y-4 text-gray-300">
-              <li><NavLink to="/category/hoodies" className="hover:text-yellow-400 transition">Hoodies</NavLink></li>
+              <li><NavLink to="/shop?category=Hoodies" className="hover:text-yellow-400 transition">Hoodies</NavLink></li>
               <li><NavLink to="/category/jackets" className="hover:text-yellow-400 transition">Jackets</NavLink></li>
               <li><NavLink to="/category/tshirts" className="hover:text-yellow-400 transition">T-Shirts</NavLink></li>
               <li><NavLink to="/category/joggers" className="hover:text-yellow-400 transition">Joggers</NavLink></li>
@@ -69,6 +76,7 @@ function Footer() {
               </button>
             </form>
           </div>
+          
         </div>
 
         {/* Bottom Bar */}
