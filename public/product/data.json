@@ -20,17 +20,28 @@
       "Provides customizable coverage and style",
       "Ideal for gym wear, casual outings, or motivation apparel"
     ],
-    "sizes": ["S", "M", "L", "XL"],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
     "colors": [
       {
         "name": "White",
         "hex": "#ffffff",
-        "images": ["/product/discipline-hoddie/1.jpg", "/category/Knitted Polo T-Shirts/img.jpg"]
+        "images": [
+          "/product/discipline-hoddie/1.jpg",
+          "/category/Knitted Polo T-Shirts/img.jpg"
+        ]
       },
       {
         "name": "Red",
         "hex": "#0000ff",
-        "images": ["/category/Knitted Polo T-Shirts/img.jpg", "/product/discipline-hoddie/1.jpg"]
+        "images": [
+          "/category/Knitted Polo T-Shirts/img.jpg",
+          "/product/discipline-hoddie/1.jpg"
+        ]
       }
     ],
     "reviews": [
@@ -64,7 +75,7 @@
   {
     "id": 2,
     "slug": "focus-hoodie",
-    "name": "Premium DISCIPLINE Minimalist Hoodie",
+    "name": "Premium FOCUS Minimalist Hoodie",
     "price": "PKR 1,199",
     "priceNum": 1199,
     "original": "PKR 2,400",
@@ -72,9 +83,9 @@
     "badge": "50% OFF",
     "rating": 4.8,
     "category": "Hoodies",
-    "description": "Stay motivated and comfortable with our premium “DISCIPLINE” hoodie...",
+    "description": "Stay motivated and comfortable with our premium “FOCUS” hoodie...",
     "features": [
-      "Bold “DISCIPLINE” text for a clean, modern look",
+      "Bold “FOCUS” text for a clean, modern look",
       "Soft, breathable, and warm for all-day comfort",
       "Designed to flatter all body types",
       "Spacious front pocket for convenience and warmth",
@@ -82,17 +93,20 @@
       "Provides customizable coverage and style",
       "Ideal for gym wear, casual outings, or motivation apparel"
     ],
-    "sizes": ["S", "M", "L", "XL"],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
     "colors": [
       {
         "name": "White",
         "hex": "#ffffff",
-        "images": ["/product/focus-hoodie/1.jpg"]
-      },
-      {
-        "name": "Black",
-        "hex": "#000000",
-        "images": ["/product/focus-hoodie/2.jpg"]
+        "images": [
+          "/product/focus-hoodie/1.jpg",
+          "/product/focus-hoodie/2.jpg"
+        ]
       }
     ],
     "reviews": [
@@ -120,6 +134,391 @@
         "name": "Saad Ahmed",
         "star": 5,
         "review": "Honestly best hoodie jo ab tak online mangwaya hai. Heavy GSM, kangaroo pocket perfect, aur embroidery bohot premium lag rahi hai. Highly recommended!"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "focus-sweartshirt",
+    "name": "Men’s Premium “FOCUS” Printed Black Sweatshirt",
+    "price": "PKR 1,099",
+    "priceNum": 1099,
+    "original": "PKR 2,400",
+    "originalNum": 1999,
+    "badge": "50% OFF",
+    "rating": 4.8,
+    "category": "Sweatshirts",
+    "description": "The Men’s Premium “FOCUS” Sweatshirt is a perfect blend of modern streetwear style and exceptional comfort. Featuring a clean jet-black base with a futuristic layered “FOCUS” print, this sweatshirt delivers a bold and stylish look. Made with a soft cotton-blend fabric, it provides a comfortable all-day wear—whether you're heading out casually, working out, or staying productive. Ribbed cuffs, neat stitching, and a durable finish ensure long-lasting performance, while the lightweight feel makes it ideal for any season. Minimalistic yet eye-catching, this sweatshirt is a must-have essential for every wardrobe.",
+    "features": [
+      "Premium Soft Cotton-Blend Fabric Comfortable and breathable",
+      "High-Quality “FOCUS” Graphic Print Modern layered text effect",
+      "Ribbed Cuffs & Hem Ensures a perfect and long-lasting fit",
+      "Ideal for Everyday Wear Great for casual outings, gym, or travel",
+      "Skin-Friendly Material No itching, no irritation,",
+      "Regular Fit Design Suitable for all body types",
+      "Fade-Resistant Black Color Stays fresh even after multiple washes"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/focus-sweartshirt/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ali Raza",
+        "star": 5,
+        "review": "Bhai quality bohot zabardast hai! Fabric soft aur premium feel deta hai. Print bhi clean aur stylish lag raha hai. Winters ke liye perfect sweatshirt!"
+      },
+      {
+        "name": "Hassan Sheikh",
+        "star": 4,
+        "review": "Stitching strong hai aur fitting bhi bohot achi hai. Delivery thodi late thi, lekin product literally top-notch nikla!"
+      },
+      {
+        "name": "Zain Malik",
+        "star": 5,
+        "review": "Black color aur modern print ka combo kamaal ka hai! Pehenne mein stylish lagta hai. Price ke hisaab se bohot worth it—highly recommended!"
+      },
+      {
+        "name": "Abdullah Khan",
+        "star": 4,
+        "review": "Bohot comfortable hai, university mein pehna toh sab pooch rahe thay kahan se liya. Delivery thodi late thi lekin product mast hai."
+      },
+      {
+        "name": "Saad Ahmed",
+        "star": 5,
+        "review": "Honestly best hoodie jo ab tak online mangwaya hai. Heavy GSM, kangaroo pocket perfect, aur embroidery bohot premium lag rahi hai. Highly recommended!"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "badman-sweatshirt",
+    "name": "Mens Black Batman Sweatshirt (Premium Soft Fleece)",
+    "price": "PKR 1,099",
+    "priceNum": 1099,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Sweatshirts",
+    "description": "The Men's Black Batman Logo Sweatshirt combines minimal streetwear style with premium comfort. Designed with a sleek matte black Batman silhouette on a deep black base, it delivers a bold yet subtle superhero look. Made from high-quality soft fleece fabric, this sweatshirt keeps you warm and comfortable throughout the day. Ribbed cuffs, durable stitching, and a regular-fit design ensure long-lasting performance. Perfect for winter, casual outings, or everyday wear, this sweatshirt is a stylish must-have for fans of minimalist superhero fashion.",
+    "features": [
+      "Premium Soft Fleece Fabric Warm, cozy, and breathable",
+      "Matte Black Batman Logo Print Minimal and stylish design",
+      "Ribbed Cuffs & Hem Ensures a secure and long-lasting fit",
+      "Perfect for Winter Wear Provides warmth in cold weather",
+      "Skin-Friendly Material No itching or irritation",
+      "Regular Fit Suitable for all body types",
+      "Durable Stitching and Fade-Resistant Fabric Long-lasting quality"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/badman-sweatshirt/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ali Khan",
+        "star": 5,
+        "review": "Fabric bohot soft hai aur design simple but classy lagta hai. Batman lovers ke liye perfect piece!"
+      },
+      {
+        "name": "Hamza Tariq",
+        "star": 4,
+        "review": "Quality achi hai, fitting bhi sahi ayi. Bas print thora aur visible hota to aur maze ka hota, lekin overall very good."
+      },
+      {
+        "name": "Shahzaib",
+        "star": 5,
+        "review": "Black-on-black logo bohot premium feel deta hai. Winter wear ke liye zabardast!"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "don't-lose",
+    "name": "Mens Beige “Dont Lose Yourself” Premium Sweatshirt",
+    "price": "PKR 1,099",
+    "priceNum": 1099,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Sweatshirts",
+    "description": "The Men's Beige 'Don't Lose Yourself' Sweatshirt blends minimal streetwear style with premium comfort. Featuring bold gothic-style typography printed across the chest and vertically along the side, this design delivers a unique and motivational look. Made from soft, high-quality fleece fabric, it provides excellent warmth and comfort for daily wear. The ribbed cuffs, clean stitching, and regular-fit construction ensure durability and a perfect fit. Ideal for casual outings, winter wear, and everyday styling, this sweatshirt is a standout addition to any modern wardrobe.",
+    "features": [
+      "Premium Soft Fleece Fabric Warm, cozy, and breathable",
+      "Bold Gothic Typography Unique 'Don't Lose Yourself' print on chest and side",
+      "Ribbed Cuffs & Hem Ensures long-lasting fit and comfort",
+      "Skin-Friendly Material No itching or irritation",
+      "Regular Fit Suitable for all body types",
+      "Durable Stitching Quality construction for long-term use",
+      "Perfect for Everyday Wear Ideal for casual outings, winter days, and streetwear styling"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Beige",
+        "hex": "#E6D7BE",
+        "images": [
+          "/product/don't-lose/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ahmad Khan",
+        "star": 5,
+        "review": "Print bohot unique hai! Beige color aur design dono classy lagtay hain. Fabric soft and warm — totally worth it!"
+      },
+      {
+        "name": "Fahad Malik",
+        "star": 54,
+        "review": "Fitting on point! Side wala text design bohot different laga. Overall very good product."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "sea green-sweatshirt",
+    "name": "Mens Sea Green Premium Sweatshirt",
+    "price": "PKR 1,099",
+    "priceNum": 1099,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Sweatshirts",
+    "description": "The Men's Sea Green Premium Sweatshirt offers a fresh and modern look with its vibrant sea green tone. Made from soft fleece fabric, it provides warmth, comfort, and durability for everyday wear. The sweatshirt features ribbed cuffs, a classic round neck, and clean stitching for a polished finish. Its stylish minimalist design makes it perfect for casual outings, travel, gym, or winter styling. A great addition to any wardrobe looking for both comfort and standout color."
+    ,"features": [
+      "Premium Soft Fleece Fabric Warm, cozy, and breathable",
+      "Vibrant Sea Green Color Fresh and stylish everyday wear",
+      "Ribbed Cuffs & Hem Provides secure and long-lasting fit",
+      "Skin-Friendly Material No itching or irritation",
+      "Regular Fit Suitable for all body types",
+      "Durable Stitching Long-lasting quality and shape retention",
+      "Ideal for Winter & Casual Wear Great for outings, travel, or daily comfort"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Sea Green",
+        "hex": "007872",
+        "images": [
+          "/product/sea green-sweatshirt/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ali Raza",
+        "star": 5,
+        "review": "Sea green color bohot khubsurat lag raha hai! Fabric soft aur warm hai, winter ke liye perfect. Fitting bhi bilkul accurate — highly recommended."
+      },
+      {
+        "name": "Hassan Malik",
+        "star": 5,
+        "review": "Quality bohot achi hai, stitching strong hai. Color real life mein aur bhi zyada premium lagta hai. Bas delivery thodi late thi, baqi product excellent!"
+      },
+      {
+        "name": "Usman Javed",
+        "star": 4,
+        "review": "QComfort level 10/10! Pehn’ne mein bohot cozy feel hoti hai. Color unique aur stylish — definitely worth the price."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "slug": "look-sweatshirt",
+    "name": "Men’s Classic White Premium Sweatshirt",
+    "price": "PKR 1,099",
+    "priceNum": 1099,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Sweatshirts",
+    "description": "The Men's Classic White Premium Sweatshirt delivers a clean, fresh, and minimalist look, perfect for everyday wear. Made from soft and warm fleece fabric, it provides all-day comfort while maintaining a stylish and classy appearance. The ribbed cuffs, neat stitching, and regular-fit design ensure durability and a perfect fit for all body types. Ideal for winter days, casual outings, gym, or layering, this white sweatshirt is a versatile essential for any wardrobe.",
+    "features": [
+      "Premium Soft Fleece Fabric Warm, cozy, and breathable",
+      "Pure White Color Clean, classy, and versatile",
+      "Ribbed Cuffs & Hem Provides a secure and long-lasting fit",
+      "Skin-Friendly Material No itching or irritation",
+      "Regular Fit Suitable for all body types",
+      "Durable Stitching Long-lasting quality and shape retention",
+      "Perfect for Everyday Wear Great for outings, gym, winter layering, or styling"
+    ]
+    ,"sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/product/look-sweatshirt/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ahmad Khan",
+        "star": 5,
+        "review": "White sweatshirt bohot clean aur premium lagta hai. Fabric soft and warm — winter ke liye perfect choice!"
+      },
+      {
+        "name": "Bilal Shah",
+        "star": 5,
+        "review": "Fitting on point and stitching strong. White color fresh look deta hai. Overall excellent quality!"
+      },
+      {
+        "name": "Zeeshan Ali",
+        "star": 5,
+        "review": "Comfort level amazing hai! Plain white sweatshirt har outfit ke sath match ho jata hai. Totally worth it!"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "slug": "dream-sweatshirt",
+    "name": "Men’s Premium “DREAM” Printed Sweatshirt",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 2,099",
+    "originalNum": 2099,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Sweatshirts",
+    "description": "The Men's Premium 'DREAM' Sweatshirt combines modern minimalism with a motivational message. Featuring a bold and clean 'DREAM' print across the chest, this sweatshirt delivers a stylish yet simple aesthetic suitable for everyday wear. Made with soft fleece fabric, it offers warmth, comfort, and durability. The ribbed cuffs, premium stitching, and regular-fit design ensure a long-lasting and perfect fit. Ideal for casual outings, winter wear, or street-style fashion, this sweatshirt is a must-have for anyone who loves motivational apparel.",
+    "features": [
+      "Premium Soft Fleece Fabric Warm, cozy, and breathable",
+      "Bold 'DREAM' Typography Modern and motivational chest print",
+      "Ribbed Cuffs & Hem Provides a secure and long-lasting fit",
+      "Skin-Friendly Material No itching or irritation",
+      "Regular Fit Suitable for all body types",
+      "Durable Stitching High-quality construction built to last",
+      "Perfect for Everyday Wear Ideal for winter, travel, gym, or casual styling"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Mahroon",
+        "hex": "800000",
+        "images": [
+          "/product/dream-sweatshirt/1.jpg",
+          "/product/dream-sweatshirt/2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ali Raza",
+        "star": 5,
+        "review": "Dream print bohot clean aur stylish lagta hai. Fabric soft hai and perfect for winter. Highly recommended!"
+      },
+      {
+        "name": "Imran Khan",
+        "star": 5,
+        "review": "Quality good hai, fitting bhi sahi hai. Print ka look real life mein aur classy lagta hai. Worth the price!"
+      },
+      {
+        "name": "Saad Ahmed",
+        "star": 5,
+        "review": "Comfort level amazing! Minimal design but very attractive. Definitely one of my favorite sweatshirts."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "slug": "plan blue-hoodie",
+    "name": "Men’s Premium Blue Hoodie",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 2,399",
+    "originalNum": 2399,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Hoodies",
+    "description": "The Men's Premium Blue Hoodie offers a stylish and modern everyday look with its vibrant blue color and clean design. Made from soft fleece fabric, it provides excellent warmth, comfort, and durability. The hoodie includes an adjustable drawstring, a spacious front pocket, ribbed cuffs, and high-quality stitching for long-lasting performance. Perfect for casual wear, winter days, gym sessions, or travel, this hoodie delivers both comfort and fashion in one versatile piece.",
+    "features": [
+      "Premium Soft Fleece Fabric Warm, cozy, and breathable",
+      "Vibrant Blue Color Stylish and fresh everyday look",
+      "Adjustable Drawstring Hoodie Customizable comfort",
+      "Front Kangaroo Pocket Spacious and practical design",
+      "Ribbed Cuffs & Hem Ensures perfect and long-lasting fit",
+      "Skin-Friendly Material No itching or irritation",
+      "Durable Stitching High-quality construction built to last",
+      "Ideal for Winter & Daily Wear Great for outings, gym, travel, or layering"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Blue",
+        "hex": "0C0038",
+        "images": [
+          "/product/plan blue-hoodie/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ahmad Raza",
+        "star": 5,
+        "review": "Blue color bohot vibrant lagta hai! Hoodie ka fabric soft aur warm hai. Fitting perfect — highly recommended."
+      },
+      {
+        "name": "Hassan Malik",
+        "star": 5,
+        "review": "Hoodie comfortable aur premium feel deta hai. Pocket and stitching bohot solid. Delivery thodi late thi but product worth it!"
+      },
+      {
+        "name": "Usman Javed",
+        "star": 5,
+        "review": "Winter ke liye best choice! Color classy aur fabric 10/10. Definitely buying more colors."
       }
     ]
   }
