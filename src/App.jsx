@@ -10,6 +10,8 @@ import Wishlist from "./pages/wishlist";
 import ProductDetail from "./pages/productDetail";
 import { useEffect, useState } from "react";
 
+import { Helmet } from 'react-helmet-async';
+
 function App() {
   const location = useLocation();
   const [categories, setCategories] = useState([]);
@@ -34,6 +36,20 @@ function App() {
 
   return (
     <>
+      <Helmet>
+        <title>Naaksh – Premium Minimalist Clothing & Streetwear</title>
+        <meta name="description" content="Naaksh offers unique, customizable fashion with high-quality T-shirts and bold or minimalist designs to help you stand out. Fashion, made personal." />
+        <meta name="keywords" content="Naaksh, Naaksh clothing, minimalist clothing Pakistan, premium hoodies, streetwear, fashion brand, apparel" />
+        <meta property="og:title" content="Naaksh – Premium Minimalist Clothing" />
+        <meta property="og:description" content="Naaksh offers unique, customizable fashion with high-quality T-shirts and bold or minimalist designs to help you stand out. Fashion, made personal." />
+        <meta property="og:image" content="/logo.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://naaksh.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Naaksh – Premium Minimalist Clothing" />
+        <meta name="twitter:description" content="Naaksh offers unique, customizable fashion with high-quality T-shirts and bold or minimalist designs to help you stand out. Fashion, made personal." />
+        <meta name="twitter:image" content="/logo.png" />
+      </Helmet>
       <Navbar categories={categories} loadingCategories={loadingCategories} />
       <Routes>
         <Route path="/" element={<Home />} />

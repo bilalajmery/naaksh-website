@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import { ShoppingBag, Check, Star, Heart, Share2, Minus, Plus } from 'lucide-react';
+import { ShoppingBag, Check, Star, Heart, Minus, Plus } from 'lucide-react';
 import { useParams } from 'react-router-dom';
+
+import { Helmet } from 'react-helmet-async';
 
 export default function ProductDetail() {
     const { slug } = useParams();
@@ -91,9 +93,21 @@ export default function ProductDetail() {
 
     const currentImages = product.colors[selectedColor]?.images || [];
     const discount = Math.round(((product.originalNum - product.priceNum) / product.originalNum) * 100);
+    const siteUrl = window.location.origin;
+    const ogImage = currentImages[0] ? `${siteUrl}${currentImages[0]}` : '';
 
     return (
         <div className="min-h-screen bg-white pt-30">
+            <Helmet>
+                <title>{product.name} | Naaksh</title>
+                <meta name="description" content={product.description} key="description" />
+                <meta property="og:title" content={product.name} key="og:title" />
+                <meta property="og:description" content={product.description} key="og:description" />
+                <meta property="og:image" content={ogImage} key="og:image" />
+                <meta property="og:url" content={window.location.href} key="og:url" />
+                <meta property="og:type" content="product" key="og:type" />
+                <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
+            </Helmet>
             {/* Breadcrumbs */}
             <div className="max-w-7xl mx-auto px-6 py-6">
                 <nav className="flex items-center gap-2 text-sm text-gray-600">

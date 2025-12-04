@@ -1,24 +1,25 @@
 [
   {
     "id": 1,
-    "slug": "discipline-hoodie",
-    "name": "Premium DISCIPLINE Minimalist Hoodie",
+    "slug": "discipline-white-hoodie",
+    "name": "Mens Premium DISCIPLINE White Hoodie",
     "price": "PKR 1,199",
     "priceNum": 1199,
-    "original": "PKR 2,400",
-    "originalNum": 2400,
+    "original": "PKR 2,399",
+    "originalNum": 2399,
     "badge": "50% OFF",
-    "rating": 4.8,
+    "rating": 4.9,
     "category": "Hoodies",
-    "description": "Stay motivated and comfortable with our premium “DISCIPLINE” hoodie...",
+    "description": "The Men's Premium 'DISCIPLINE' White Hoodie combines minimal streetwear style with a powerful motivational message...",
     "features": [
-      "Bold “DISCIPLINE” text for a clean, modern look",
-      "Soft, breathable, and warm for all-day comfort",
-      "Designed to flatter all body types",
-      "Spacious front pocket for convenience and warmth",
-      "Built to last through daily wear",
-      "Provides customizable coverage and style",
-      "Ideal for gym wear, casual outings, or motivation apparel"
+      "Premium Soft Fleece Fabric Warm, cozy, and breathable",
+      "Bold 'DISCIPLINE' Typography Motivational and stylish design",
+      "Adjustable Drawstring Hood Custom comfort and styling",
+      "Front Kangaroo Pocket Practical and spacious",
+      "Ribbed Cuffs & Hem Ensures a durable and long-lasting fit",
+      "Skin-Friendly Material No itching or irritation",
+      "Regular Fit Suitable for all body types",
+      "Perfect for Everyday Wear Ideal for winter, gym, travel, and casual outings"
     ],
     "sizes": [
       "S",
@@ -29,83 +30,9 @@
     "colors": [
       {
         "name": "White",
-        "hex": "#ffffff",
+        "hex": "#FFFFFF",
         "images": [
-          "/product/discipline-hoddie/1.jpg",
-          "/category/Knitted Polo T-Shirts/img.jpg"
-        ]
-      },
-      {
-        "name": "Red",
-        "hex": "#0000ff",
-        "images": [
-          "/category/Knitted Polo T-Shirts/img.jpg",
-          "/product/discipline-hoddie/1.jpg"
-        ]
-      }
-    ],
-    "reviews": [
-      {
-        "name": "Ahmed Khan",
-        "star": 4,
-        "review": "Quality is really good. Fabric is soft and comfortable, especially for winter evenings. Delivery was also on time."
-      },
-      {
-        "name": "Junaid Hashmi",
-        "star": 5,
-        "review": "Loved the minimal design! The ‘DISCIPLINE’ print looks premium and the fitting is perfect. Totally worth the price."
-      },
-      {
-        "name": "Bilal Siddiqui",
-        "star": 5,
-        "review": "Honestly didn’t expect this level of quality. Hoodie is warm, stitching is neat, and size is exactly as described."
-      },
-      {
-        "name": "Usman Raza",
-        "star": 3,
-        "review": "Product is good but the color was slightly different from what I expected. Still comfortable to wear."
-      },
-      {
-        "name": "Hamza Tariq",
-        "star": 4,
-        "review": "Very comfortable and stylish. Wore it to university and got compliments. Just wish the delivery was a bit faster."
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "slug": "focus-hoodie",
-    "name": "Premium FOCUS Minimalist Hoodie",
-    "price": "PKR 1,199",
-    "priceNum": 1199,
-    "original": "PKR 2,400",
-    "originalNum": 2400,
-    "badge": "50% OFF",
-    "rating": 4.8,
-    "category": "Hoodies",
-    "description": "Stay motivated and comfortable with our premium “FOCUS” hoodie...",
-    "features": [
-      "Bold “FOCUS” text for a clean, modern look",
-      "Soft, breathable, and warm for all-day comfort",
-      "Designed to flatter all body types",
-      "Spacious front pocket for convenience and warmth",
-      "Built to last through daily wear",
-      "Provides customizable coverage and style",
-      "Ideal for gym wear, casual outings, or motivation apparel"
-    ],
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL"
-    ],
-    "colors": [
-      {
-        "name": "White",
-        "hex": "#ffffff",
-        "images": [
-          "/product/focus-hoodie/1.jpg",
-          "/product/focus-hoodie/2.jpg"
+          "/product/discipline-hoodie/1.jpg"
         ]
       }
     ],
@@ -113,33 +40,23 @@
       {
         "name": "Ali Raza",
         "star": 5,
-        "review": "Bhai bohot zabardast hoodie hai! Fabric premium lag raha hai, bilkul soft aur warm. Winter mein perfect hai. Worth every penny!"
+        "review": "White hoodie ka look bohot clean hai aur DISCIPLINE print classy lagta hai. Fabric warm and soft — great for winter!"
       },
       {
-        "name": "Hassan Sheikh",
-        "star": 4,
-        "review": "Quality top-notch hai, stitching bohot clean hai. Bas size chart thora carefully dekhna parta hai, maine M liya tha perfect fit aya."
-      },
-      {
-        "name": "Zain Malik",
+        "name": "Bilal Ahmed",
         "star": 5,
-        "review": "Yaar print fade nahi hua 5 washes ke baad bhi! Color bilkul same hai. Ab toh maine black bhi order kar diya."
+        "review": "Quality really good! Stitching solid hai and fitting comfortable. Print ka style bohot modern hai."
       },
       {
-        "name": "Abdullah Khan",
-        "star": 4,
-        "review": "Bohot comfortable hai, university mein pehna toh sab pooch rahe thay kahan se liya. Delivery thodi late thi lekin product mast hai."
-      },
-      {
-        "name": "Saad Ahmed",
+        "name": "Saad Khan",
         "star": 5,
-        "review": "Honestly best hoodie jo ab tak online mangwaya hai. Heavy GSM, kangaroo pocket perfect, aur embroidery bohot premium lag rahi hai. Highly recommended!"
+        "review": "Minimal design but very powerful message. Hoodie comfortable, stylish, aur daily wear ke liye perfect."
       }
     ]
   },
   {
-    "id": 3,
-    "slug": "focus-sweartshirt",
+    "id": 2,
+    "slug": "focus-black-sweatshirt",
     "name": "Men’s Premium “FOCUS” Printed Black Sweatshirt",
     "price": "PKR 1,099",
     "priceNum": 1099,
@@ -147,7 +64,7 @@
     "originalNum": 1999,
     "badge": "50% OFF",
     "rating": 4.8,
-    "category": "Sweatshirts",
+    "category": "Sweat Shirt",
     "description": "The Men’s Premium “FOCUS” Sweatshirt is a perfect blend of modern streetwear style and exceptional comfort. Featuring a clean jet-black base with a futuristic layered “FOCUS” print, this sweatshirt delivers a bold and stylish look. Made with a soft cotton-blend fabric, it provides a comfortable all-day wear—whether you're heading out casually, working out, or staying productive. Ribbed cuffs, neat stitching, and a durable finish ensure long-lasting performance, while the lightweight feel makes it ideal for any season. Minimalistic yet eye-catching, this sweatshirt is a must-have essential for every wardrobe.",
     "features": [
       "Premium Soft Cotton-Blend Fabric Comfortable and breathable",
@@ -202,8 +119,8 @@
     ]
   },
   {
-    "id": 4,
-    "slug": "badman-sweatshirt",
+    "id": 3,
+    "slug": "batman-black-sweatshirt",
     "name": "Mens Black Batman Sweatshirt (Premium Soft Fleece)",
     "price": "PKR 1,099",
     "priceNum": 1099,
@@ -211,7 +128,7 @@
     "originalNum": 1999,
     "badge": "50% OFF",
     "rating": 4.9,
-    "category": "Sweatshirts",
+    "category": "Sweat Shirt",
     "description": "The Men's Black Batman Logo Sweatshirt combines minimal streetwear style with premium comfort. Designed with a sleek matte black Batman silhouette on a deep black base, it delivers a bold yet subtle superhero look. Made from high-quality soft fleece fabric, this sweatshirt keeps you warm and comfortable throughout the day. Ribbed cuffs, durable stitching, and a regular-fit design ensure long-lasting performance. Perfect for winter, casual outings, or everyday wear, this sweatshirt is a stylish must-have for fans of minimalist superhero fashion.",
     "features": [
       "Premium Soft Fleece Fabric Warm, cozy, and breathable",
@@ -256,8 +173,8 @@
     ]
   },
   {
-    "id": 5,
-    "slug": "don't-lose",
+    "id": 4,
+    "slug": "dont-lose-yourself-beige-sweatshirt",
     "name": "Mens Beige “Dont Lose Yourself” Premium Sweatshirt",
     "price": "PKR 1,099",
     "priceNum": 1099,
@@ -265,7 +182,7 @@
     "originalNum": 1999,
     "badge": "50% OFF",
     "rating": 4.9,
-    "category": "Sweatshirts",
+    "category": "Sweat Shirt",
     "description": "The Men's Beige 'Don't Lose Yourself' Sweatshirt blends minimal streetwear style with premium comfort. Featuring bold gothic-style typography printed across the chest and vertically along the side, this design delivers a unique and motivational look. Made from soft, high-quality fleece fabric, it provides excellent warmth and comfort for daily wear. The ribbed cuffs, clean stitching, and regular-fit construction ensure durability and a perfect fit. Ideal for casual outings, winter wear, and everyday styling, this sweatshirt is a standout addition to any modern wardrobe.",
     "features": [
       "Premium Soft Fleece Fabric Warm, cozy, and breathable",
@@ -305,8 +222,8 @@
     ]
   },
   {
-    "id": 6,
-    "slug": "sea green-sweatshirt",
+    "id": 5,
+    "slug": "sea-green-sweatshirt",
     "name": "Mens Sea Green Premium Sweatshirt",
     "price": "PKR 1,099",
     "priceNum": 1099,
@@ -314,9 +231,9 @@
     "originalNum": 1999,
     "badge": "50% OFF",
     "rating": 4.9,
-    "category": "Sweatshirts",
-    "description": "The Men's Sea Green Premium Sweatshirt offers a fresh and modern look with its vibrant sea green tone. Made from soft fleece fabric, it provides warmth, comfort, and durability for everyday wear. The sweatshirt features ribbed cuffs, a classic round neck, and clean stitching for a polished finish. Its stylish minimalist design makes it perfect for casual outings, travel, gym, or winter styling. A great addition to any wardrobe looking for both comfort and standout color."
-    ,"features": [
+    "category": "Sweat Shirt",
+    "description": "The Men's Sea Green Premium Sweatshirt offers a fresh and modern look with its vibrant sea green tone. Made from soft fleece fabric, it provides warmth, comfort, and durability for everyday wear. The sweatshirt features ribbed cuffs, a classic round neck, and clean stitching for a polished finish. Its stylish minimalist design makes it perfect for casual outings, travel, gym, or winter styling. A great addition to any wardrobe looking for both comfort and standout color.",
+    "features": [
       "Premium Soft Fleece Fabric Warm, cozy, and breathable",
       "Vibrant Sea Green Color Fresh and stylish everyday wear",
       "Ribbed Cuffs & Hem Provides secure and long-lasting fit",
@@ -359,8 +276,8 @@
     ]
   },
   {
-    "id": 7,
-    "slug": "look-sweatshirt",
+    "id": 6,
+    "slug": "classic-white-sweatshirt",
     "name": "Men’s Classic White Premium Sweatshirt",
     "price": "PKR 1,099",
     "priceNum": 1099,
@@ -368,7 +285,7 @@
     "originalNum": 1999,
     "badge": "50% OFF",
     "rating": 4.9,
-    "category": "Sweatshirts",
+    "category": "Sweat Shirt",
     "description": "The Men's Classic White Premium Sweatshirt delivers a clean, fresh, and minimalist look, perfect for everyday wear. Made from soft and warm fleece fabric, it provides all-day comfort while maintaining a stylish and classy appearance. The ribbed cuffs, neat stitching, and regular-fit design ensure durability and a perfect fit for all body types. Ideal for winter days, casual outings, gym, or layering, this white sweatshirt is a versatile essential for any wardrobe.",
     "features": [
       "Premium Soft Fleece Fabric Warm, cozy, and breathable",
@@ -378,8 +295,8 @@
       "Regular Fit Suitable for all body types",
       "Durable Stitching Long-lasting quality and shape retention",
       "Perfect for Everyday Wear Great for outings, gym, winter layering, or styling"
-    ]
-    ,"sizes": [
+    ],
+    "sizes": [
       "S",
       "M",
       "L",
@@ -413,16 +330,16 @@
     ]
   },
   {
-    "id": 8,
-    "slug": "dream-sweatshirt",
-    "name": "Men’s Premium “DREAM” Printed Sweatshirt",
+    "id": 7,
+    "slug": "dream-maroon-sweatshirt",
+    "name": "Men’s Premium DREAM Printed Sweatshirt",
     "price": "PKR 1,199",
     "priceNum": 1199,
     "original": "PKR 2,099",
     "originalNum": 2099,
     "badge": "50% OFF",
     "rating": 4.9,
-    "category": "Sweatshirts",
+    "category": "Sweat Shirt",
     "description": "The Men's Premium 'DREAM' Sweatshirt combines modern minimalism with a motivational message. Featuring a bold and clean 'DREAM' print across the chest, this sweatshirt delivers a stylish yet simple aesthetic suitable for everyday wear. Made with soft fleece fabric, it offers warmth, comfort, and durability. The ribbed cuffs, premium stitching, and regular-fit design ensure a long-lasting and perfect fit. Ideal for casual outings, winter wear, or street-style fashion, this sweatshirt is a must-have for anyone who loves motivational apparel.",
     "features": [
       "Premium Soft Fleece Fabric Warm, cozy, and breathable",
@@ -468,8 +385,8 @@
     ]
   },
   {
-    "id": 9,
-    "slug": "plan blue-hoodie",
+    "id": 8,
+    "slug": "navy-blue-hoodie",
     "name": "Men’s Premium Blue Hoodie",
     "price": "PKR 1,199",
     "priceNum": 1199,
@@ -498,9 +415,9 @@
     "colors": [
       {
         "name": "Blue",
-        "hex": "0C0038",
+        "hex": "#0C0038",
         "images": [
-          "/product/plan blue-hoodie/1.jpg"
+          "/product/navy-blue-hoodie/1.jpg"
         ]
       }
     ],
@@ -519,6 +436,419 @@
         "name": "Usman Javed",
         "star": 5,
         "review": "Winter ke liye best choice! Color classy aur fabric 10/10. Definitely buying more colors."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "slug": "highway-white-hoodie",
+    "name": "Mens White HIGHWAY Graphic Hoodie",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 2,399",
+    "originalNum": 2399,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Hoodies",
+    "description": "A premium white fleece hoodie featuring a bold vertical “HIGHWAY” graphic print in black and red...",
+    "features": [
+      "Premium warm fleece material",
+      "Vertical HIGHWAY graphic print on the back",
+      "Soft, breathable, and skin-friendly fabric",
+      "Ribbed cuffs and hem for a secure fit",
+      "Durable stitching for long-lasting use",
+      "Perfect for winter and casual streetwear style",
+      "Regular fit suitable for all body types"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/product/highway-hoodie/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Saad Khan",
+        "star": 5,
+        "review": "Graphic print bohot stylish hai! Hoodie ka fabric soft aur warm. Highly recommended."
+      },
+      {
+        "name": "Haseeb Jutt",
+        "star": 5,
+        "review": "Quality achi hai and fitting perfect. Print real life mein aur zyada sharp lagta hai."
+      },
+      {
+        "name": "Danish Ali",
+        "star": 5,
+        "review": "Streetwear lovers ke liye perfect hoodie! White color + bold print = amazing look!"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "slug": "abstract-black-hoodie",
+    "name": "Mens Black Graphic Art Hoodie Abstract Typography Design",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 2,399",
+    "originalNum": 2399,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Hoodies",
+    "description": "A premium black fleece hoodie featuring a bold abstract graphic print combined with artistic brush strokes...",
+    "features": [
+      "Soft and warm fleece fabric — perfect for winter",
+      "Unique abstract graphic design with bold typography",
+      "High-quality off-white, red, and grey print",
+      "Comfortable regular fit suitable for everyday wear",
+      "Ribbed cuffs and hem for long-lasting shape retention",
+      "Durable stitching and premium finish",
+      "Ideal for streetwear, casual outings, or layering"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/dalkdok-hoodie/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Asad Ahmed",
+        "star": 5,
+        "review": "Design bohot unique hai! Black hoodie par print bohot sharp aur premium lagta hai."
+      },
+      {
+        "name": "Zohaib Khan",
+        "star": 5,
+        "review": "Fabric warm aur comfortable hai. Graphic bilkul as shown! Totally worth it."
+      },
+      {
+        "name": "Imran Jutt",
+        "star": 5,
+        "review": "Streetwear vibes on point! Quality, fitting, everything 10/10."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "slug": "focus-white-hoodie",
+    "name": "Mens White FOCUS Hoodie Minimal Modern Print",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 2,399",
+    "originalNum": 2399,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Hoodies",
+    "description": "The Mens Premium “FOCUS” Hoodie is designed for those who love clean, modern streetwear with a motivational punch...",
+    "features": [
+      "Premium Soft Fleece Fabric warm, cozy, and long-lasting",
+      "Bold 'FOCUS' Graphic Print clean modern typography",
+      "White Minimal Design perfect for casual and gym wear",
+      "Ribbed Cuffs & Hem keeps the hoodie in shape",
+      "Skin-Friendly Material no itching or irritation",
+      "Regular Fit suitable for all body types",
+      "Fade-Resistant Print stays fresh after multiple washes"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/product/focus-hoodie/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ahsan Raza",
+        "star": 5,
+        "review": "White hoodie with FOCUS print looks super clean and classy. Quality is amazing!"
+      },
+      {
+        "name": "Danish Ali",
+        "star": 5,
+        "review": "Fabric soft hai, fitting bohot comfortable. Print exactly same as shown."
+      },
+      {
+        "name": "Salman Javed",
+        "star": 5,
+        "review": "Winter main perfect! Stylish, minimal, aur bohot premium feel deta hai."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "slug": "rich-club-black-hoodie",
+    "name": "Mens Rich Club Premium Hoodie Luxury Streetwear Edition",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 2,399",
+    "originalNum": 2399,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Hoodies",
+    "description": "The Rich Club Hoodie brings a bold luxury streetwear vibe with a clean, modern aesthetic...",
+    "features": [
+      "Premium Soft-Fleece Fabric warm, breathable & durable",
+      "Bold 'Rich Club' Graphic luxury streetwear inspired design",
+      "Ribbed Cuffs & Hem perfect long-lasting fit",
+      "Spacious Kangaroo Pocket comfort + utility",
+      "Skin-Friendly Material no itching or irritation",
+      "Regular Fit suitable for all body types",
+      "Fade-Resistant Print stays fresh after multiple washes"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/rich-hoodie/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Hamza Raza",
+        "star": 5,
+        "review": "Rich Club hoodie ka look bohot premium hai! Fabric soft hai aur fitting perfect."
+      },
+      {
+        "name": "Daniyal Ahmed",
+        "star": 5,
+        "review": "Print quality zabardast! Winter main bohot warm feel deta hai. Worth the price."
+      },
+      {
+        "name": "Shehryar Malik",
+        "star": 5,
+        "review": "Streetwear lovers ke liye perfect choice. Material, stitching sab top-class!"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "slug": "astute-white-hoodie",
+    "name": "Mens ASTUTE Premium White Hoodie",
+    "price": "PKR 1,299",
+    "priceNum": 1299,
+    "original": "PKR 2,499",
+    "originalNum": 2499,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Hoodies",
+    "description": "The ASTUTE Hoodie is designed for those who value sharp thinking, clean design, and modern streetwear style...",
+    "features": [
+      "Premium Soft-Fleece Fabric warm, breathable & comfortable",
+      "Minimalist 'ASTUTE' Graphic clean and modern look",
+      "Ribbed Cuffs & Hem secure, long-lasting fit",
+      "Kangaroo Pocket practical and stylish",
+      "Skin-Friendly & Anti-Irritation Material",
+      "Regular Fit suits every body type",
+      "Fade-Resistant White Color stays clean with proper care"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/product/astute-hoodie/1.png",
+          "/product/astute-hoodie/2.png"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ali Murtaza",
+        "star": 5,
+        "review": "ASTUTE hoodie ka look bohot clean aur classy hai. White color fresh lagta hai. Fabric amazing!"
+      },
+      {
+        "name": "Saad Khan",
+        "star": 5,
+        "review": "Soft, warm, and stylish! Print quality strong hai. Delivery thodi late thi but product worth it."
+      },
+      {
+        "name": "Ahmed Javed",
+        "star": 5,
+        "review": "Minimal design lovers ke liye perfect hoodie. Fitting, stitching, sab A-class!"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "slug": "basic-premium-tshirt",
+    "name": "Mens Basic Premium T-Shirt",
+    "price": "PKR 999",
+    "priceNum": 999,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Normal Basic Tees",
+    "description": "The Basic Premium T-Shirt is designed for everyday comfort with a clean and minimal style...",
+    "features": [
+      "100% Soft Premium Cotton breathable, lightweight & comfortable",
+      "Regular Fit suitable for all body types",
+      "High-Quality Stitching long-lasting durability",
+      "Skin-Friendly Fabric no itching or irritation",
+      "Minimal & Versatile Design perfect for daily wear",
+      "Fade-Resistant Color stays fresh after multiple washes",
+      "Ideal for Summer & Layering wear it in all seasons"
+    ],
+    "sizes": [
+      "M",
+      "L"
+    ],
+    "colors": [
+      {
+        "name": "Green",
+        "hex": "#112C19",
+        "images": [
+          "/product/basic-tshirt/1.jpg"
+        ]
+      },
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/product/basic-tshirt/2.jpg"
+        ]
+      },
+      {
+        "name": "Yellow",
+        "hex": "#F39800",
+        "images": [
+          "/product/basic-tshirt/3.jpg"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/basic-tshirt/4.jpg"
+        ]
+      },
+      {
+        "name": "Mahroon",
+        "hex": "#3F1114",
+        "images": [
+          "/product/basic-tshirt/5.jpg"
+        ]
+      },
+      {
+        "name": "Blue",
+        "hex": "#0C1D27",
+        "images": [
+          "/product/basic-tshirt/6.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Fahad Malik",
+        "star": 5,
+        "review": "Bohot soft aur comfortable T-shirt! Garmi main perfect, fabric quality amazing."
+      },
+      {
+        "name": "Arsalan Khan",
+        "star": 5,
+        "review": "Color bilkul fade nahi hua. Stitching strong hai. Good for daily use!"
+      },
+      {
+        "name": "Zain Ali",
+        "star": 5,
+        "review": "Simple, clean, aur stylish! Price ke hisaab se quality bohot achi hai."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "slug": "maroon-premium-hoodie",
+    "name": "Mens Premium Maroon Hoodie",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 2,399",
+    "originalNum": 2399,
+    "badge": "50% OFF",
+    "rating": 4.9,
+    "category": "Hoodies",
+    "description": "The Men's Premium Maroon Hoodie brings a bold and stylish winter look with its deep maroon color and high-quality fleece fabric. Designed for warmth and comfort, this hoodie features an adjustable drawstring, a spacious front kangaroo pocket, ribbed cuffs, and durable stitching. The rich maroon tone adds a classy and modern touch, making it perfect for winter wear, casual outings, gym sessions, and travel. With its soft texture and regular-fit design, this hoodie is a must-have layering essential for any wardrobe.",
+    "features": [
+      "Premium Fleece Fabric – Soft, warm, and breathable",
+      "Deep Maroon Color – Stylish and classy winter tone",
+      "Adjustable Drawstring Hood – Allows custom comfort",
+      "Front Kangaroo Pocket – Spacious and functional",
+      "Ribbed Cuffs & Hem – Provides secure and long-lasting fit",
+      "Skin-Friendly Material – No itching or irritation",
+      "Regular Fit – Comfortable for all body types",
+      "Durable Stitching – Designed for long-term use and quality"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Maroon",
+        "hex": "#800000",
+        "images": [
+          "/product/maroon-premium-hoodie/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ahmed Raza",
+        "star": 5,
+        "review": "Mahroon color bohot premium lagta hai! Hoodie ka fabric soft, warm, and very comfortable. Perfect for winter."
+      },
+      {
+        "name": "Hamza Malik",
+        "star": 5,
+        "review": "Stitching strong hai and fitting bhi on point. Color real life mein aur zyada classy lagta hai. Totally worth it!"
+      },
+      {
+        "name": "Usman Tariq",
+        "star": 5,
+        "review": "Quality and comfort both amazing! Winter wear ke liye best hoodie. Definitely recommended"
       }
     ]
   }
