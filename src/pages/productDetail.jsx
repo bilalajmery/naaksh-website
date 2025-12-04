@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ShoppingBag, Check, Star, Heart, Minus, Plus } from 'lucide-react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -111,9 +111,9 @@ export default function ProductDetail() {
             {/* Breadcrumbs */}
             <div className="max-w-7xl mx-auto px-6 py-6">
                 <nav className="flex items-center gap-2 text-sm text-gray-600">
-                    <a href="/" className="hover:text-black">Home</a>
+                    <Link to="/" className="hover:text-black">Home</Link>
                     <span>/</span>
-                    <a href={`/shop?category=${product.category.toLowerCase()}`} className="hover:text-black">{product.category}</a>
+                    <Link to={`/shop?category=${product.category.toLowerCase()}`} className="hover:text-black">{product.category}</Link>
                     <span>/</span>
                     <span className="text-black font-medium">{product.name}</span>
                 </nav>

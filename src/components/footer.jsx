@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
-import { Instagram, Facebook, Twitter, Send } from "lucide-react";
+import { NavLink, Link } from "react-router-dom";
+import { Instagram, Facebook, Music2, Send } from "lucide-react";
 import { useMemo, useRef } from "react";
 
 function Footer({ categories, loadingCategories }) {
@@ -22,7 +22,7 @@ function Footer({ categories, loadingCategories }) {
 
             <div className="flex gap-5 mt-8">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/naakshofficial/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"
@@ -30,7 +30,7 @@ function Footer({ categories, loadingCategories }) {
                 <Instagram size={20} />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/naakshofficial"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"
@@ -38,12 +38,12 @@ function Footer({ categories, loadingCategories }) {
                 <Facebook size={20} />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://www.tiktok.com/@naakshofficial"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"
               >
-                <Twitter size={20} />
+                <Music2 size={20} />
               </a>
             </div>
           </div>
@@ -70,6 +70,11 @@ function Footer({ categories, loadingCategories }) {
               <li>
                 <NavLink to="/contact" className="hover:text-yellow-400 transition">
                   Contact
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/cart" className="hover:text-yellow-400 transition">
+                  Cart
                 </NavLink>
               </li>
             </ul>
@@ -123,12 +128,12 @@ function Footer({ categories, loadingCategories }) {
         <div className="border-t border-gray-800 pt-8 mt-12 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           <p>© 2025 NAAKSH® – All Rights Reserved</p>
           <div className="flex gap-8 mt-4 md:mt-0">
-            <a href="/privacy" className="hover:text-yellow-400 transition">
+            <Link to="/privacy" className="hover:text-yellow-400 transition">
               Privacy Policy
-            </a>
-            <a href="/terms" className="hover:text-yellow-400 transition">
+            </Link>
+            <Link to="/terms" className="hover:text-yellow-400 transition">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

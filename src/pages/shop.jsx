@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { X, ChevronDown, Search, Loader2 } from "lucide-react";
-import { NavLink, useSearchParams } from "react-router-dom";
+import { NavLink, useSearchParams, Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 
 export default function Shop() {
@@ -171,9 +171,9 @@ export default function Shop() {
         <nav className="mb-8" aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm">
             <li>
-              <a href="/" className="text-gray-500 hover:text-black">
+              <Link to="/" className="text-gray-500 hover:text-black">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="text-gray-400">/</li>
             <li className="text-black font-medium">Shop</li>
@@ -222,13 +222,13 @@ export default function Shop() {
                   filters.colors.length ||
                   filters.priceRange !== "all" ||
                   filters.searchQuery) && (
-                  <button
-                    onClick={clearFilters}
-                    className="text-xs text-gray-500 hover:text-black flex items-center gap-1"
-                  >
-                    <X size={14} /> Clear All
-                  </button>
-                )}
+                    <button
+                      onClick={clearFilters}
+                      className="text-xs text-gray-500 hover:text-black flex items-center gap-1"
+                    >
+                      <X size={14} /> Clear All
+                    </button>
+                  )}
               </div>
 
               {/* Search */}
@@ -345,9 +345,8 @@ export default function Shop() {
                       <button
                         key={i + 1}
                         onClick={() => setCurrentPage(i + 1)}
-                        className={`w-10 h-10 rounded-lg ${
-                          currentPage === i + 1 ? "bg-black text-white" : "border hover:bg-gray-50"
-                        }`}
+                        className={`w-10 h-10 rounded-lg ${currentPage === i + 1 ? "bg-black text-white" : "border hover:bg-gray-50"
+                          }`}
                       >
                         {i + 1}
                       </button>

@@ -27,9 +27,9 @@ function Navbar({ categories, loadingCategories }) {
       {/* 11.11 SALE BAR */}
       <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-black text-center py-1 shadow-xl">
         <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-sm md:text-base">
-          <span>11.11 MEGA SALE IS LIVE NOW!</span>
-          <span className="hidden sm:inline opacity-90">(Up to 70% OFF + Free Delivery Pakistan Wide)</span>
-          <span>11 Nov to 21 Nov</span>
+          <span>12.12 MEGA SALE IS LIVE NOW!</span>
+          <span className="hidden sm:inline opacity-90">(Up to 50% OFF + Free Delivery Pakistan Wide)</span>
+          <span>1 - 31 Dec</span>
           <NavLink to="/shop" className="underline font-bold">
             SHOP NOW
           </NavLink>
@@ -38,11 +38,10 @@ function Navbar({ categories, loadingCategories }) {
 
       {/* MAIN NAVBAR */}
       <nav
-        className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "top-8 md:top-8 bg-black/95 backdrop-blur-xl shadow-2xl border-b border-yellow-900/20"
-            : "top-8 md:top-8 bg-black/80 backdrop-blur-md"
-        }`}
+        className={`fixed left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? "top-8 md:top-8 bg-black/95 backdrop-blur-xl shadow-2xl border-b border-yellow-900/20"
+          : "top-8 md:top-8 bg-black/80 backdrop-blur-md"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -64,8 +63,7 @@ function Navbar({ categories, loadingCategories }) {
                     key={item.to}
                     to={item.to}
                     className={({ isActive }) =>
-                      `text-sm font-bold tracking-widest uppercase transition-all ${
-                        isActive ? "text-yellow-400" : "text-gray-200 hover:text-yellow-400"
+                      `text-sm font-bold tracking-widest uppercase transition-all ${isActive ? "text-yellow-400" : "text-gray-200 hover:text-yellow-400"
                       }`
                     }
                   >
@@ -85,11 +83,10 @@ function Navbar({ categories, loadingCategories }) {
                       <div
                         onMouseEnter={() => setIsShopDropdownOpen(true)}
                         onMouseLeave={() => setIsShopDropdownOpen(false)}
-                        className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 bg-black/95 backdrop-blur-xl border border-yellow-900/30 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ${
-                          isShopDropdownOpen && !loadingCategories && categories.length > 0
-                            ? "opacity-100 visible translate-y-0"
-                            : "opacity-0 invisible -translate-y-4"
-                        }`}
+                        className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 bg-black/95 backdrop-blur-xl border border-yellow-900/30 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ${isShopDropdownOpen && !loadingCategories && categories.length > 0
+                          ? "opacity-100 visible translate-y-0"
+                          : "opacity-0 invisible -translate-y-4"
+                          }`}
                       >
                         {loadingCategories ? (
                           <div className="px-8 py-6 text-center text-gray-400">Loading...</div>
