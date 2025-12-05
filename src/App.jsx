@@ -7,8 +7,11 @@ import Shop from "./pages/shop";
 import Contact from "./pages/contact";
 import Cart from "./pages/cart";
 import Wishlist from "./pages/wishlist";
+import Checkout from "./pages/checkout";
 import ProductDetail from "./pages/productDetail";
 import { useEffect, useState } from "react";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -58,8 +61,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/product/:slug" element={<ProductDetail />} />
       </Routes>
+      <ToastContainer position="bottom-right" theme="dark" />
       <Footer categories={categories} loadingCategories={loadingCategories} />
     </>
   );

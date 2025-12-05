@@ -1,14 +1,48 @@
-import { useState } from "react";
-import { X, Heart, ShoppingBag, Move } from "lucide-react";
+import { useState, useEffect } from "react";
+import { X, Heart, ShoppingBag, Move, Loader2 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 
 export default function Wishlist() {
   const [wishlist, setWishlist] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchWishlist = async () => {
+      try {
+        const savedSlugs = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+        if (savedSlugs.length === 0) {
+          setLoading(false);
+          return;
+        }
+
+        const res = await fetch('/product/data.json');
+        const products = await res.json();
+
+        const wishedProducts = products.filter(p => savedSlugs.includes(p.slug));
+        setWishlist(wishedProducts);
+      } catch (error) {
+        console.error("Failed to load wishlist:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchWishlist();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <Loader2 className="w-12 h-12 animate-spin text-black" />
+      </div>
+    );
+  }
 
   if (wishlist.length === 0) {
     return (
-      <div className="min-h-screen bg-white pt-24">
+      <div className="min-h-screen bg-white">
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
           <div className="w-32 h-32 mx-auto mb-8 bg-gray-100 rounded-full flex items-center justify-center">
             <Heart size={48} className="text-gray-400" />
@@ -29,8 +63,8 @@ export default function Wishlist() {
   }
 
   return (
-    <div className="min-h-screen bg-white pt-24">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-6 py-6">
         {/* Breadcrumbs */}
         <nav className="mb-8" aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm">
@@ -59,8 +93,12 @@ export default function Wishlist() {
 
         {/* Wishlist Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {wishlist.map((item, index) => (
-            <ProductCard product={item} key={index} />
+          {wishlist.map((item) => (
+            <ProductCard
+              product={item}
+              key={item.slug}
+              onRemoveFromWishlist={(slug) => setWishlist((prev) => prev.filter((p) => p.slug !== slug))}
+            />
           ))}
         </div>
 

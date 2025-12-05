@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ShoppingBag, Check, Star, Heart, Minus, Plus } from 'lucide-react';
 import { useParams, Link } from 'react-router-dom';
+import ProductCard from '../components/ProductCard';
+import { toast } from 'react-toastify';
 
 import { Helmet } from 'react-helmet-async';
 
@@ -8,6 +10,7 @@ export default function ProductDetail() {
     const { slug } = useParams();
 
     const [product, setProduct] = useState(null);
+    const [relatedProducts, setRelatedProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const [selectedSize, setSelectedSize] = useState('');
@@ -36,6 +39,13 @@ export default function ProductDetail() {
                     setProduct(found);
                     setSelectedColor(0);
                     setMainImage(0);
+
+                    // Find related products (same category, excluding current)
+                    const related = products
+                        .filter(p => p.category === found.category && p.slug !== found.slug)
+                        .sort(() => 0.5 - Math.random())
+                        .slice(0, 4);
+                    setRelatedProducts(related);
                 }
                 setLoading(false);
             } catch (err) {
@@ -45,6 +55,7 @@ export default function ProductDetail() {
         }
 
         loadProduct();
+        window.scrollTo(0, 0);
     }, [slug]);
 
     // Initialize wishlist state
@@ -75,6 +86,47 @@ export default function ProductDetail() {
         if (action === 'decrement' && quantity > 1) setQuantity(q => q - 1);
     };
 
+    const addToCart = () => {
+        if (!selectedSize) {
+            toast.error('Please select a size');
+            return;
+        }
+
+        const cartItem = {
+            id: Date.now(), // Simple unique ID for cart item
+            productId: product.id,
+            name: product.name,
+            slug: product.slug,
+            price: product.price,
+            priceNum: product.priceNum,
+            color: product.colors[selectedColor]?.name,
+            size: selectedSize,
+            quantity: quantity,
+            image: product.colors[selectedColor]?.images[0] || '/placeholder.jpg',
+            stock: 99 // Assuming ample stock for now or fetch from product if available
+        };
+
+        const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Optional: Check if same item (same slug, size, color) exists and update quantity instead of adding new
+        const existingItemIndex = existingCart.findIndex(item =>
+            item.slug === cartItem.slug &&
+            item.size === cartItem.size &&
+            item.color === cartItem.color
+        );
+
+        let updatedCart;
+        if (existingItemIndex > -1) {
+            updatedCart = [...existingCart];
+            updatedCart[existingItemIndex].quantity += quantity;
+        } else {
+            updatedCart = [...existingCart, cartItem];
+        }
+
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+        toast.success('Product added to cart!');
+    };
+
     if (loading) {
         return (
             <div className="min-h-screen bg-white pt-20 flex items-center justify-center">
@@ -97,7 +149,7 @@ export default function ProductDetail() {
     const ogImage = currentImages[0] ? `${siteUrl}${currentImages[0]}` : '';
 
     return (
-        <div className="min-h-screen bg-white pt-30">
+        <div className="min-h-screen bg-white">
             <Helmet>
                 <title>{product.name} | Naaksh</title>
                 <meta name="description" content={product.description} key="description" />
@@ -248,8 +300,9 @@ export default function ProductDetail() {
                         </div>
 
                         <button
+                            onClick={addToCart}
                             disabled={!selectedSize}
-                            className="w-full bg-black text-white px-12 py-4 text-sm font-medium tracking-wider flex items-center justify-center gap-3 mb-4 rounded-[5px]"
+                            className={`w-full bg-black text-white px-12 py-4 text-sm font-medium tracking-wider flex items-center justify-center gap-3 mb-4 rounded-[5px] ${!selectedSize ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-900'}`}
                         >
                             <ShoppingBag size={24} />
                             {selectedSize ? 'Add to Cart' : 'Please Select Size'}
@@ -260,8 +313,8 @@ export default function ProductDetail() {
                         </button>
                     </div>
 
-                    {/* Tabs - same as before */}
-                    <div className="mt-20">
+                    {/* Tabs */}
+                    <div className="mt-20 lg:col-span-2">
                         <div className="border-b border-gray-200">
                             <div className="flex gap-8">
                                 {['description', 'features', 'reviews'].map(tab => (
@@ -305,16 +358,13 @@ export default function ProductDetail() {
                                         <h3 className="text-2xl font-bold">Customer Reviews</h3>
                                     </div>
 
-                                    {/* Sample Review */}
                                     {product.reviews.map((rl, idx) => (
                                         <div
                                             key={idx}
                                             className="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition-all duration-300 mb-8"
                                         >
-                                            {/* Top Section: Name + Stars */}
                                             <div className="flex items-center justify-between mb-4">
                                                 <div className="flex items-center gap-3">
-                                                    {/* Profile Icon */}
                                                     <div className="w-10 h-10 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center font-semibold">
                                                         {rl.name?.[0]}
                                                     </div>
@@ -325,7 +375,6 @@ export default function ProductDetail() {
                                                     </div>
                                                 </div>
 
-                                                {/* Stars */}
                                                 <div className="flex">
                                                     {[...Array(5)].map((_, i) => (
                                                         <Star
@@ -341,23 +390,32 @@ export default function ProductDetail() {
                                                 </div>
                                             </div>
 
-                                            {/* Review text */}
                                             <p className="text-gray-700 leading-relaxed text-sm">
                                                 {rl.review}
                                             </p>
 
-                                            {/* Footer */}
                                             <div className="mt-4 flex items-center justify-between text-xs text-gray-400">
                                                 <span>{rl.date || "2 days ago"}</span>
                                                 <span className="italic">Purchased Product</span>
                                             </div>
                                         </div>
                                     ))}
-
                                 </div>
                             )}
                         </div>
                     </div>
+
+                    {/* Related Products */}
+                    {relatedProducts.length > 0 && (
+                        <div className="lg:col-span-2 mt-10 border-t border-gray-200 pt-16">
+                            <h2 className="text-3xl font-black text-center mb-12 uppercase">You May Also Like</h2>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                                {relatedProducts.map(relatedProduct => (
+                                    <ProductCard key={relatedProduct.slug} product={relatedProduct} />
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

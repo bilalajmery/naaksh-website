@@ -25,7 +25,7 @@ function Navbar({ categories, loadingCategories }) {
   return (
     <>
       {/* 11.11 SALE BAR */}
-      <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-black text-center py-1 shadow-xl">
+      <div className="relative z-[60] bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-black text-center py-1 shadow-xl">
         <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-sm md:text-base">
           <span>12.12 MEGA SALE IS LIVE NOW!</span>
           <span className="hidden sm:inline opacity-90">(Up to 50% OFF + Free Delivery Pakistan Wide)</span>
@@ -38,9 +38,9 @@ function Navbar({ categories, loadingCategories }) {
 
       {/* MAIN NAVBAR */}
       <nav
-        className={`fixed left-0 right-0 z-50 transition-all duration-500 ${scrolled
-          ? "top-8 md:top-8 bg-black/95 backdrop-blur-xl shadow-2xl border-b border-yellow-900/20"
-          : "top-8 md:top-8 bg-black/80 backdrop-blur-md"
+        className={`sticky top-0 z-50 transition-all duration-500 bg-[#0d0d0d] ${scrolled
+          ? "shadow-2xl border-b border-yellow-900/20"
+          : ""
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 py-4">

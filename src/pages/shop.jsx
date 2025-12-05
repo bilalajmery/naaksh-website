@@ -155,7 +155,7 @@ export default function Shop() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white pt-24 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-12 h-12 animate-spin text-black mx-auto mb-4" />
           <p className="text-lg font-medium text-gray-900">Loading products...</p>
@@ -165,8 +165,8 @@ export default function Shop() {
   }
 
   return (
-    <div className="min-h-screen bg-white pt-24">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-6 py-6">
         {/* Breadcrumbs */}
         <nav className="mb-8" aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm">

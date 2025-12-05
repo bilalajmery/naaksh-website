@@ -1,11 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { Heart } from "lucide-react";
+import { toast } from 'react-toastify';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onRemoveFromWishlist }) => {
   const [hoverImgIndex, setHoverImgIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
+  const [isFavorite, setIsFavorite] = useState(false);
+
   const images = product?.colors?.[selectedColor]?.images || [];
   const currentImage = images[hoverImgIndex] || images[0] || "/placeholder.jpg";
+
+  // Check initial wishlist status
+  useEffect(() => {
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setIsFavorite(wishlist.includes(product.slug));
+  }, [product.slug]);
+
+  const toggleWishlist = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    let updatedWishlist;
+
+    if (isFavorite) {
+      updatedWishlist = wishlist.filter((item) => item !== product.slug);
+      // Trigger callback if we are removing specifically
+      if (onRemoveFromWishlist) {
+        onRemoveFromWishlist(product.slug);
+      }
+    } else {
+      updatedWishlist = [...wishlist, product.slug];
+    }
+
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    setIsFavorite(!isFavorite);
+  };
 
   const handleColorClick = (colorIndex) => {
     setSelectedColor(colorIndex);
@@ -27,6 +58,17 @@ const ProductCard = ({ product }) => {
           </div>
         )}
 
+        {/* Wishlist Button */}
+        <button
+          onClick={toggleWishlist}
+          className={`absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isFavorite
+            ? "bg-red-500 text-white shadow-md"
+            : "bg-white/80 text-gray-900 hover:bg-white hover:shadow-md translate-y-[-10px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+            }`}
+        >
+          <Heart size={16} fill={isFavorite ? "currentColor" : "none"} />
+        </button>
+
         <div className="relative aspect-square overflow-hidden bg-gray-50">
           <img
             src={currentImage}
@@ -38,7 +80,7 @@ const ProductCard = ({ product }) => {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                alert(`Added ${product.name} to cart!`);
+                toast.success(`Added ${product.name} to cart!`);
               }}
               className="w-full bg-black text-white py-3 text-sm font-medium tracking-wider hover:bg-gray-900 uppercase"
             >
@@ -63,11 +105,10 @@ const ProductCard = ({ product }) => {
                     e.stopPropagation();
                     handleColorClick(i);
                   }}
-                  className={`w-5 h-5 rounded-full border cursor-pointer transition-all ${
-                    selectedColor === i
-                      ? "border-2 border-black ring-1 ring-gray-300"
-                      : "border border-gray-300 hover:border-gray-400"
-                  }`}
+                  className={`w-5 h-5 rounded-full border cursor-pointer transition-all ${selectedColor === i
+                    ? "border-2 border-black ring-1 ring-gray-300"
+                    : "border border-gray-300 hover:border-gray-400"
+                    }`}
                   style={{ backgroundColor: color.hex }}
                 />
               ))}

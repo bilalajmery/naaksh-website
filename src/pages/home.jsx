@@ -91,7 +91,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="pt-18">
+      <div>
         {/* HERO BANNER */}
         <section className="relative h-screen">
           <Swiper
@@ -139,7 +139,7 @@ export default function Home() {
             <div className="text-center mt-16">
               <NavLink
                 to="/shop"
-                className="inline-block bg-black text-white px-12 py-4 text-sm font-medium tracking-wider hover:bg-gray-900 uppercase rounded"
+                className="inline-block bg-black text-white px-12 py-4 text-sm font-medium tracking-wider hover:bg-gray-600 cursor-pointer uppercase rounded"
               >
                 <span className="text-yellow-400">See All Products</span>
               </NavLink>
@@ -195,7 +195,7 @@ export default function Home() {
                 <div className="text-center mt-16">
                   <NavLink
                     to={`/shop?category=${featuredCategory}`}
-                    className="inline-block bg-black text-white px-12 py-4 text-sm font-medium tracking-wider hover:bg-gray-900 uppercase rounded"
+                    className="inline-block bg-black text-white px-12 py-4 text-sm font-medium tracking-wider hover:bg-gray-600 cursor-pointer uppercase rounded"
                   >
                     <span className="text-yellow-400">Shop {featuredCategory} Collection</span>
                   </NavLink>
@@ -282,11 +282,11 @@ export default function Home() {
                 dynamicBullets: true,
               }}
               speed={800}
-              className="pb-20"
+              className="pb-20 h-[400px]"
             >
               {testimonials.map((testimonial, index) => (
                 <SwiperSlide key={index}>
-                  <div className="h-full px-2">
+                  <div className="h-[350px] px-2">
                     <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col border border-gray-100 hover:border-yellow-400/40 group">
                       <div className="mb-6">
                         <svg
@@ -351,7 +351,14 @@ export default function Home() {
             </div>
           </div>
 
-          <style jsx>{`
+          {/* <style jsx>{`
+            .swiper-wrapper {
+              align-items: stretch;
+            }
+            .swiper-slide {
+              height: auto;
+              display: flex;
+            }
             .swiper-pagination-bullet {
               background: #eab308;
               opacity: 0.3;
@@ -359,7 +366,7 @@ export default function Home() {
             .swiper-pagination-bullet-active {
               opacity: 1;
             }
-          `}</style>
+          `}</style> */}
         </section>
       </div>
     </>
