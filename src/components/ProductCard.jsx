@@ -80,6 +80,47 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
+
+                // Logic adapted from productDetail.jsx
+                const sizeToUse = product.sizes?.[0] || '';
+
+                // If the product normally requires a size but none could be selected automatically
+                if (product.sizes?.length > 0 && !sizeToUse) {
+                  toast.error('Please select a size');
+                  return;
+                }
+
+                const cartItem = {
+                  id: Date.now(),
+                  productId: product.id,
+                  name: product.name,
+                  slug: product.slug,
+                  price: product.price,
+                  priceNum: product.priceNum,
+                  color: product.colors?.[selectedColor]?.name,
+                  size: sizeToUse,
+                  quantity: 1,
+                  image: product.colors?.[selectedColor]?.images?.[0] || '/placeholder.jpg',
+                  stock: 99
+                };
+
+                const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                const existingItemIndex = existingCart.findIndex(item =>
+                  item.slug === cartItem.slug &&
+                  item.size === cartItem.size &&
+                  item.color === cartItem.color
+                );
+
+                let updatedCart;
+                if (existingItemIndex > -1) {
+                  updatedCart = [...existingCart];
+                  updatedCart[existingItemIndex].quantity += 1;
+                } else {
+                  updatedCart = [...existingCart, cartItem];
+                }
+
+                localStorage.setItem('cart', JSON.stringify(updatedCart));
                 toast.success(`Added ${product.name} to cart!`);
               }}
               className="w-full bg-black text-white py-3 text-sm font-medium tracking-wider hover:bg-gray-900 uppercase"
