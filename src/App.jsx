@@ -16,6 +16,18 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { Helmet } from 'react-helmet-async';
 
+const titles = {
+  "/": "NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
+  "/about": "About | NAAKSH",
+  "/shop": "Shop | NAAKSH",
+  "/contact": "Contact | NAAKSH",
+  "/cart": "Cart | NAAKSH",
+  "/wishlist": "Wishlist | NAAKSH",
+  "/checkout": "Checkout | NAAKSH",
+  "/product/:slug": "Product | NAAKSH",
+  "/404": "404 - Page Not Found | Naaksh",
+}
+
 function App() {
   const location = useLocation();
   const [categories, setCategories] = useState([]);
@@ -38,10 +50,17 @@ function App() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  useEffect(() => {
+    // Exception for product detail pages (handled dynamically)
+    if (location.pathname.startsWith('/product/')) return;
+
+    document.title = titles[location.pathname] || "NAAKSH | Premium Streetwear Pakistan";
+  }, [location.pathname]);
+
+
   return (
     <>
-      <Helmet>
-        <title>Naaksh – Premium Minimalist Clothing & Streetwear</title>
+      <Helmet titleTemplate="%s | NAAKSH" defaultTitle="NAAKSH | Premium Streetwear Pakistan">
         <meta name="description" content="Naaksh offers unique, customizable fashion with high-quality T-shirts and bold or minimalist designs to help you stand out. Fashion, made personal." />
         <meta name="keywords" content="Naaksh, Naaksh clothing, minimalist clothing Pakistan, premium hoodies, streetwear, fashion brand, apparel" />
         <meta property="og:title" content="Naaksh – Premium Minimalist Clothing" />

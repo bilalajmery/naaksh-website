@@ -170,7 +170,9 @@ export default function Checkout() {
         setShowSavedAddresses(false);
     };
 
-    const handleCheckout = (e) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleCheckout = async (e) => {
         e.preventDefault();
 
         // Basic Validation
@@ -179,35 +181,76 @@ export default function Checkout() {
             return;
         }
 
-        // Save Address Logic
-        if (saveAddress) {
-            const newAddress = {
-                id: Date.now(),
-                ...formData,
-                instruction: undefined // Don't allow saving instruction usually
-            };
+        setIsSubmitting(true);
 
-            const existingAddresses = [...savedAddresses];
+        // Prepare Order Payload
+        const orderData = {
+            customer: formData,
+            items: cartItems.map(item => ({
+                product_id: item.productId, // or item.id if that's the real DB id
+                name: item.name,
+                slug: item.slug,
+                price: item.priceNum,
+                quantity: item.quantity,
+                color: item.color,
+                size: item.size,
+                image: item.image
+            })),
+            summary: {
+                subtotal,
+                shipping,
+                total
+            },
+            orderDate: new Date().toISOString()
+        };
 
-            // Check for duplicates (Name + Phone + Address)
-            const isDuplicate = existingAddresses.some(addr =>
-                addr.name === newAddress.name &&
-                addr.phone === newAddress.phone &&
-                addr.address === newAddress.address
-            );
+        try {
+            const response = await fetch(import.meta.env.VITE_SERVER_URL + '/checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderData),
+            });
 
-            if (!isDuplicate) {
-                // Add new and keep only last 5? Or just add. Let's persist for 1 year logic implicitly by localStorage behavior
-                const updatedAddresses = [newAddress, ...existingAddresses];
-                setSavedAddresses(updatedAddresses);
-                localStorage.setItem('savedAddresses', JSON.stringify(updatedAddresses));
+            if (!response.ok) {
+                throw new Error('Failed to place order');
             }
-        }
 
-        // Proceed to Order Success / Payment (Mock)
-        toast.success("Order Placed Successfully!");
-        localStorage.removeItem('cart'); // Clear cart
-        navigate('/'); // Go Home
+            const result = await response.json();
+
+            // Save Address Logic (only if successful)
+            if (saveAddress) {
+                const newAddress = {
+                    id: Date.now(),
+                    ...formData,
+                    instruction: undefined
+                };
+                const existingAddresses = [...savedAddresses];
+                const isDuplicate = existingAddresses.some(addr =>
+                    addr.name === newAddress.name &&
+                    addr.phone === newAddress.phone &&
+                    addr.address === newAddress.address
+                );
+
+                if (!isDuplicate) {
+                    const updatedAddresses = [newAddress, ...existingAddresses];
+                    setSavedAddresses(updatedAddresses);
+                    localStorage.setItem('savedAddresses', JSON.stringify(updatedAddresses));
+                }
+            }
+
+            toast.success("Order Placed Successfully!");
+            localStorage.removeItem('cart'); // Clear cart
+            setCartItems([]);
+            navigate('/'); // Go Home
+
+        } catch (error) {
+            console.error('Checkout Error:', error);
+            toast.error("Failed to place order. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const subtotal = cartItems.reduce((sum, item) => sum + (item.priceNum * item.quantity), 0);
@@ -228,9 +271,6 @@ export default function Checkout() {
 
     return (
         <div className="min-h-screen bg-gray-50 pt-32 pb-20">
-            <Helmet>
-                <title>Checkout | Naaksh</title>
-            </Helmet>
 
             <div className="max-w-7xl mx-auto px-6">
                 <h1 className="text-4xl font-black mb-12 tracking-tighter text-center">CHECKOUT</h1>
@@ -419,9 +459,17 @@ export default function Checkout() {
 
                             <button
                                 onClick={handleCheckout}
-                                className="w-full bg-black text-white py-4 mt-8 text-sm font-bold tracking-widest hover:bg-gray-900 transition-colors uppercase rounded-lg shadow-lg"
+                                disabled={isSubmitting}
+                                className={`w-full bg-black text-white py-4 mt-8 text-sm font-bold tracking-widest hover:bg-gray-900 transition-colors uppercase rounded-lg shadow-lg flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                             >
-                                Place Order
+                                {isSubmitting ? (
+                                    <>
+                                        <Loader2 className="animate-spin" size={18} />
+                                        Processing...
+                                    </>
+                                ) : (
+                                    'Place Order'
+                                )}
                             </button>
                         </div>
                     </div>

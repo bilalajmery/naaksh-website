@@ -11,6 +11,8 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import ProductCard from "../components/ProductCard";
 
+import { Helmet } from "react-helmet-async";
+
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -91,6 +93,10 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>Home</title>
+        <meta name="description" content="Discover premium minimalist clothing and streetwear in Pakistan. Shop high-quality oversized t-shirts, hoodies, and more at Naaksh." />
+      </Helmet>
       <div>
         {/* HERO BANNER */}
         <section className="relative h-screen">

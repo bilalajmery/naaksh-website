@@ -8,6 +8,26 @@ function Navbar({ categories, loadingCategories }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+  const [wishlistCount, setWishlistCount] = useState(0);
+
+  useEffect(() => {
+    const updateCounts = () => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      setCartCount(cart.reduce((total, item) => total + (item.quantity || 1), 0));
+      setWishlistCount(wishlist.length);
+    };
+
+    updateCounts();
+    const interval = setInterval(updateCounts, 1000); // Poll for changes
+    window.addEventListener("storage", updateCounts);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("storage", updateCounts);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -25,7 +45,7 @@ function Navbar({ categories, loadingCategories }) {
   return (
     <>
       {/* 11.11 SALE BAR */}
-      <div className="relative z-[60] bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-black text-center py-1 shadow-xl">
+      <div className="hidden md:block relative z-[60] bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-black text-center py-1 shadow-xl">
         <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-sm md:text-base">
           <span>12.12 MEGA SALE IS LIVE NOW!</span>
           <span className="hidden sm:inline opacity-90">(Up to 50% OFF + Free Delivery Pakistan Wide)</span>
@@ -115,15 +135,25 @@ function Navbar({ categories, loadingCategories }) {
             <div className="flex items-center gap-4">
               <NavLink
                 to="/wishlist"
-                className="hidden md:block p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group"
+                className="hidden md:block p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group relative"
               >
                 <Heart className="w-5 h-5 group-hover:fill-current" strokeWidth={2.5} />
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[11px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-md">
+                    {wishlistCount}
+                  </span>
+                )}
               </NavLink>
               <NavLink
                 to="/cart"
-                className="hidden md:block p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group"
+                className="hidden md:block p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group relative"
               >
                 <ShoppingCart className="w-5 h-5 group-hover:fill-current" strokeWidth={2.5} />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[11px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-md">
+                    {cartCount}
+                  </span>
+                )}
               </NavLink>
 
               {/* Mobile Menu Toggle */}
@@ -177,16 +207,26 @@ function Navbar({ categories, loadingCategories }) {
                   <NavLink
                     to="/wishlist"
                     onClick={() => setIsMenuOpen(false)}
-                    className="p-4 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black"
+                    className="p-4 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black relative"
                   >
                     <Heart className="w-8 h-8" />
+                    {wishlistCount > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full shadow-md">
+                        {wishlistCount}
+                      </span>
+                    )}
                   </NavLink>
                   <NavLink
                     to="/cart"
                     onClick={() => setIsMenuOpen(false)}
-                    className="p-4 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black"
+                    className="p-4 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black relative"
                   >
                     <ShoppingCart className="w-8 h-8" />
+                    {cartCount > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full shadow-md">
+                        {cartCount}
+                      </span>
+                    )}
                   </NavLink>
                 </div>
               </div>

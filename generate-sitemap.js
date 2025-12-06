@@ -13,7 +13,7 @@ const staticRoutes = [
     '/shop',
     '/contact',
     '/cart',
-    '/wishlist'
+    '/wishlist',
 ];
 
 async function generateSitemap() {
@@ -29,19 +29,26 @@ async function generateSitemap() {
         let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
                        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
+        // Helper to get priority
+        const getPriority = (route) => {
+            if (route === '/') return '1.0';
+            if (route === '/shop') return '0.9';
+            if (['/about', '/contact'].includes(route)) return '0.8';
+            return '0.6'; // cart, wishlist
+        };
+
         // Add Static Routes
         staticRoutes.forEach(route => {
             sitemap += `
                 <url>
                     <loc>${BASE_URL}${route}</loc>
-                    <changefreq>daily</changefreq>
-                    <priority>0.8</priority>
+                    <changefreq>${route === '/' ? 'daily' : 'monthly'}</changefreq>
+                    <priority>${getPriority(route)}</priority>
                 </url>`;
         });
 
         // Add Category Routes
         categoryData.forEach(cat => {
-            const categorySlug = cat.name.toLowerCase(); // Simple slugification, adjust if needed
             sitemap += `
                 <url>
                     <loc>${BASE_URL}/shop?category=${encodeURIComponent(cat.name)}</loc>
@@ -56,7 +63,7 @@ async function generateSitemap() {
                 <url>
                     <loc>${BASE_URL}/product/${product.slug}</loc>
                     <changefreq>weekly</changefreq>
-                    <priority>1.0</priority>
+                    <priority>0.8</priority>
                 </url>`;
         });
 

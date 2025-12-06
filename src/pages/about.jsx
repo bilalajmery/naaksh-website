@@ -1,9 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export default function About() {
   return (
     <>
+      <Helmet>
+        <meta name="description" content="Learn about the story behind Naaksh, Pakistan's most fearless streetwear brand. Born in Lahore, built for the bold and ambitious." />
+      </Helmet>
       {/* 1. HERO - DARK BG */}
       <section className="relative h-screen bg-black text-white flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">

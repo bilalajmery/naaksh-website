@@ -851,5 +851,1050 @@
         "review": "Quality and comfort both amazing! Winter wear ke liye best hoodie. Definitely recommended"
       }
     ]
+  },
+  {
+    "id": 16,
+    "slug": "drop-shoulder-black",
+    "name": "Men's Drop Shoulder T-Shirt",
+    "price": "PKR 999",
+    "priceNum": 999,
+    "original": "PKR 1,899",
+    "originalNum": 1899,
+    "badge": "47% OFF",
+    "rating": 4.8,
+    "category": "Drop Shoulder Tees",
+    "description": "This Men's Drop Shoulder T-Shirt features a relaxed oversized look with extended sleeves and a wider chest for modern streetwear styling. Made with a premium soft cotton-blend fabric, it offers exceptional comfort, breathability, and durability. Perfect for everyday wear, gym, travel, casual outings, or layering.",
+    "features": [
+      "Premium Soft Cotton-Blend Fabric breathable & lightweight",
+      "Drop Shoulder Oversized Fit modern streetwear style",
+      "Relaxed Silhouette comfortable all-day wear",
+      "Durable Stitching long-lasting quality",
+      "Anti-Fade & Anti-Shrink Treatment",
+      "Skin-Friendly & Sweat-Resistant Material"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/drop-shoulder-black/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Hamza Malik",
+        "star": 5,
+        "review": "Fabric bohot soft hai, drop shoulder fitting perfect oversized look deti hai!"
+      },
+      {
+        "name": "Umer Farooq",
+        "star": 4,
+        "review": "Quality good hai, stitching clean. Price bhi reasonable hai."
+      },
+      {
+        "name": "Ahsan Javed",
+        "star": 5,
+        "review": "Streetwear look ke liye best tee! Color fade nahi hota, fabric comfortable hai."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "slug": "the-future-drop-shoulder-tee",
+    "name": "THE FUTURE Drop Shoulder T-Shirt",
+    "price": "PKR 999",
+    "priceNum": 999,
+    "original": "PKR 1,899",
+    "originalNum": 1899,
+    "badge": "47% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "THE FUTURE Drop Shoulder T-Shirt brings a bold statement look with its clean vertical typography. Designed with an oversized modern streetwear fit, this tee offers premium comfort, soft breathable fabric, and long-lasting print quality. Perfect for casual wear, summer outfits, gym sessions, and everyday styling.",
+    "features": [
+      "Premium Soft Cotton-Blend fabric breathable & lightweight",
+      "Drop Shoulder Oversized Fit trendy streetwear style",
+      "Bold 'THE FUTURE' Vertical Print high-quality & crack-resistant",
+      "Smooth & Skin-Friendly Fabric for all-day comfort",
+      "Anti-Fade Color Treatment",
+      "Durable Stitching long-lasting wear"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Teal",
+        "hex": "#207C8C",
+        "images": [
+          "/product/the-future/teal-1.jpg"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/the-future/black-2.jpg"
+        ]
+      },
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/product/the-future/white-3.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Bilal Ahmed",
+        "star": 5,
+        "review": "Teal color bohot unique hai! Fitting oversized and comfortable. Print quality top class."
+      },
+      {
+        "name": "Shahzaib Noor",
+        "star": 5,
+        "review": "THE FUTURE design bohot stylish lagta hai. Fabric soft and premium feel deta hai."
+      },
+      {
+        "name": "Hammad Raza",
+        "star": 4,
+        "review": "Quality great, stitching clean. Black color especially bohot stylish lagta hai."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "slug": "me-drop-shoulder-tee",
+    "name": "ME. Drop Shoulder T-Shirt",
+    "price": "PKR 999",
+    "priceNum": 999,
+    "original": "PKR 1,899",
+    "originalNum": 1899,
+    "badge": "47% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The ME. Drop Shoulder T-Shirt is designed for those who love clean, minimal, and modern streetwear. Featuring a bold yellow 'me.' logo on a premium black oversized tee, it delivers a stylish and confident look. Perfect for casual wear, gym outfits, and everyday fashion with maximum comfort.",
+    "features": [
+      "Premium Soft Cotton-Blend fabric lightweight & breathable",
+      "Oversized Drop Shoulder Fit trendy streetwear look",
+      "Bold Yellow 'me.' Logo high-quality print",
+      "Skin-friendly & smooth texture for all-day comfort",
+      "Anti-fade Black Color",
+      "Durable stitching long-lasting wear"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/me-drop-shoulder-tee/black-1.jpg",
+          "/product/me-drop-shoulder-tee/black-2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Hassan Riaz",
+        "star": 5,
+        "review": "Minimal design lovers ke liye perfect tee! Logo bohot clean aur premium lagta hai."
+      },
+      {
+        "name": "Ayaan Malik",
+        "star": 5,
+        "review": "Fabric soft aur comfortable hai. Oversized fitting exactly jesi chahiye thi!"
+      },
+      {
+        "name": "Umair Zafar",
+        "star": 4,
+        "review": "Print quality strong hai. Black color fade nahi hota. Recommended!"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "slug": "discipline-drop-shoulder-tee",
+    "name": "DISCIPLINE – Drop Shoulder T-Shirt",
+    "price": "PKR 1,049",
+    "priceNum": 1049,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "48% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The DISCIPLINE Drop Shoulder T-Shirt is crafted for those who believe in consistency, focus, and a sharp minimalist style. Featuring a clean 'DISCIPLINE' front print, this tee delivers a premium streetwear look with a relaxed oversized silhouette. Perfect for everyday wear, gym outfits, or laid-back styling with attitude.",
+    "features": [
+      "Premium Cotton-Blend Fabric soft, breathable & lightweight",
+      "Oversized Drop Shoulder Fit modern streetwear look",
+      "Minimal 'DISCIPLINE' Typographic Print premium quality",
+      "Smooth, skin-friendly, and anti-irritation material",
+      "Double-stitched for long-lasting durability",
+      "Fade-resistant colors with proper care"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/discipline-drop-shoulder-tee/black-1.jpg"
+        ]
+      },
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/product/discipline-drop-shoulder-tee/white-2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Arsalan Ahmed",
+        "star": 5,
+        "review": "Minimal design bohot classy lagta hai! Fabric soft aur fitting perfect oversized look deti hai."
+      },
+      {
+        "name": "Talha Nadeem",
+        "star": 5,
+        "review": "Black color fade nahi hota, print quality bhi strong hai. Highly recommended!"
+      },
+      {
+        "name": "Zayan Malik",
+        "star": 4,
+        "review": "Comfort level excellent hai. Delivery on time mili. Overall great purchase!"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "slug": "melting-drop-shoulder-tee",
+    "name": "MELTING Drop Shoulder T-Shirt",
+    "price": "PKR 1,099",
+    "priceNum": 1099,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "45% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The MELTING Drop Shoulder T-Shirt brings a bold streetwear vibe with its unique 3D melting text design on both the front and back. Crafted with premium breathable cotton-blend fabric, this tee offers a relaxed oversized fit—perfect for casual wear, urban styling, and everyday comfort. A statement piece designed for those who love expressive and modern fashion.",
+    "features": [
+      "Premium Cotton-Blend Fabric soft, breathable & durable",
+      "Oversized Drop Shoulder Fit trendy streetwear style",
+      "Front & Back 'MELTING' 3D Graphic high-quality print",
+      "Smooth & Skin-Friendly Material anti-irritation fabric",
+      "Double-stitched hems for long-lasting use",
+      "Fade-resistant black color with proper wash care"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/melting-drop-shoulder-tee/1.jpg",
+          "/product/melting-drop-shoulder-tee/2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Hassan Raza",
+        "star": 5,
+        "review": "Graphic bohot unique aur bold hai! Fabric soft aur fitting perfectly oversized."
+      },
+      {
+        "name": "Moiz Siddiqui",
+        "star": 5,
+        "review": "Front & back design dono premium lagte hain. Quality expected se zyada achi!"
+      },
+      {
+        "name": "Daniyal Arif",
+        "star": 4,
+        "review": "Comfort level great hai, delivery time theek tha. Overall stylish streetwear piece."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "slug": "tokyo-drop-shoulder-tee",
+    "name": "TOKYO Drop Shoulder T-Shirt (Black)",
+    "price": "PKR 999",
+    "priceNum": 999,
+    "original": "PKR 1,799",
+    "originalNum": 1799,
+    "badge": "45% OFF",
+    "rating": 4.8,
+    "category": "Drop Shoulder Tees",
+    "description": "The TOKYO Drop Shoulder T-Shirt brings a clean Japanese-inspired streetwear aesthetic. Featuring a minimalist TOKYO graphic on a classic black base, this tee delivers a modern oversized look with premium comfort. Designed using soft cotton-blend fabric, it is perfect for daily wear, casual styling, and contemporary fashion lovers.",
+    "features": [
+      "Premium Cotton-Blend Fabric soft, breathable & comfortable",
+      "Oversized Drop Shoulder Fit trendy relaxed look",
+      "Minimalist 'TOKYO' Graphic Japanese streetwear style",
+      "Smooth & Skin-Friendly Material anti-irritation fabric",
+      "Double-Stitched Hems durable and long-lasting",
+      "Fade-Resistant Black Color stays fresh with proper care"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/tokyo-drop-shoulder-tee/.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ahsan Malik",
+        "star": 5,
+        "review": "Tokyo graphic bohot clean aur stylish! Fabric soft aur fitting perfect oversized."
+      },
+      {
+        "name": "Bilal Ahmed",
+        "star": 4,
+        "review": "Quality great hai for this price. Print premium lagta hai."
+      },
+      {
+        "name": "Hamza Tariq",
+        "star": 5,
+        "review": "Delivery fast thi. T-shirt ka material aur style dono A+!"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "slug": "batman-minimal-drop-shoulder-tee",
+    "name": "Batman-Inspired Minimal Drop Shoulder T-Shirt",
+    "price": "PKR 999",
+    "priceNum": 999,
+    "original": "PKR 1,799",
+    "originalNum": 1799,
+    "badge": "45% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "This Batman-inspired Minimal Drop Shoulder Tee is designed for fans who prefer clean, subtle superhero aesthetics. Featuring a small, sharp Batman-style emblem on a premium oversized drop shoulder fit, this tee delivers comfort, style, and modern streetwear vibes. Made with soft breathable cotton-blend fabric, it is perfect for daily wear, casual outings, or pairing with street-style outfits.",
+    "features": [
+      "Premium Cotton-Blend Fabric soft, breathable & lightweight",
+      "Minimal Batman-Inspired Graphic clean & subtle superhero look",
+      "Oversized Drop Shoulder Fit trendy relaxed style",
+      "Smooth & Skin-Friendly Material no itching or irritation",
+      "Durable Double Stitching long-lasting quality",
+      "Fade-Resistant Color stays fresh even after washes"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/batman-minimal-drop-shoulder-tee/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Haseeb Khan",
+        "star": 5,
+        "review": "Minimal Batman graphic bohot classy lagti hai! Fabric soft aur fitting perfect oversized."
+      },
+      {
+        "name": "Rohan Malik",
+        "star": 5,
+        "review": "Quality A+! Simple, clean, and stylish. Streetwear look amazing ban jata hai."
+      },
+      {
+        "name": "Zain Ahmed",
+        "star": 4,
+        "review": "Print premium hai. Price bhi justified. Delivery thodi slow thi but product top notch!"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "slug": "focus-drop-shoulder-tee",
+    "name": "FOCUS Drop Shoulder T-Shirt",
+    "price": "PKR 1,099",
+    "priceNum": 1099,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "45% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The FOCUS Drop Shoulder Tee is designed with a clean, minimal text print placed at the center chest. Made with premium cotton-blend fabric, this oversized drop shoulder silhouette delivers the perfect streetwear vibe while ensuring softness and breathability. Ideal for casual wear, workouts, or everyday street-style looks.",
+    "features": [
+      "Premium Cotton-Blend Fabric — soft & breathable",
+      "Minimal 'FOCUS' Chest Print",
+      "Oversized Drop Shoulder Fit",
+      "Double Stitched for durability",
+      "Fade-resistant high-quality print",
+      "Comfortable for all-day wear"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/focus-drop-shoulder-tee/1.jpg",
+          "/product/focus-drop-shoulder-tee/2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ahmad Ali",
+        "star": 5,
+        "review": "Minimal aur clean design! Fabric bohot soft hai."
+      },
+      {
+        "name": "Osama Sheikh",
+        "star": 5,
+        "review": "Drop shoulder fit exactly the way I wanted. Printing bhi premium hai."
+      },
+      {
+        "name": "Bilal Tariq",
+        "star": 4,
+        "review": "Quality great! Bas XL thoda oversize zyada tha but overall amazing."
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "slug": "moon-howl-drop-shoulder-tee",
+    "name": "MOON HOWL – Drop Shoulder T-Shirt",
+    "price": "PKR 1,099",
+    "priceNum": 1099,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "45% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The MOON HOWL Drop Shoulder Tee features a bold wolf-inspired lunar graphic, perfect for streetwear lovers. Made with premium soft cotton and an oversized drop shoulder fit, it delivers comfort, durability, and a stylish modern look—ideal for daily wear, casual outings, and urban fashion lovers.",
+    "features": [
+      "Premium 100% Cotton (180 200 GSM)",
+      "Oversized Drop Shoulder Fit",
+      "High-Quality Wolf + Moon Graphic Print",
+      "Soft, Breathable & Skin-Friendly Fabric",
+      "Ribbed Neck for Comfortable Stretch",
+      "Fade-Resistant & Durable Material",
+      "Perfect for Streetwear & Casual Outfits"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/moon-howl-drop-shoulder-tee/1.jpg",
+          "/product/moon-howl-drop-shoulder-tee/2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Hamza Khan",
+        "star": 5,
+        "review": "Graphic bohot premium hai! Black color par design bohot standout karta hai."
+      },
+      {
+        "name": "Zain Malik",
+        "star": 5,
+        "review": "Drop shoulder fitting perfect! Fabric soft aur comfortable."
+      },
+      {
+        "name": "Shahzaib Raza",
+        "star": 4,
+        "review": "Quality zabardast! Bas delivery thodi late thi."
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "slug": "never-stop-dreaming-drop-shoulder-tee",
+    "name": "NEVER STOP DREAMING Streetwear Graphic Drop Shoulder Tee",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "40% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The NEVER STOP DREAMING Drop Shoulder Tee brings a bold, motivational streetwear vibe with its powerful graphic print. Designed using premium soft cotton and an oversized silhouette, this tee offers the perfect mix of comfort, style, and confidence. Ideal for casual wear, streetwear fits, gym sessions, and everyday inspiration.",
+    "features": [
+      "Premium 100% Cotton (180 200 GSM)",
+      "Oversized Drop Shoulder Fit for a modern streetwear look",
+      "High-quality motivational graphic print",
+      "Soft, breathable & skin-friendly fabric",
+      "Ribbed neckline for durability",
+      "Fade-resistant print and fabric",
+      "Perfect for daily wear & street-style outfits"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/never-stop-dreaming-drop-shoulder-tee/1.jpg",
+          "/product/never-stop-dreaming-drop-shoulder-tee/2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Haseeb Ali",
+        "star": 5,
+        "review": "Graphic bohot inspiring aur premium quality ka hai! Streetwear look perfect."
+      },
+      {
+        "name": "Sameer Anwar",
+        "star": 5,
+        "review": "Fabric soft, fitting comfortable, aur design bohot unique!"
+      },
+      {
+        "name": "Rao Daniyal",
+        "star": 4,
+        "review": "Quality zabardast hai. Print wash ke baad bhi bilkul fresh."
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "slug": "psalm-91-oversized-drop-shoulder-tee",
+    "name": "PSALM 91 – Oversized Graphic Drop Shoulder Tee",
+    "price": "PKR 1,099",
+    "priceNum": 1099,
+    "original": "PKR 1,899",
+    "originalNum": 1899,
+    "badge": "42% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The PSALM 91 Oversized Graphic Tee blends spiritual symbolism with modern streetwear aesthetics. Featuring a bold, meaningful PSALM 91 scripture-inspired graphic, this drop shoulder tee offers a powerful look while maintaining comfort and style. Made with premium soft cotton and an oversized relaxed fit, it’s perfect for casual, urban, and everyday wear.",
+    "features": [
+      "Premium Soft 100% Cotton (180–200 GSM)",
+      "Oversized Drop Shoulder Silhouette",
+      "High-Quality Spiritual Graphic Print",
+      "Soft, Breathable & Skin-Friendly Fabric",
+      "Ribbed Neckline for Extra Durability",
+      "Fade-Resistant Print & Fabric",
+      "Perfect for Streetwear & Casual Outfits"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/psalm-91-oversized-drop-shoulder-tee/1.jpg",
+          "/product/psalm-91-oversized-drop-shoulder-tee/2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Moiz Arif",
+        "star": 5,
+        "review": "Graphic meaningful aur bohot premium! Oversized look perfect streetwear vibe deta hai."
+      },
+      {
+        "name": "Asad Jutt",
+        "star": 5,
+        "review": "Fabric soft, print durable, overall quality 10/10!"
+      },
+      {
+        "name": "Umer Iqbal",
+        "star": 4,
+        "review": "Design unique and powerful! Delivery thodi slow thi but product excellent."
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "slug": "black-minimalist-drop-shoulder-tee",
+    "name": "\"BLACK\" Minimalist Drop Shoulder T-Shirt",
+    "price": "PKR 1,099",
+    "priceNum": 1099,
+    "original": "PKR 1,899",
+    "originalNum": 1899,
+    "badge": "42% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The \"BLACK\" Minimalist Drop Shoulder Tee features a clean and simple typographic design for a modern streetwear vibe. Made with premium soft cotton and an oversized relaxed fit, this tee delivers all-day comfort, breathability, and effortless style. Ideal for everyday wear, casual outings, and minimal fashion lovers.",
+    "features": [
+      "Premium Soft Cotton (180 200 GSM)",
+      "Oversized Drop Shoulder Fit",
+      "Minimalist 'BLACK' Chest Print",
+      "Soft, breathable & skin-friendly",
+      "Ribbed neckline for comfort and durability",
+      "Fade-resistant print",
+      "Perfect for casual & streetwear outfits"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/black-minimalist-drop-shoulder-tee/1.jpg",
+          "/product/black-minimalist-drop-shoulder-tee/2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Faizan Ali",
+        "star": 5,
+        "review": "Minimal design and premium fabric. Streetwear vibes perfect!"
+      },
+      {
+        "name": "Sameer Gul",
+        "star": 5,
+        "review": "Print clean, fabric soft, and fitting next level oversized."
+      },
+      {
+        "name": "Daniyal Khan",
+        "star": 4,
+        "review": "Quality great! Simple aur stylish dono."
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "slug": "authentic-vibes-only-drop-shoulder-tee",
+    "name": "AUTHENTIC VIBES ONLY Drop Shoulder T-Shirt",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "40% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The AUTHENTIC VIBES ONLY Drop Shoulder Tee offers a clean, modern streetwear look with a premium oversized fit. Designed with a stylish script graphic and soft 180–200 GSM cotton fabric, this tee ensures maximum comfort, breathability, and durability. Perfect for casual wear, daily outfits, and minimal streetwear styling.",
+    "features": [
+      "Premium Soft Cotton Fabric (180 200 GSM)",
+      "Oversized Drop Shoulder Fit",
+      "Stylish 'Authentic Vibes Only' Script Graphic",
+      "Breathable & Skin-Friendly Material",
+      "Ribbed Neckline for Durability",
+      "Fade-Resistant High-Quality Print",
+      "Perfect for Streetwear & Casual Styling"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Navy Blue",
+        "hex": "#1D2A45",
+        "images": [
+          "/product/authentic-vibes-only-drop-shoulder-tee/1.jpg"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/authentic-vibes-only-drop-shoulder-tee/2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Hamza Yousaf",
+        "star": 5,
+        "review": "Navy color bohot premium lagta hai. Fabric soft and comfortable!"
+      },
+      {
+        "name": "Zain Malik",
+        "star": 5,
+        "review": "Oversized fitting and print quality both perfect. Highly recommended!"
+      },
+      {
+        "name": "Rehan Ahmed",
+        "star": 4,
+        "review": "Design simple but classy. Good value for money."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "slug": "futuristic-drop-shoulder-tee",
+    "name": "FUTURISTIC Drop Shoulder T-Shirt",
+    "price": "PKR 999",
+    "priceNum": 999,
+    "original": "PKR 1,799",
+    "originalNum": 1799,
+    "badge": "45% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The FUTURISTIC Drop Shoulder Tee features a clean minimal design with a modern tech-inspired graphic. Made with premium 180–200 GSM cotton, this oversized tee ensures maximum comfort, durability, and breathable wear. The black color gives it a bold futuristic streetwear look.",
+    "features": [
+      "Premium 180 200 GSM Soft Cotton Fabric",
+      "Oversized Drop Shoulder Fit",
+      "Minimal Futuristic Typography Graphic",
+      "Skin-Friendly & Breathable Material",
+      "Ribbed Crew Neck for Long-Lasting Durability",
+      "Fade-Resistant High-Quality Print",
+      "Perfect for Streetwear & Casual Wear"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/futuristic-drop-shoulder-tee/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ammar Ali",
+        "star": 5,
+        "review": "Futuristic print bohot stylish hai! Fabric soft and premium."
+      },
+      {
+        "name": "Daniyal Raza",
+        "star": 5,
+        "review": "Oversized fitting perfect hai. Black color looks amazing!"
+      },
+      {
+        "name": "Saif Rehman",
+        "star": 4,
+        "review": "Quality great! Print modern and clean. Recommended!"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "slug": "plain-black-pure-vibe-drop-shoulder-tee",
+    "name": "PLAIN BLACK. PURE VIBE. Drop Shoulder T-Shirt",
+    "price": "PKR 999",
+    "priceNum": 999,
+    "original": "PKR 1,799",
+    "originalNum": 1799,
+    "badge": "45% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The PLAIN BLACK. PURE VIBE. Drop Shoulder Tee is designed for minimal lovers who appreciate clean aesthetics and premium comfort. Made from soft high-quality cotton, this oversized tee delivers the perfect streetwear vibe with a bold modern feel. Lightweight, breathable, and effortlessly stylish—this is your go-to everyday black tee.",
+    "features": [
+      "Premium 180 200 GSM Soft Cotton Fabric",
+      "Oversized Drop Shoulder Fit",
+      "Minimalist Pure Black Aesthetic",
+      "Soft, Breathable & Skin-Friendly Material",
+      "Ribbed Crew Neck for Long-Lasting Comfort",
+      "Fade-Resistant Color Quality",
+      "Perfect for Streetwear, Casual Wear & Daily Use"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/plain-black-pure-vibe-drop-shoulder-tee/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Bilal Ahmed",
+        "star": 5,
+        "review": "Bohot clean and minimal look! Fabric super soft and premium."
+      },
+      {
+        "name": "Hamza Tariq",
+        "star": 5,
+        "review": "Black vibe on point! Oversized fitting perfect hai."
+      },
+      {
+        "name": "Zeeshan Malik",
+        "star": 4,
+        "review": "Quality great and stitching solid. Highly recommended."
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "slug": "japanese-calligraphy-drop-shoulder-tee",
+    "name": "Japanese Calligraphy – Black Drop Shoulder T-Shirt",
+    "price": "PKR 1,099",
+    "priceNum": 1099,
+    "original": "PKR 1,899",
+    "originalNum": 1899,
+    "badge": "42% OFF",
+    "rating": 4.8,
+    "category": "Drop Shoulder Tees",
+    "description": "This Japanese Calligraphy Drop Shoulder T-Shirt brings a bold and artistic streetwear vibe with its striking red sun emblem and clean vertical Kanji print. Crafted with premium soft cotton, this oversized tee offers maximum comfort, breathable fabric, and a unique modern aesthetic. Perfect for casual wear, street style, and everyday fashion.",
+    "features": [
+      "Premium 180 200 GSM Soft Cotton Fabric",
+      "Oversized Drop Shoulder Fit",
+      "Bold Japanese Calligraphy Graphic (Front & Back)",
+      "Breathable, Soft & Skin-Friendly Material",
+      "Fade-Resistant Black Color",
+      "Ribbed Crew Neck for Durability",
+      "Perfect for Streetwear & Casual Outfits"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/japanese-calligraphy-drop-shoulder-tee/1.jpg",
+          "/product/japanese-calligraphy-drop-shoulder-tee/2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ahsan Raza",
+        "star": 5,
+        "review": "Design bohot unique hai! Especially red sun effect. Fabric bhi premium quality ka."
+      },
+      {
+        "name": "Umer Shah",
+        "star": 4,
+        "review": "Streetwear lovers ke liye perfect tee. Print sharp aur clear hai."
+      },
+      {
+        "name": "Farhan Ali",
+        "star": 5,
+        "review": "Comfort, fitting, design—sab top notch! Worth the price."
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "slug": "never-stop-dreaming-drop-shoulder-tee",
+    "name": "NEVER STOP DREAMING – Drop Shoulder T-Shirt",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "40% OFF",
+    "rating": 4.9,
+    "category": "Drop Shoulder Tees",
+    "description": "The NEVER STOP DREAMING Drop Shoulder Tee is designed for those who chase goals fearlessly. Featuring a bold motivational graphic on a deep black base, this tee brings inspiration and style together. Made with premium soft cotton and an oversized drop-shoulder cut, it offers all-day comfort, modern streetwear vibes, and a powerful message that stands out anywhere.",
+    "features": [
+      "Premium 180 200 GSM Soft Cotton Fabric",
+      "Oversized Drop Shoulder Streetwear Fit",
+      "Bold Motivational 'Never Stop Dreaming' Graphic",
+      "Soft, Breathable & Skin-Friendly Material",
+      "Fade-Resistant Black Color",
+      "Durable Ribbed Neckline",
+      "Perfect for Casual, Gym & Daily Wear"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/never-stop-dreaming-drop-shoulder-tee/1.png",
+          "/product/never-stop-dreaming-drop-shoulder-tee/2.png"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Bilal Ahmed",
+        "star": 5,
+        "review": "Motivational print bohot zabardast! Fabric soft aur perfect oversized fitting."
+      },
+      {
+        "name": "Shahzaib Khan",
+        "star": 5,
+        "review": "Quality top-notch! Black color fade nahi hota. Streetwear lovers ke liye best."
+      },
+      {
+        "name": "Danish Rafiq",
+        "star": 4,
+        "review": "Design and comfort amazing. Delivery thori late thi but product worth it!"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "slug": "camel-denim-jacket",
+    "name": "Camel Denim Jacket",
+    "price": "PKR 2,399",
+    "priceNum": 2399,
+    "original": "PKR 3,499",
+    "originalNum": 3499,
+    "badge": "31% OFF",
+    "rating": 4.9,
+    "category": "Denim Jackets",
+    "description": "This Camel Denim Jacket is designed for a bold and modern streetwear look. Crafted with premium denim material, it offers durability, comfort, and a sharp structured fit. The camel color adds a stylish edge that works perfectly for both casual and smart casual outfits. A must-have layer for any season.",
+    "features": [
+      "Premium Heavyweight Denim Fabric",
+      "Structured & Durable Stitching",
+      "Classic Button-Up Front",
+      "Dual Chest Pockets with Button Flaps",
+      "Soft Inner Lining for Added Comfort",
+      "Versatile Camel Color",
+      "Perfect for Daily, Casual & Streetwear Looks"
+    ],
+    "sizes": [
+      "M",
+      "L"
+    ],
+    "colors": [
+      {
+        "name": "Camel",
+        "hex": "#C69C6D",
+        "images": [
+          "/product/camel-denim-jacket/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Hammad Ali",
+        "star": 5,
+        "review": "Jacket quality excellent! Camel color bohot premium lagta hai."
+      },
+      {
+        "name": "Usman Raza",
+        "star": 5,
+        "review": "Fitting perfect and material strong. Highly recommended!"
+      },
+      {
+        "name": "Rehan Malik",
+        "star": 4,
+        "review": "Style bohot acha hai. Stitching clean and neat."
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "slug": "blue-denim-jacket",
+    "name": "Blue Denim Jacket",
+    "price": "PKR 2,399",
+    "priceNum": 2399,
+    "original": "PKR 3,499",
+    "originalNum": 3499,
+    "badge": "31% OFF",
+    "rating": 4.9,
+    "category": "Denim Jackets",
+    "description": "This Blue Denim Jacket is a timeless essential designed for everyday style and durability. Crafted using premium-quality denim, it offers a structured fit, classic detailing, and modern streetwear appeal. The rich blue tone makes it versatile for layering and perfect for casual or semi-casual outfits.",
+    "features": [
+      "Premium Heavyweight Blue Denim Fabric",
+      "Classic Button-Up Closure",
+      "Dual Chest Pockets with Button Flaps",
+      "Reinforced Stitching for Long-Lasting Durability",
+      "Soft Inner Touch for Comfortable Wear",
+      "Timeless Blue Wash",
+      "Perfect for Casual, Travel & Daily Streetwear"
+    ],
+    "sizes": [
+      "M",
+      "L"
+    ],
+    "colors": [
+      {
+        "name": "Blue",
+        "hex": "#1E4F8A",
+        "images": [
+          "/product/blue-denim-jacket/1.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Zain Khan",
+        "star": 5,
+        "review": "Blue color bohot premium lagta hai. Fitting aur material dono perfect!"
+      },
+      {
+        "name": "Ali Mirza",
+        "star": 5,
+        "review": "Stitching clean and jacket heavy quality ki hai. Worth the price!"
+      },
+      {
+        "name": "Rafay Ahmed",
+        "star": 4,
+        "review": "Design classic and comfortable to wear. Delivery time theek tha."
+      }
+    ]
   }
 ]

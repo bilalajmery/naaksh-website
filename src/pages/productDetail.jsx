@@ -3,7 +3,6 @@ import { ShoppingBag, Check, Star, Heart, Minus, Plus } from 'lucide-react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import { toast } from 'react-toastify';
-
 import { Helmet } from 'react-helmet-async';
 
 export default function ProductDetail() {

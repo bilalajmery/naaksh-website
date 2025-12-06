@@ -7,7 +7,6 @@ const NotFound = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-white px-6 relative overflow-hidden">
             <Helmet>
-                <title>404 - Page Not Found | Naaksh</title>
                 <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 

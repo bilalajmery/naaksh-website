@@ -1,9 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import { Mail, Phone, MapPin, Instagram, Send } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export default function Contact() {
     return (
         <>
+            <Helmet>
+                <meta name="description" content="Get in touch with Naaksh. We are here to help with sizing, orders, or just to chat. Call, email, or visit us in Lahore." />
+            </Helmet>
             {/* HERO - FULL DARK */}
             <section className="relative h-screen bg-black text-white flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-yellow-900/20" />

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, Plus, Minus, Trash2, ShoppingBag, ChevronDown } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 export default function Cart() {
     const [cartItems, setCartItems] = useState(() => {
@@ -111,6 +112,9 @@ export default function Cart() {
     if (cartItems.length === 0) {
         return (
             <div className="min-h-screen bg-white">
+                <Helmet>
+                    <title>Cart | NAAKSH</title>
+                </Helmet>
                 <div className="max-w-7xl mx-auto px-6 py-20 text-center">
                     <div className="w-32 h-32 mx-auto mb-8 bg-gray-100 rounded-full flex items-center justify-center">
                         <ShoppingBag size={48} className="text-gray-400" />

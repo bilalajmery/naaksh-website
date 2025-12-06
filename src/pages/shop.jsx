@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect } from "react";
 import { X, ChevronDown, Search, Loader2 } from "lucide-react";
 import { NavLink, useSearchParams, Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
+import { Helmet } from 'react-helmet-async';
 
 export default function Shop() {
   const [products, setProducts] = useState([]);
@@ -164,8 +165,15 @@ export default function Shop() {
     );
   }
 
+  const categoryTitle = filters.categories.length === 1
+    ? `${filters.categories[0]} Collection`
+    : "Shop All Products";
+
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <meta name="description" content="Browse the latest streetwear collection at Naaksh. High-quality hoodies, t-shirts, and more. Free delivery across Pakistan." />
+      </Helmet>
       <div className="max-w-7xl mx-auto px-6 py-6">
         {/* Breadcrumbs */}
         <nav className="mb-8" aria-label="Breadcrumb">
@@ -246,7 +254,7 @@ export default function Shop() {
               <div className="space-y-3 mb-6">
                 <h3 className="text-xs font-bold uppercase tracking-widest">Category</h3>
                 {categories.map((cat) => (
-                  <label key={cat} className="flex items-center justify-between cursor-pointer">
+                  <label key={cat.name} className="flex items-center justify-between cursor-pointer">
                     <div className="flex items-center gap-3">
                       <input
                         type="checkbox"
@@ -322,7 +330,7 @@ export default function Shop() {
           </aside>
 
           {/* Products Grid */}
-          <div className="flex-1">
+          <div className="flex-1 flex flex-col min-h-[120vh]">
             {currentProducts.length > 0 ? (
               <>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
@@ -333,11 +341,11 @@ export default function Shop() {
 
                 {/* Pagination */}
                 {totalPages > 1 && (
-                  <div className="mt-16 flex justify-center gap-2">
+                  <div className="mt-auto pt-16 flex justify-center gap-2">
                     <button
                       onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                       disabled={currentPage === 1}
-                      className="px-4 py-2 border rounded-lg disabled:opacity-50"
+                      className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
                       Previous
                     </button>
@@ -345,7 +353,9 @@ export default function Shop() {
                       <button
                         key={i + 1}
                         onClick={() => setCurrentPage(i + 1)}
-                        className={`w-10 h-10 rounded-lg ${currentPage === i + 1 ? "bg-black text-white" : "border hover:bg-gray-50"
+                        className={`w-10 h-10 rounded-lg transition-colors ${currentPage === i + 1
+                          ? "bg-black text-white"
+                          : "border border-gray-300 hover:bg-gray-100"
                           }`}
                       >
                         {i + 1}
@@ -354,7 +364,7 @@ export default function Shop() {
                     <button
                       onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                       disabled={currentPage === totalPages}
-                      className="px-4 py-2 border rounded-lg disabled:opacity-50"
+                      className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
                       Next
                     </button>
@@ -415,17 +425,17 @@ export default function Shop() {
                   <h3 className="text-sm font-bold mb-4 uppercase tracking-wider">Category</h3>
                   <div className="space-y-3">
                     {categories.map((c) => {
-                      const count = products.filter((p) => p.category === c).length;
+                      const count = products.filter((p) => p.category === c.name).length;
                       return (
-                        <label key={c} className="flex items-center justify-between cursor-pointer">
+                        <label key={c.name} className="flex items-center justify-between cursor-pointer">
                           <div className="flex items-center gap-2">
                             <input
                               type="checkbox"
-                              checked={filters.categories.includes(c)}
-                              onChange={() => toggleCategory(c)}
+                              checked={filters.categories.includes(c.name)}
+                              onChange={() => toggleCategory(c.name)}
                               className="w-4 h-4 rounded border-gray-300 text-black focus:ring-black"
                             />
-                            <span className="text-sm">{c}</span>
+                            <span className="text-sm">{c.name}</span>
                           </div>
                           <span className="text-xs text-gray-400">({count})</span>
                         </label>
