@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ShoppingBag, Check, Star, Heart, Minus, Plus } from 'lucide-react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import { toast } from 'react-toastify';
 
@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet-async';
 
 export default function ProductDetail() {
     const { slug } = useParams();
+    const navigate = useNavigate();
 
     const [product, setProduct] = useState(null);
     const [relatedProducts, setRelatedProducts] = useState([]);
@@ -46,6 +47,9 @@ export default function ProductDetail() {
                         .sort(() => 0.5 - Math.random())
                         .slice(0, 4);
                     setRelatedProducts(related);
+                } else {
+                    navigate('/404', { replace: true });
+                    return;
                 }
                 setLoading(false);
             } catch (err) {

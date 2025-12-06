@@ -64,28 +64,28 @@ export default function Home() {
 
   const testimonials = [
     {
-      text: "Working with NAAKSH transformed our business approach...",
-      name: "Sarah Mitchell",
-      title: "CEO, TechVision Inc.",
+      text: "The quality is unmatched. I've washed this hoodie 20 times and it still feels brand new. Naaksh is onto something big.",
+      name: "Moiz Ali",
+      title: "Verified Buyer",
+      avatar: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?w=400&h=400&fit=crop",
+    },
+    {
+      text: "Fastest shipping I've experienced in Pakistan. The packaging was so premium I didn't want to open it. 10/10 experience.",
+      name: "Fatima Khan",
+      title: "Verified Buyer",
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
     },
     {
-      text: "The level of professionalism and expertise NAAKSH brings is unmatched...",
-      name: "Michael Chen",
-      title: "Director of Operations, Innovate Labs",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+      text: "Finally a streetwear brand that gets the fit right. Oversized but not sloppy. The drop shoulder detail is fire.",
+      name: "Abdullah R.",
+      title: "Fashion Enthusiast",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
     },
     {
-      text: "NAAKSH's commitment to excellence is evident in every interaction...",
-      name: "Emily Rodriguez",
-      title: "Founder, Creative Solutions",
+      text: "Customer service was super helpful with sizing. Exchanged my size in 2 days. This is how ecommerce should be done.",
+      name: "Zoya Ahmed",
+      title: "Verified Buyer",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
-    },
-    {
-      text: "Their strategic insights and execution capabilities have positioned us ahead...",
-      name: "David Thompson",
-      title: "VP of Strategy, Global Dynamics",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
     },
   ];
 
@@ -243,29 +243,47 @@ export default function Home() {
         </section>
 
         {/* TESTIMONIALS */}
-        <section className="py-28 bg-linear-to-b from-white to-gray-50 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-500 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-400 rounded-full blur-3xl"></div>
+        <section className="py-24 bg-white text-black relative overflow-hidden">
+          {/* Decorative background elements */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
+            <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-yellow-500 rounded-full blur-[120px] opacity-20"></div>
+            <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-purple-900 rounded-full blur-[120px] opacity-20"></div>
           </div>
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-16">
-              <p className="text-yellow-600 font-semibold text-sm uppercase tracking-wider mb-3">
-                Client Testimonials
-              </p>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-                Trusted by Industry <span className="text-yellow-500">Leaders</span>
-              </h2>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-                Discover how organizations worldwide are achieving remarkable results with NAAKSH's innovative
-                solutions
-              </p>
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+              <div>
+                <h4 className="text-yellow-600 font-bold tracking-widest uppercase mb-2">Community Love</h4>
+                <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-black">
+                  WE DON'T JUST SELL <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-700">WE BUILD CULTURE</span>
+                </h2>
+              </div>
+              <div className="flex items-center gap-6">
+                <div className="flex -space-x-4">
+                  {/* Tiny avatars stack */}
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="w-12 h-12 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center overflow-hidden">
+                      <img src={`https://i.pravatar.cc/100?img=${i + 30}`} alt="User" className="w-full h-full object-cover" />
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-sm text-gray-500 font-medium mt-1">Trusted by 10,000+ Customers</p>
+                </div>
+              </div>
             </div>
 
             <Swiper
               modules={[Autoplay, Pagination]}
-              spaceBetween={32}
+              spaceBetween={24}
               slidesPerView={1}
               breakpoints={{
                 768: { slidesPerView: 2 },
@@ -273,52 +291,31 @@ export default function Home() {
               }}
               loop={true}
               autoplay={{
-                delay: 5000,
+                delay: 4000,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: true,
               }}
-              pagination={{
-                clickable: true,
-                dynamicBullets: true,
-              }}
-              speed={800}
-              className="pb-20 h-[400px]"
+              pagination={{ clickable: true }}
+              className="pb-16 h-[400px]"
             >
-              {testimonials.map((testimonial, index) => (
-                <SwiperSlide key={index}>
-                  <div className="h-[350px] px-2">
-                    <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col border border-gray-100 hover:border-yellow-400/40 group">
-                      <div className="mb-6">
-                        <svg
-                          className="w-12 h-12 text-yellow-500/20 group-hover:text-yellow-500/40 transition-colors duration-300"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              {testimonials.map((t, i) => (
+                <SwiperSlide key={i}>
+                  <div className="bg-white border border-gray-100 p-8 rounded-2xl h-[350px] flex flex-col hover:border-yellow-400 hover:shadow-xl transition-all duration-300 shadow-sm">
+                    <div className="flex gap-1 mb-6">
+                      {[...Array(5)].map((_, idx) => (
+                        <svg key={idx} className="w-5 h-5 fill-yellow-500" viewBox="0 0 24 24">
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                         </svg>
-                      </div>
-
-                      <blockquote className="text-gray-700 text-base leading-relaxed mb-8 grow">
-                        {testimonial.text}
-                      </blockquote>
-
-                      <div className="flex gap-1 mb-6">
-                        {[...Array(5)].map((_, i) => (
-                          <svg key={i} className="w-5 h-5 fill-yellow-500" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                          </svg>
-                        ))}
-                      </div>
-
-                      <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                        <img
-                          src={testimonial.avatar}
-                          alt={testimonial.name}
-                          className="w-14 h-14 rounded-full object-cover ring-2 ring-yellow-500/20 group-hover:ring-yellow-500/40 transition-all duration-300"
-                        />
-                        <div>
-                          <h4 className="font-semibold text-gray-900 text-lg">{testimonial.name}</h4>
-                          <p className="text-yellow-600 text-sm font-medium">{testimonial.title}</p>
+                      ))}
+                    </div>
+                    <p className="text-gray-700 text-lg leading-relaxed mb-8 flex-grow">"{t.text}"</p>
+                    <div className="flex items-center gap-4 mt-auto pt-6 border-t border-gray-100">
+                      <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full object-cover border-2 border-yellow-500/20" />
+                      <div>
+                        <h4 className="font-bold text-black uppercase tracking-wider">{t.name}</h4>
+                        <div className="flex items-center gap-1.5">
+                          <span className="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                            {t.title}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -326,47 +323,17 @@ export default function Home() {
                 </SwiperSlide>
               ))}
             </Swiper>
-
-            <div className="mt-16 text-center">
-              <div className="flex flex-wrap justify-center items-center gap-8 text-gray-600">
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                  </svg>
-                  <span className="text-sm font-medium">4.9/5 Average Rating</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
-                  </svg>
-                  <span className="text-sm font-medium">500+ Happy Clients</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" />
-                  </svg>
-                  <span className="text-sm font-medium">10+ Years Excellence</span>
-                </div>
-              </div>
-            </div>
           </div>
-
-          {/* <style jsx>{`
-            .swiper-wrapper {
-              align-items: stretch;
-            }
-            .swiper-slide {
-              height: auto;
-              display: flex;
-            }
+          <style>{`
             .swiper-pagination-bullet {
               background: #eab308;
               opacity: 0.3;
             }
             .swiper-pagination-bullet-active {
               opacity: 1;
+              background: #eab308;
             }
-          `}</style> */}
+          `}</style>
         </section>
       </div>
     </>

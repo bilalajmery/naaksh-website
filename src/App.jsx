@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import Home from "./pages/home";
@@ -9,6 +9,7 @@ import Cart from "./pages/cart";
 import Wishlist from "./pages/wishlist";
 import Checkout from "./pages/checkout";
 import ProductDetail from "./pages/productDetail";
+import NotFound from "./pages/NotFound";
 import { useEffect, useState } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -63,6 +64,8 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/product/:slug" element={<ProductDetail />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>
       <ToastContainer position="bottom-right" theme="dark" />
       <Footer categories={categories} loadingCategories={loadingCategories} />
