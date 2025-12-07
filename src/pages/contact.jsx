@@ -74,7 +74,6 @@ export default function Contact() {
     return (
         <>
             <Helmet>
-                <title>Contact | NAAKSH</title>
                 <meta name="description" content="Get in touch with Naaksh. We are here to help with sizing, orders, or just to chat. Call, email, or visit us in Lahore." />
                 <link rel="canonical" href="https://naakshofficial.com/contact" />
             </Helmet>
