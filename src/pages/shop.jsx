@@ -172,7 +172,9 @@ export default function Shop() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
+        <title>Shop | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan</title>
         <meta name="description" content="Browse the latest streetwear collection at Naaksh. High-quality hoodies, t-shirts, and more. Free delivery across Pakistan." />
+        <link rel="canonical" href="https://naakshofficial.com/shop" />
       </Helmet>
       <div className="max-w-7xl mx-auto px-6 py-6">
         {/* Breadcrumbs */}

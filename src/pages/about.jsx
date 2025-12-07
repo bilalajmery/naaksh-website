@@ -6,7 +6,9 @@ export default function About() {
   return (
     <>
       <Helmet>
+        <title>About | NAAKSH</title>
         <meta name="description" content="Learn about the story behind Naaksh, Pakistan's most fearless streetwear brand. Born in Lahore, built for the bold and ambitious." />
+        <link rel="canonical" href="https://naakshofficial.com/about" />
       </Helmet>
       {/* 1. HERO - DARK BG */}
       <section className="relative h-screen bg-black text-white flex items-center justify-center overflow-hidden">

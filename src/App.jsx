@@ -17,20 +17,18 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Helmet } from 'react-helmet-async';
-
 const titles = {
   "/": "NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
-  "/about": "About | NAAKSH",
-  "/shop": "Shop | NAAKSH",
-  "/contact": "Contact | NAAKSH",
-  "/cart": "Cart | NAAKSH",
-  "/wishlist": "Wishlist | NAAKSH",
-  "/checkout": "Checkout | NAAKSH",
-  "/product/:slug": "Product | NAAKSH",
-  "/privacy": "Privacy Policy | NAAKSH",
-  "/terms": "Terms of Service | NAAKSH",
-  "/404": "404 - Page Not Found | Naaksh",
+  "/about": "About | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
+  "/shop": "Shop | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
+  "/contact": "Contact | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
+  "/cart": "Cart | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
+  "/wishlist": "Wishlist | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
+  "/checkout": "Checkout | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
+  "/product/:slug": "Product | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
+  "/privacy": "Privacy Policy | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
+  "/terms": "Terms of Service | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
+  "/404": "404 - Page Not Found | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
 }
 
 function App() {
@@ -59,25 +57,12 @@ function App() {
     // Exception for product detail pages (handled dynamically)
     if (location.pathname.startsWith('/product/')) return;
 
-    document.title = titles[location.pathname] || "NAAKSH | Premium Streetwear Pakistan";
+    document.title = titles[location.pathname] || "NAAKSH | Premium Streetwear & Urban Fashion in Pakistan";
   }, [location.pathname]);
 
 
   return (
     <>
-      <Helmet titleTemplate="%s | NAAKSH" defaultTitle="NAAKSH | Premium Streetwear Pakistan">
-        <meta name="description" content="Naaksh offers unique, customizable fashion with high-quality T-shirts and bold or minimalist designs to help you stand out. Fashion, made personal." />
-        <meta name="keywords" content="Naaksh, Naaksh clothing, minimalist clothing Pakistan, premium hoodies, streetwear, fashion brand, apparel" />
-        <meta property="og:title" content="Naaksh – Premium Minimalist Clothing" />
-        <meta property="og:description" content="Naaksh offers unique, customizable fashion with high-quality T-shirts and bold or minimalist designs to help you stand out. Fashion, made personal." />
-        <meta property="og:image" content="/logo.png" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://naaksh.com" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Naaksh – Premium Minimalist Clothing" />
-        <meta name="twitter:description" content="Naaksh offers unique, customizable fashion with high-quality T-shirts and bold or minimalist designs to help you stand out. Fashion, made personal." />
-        <meta name="twitter:image" content="/logo.png" />
-      </Helmet>
       <Navbar categories={categories} loadingCategories={loadingCategories} />
       <Routes>
         <Route path="/" element={<Home />} />

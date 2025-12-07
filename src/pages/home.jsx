@@ -94,8 +94,12 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>NAAKSH | Premium Streetwear & Urban Fashion in Pakistan</title>
         <meta name="description" content="Discover premium minimalist clothing and streetwear in Pakistan. Shop high-quality oversized t-shirts, hoodies, and more at Naaksh." />
+        <meta property="og:title" content="NAAKSH | Premium Streetwear & Urban Fashion in Pakistan" />
+        <meta property="og:description" content="Discover premium minimalist clothing and streetwear in Pakistan. Shop high-quality oversized t-shirts, hoodies, and more at Naaksh." />
+        <meta property="og:url" content="https://naakshofficial.com" />
+        <link rel="canonical" href="https://naakshofficial.com" />
       </Helmet>
       <div>
         {/* HERO BANNER */}

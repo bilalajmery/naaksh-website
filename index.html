@@ -5,19 +5,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Default SEO Meta Tags (will be overridden by react-helmet-async) -->
+  <meta name="description"
+    content="Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs. Premium streetwear in Pakistan. Fashion, made personal." />
+  <meta name="keywords"
+    content="Naaksh, Naaksh clothing, minimalist clothing Pakistan, premium hoodies, streetwear, fashion brand, apparel, oversized t-shirts" />
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="NAAKSH | Premium Streetwear & Urban Fashion in Pakistan" />
+  <meta property="og:description"
+    content="Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs to help you stand out. Fashion, made personal." />
+  <meta property="og:image" content="https://naakshofficial.com/logo/dark/sm.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://naakshofficial.com" />
+  <meta property="og:site_name" content="NAAKSH" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NAAKSH | Premium Streetwear & Urban Fashion in Pakistan" />
+  <meta name="twitter:description"
+    content="Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs to help you stand out. Fashion, made personal." />
+  <meta name="twitter:image" content="https://naakshofficial.com/logo/dark/sm.png" />
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.svg" />
-
-  <!-- Fonts -->
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KBVMK4RW');</script>
+  <!-- End Google Tag Manager -->
+
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0YP46PKCRZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-0YP46PKCRZ');
+</script>
+
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBVMK4RW" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

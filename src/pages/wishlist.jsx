@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import { NavLink } from "react-router-dom";
 import { Heart } from "lucide-react";
-import { Helmet } from 'react-helmet-async';
 
 export default function Wishlist() {
   const [wishlistProducts, setWishlistProducts] = useState([]);
@@ -65,9 +64,6 @@ export default function Wishlist() {
   if (wishlistProducts.length === 0) {
     return (
       <div className="min-h-screen bg-white">
-        <Helmet>
-          <title>Wishlist | NAAKSH</title>
-        </Helmet>
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
           <div className="w-32 h-32 mx-auto mb-8 bg-gray-100 rounded-full flex items-center justify-center">
             <Heart size={48} className="text-gray-400" />
@@ -87,9 +83,6 @@ export default function Wishlist() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Helmet>
-        <title>Wishlist | NAAKSH</title>
-      </Helmet>
       <div className="max-w-7xl mx-auto px-6 py-12">
         <nav className="mb-8" aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm">

@@ -5,7 +5,6 @@ export default function Privacy() {
     return (
         <>
             <Helmet>
-                <title>Privacy Policy | NAAKSH</title>
                 <meta name="description" content="Privacy Policy for NAAKSH - Learn how we collect, use, and protect your personal information." />
             </Helmet>
 

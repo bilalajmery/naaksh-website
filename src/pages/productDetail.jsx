@@ -159,7 +159,7 @@ export default function ProductDetail() {
     return (
         <div className="min-h-screen bg-white">
             <Helmet>
-                <title>{product.name} | Naaksh</title>
+                <title>{product.name} | Naaksh | Premium Streetwear & Urban Fashion in Pakistan</title>
                 <meta name="description" content={product.description} key="description" />
                 <meta property="og:title" content={product.name} key="og:title" />
                 <meta property="og:description" content={product.description} key="og:description" />

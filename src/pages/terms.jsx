@@ -5,7 +5,6 @@ export default function Terms() {
     return (
         <>
             <Helmet>
-                <title>Terms of Service | NAAKSH</title>
                 <meta name="description" content="Terms of Service for NAAKSH - Read our terms and conditions for using our website and purchasing our products." />
             </Helmet>
 
