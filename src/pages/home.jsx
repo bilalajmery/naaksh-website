@@ -233,13 +233,13 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <NavLink
                   to="/shop"
-                  className="bg-yellow-400 text-black px-10 py-4 text-sm font-bold tracking-wider hover:bg-yellow-500 transition-colors uppercase rounded-[5px]"
+                  className="bg-black text-white px-10 py-4 text-sm font-bold tracking-wider hover:bg-yellow-400 hover:text-black transition-colors uppercase rounded-[5px]"
                 >
                   Shop Now
                 </NavLink>
                 <NavLink
                   to="/about"
-                  className="bg-white/10 backdrop-blur-sm text-white border-2 border-white px-10 py-4 text-sm font-bold tracking-wider hover:bg-white/20 transition-colors uppercase rounded-[5px]"
+                  className="bg-yellow-400 text-black border-2 border-black px-10 py-4 text-sm font-bold tracking-wider hover:bg-black hover:text-yellow-400 hover:border-yellow-400 transition-colors uppercase rounded-[5px]"
                 >
                   Our Story
                 </NavLink>
