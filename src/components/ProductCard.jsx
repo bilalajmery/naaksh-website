@@ -74,6 +74,10 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
             src={currentImage}
             alt={product.name}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            onError={(e) => {
+              e.target.onerror = null; // Prevent infinite loop
+              e.target.src = "/product/badman-sweatshirt/1.jpg";
+            }}
           />
           <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
             <button
