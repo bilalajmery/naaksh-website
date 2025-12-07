@@ -14,6 +14,8 @@ const staticRoutes = [
     '/contact',
     '/cart',
     '/wishlist',
+    '/terms',
+    '/privacy'
 ];
 
 async function generateSitemap() {

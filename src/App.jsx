@@ -11,6 +11,8 @@ import Wishlist from "./pages/wishlist";
 import Checkout from "./pages/checkout";
 import ProductDetail from "./pages/productDetail";
 import NotFound from "./pages/NotFound";
+import Privacy from "./pages/privacy";
+import Terms from "./pages/terms";
 import { useEffect, useState } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,6 +28,8 @@ const titles = {
   "/wishlist": "Wishlist | NAAKSH",
   "/checkout": "Checkout | NAAKSH",
   "/product/:slug": "Product | NAAKSH",
+  "/privacy": "Privacy Policy | NAAKSH",
+  "/terms": "Terms of Service | NAAKSH",
   "/404": "404 - Page Not Found | Naaksh",
 }
 
@@ -84,6 +88,8 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/product/:slug" element={<ProductDetail />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>

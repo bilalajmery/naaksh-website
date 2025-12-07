@@ -191,7 +191,7 @@ function Footer({ categories, loadingCategories }) {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 mt-12 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>© 2025 NAAKSH® – All Rights Reserved</p>
+          <p>© {new Date().getFullYear()} NAAKSH® – All Rights Reserved</p>
           <div className="flex gap-8 mt-4 md:mt-0">
             <Link to="/privacy" className="hover:text-yellow-400 transition">
               Privacy Policy

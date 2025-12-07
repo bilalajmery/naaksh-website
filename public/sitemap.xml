@@ -31,6 +31,16 @@
                     <priority>0.6</priority>
                 </url>
                 <url>
+                    <loc>https://naakshofficial.com/terms</loc>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.6</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/privacy</loc>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.6</priority>
+                </url>
+                <url>
                     <loc>https://naakshofficial.com/shop?category=Hoodies</loc>
                     <changefreq>weekly</changefreq>
                     <priority>0.8</priority>
@@ -142,6 +152,101 @@
                 </url>
                 <url>
                     <loc>https://naakshofficial.com/product/maroon-premium-hoodie</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/drop-shoulder-black</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/the-future-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/me-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/discipline-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/melting-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/tokyo-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/batman-minimal-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/focus-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/moon-howl-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/never-stop-dreaming-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/psalm-91-oversized-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/black-minimalist-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/authentic-vibes-only-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/futuristic-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/plain-black-pure-vibe-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/japanese-calligraphy-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/never-stop-dreaming-drop-shoulder-tee</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/camel-denim-jacket</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>
+                <url>
+                    <loc>https://naakshofficial.com/product/blue-denim-jacket</loc>
                     <changefreq>weekly</changefreq>
                     <priority>0.8</priority>
                 </url></urlset>
