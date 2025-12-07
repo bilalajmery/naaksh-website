@@ -151,6 +151,11 @@ export default function ProductDetail() {
     const siteUrl = window.location.origin;
     const ogImage = currentImages[0] ? `${siteUrl}${currentImages[0]}` : '';
 
+    // Helper function to check if file is a video
+    const isVideo = (url) => {
+        return url?.toLowerCase().endsWith('.mp4');
+    };
+
     return (
         <div className="min-h-screen bg-white">
             <Helmet>
@@ -185,11 +190,24 @@ export default function ProductDetail() {
                                     {discount}% OFF
                                 </div>
                             )}
-                            <img
-                                src={currentImages[mainImage] || '/placeholder.jpg'}
-                                alt={product.name}
-                                className="w-full h-full object-cover"
-                            />
+
+                            {isVideo(currentImages[mainImage]) ? (
+                                <video
+                                    src={currentImages[mainImage]}
+                                    className="w-full h-full object-cover"
+                                    controls
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                />
+                            ) : (
+                                <img
+                                    src={currentImages[mainImage] || '/placeholder.jpg'}
+                                    alt={product.name}
+                                    className="w-full h-full object-cover"
+                                />
+                            )}
 
                             <div className="absolute top-6 right-6 flex gap-3">
                                 <button
@@ -206,9 +224,20 @@ export default function ProductDetail() {
                                 <button
                                     key={idx}
                                     onClick={() => setMainImage(idx)}
-                                    className={`overflow-hidden rounded-xl transition-all ${mainImage === idx ? 'ring-4 ring-black' : 'ring-2 ring-gray-200 hover:ring-gray-400'}`}
+                                    className={`relative overflow-hidden rounded-xl transition-all ${mainImage === idx ? 'ring-4 ring-black' : 'ring-2 ring-gray-200 hover:ring-gray-400'}`}
                                 >
-                                    <img src={img} alt={`Thumbnail ${idx + 1}`} className="w-24 h-24 object-cover" />
+                                    {isVideo(img) ? (
+                                        <>
+                                            <video src={img} className="w-24 h-24 object-cover" muted />
+                                            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                                                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M8 5v14l11-7z" />
+                                                </svg>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <img src={img} alt={`Thumbnail ${idx + 1}`} className="w-24 h-24 object-cover" />
+                                    )}
                                 </button>
                             ))}
                         </div>

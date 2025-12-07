@@ -934,21 +934,21 @@
         "name": "Teal",
         "hex": "#207C8C",
         "images": [
-          "/product/the-future/teal-1.jpg"
+          "/product/the-future-drop-shoulder-tee/1.jpg"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/the-future/black-2.jpg"
+          "/product/the-future-drop-shoulder-tee/2.jpg"
         ]
       },
       {
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/the-future/white-3.jpg"
+          "/product/the-future-drop-shoulder-tee/3.jpg"
         ]
       }
     ],
@@ -1000,8 +1000,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/me-drop-shoulder-tee/black-1.jpg",
-          "/product/me-drop-shoulder-tee/black-2.jpg"
+          "/product/me-drop-shoulder-tee/1.jpg"
         ]
       }
     ],
@@ -1054,14 +1053,14 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/discipline-drop-shoulder-tee/black-1.jpg"
+          "/product/discipline-drop-shoulder-tee/1.jpg"
         ]
       },
       {
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/discipline-drop-shoulder-tee/white-2.jpg"
+          "/product/discipline-drop-shoulder-tee/2.jpg"
         ]
       }
     ],
@@ -1168,7 +1167,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/tokyo-drop-shoulder-tee/.jpg"
+          "/product/tokyo-drop-shoulder-tee/1.jpg"
         ]
       }
     ],
@@ -1274,8 +1273,8 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/focus-drop-shoulder-tee/1.jpg",
-          "/product/focus-drop-shoulder-tee/2.jpg"
+          "/product/focus-drop-shoulder-tee/1.png",
+          "/product/focus-drop-shoulder-tee/2.png"
         ]
       }
     ],
@@ -1384,8 +1383,8 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/never-stop-dreaming-drop-shoulder-tee/1.jpg",
-          "/product/never-stop-dreaming-drop-shoulder-tee/2.jpg"
+          "/product/never-stop-dreaming-drop-shoulder-tee/1.png",
+          "/product/never-stop-dreaming-drop-shoulder-tee/2.png"
         ]
       }
     ],
@@ -1437,11 +1436,12 @@
     ],
     "colors": [
       {
-        "name": "Black",
-        "hex": "#000000",
+        "name": "White",
+        "hex": "#ffffff",
         "images": [
-          "/product/psalm-91-oversized-drop-shoulder-tee/1.jpg",
-          "/product/psalm-91-oversized-drop-shoulder-tee/2.jpg"
+          "/product/psalm-91-oversized-drop-shoulder-tee/1.png",
+          "/product/psalm-91-oversized-drop-shoulder-tee/2.png",
+          "/product/psalm-91-oversized-drop-shoulder-tee/video.mp4"
         ]
       }
     ],
@@ -1716,8 +1716,8 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/japanese-calligraphy-drop-shoulder-tee/1.jpg",
-          "/product/japanese-calligraphy-drop-shoulder-tee/2.jpg"
+          "/product/japanese-calligraphy-drop-shoulder-tee/1.png",
+          "/product/japanese-calligraphy-drop-shoulder-tee/2.png"
         ]
       }
     ],

@@ -11,6 +11,11 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
   const images = product?.colors?.[selectedColor]?.images || [];
   const currentImage = images[hoverImgIndex] || images[0] || "/placeholder.jpg";
 
+  // Helper function to check if file is a video
+  const isVideo = (url) => {
+    return url?.toLowerCase().endsWith('.mp4');
+  };
+
   // Check initial wishlist status
   useEffect(() => {
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -70,15 +75,26 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
         </button>
 
         <div className="relative aspect-square overflow-hidden bg-gray-50">
-          <img
-            src={currentImage}
-            alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            onError={(e) => {
-              e.target.onerror = null; // Prevent infinite loop
-              e.target.src = "/product/placeholder.png";
-            }}
-          />
+          {isVideo(currentImage) ? (
+            <video
+              src={currentImage}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          ) : (
+            <img
+              src={currentImage}
+              alt={product.name}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              onError={(e) => {
+                e.target.onerror = null; // Prevent infinite loop
+                e.target.src = "/product/placeholder.png";
+              }}
+            />
+          )}
           <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
             <button
               onClick={(e) => {
