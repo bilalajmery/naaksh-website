@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import WhatsAppButton from "./components/WhatsAppButton";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Shop from "./pages/shop";
@@ -87,6 +88,7 @@ function App() {
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>
       <ToastContainer position="bottom-right" theme="dark" />
+      <WhatsAppButton />
       <Footer categories={categories} loadingCategories={loadingCategories} />
     </>
   );
