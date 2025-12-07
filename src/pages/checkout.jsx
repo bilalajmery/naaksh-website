@@ -213,11 +213,23 @@ export default function Checkout() {
                 body: JSON.stringify(orderData),
             });
 
-            if (!response.ok) {
-                throw new Error('Failed to place order');
-            }
-
             const result = await response.json();
+
+            // Handle validation errors (422) or other error responses
+            if (!response.ok) {
+                if (response.status === 422 && result.errors) {
+                    // Extract first error message from errors object
+                    const firstErrorKey = Object.keys(result.errors)[0];
+                    const errorMessage = result.errors[firstErrorKey][0];
+                    toast.error(errorMessage);
+                } else if (result.message) {
+                    // Use the message from API if available
+                    toast.error(result.message);
+                } else {
+                    toast.error('Failed to place order. Please try again.');
+                }
+                return;
+            }
 
             // Save Address Logic (only if successful)
             if (saveAddress) {

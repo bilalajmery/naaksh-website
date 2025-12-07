@@ -1,13 +1,64 @@
 import { NavLink, Link } from "react-router-dom";
 import { Instagram, Facebook, Music2, Send } from "lucide-react";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
+import { toast } from 'react-toastify';
 
 function Footer({ categories, loadingCategories }) {
   const randomNumberRef = useRef(Math.random());
+  const [email, setEmail] = useState('');
+  const [isSubscribing, setIsSubscribing] = useState(false);
 
   const memoizedCategory = useMemo(() => {
     return [...categories].sort(() => randomNumberRef.current - 0.5).slice(0, 5);
   }, [categories]);
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+
+    // Validate email
+    if (!email || !email.includes('@')) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    setIsSubscribing(true);
+
+    try {
+      const response = await fetch(import.meta.env.VITE_SERVER_URL + '/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+
+      // Handle validation errors (422) or other error responses
+      if (!response.ok) {
+        if (response.status === 422 && result.errors) {
+          // Extract first error message from errors object
+          const firstErrorKey = Object.keys(result.errors)[0];
+          const errorMessage = result.errors[firstErrorKey][0];
+          toast.error(errorMessage);
+        } else if (result.message) {
+          // Use the message from API if available
+          toast.error(result.message);
+        } else {
+          toast.error('Failed to subscribe. Please try again.');
+        }
+        return;
+      }
+
+      toast.success('Successfully subscribed to our newsletter!');
+      setEmail(''); // Clear input on success
+    } catch (error) {
+      console.error('Subscribe Error:', error);
+      toast.error('Failed to subscribe. Please try again.');
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
 
   return (
     <footer className="bg-black text-white">
@@ -105,20 +156,26 @@ function Footer({ categories, loadingCategories }) {
           <div className="lg:col-span-4">
             <h3 className="font-bold text-yellow-400 text-lg mb-6 tracking-wider">STAY CONNECTED</h3>
 
-            <form className="flex flex-col sm:flex-row gap-3">
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
                 placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isSubscribing}
                 className="flex-1 px-6 py-4 bg-gray-900 border border-gray-800 rounded-full 
-                focus:outline-none focus:border-yellow-500 transition text-white placeholder-gray-500"
+                focus:outline-none focus:border-yellow-500 transition text-white placeholder-gray-500
+                disabled:opacity-50 disabled:cursor-not-allowed"
               />
               <button
+                type="submit"
+                disabled={isSubscribing}
                 className="px-8 py-4 bg-yellow-500 text-black font-bold rounded-full 
               hover:bg-yellow-400 transition flex items-center justify-center gap-2 shadow-lg 
-              hover:shadow-yellow-500/40"
+              hover:shadow-yellow-500/40 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send size={18} />
-                Subscribe
+                {isSubscribing ? 'Subscribing...' : 'Subscribe'}
               </button>
             </form>
           </div>
