@@ -1,5 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
-import { Instagram, Facebook, Music2, Send } from "lucide-react";
+import { Instagram, Facebook, Music2, Send, Youtube } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { toast } from 'react-toastify';
 
@@ -95,6 +95,14 @@ function Footer({ categories, loadingCategories }) {
                 className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"
               >
                 <Music2 size={20} />
+              </a>
+              <a
+                href="https://www.youtube.com/@naakshofficial"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"
+              >
+                <Youtube size={20} />
               </a>
             </div>
           </div>

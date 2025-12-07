@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Mail, Phone, MapPin, Instagram, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Send, Facebook, Youtube, Music2 } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
@@ -117,7 +117,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-sm uppercase tracking-wider text-gray-500">Call / WhatsApp</p>
-                                    <p className="text-2xl font-bold">+92 317 000 6677</p>
+                                    <p className="text-2xl font-bold">+92 340 357 7155</p>
                                 </div>
                             </div>
 
@@ -127,7 +127,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-sm uppercase tracking-wider text-gray-500">Email Us</p>
-                                    <p className="text-2xl font-bold">hello@naaksh.pk</p>
+                                    <p className="text-2xl font-bold">support@naakshofficial.com</p>
                                 </div>
                             </div>
 
@@ -137,7 +137,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-sm uppercase tracking-wider text-gray-500">Visit Us</p>
-                                    <p className="text-2xl font-bold">Lahore, Pakistan</p>
+                                    <p className="text-2xl font-bold">Karachi, Pakistan</p>
                                 </div>
                             </div>
                         </div>
@@ -146,12 +146,26 @@ export default function Contact() {
                         <div>
                             <p className="text-sm uppercase tracking-wider text-gray-500 mb-6">Follow the movement</p>
                             <div className="flex gap-6">
-                                <a href="https://instagram.com/naaksh.official" target="_blank" className="group">
+                                <a href="https://www.instagram.com/naakshofficial/" target="_blank" className="group">
                                     <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center group-hover:bg-yellow-400 transition-all duration-300">
                                         <Instagram className="w-7 h-7 text-white group-hover:text-black transition-colors" />
                                     </div>
                                 </a>
-
+                                <a href="https://www.facebook.com/naakshofficial" target="_blank" className="group">
+                                    <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center group-hover:bg-yellow-400 transition-all duration-300">
+                                        <Facebook className="w-7 h-7 text-white group-hover:text-black transition-colors" />
+                                    </div>
+                                </a>
+                                <a href="https://www.tiktok.com/@naakshofficial" target="_blank" className="group">
+                                    <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center group-hover:bg-yellow-400 transition-all duration-300">
+                                        <Music2 className="w-7 h-7 text-white group-hover:text-black transition-colors" />
+                                    </div>
+                                </a>
+                                <a href="https://www.youtube.com/@NaakshOfficial-f9h" target="_blank" className="group">
+                                    <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center group-hover:bg-yellow-400 transition-all duration-300">
+                                        <Youtube className="w-7 h-7 text-white group-hover:text-black transition-colors" />
+                                    </div>
+                                </a>
                             </div>
                             {/* Add TikTok, Facebook etc if needed */}
                         </div>
