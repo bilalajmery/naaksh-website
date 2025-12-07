@@ -1,8 +1,76 @@
 import { NavLink } from 'react-router-dom';
 import { Mail, Phone, MapPin, Instagram, Send } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function Contact() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Basic validation
+        if (!formData.name || !formData.email || !formData.message) {
+            toast.error('Please fill in all required fields');
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch(import.meta.env.VITE_SERVER_URL + '/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            // Handle validation errors (422) or other error responses
+            if (!response.ok) {
+                if (response.status === 422 && result.errors) {
+                    // Extract first error message from errors object
+                    const firstErrorKey = Object.keys(result.errors)[0];
+                    const errorMessage = result.errors[firstErrorKey][0];
+                    toast.error(errorMessage);
+                } else if (result.message) {
+                    // Use the message from API if available
+                    toast.error(result.message);
+                } else {
+                    toast.error('Failed to send message. Please try again.');
+                }
+                return;
+            }
+
+            toast.success('Message sent successfully! We\'ll get back to you soon.');
+            // Clear form on success
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            });
+        } catch (error) {
+            console.error('Contact Form Error:', error);
+            toast.error('Failed to send message. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
     return (
         <>
             <Helmet>
@@ -95,44 +163,61 @@ export default function Contact() {
                             SEND US A <span className="text-yellow-400">MESSAGE</span>
                         </h3>
 
-                        <form className="space-y-8">
+                        <form onSubmit={handleSubmit} className="space-y-8">
                             <div>
                                 <input
                                     type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
                                     placeholder="Your Name"
-                                    className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-5 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400 transition-all"
+                                    disabled={isSubmitting}
+                                    className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-5 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                     required
                                 />
                             </div>
                             <div>
                                 <input
                                     type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
                                     placeholder="Your Email"
-                                    className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-5 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400 transition-all"
+                                    disabled={isSubmitting}
+                                    className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-5 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                     required
                                 />
                             </div>
                             <div>
                                 <input
                                     type="text"
+                                    name="subject"
+                                    value={formData.subject}
+                                    onChange={handleInputChange}
                                     placeholder="Subject"
-                                    className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-5 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400 transition-all"
+                                    disabled={isSubmitting}
+                                    className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-5 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                 />
                             </div>
                             <div>
                                 <textarea
                                     rows="6"
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleInputChange}
                                     placeholder="Your Message..."
-                                    className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-5 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400 transition-all resize-none"
+                                    disabled={isSubmitting}
+                                    className="w-full bg-white/10 border border-white/20 rounded-xl px-6 py-5 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400 transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                                     required
                                 ></textarea>
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full bg-yellow-400 text-black py-5 text-xl font-bold uppercase tracking-wider hover:bg-yellow-300 transition-all duration-300 rounded-xl flex items-center justify-center gap-3"
+                                disabled={isSubmitting}
+                                className="w-full bg-yellow-400 text-black py-5 text-xl font-bold uppercase tracking-wider hover:bg-yellow-300 transition-all duration-300 rounded-xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Send Message
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
                                 <Send size={24} />
                             </button>
                         </form>
