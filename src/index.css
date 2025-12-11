@@ -37,3 +37,71 @@
   background-color: #fdc700;
   /* slightly darker on hover */
 }
+
+/* React Toastify Theme Overrides */
+:root {
+  --toastify-font-family: 'Inter', system-ui, sans-serif;
+  --toastify-color-dark: #121212;
+  --toastify-text-color-dark: #ffffff;
+
+  /* Progress Bar & Icons in Theme Color */
+  --toastify-color-progress-dark: #fdc700;
+  --toastify-color-progress-success: #fdc700;
+  --toastify-color-progress-info: #fdc700;
+  --toastify-color-progress-warning: #fdc700;
+  --toastify-color-progress-error: #ef4444;
+
+  --toastify-icon-color-success: #fdc700;
+  --toastify-icon-color-info: #fdc700;
+  --toastify-icon-color-warning: #fdc700;
+  --toastify-icon-color-error: #ef4444;
+  /* Keep Red for Errors */
+}
+
+
+/* Modern Toast Styles */
+.Toastify__toast-container {
+  padding: 16px;
+}
+
+.Toastify__toast--dark {
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #fdc700;
+  /* Signature side accent */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  padding: 16px;
+  font-weight: 500;
+  min-height: 70px;
+}
+
+.Toastify__toast-body {
+  padding: 0 8px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.Toastify__progress-bar {
+  height: 3px;
+  border-radius: 0 0 12px 12px;
+  opacity: 0.8;
+}
+
+.Toastify__close-button {
+  opacity: 0.6;
+  transition: all 0.2s ease;
+  align-self: center;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+  color: #fdc700;
+}
+
+/* Custom Icon spacing */
+.Toastify__toast-icon {
+  margin-right: 12px;
+  width: 24px;
+}
