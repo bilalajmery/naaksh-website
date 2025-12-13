@@ -1896,5 +1896,332 @@
         "review": "Design classic and comfortable to wear. Delivery time theek tha."
       }
     ]
+  },
+  {
+    "id": 35,
+    "slug": "cotton-baggy-cargo-trouser",
+    "name": "Cotton Baggy Cargo Trouser",
+    "price": "PKR 1,399",
+    "priceNum": 1399,
+    "original": "PKR 1,999",
+    "originalNum": 1999,
+    "badge": "30% OFF",
+    "rating": 4.8,
+    "category": "Cargo Trouser",
+    "description": "The Cotton Baggy Cargo Trouser is designed for comfort, utility, and modern streetwear style. Crafted from premium breathable cotton fabric, it features a relaxed baggy fit with multiple utility pockets. Perfect for casual wear, travel, and everyday street style.",
+    "features": [
+      "Premium Quality Breathable Cotton Fabric",
+      "Relaxed Baggy Streetwear Fit",
+      "Multiple Utility Cargo Pockets",
+      "Elastic Waistband with Adjustable Drawstring",
+      "Soft, Durable & Comfortable for Daily Wear",
+      "Color Retention & Fade Resistant",
+      "Perfect for Casual, Travel & Streetwear Looks"
+    ],
+    "sizes": [
+      "30",
+      "32",
+      "34"
+    ],
+    "colors": [
+      {
+        "name": "Olive Green",
+        "hex": "#556B2F",
+        "images": [
+          "/product/cotton-baggy-cargo-trouser/1.jpg"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/cotton-baggy-cargo-trouser/2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Usman Ali",
+        "star": 5,
+        "review": "Fabric bohot comfortable hai aur baggy fit bilkul perfect."
+      },
+      {
+        "name": "Hamza Sheikh",
+        "star": 5,
+        "review": "Streetwear look ke liye best cargo trouser. Quality top-notch!"
+      },
+      {
+        "name": "Bilal Ahmed",
+        "star": 4,
+        "review": "Overall product acha hai, pockets strong aur stitching clean hai."
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "slug": "textured-short-sleeve-shirt",
+    "name": "Textured Short Sleeve Shirt",
+    "price": "PKR 1,299",
+    "priceNum": 1299,
+    "original": "PKR 1,899",
+    "originalNum": 1899,
+    "badge": "32% OFF",
+    "rating": 4.8,
+    "category": "Textured Short Sleeve Shirt",
+    "description": "The Textured Short Sleeve Shirt is designed for a clean, minimal, and modern look. Crafted from premium textured fabric, it offers a lightweight feel with a refined finish. Perfect for summer wear, casual outings, and smart-casual styling.",
+    "features": [
+      "Premium Textured Fabric",
+      "Lightweight & Breathable Material",
+      "Modern Relaxed Fit",
+      "Button-Down Front Closure",
+      "Soft Feel with Clean Finish",
+      "Wrinkle-Resistant Texture",
+      "Perfect for Casual & Smart-Casual Wear"
+    ],
+    "sizes": [
+      "M",
+      "L"
+    ],
+    "colors": [
+      {
+        "name": "Beige",
+        "hex": "#D8CFC4",
+        "images": [
+          "/product/textured-short-sleeve-shirt/1.jpg"
+        ]
+      },
+      {
+        "name": "Brown",
+        "hex": "#C2A46D",
+        "images": [
+          "/product/textured-short-sleeve-shirt/2.jpg"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/textured-short-sleeve-shirt/3.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ahsan Raza",
+        "star": 5,
+        "review": "Fabric bohot premium lagta hai aur fitting bhi perfect hai."
+      },
+      {
+        "name": "Hassan Ali",
+        "star": 5,
+        "review": "Summer ke liye best shirt. Lightweight aur stylish."
+      },
+      {
+        "name": "Faizan Ahmed",
+        "star": 4,
+        "review": "Quality achi hai, texture classy lagta hai."
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "slug": "knitted-polo-t-shirt",
+    "name": "Knitted Polo T-Shirt",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 1,799",
+    "originalNum": 1799,
+    "badge": "33% OFF",
+    "rating": 4.8,
+    "category": "Knitted Polo Tees",
+    "description": "The Knitted Polo T-Shirt is crafted for a refined yet casual look. Made from premium knitted fabric, it offers a soft texture, breathable comfort, and a modern fit. Ideal for smart-casual wear, summer outings, and everyday style.",
+    "features": [
+      "Premium Knitted Fabric",
+      "Soft, Breathable & Lightweight Material",
+      "Classic Polo Collar with Button Placket",
+      "Modern Slim-Relaxed Fit",
+      "Ribbed Texture for Premium Look",
+      "Color Fade Resistant",
+      "Perfect for Casual & Smart-Casual Wear"
+    ],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      {
+        "name": "Blue",
+        "hex": "#3A6EA5",
+        "images": [
+          "/product/knitted-polo-t-shirt/1.jpg"
+        ]
+      },
+      {
+        "name": "Brown",
+        "hex": "#5A3A2E",
+        "images": [
+          "/product/knitted-polo-t-shirt/2.jpg"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/knitted-polo-t-shirt/3.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ahmed Raza",
+        "star": 5,
+        "review": "Fabric bohot premium hai aur fitting classy lagti hai."
+      },
+      {
+        "name": "Umer Farooq",
+        "star": 5,
+        "review": "Smart casual look ke liye perfect polo tee."
+      },
+      {
+        "name": "Saad Khan",
+        "star": 4,
+        "review": "Comfortable aur stylish, summer wear ke liye best."
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "slug": "classic-polo-shirt",
+    "name": "Classic Polo Shirt",
+    "price": "PKR 999",
+    "priceNum": 999,
+    "original": "PKR 1,499",
+    "originalNum": 1499,
+    "badge": "33% OFF",
+    "rating": 4.7,
+    "category": "Classic Polo Shirts",
+    "description": "The Classic Polo Shirt is a wardrobe essential designed for everyday comfort and timeless style. Crafted from soft, breathable fabric, it features a clean polo collar and a versatile fit, making it perfect for casual, office, and smart-casual wear.",
+    "features": [
+      "Premium Soft Cotton Fabric",
+      "Breathable & Comfortable for Daily Wear",
+      "Classic Polo Collar with Button Placket",
+      "Regular Fit for Timeless Look",
+      "Durable Stitching & Long-Lasting Quality",
+      "Color Fade Resistant",
+      "Perfect for Casual & Smart-Casual Outfits"
+    ],
+    "sizes": [
+      "M",
+      "L"
+    ],
+    "colors": [
+      {
+        "name": "Maroon",
+        "hex": "#800000",
+        "images": [
+          "/product/classic-polo-shirt/1.jpg"
+        ]
+      },
+      {
+        "name": "Green",
+        "hex": "#1F7A1F",
+        "images": [
+          "/product/classic-polo-shirt/2.jpg"
+        ]
+      },
+      {
+        "name": "Navy Blue",
+        "hex": "#0A1F44",
+        "images": [
+          "/product/classic-polo-shirt/3.jpg"
+        ]
+      },
+      {
+        "name": "White",
+        "hex": "#FFFFFF",
+        "images": [
+          "/product/classic-polo-shirt/4.jpg"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/classic-polo-shirt/5.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Hassan Raza",
+        "star": 5,
+        "review": "Simple aur classy polo shirt hai. Fabric soft hai."
+      },
+      {
+        "name": "Ali Zain",
+        "star": 5,
+        "review": "Price ke hisaab se quality bohot achi hai."
+      },
+      {
+        "name": "Faheem Khan",
+        "star": 4,
+        "review": "Daily wear ke liye perfect polo shirt."
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "slug": "seek-sweat-shirt",
+    "name": "Seek Graphic Print Sweat Shirt",
+    "price": "PKR 1,199",
+    "priceNum": 1199,
+    "original": "PKR 1,799",
+    "originalNum": 1799,
+    "badge": "33% OFF",
+    "rating": 4.8,
+    "category": "Sweat Shirt",
+    "description": "The Seek Graphic Print Sweat Shirt is designed for a bold streetwear look with everyday comfort. Crafted from premium soft fabric, it features a standout graphic print on a classic black base, making it perfect for casual wear, winter layering, and modern street style.",
+    "features": [
+      "Premium Soft Fabric for Winter Comfort",
+      "Bold Seek Graphic Print Design",
+      "Ribbed Cuffs & Hem for Perfect Fit",
+      "Warm, Breathable & Skin-Friendly Material",
+      "Fade-Resistant Black Color",
+      "Durable Stitching for Long-Lasting Wear",
+      "Perfect for Casual, Travel & Streetwear Looks"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product/seek-sweat-shirt/1.jpg",
+          "/product/seek-sweat-shirt/2.jpg"
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Ammar Khan",
+        "star": 5,
+        "review": "Graphic print bohot solid lagta hai aur fabric warm hai."
+      },
+      {
+        "name": "Saad Ali",
+        "star": 5,
+        "review": "Winter wear ke liye perfect sweat shirt. Quality top-notch."
+      },
+      {
+        "name": "Hamza Rafiq",
+        "star": 4,
+        "review": "Comfortable hai aur fitting bhi achi hai."
+      }
+    ]
   }
 ]
