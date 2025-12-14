@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ShoppingBag, Check, Star, Heart, Minus, Plus } from 'lucide-react';
+import { ShoppingBag, Check, Star, Heart, Minus, Plus, Truck } from 'lucide-react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import { toast } from 'react-toastify';
@@ -89,7 +89,7 @@ export default function ProductDetail() {
         if (action === 'decrement' && quantity > 1) setQuantity(q => q - 1);
     };
 
-    const addToCart = () => {
+    const addToCart = (isBuyNow = false) => {
         if (!selectedSize) {
             toast.error('Please select a size');
             return;
@@ -112,22 +112,15 @@ export default function ProductDetail() {
         const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
 
         // Optional: Check if same item (same slug, size, color) exists and update quantity instead of adding new
-        const existingItemIndex = existingCart.findIndex(item =>
-            item.slug === cartItem.slug &&
-            item.size === cartItem.size &&
-            item.color === cartItem.color
-        );
-
-        let updatedCart;
-        if (existingItemIndex > -1) {
-            updatedCart = [...existingCart];
-            updatedCart[existingItemIndex].quantity += quantity;
-        } else {
-            updatedCart = [...existingCart, cartItem];
-        }
+        const updatedCart = [...existingCart, cartItem];
 
         localStorage.setItem('cart', JSON.stringify(updatedCart));
-        toast.success('Product added to cart!');
+
+        if (isBuyNow) {
+            navigate('/checkout');
+        } else {
+            toast.success('Product added to cart!');
+        }
     };
 
     if (loading) {
@@ -332,7 +325,7 @@ export default function ProductDetail() {
                         </div>
 
                         <button
-                            onClick={addToCart}
+                            onClick={() => addToCart(false)}
                             disabled={!selectedSize}
                             className={`w-full bg-black text-white px-12 py-4 text-sm font-medium tracking-wider flex items-center justify-center gap-3 mb-4 rounded-[5px] ${!selectedSize ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-900'}`}
                         >
@@ -340,9 +333,17 @@ export default function ProductDetail() {
                             {selectedSize ? 'Add to Cart' : 'Please Select Size'}
                         </button>
 
-                        <button className="w-full bg-black text-white px-12 py-4 text-sm font-medium tracking-wider hover:bg-gray-900 transition-colors uppercase rounded-[5px]">
+                        <button
+                            onClick={() => addToCart(true)}
+                            className="w-full bg-black text-white px-12 py-4 text-sm font-medium tracking-wider hover:bg-gray-900 transition-colors uppercase rounded-[5px]"
+                        >
                             Buy Now
                         </button>
+
+                        <div className="mt-4 flex items-center justify-center gap-2 text-sm font-bold text-gray-700 bg-gray-100 p-3 rounded-lg border border-gray-200">
+                            <Truck className="text-black" size={20} />
+                            <span>FREE HOME DELIVERY ALL OVER PAKISTAN</span>
+                        </div>
                     </div>
 
                     {/* Tabs */}
@@ -427,8 +428,8 @@ export default function ProductDetail() {
                                             </p>
 
                                             <div className="mt-4 flex items-center justify-between text-xs text-gray-400">
-                                                <span>{rl.date || "2 days ago"}</span>
-                                                <span className="italic">Purchased Product</span>
+                                                <span></span>
+                                                <span className="italic">VERIFIED BUYER</span>
                                             </div>
                                         </div>
                                     ))}

@@ -335,7 +335,7 @@ export default function Shop() {
           <div className="flex-1 flex flex-col min-h-[120vh]">
             {currentProducts.length > 0 ? (
               <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
                   {currentProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
@@ -390,7 +390,7 @@ export default function Shop() {
         {/* Mobile Filter Button & Modal (same as your original) */}
         <button
           onClick={() => setShowMobileFilters(true)}
-          className="lg:hidden fixed bottom-6 right-6 bg-black text-white px-6 py-3 rounded-full shadow-lg z-30 flex items-center gap-2"
+          className="lg:hidden fixed bottom-6 left-6 bg-black text-white px-6 py-3 rounded-full shadow-lg z-30 flex items-center gap-2"
         >
           Filters <ChevronDown size={18} />
         </button>

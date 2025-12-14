@@ -53,7 +53,7 @@ const WhatsAppButton = () => {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`fixed bottom-6 right-6 z-50 w-20 h-20 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 group ${isDarkBackground
+            className={`fixed bottom-6 right-6 z-50 w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 group ${isDarkBackground
                 ? 'bg-yellow-400 text-black hover:bg-yellow-300 hover:shadow-yellow-400/50'
                 : 'bg-black text-white hover:bg-yellow-400 hover:text-black hover:shadow-yellow-400/50'
                 }`}
@@ -61,10 +61,8 @@ const WhatsAppButton = () => {
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="40"
-                height="40"
                 viewBox="0 0 24 24"
-                className="group-hover:scale-110 transition-transform relative z-10"
+                className="w-8 h-8 md:w-10 md:h-10 group-hover:scale-110 transition-transform relative z-10"
             >
                 <path
                     fill="currentColor"

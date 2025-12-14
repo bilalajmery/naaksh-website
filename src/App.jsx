@@ -16,6 +16,7 @@ import Terms from "./pages/terms";
 import { useEffect, useState } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from "./components/Loader";
 
 const titles = {
   "/": "NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
@@ -35,6 +36,7 @@ function App() {
   const location = useLocation();
   const [categories, setCategories] = useState([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
+  const [isPageLoading, setIsPageLoading] = useState(false);
 
   useEffect(() => {
     fetch("/category/data.json")
@@ -50,6 +52,14 @@ function App() {
   }, []);
 
   useEffect(() => {
+    setIsPageLoading(true);
+    const timer = setTimeout(() => {
+      setIsPageLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
@@ -63,6 +73,7 @@ function App() {
 
   return (
     <>
+      {isPageLoading && <Loader />}
       <Navbar categories={categories} loadingCategories={loadingCategories} />
       <Routes>
         <Route path="/" element={<Home />} />

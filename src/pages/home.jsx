@@ -103,7 +103,7 @@ export default function Home() {
       </Helmet>
       <div>
         {/* HERO BANNER */}
-        <section className="relative h-screen">
+        <section className="relative h-[25vh] md:h-screen">
           <Swiper
             modules={[Navigation, Autoplay, EffectFade]}
             effect="fade"
@@ -123,14 +123,14 @@ export default function Home() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="prev absolute left-8 top-1/2 -translate-y-1/2 z-20 cursor-pointer">
-            <div className="w-14 h-14 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center">
-              <ChevronLeft size={32} className="text-white" />
+          <div className="prev absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 cursor-pointer">
+            <div className="w-8 h-8 md:w-14 md:h-14 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center">
+              <ChevronLeft className="w-5 h-5 md:w-8 md:h-8 text-white" />
             </div>
           </div>
-          <div className="next absolute right-8 top-1/2 -translate-y-1/2 z-20 cursor-pointer">
-            <div className="w-14 h-14 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center">
-              <ChevronRight size={32} className="text-white" />
+          <div className="next absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 cursor-pointer">
+            <div className="w-8 h-8 md:w-14 md:h-14 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center">
+              <ChevronRight className="w-5 h-5 md:w-8 md:h-8 text-white" />
             </div>
           </div>
         </section>
@@ -138,7 +138,7 @@ export default function Home() {
         {/* NEW ARRIVALS */}
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-5xl md:text-7xl font-black text-center mb-16 tracking-tighter">
+            <h2 className="text-5xl md:text-2xl font-black text-center mb-16 tracking-tighter">
               NEW <span className="text-yellow-400">ARRIVALS</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
@@ -178,7 +178,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent" />
                   <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center w-full">
-                    <h3 className="text-white-400 text-sm mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 className="text-white text-sm mt-1 font-bold opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                       {cat.name.toUpperCase()}
                     </h3>
                   </div>
@@ -189,7 +189,7 @@ export default function Home() {
         </section>
 
         {/* DYNAMIC COLLECTION SECTION */}
-        <section className="py-24 bg-white">
+        <section className="pt-24 pb-8 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-5xl md:text-7xl font-black text-center mb-16 tracking-tighter">
               {featuredCategory.toUpperCase()} <span className="text-yellow-400">COLLECTION</span>
@@ -217,39 +217,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* VIDEO SECTION */}
-        <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
-          <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
-            <source src="https://viewnshop.com/assets/sample-DP2YW5i1.mp4" type="video/mp4" />
-          </video>
-
-          <div className="absolute inset-0 bg-black/50"></div>
-
-          <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
-            <div className="max-w-4xl">
-              <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter">
-                STYLE MEETS <span className="text-yellow-400">COMFORT</span>
-              </h2>
-              <p className="text-white/90 text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
-                Experience premium streetwear designed for the modern lifestyle. Quality fabrics, timeless
-                designs, unbeatable comfort.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <NavLink
-                  to="/shop"
-                  className="bg-black text-white px-10 py-4 text-sm font-bold tracking-wider hover:bg-yellow-400 hover:text-black transition-colors uppercase rounded-[5px]"
-                >
-                  Shop Now
-                </NavLink>
-                <NavLink
-                  to="/about"
-                  className="bg-yellow-400 text-black border-2 border-black px-10 py-4 text-sm font-bold tracking-wider hover:bg-black hover:text-yellow-400 hover:border-yellow-400 transition-colors uppercase rounded-[5px]"
-                >
-                  Our Story
-                </NavLink>
-              </div>
-            </div>
-          </div>
+        {/* PROMO BANNER SECTION */}
+        <section className="w-full">
+          <NavLink to="/product/dream-maroon-sweatshirt">
+            <img src="/home_banner.png" alt="Naaksh Promo Banner" className="w-full h-auto object-cover" />
+          </NavLink>
         </section>
 
         {/* TESTIMONIALS */}
