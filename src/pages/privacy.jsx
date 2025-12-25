@@ -6,6 +6,7 @@ export default function Privacy() {
         <>
             <Helmet>
                 <meta name="description" content="Privacy Policy for NAAKSH - Learn how we collect, use, and protect your personal information." />
+                <link rel="canonical" href="https://naakshofficial.com/privacy" />
             </Helmet>
 
             <div className="min-h-screen bg-white pt-32 pb-20">

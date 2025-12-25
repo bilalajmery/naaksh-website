@@ -13,6 +13,8 @@ import ProductDetail from "./pages/productDetail";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/privacy";
 import Terms from "./pages/terms";
+import Blog from "./pages/blog";
+import BlogDetail from "./pages/blogDetail";
 import { useEffect, useState } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,6 +31,8 @@ const titles = {
   "/product/:slug": "Product | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
   "/privacy": "Privacy Policy | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
   "/terms": "Terms of Service | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
+  "/blog": "Journal | NAAKSH | Streetwear Insights & Fashion Trends",
+  "/blog/:slug": "Article | NAAKSH | Streetwear Insights & Fashion Trends",
   "/404": "404 - Page Not Found | NAAKSH | Premium Streetwear & Urban Fashion in Pakistan",
 }
 
@@ -86,6 +90,8 @@ function App() {
         <Route path="/product/:slug" element={<ProductDetail />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogDetail />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>

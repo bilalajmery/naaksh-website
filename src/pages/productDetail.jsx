@@ -160,6 +160,7 @@ export default function ProductDetail() {
                 <meta property="og:url" content={window.location.href} key="og:url" />
                 <meta property="og:type" content="product" key="og:type" />
                 <meta name="twitter:card" content="summary_large_image" key="twitter:card" />
+                <link rel="canonical" href={`https://naakshofficial.com/product/${product.slug}`} />
             </Helmet>
             {/* Breadcrumbs */}
             <div className="max-w-7xl mx-auto px-6 py-6">

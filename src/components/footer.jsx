@@ -97,7 +97,7 @@ function Footer({ categories, loadingCategories }) {
                 <Music2 size={20} />
               </a>
               <a
-                href="https://www.youtube.com/@naakshofficial"
+                href="https://www.youtube.com/@NaakshOfficial-f9h"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"

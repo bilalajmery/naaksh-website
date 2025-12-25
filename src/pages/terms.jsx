@@ -6,6 +6,7 @@ export default function Terms() {
         <>
             <Helmet>
                 <meta name="description" content="Terms of Service for NAAKSH - Read our terms and conditions for using our website and purchasing our products." />
+                <link rel="canonical" href="https://naakshofficial.com/terms" />
             </Helmet>
 
             <div className="min-h-screen bg-white pt-32 pb-20">

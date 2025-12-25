@@ -11,6 +11,7 @@ const staticRoutes = [
     '/',
     '/about',
     '/shop',
+    '/blog',
     '/contact',
     '/cart',
     '/wishlist',
@@ -28,13 +29,17 @@ async function generateSitemap() {
         const categoryDataPath = path.join(__dirname, 'public', 'category', 'data.json');
         const categoryData = JSON.parse(fs.readFileSync(categoryDataPath, 'utf-8'));
 
+        // Read Blog Data
+        const blogDataPath = path.join(__dirname, 'public', 'blog', 'data.json');
+        const blogData = JSON.parse(fs.readFileSync(blogDataPath, 'utf-8'));
+
         let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
                        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
         // Helper to get priority
         const getPriority = (route) => {
             if (route === '/') return '1.0';
-            if (route === '/shop') return '0.9';
+            if (route === '/shop' || route === '/blog') return '0.9';
             if (['/about', '/contact'].includes(route)) return '0.8';
             return '0.6'; // cart, wishlist
         };
@@ -69,6 +74,16 @@ async function generateSitemap() {
                 </url>`;
         });
 
+        // Add Blog Routes
+        blogData.forEach(post => {
+            sitemap += `
+                <url>
+                    <loc>${BASE_URL}/blog/${post.slug}</loc>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.8</priority>
+                </url>`;
+        });
+
         sitemap += `</urlset>`;
 
         // Write to sitemap.xml
@@ -76,7 +91,7 @@ async function generateSitemap() {
         fs.writeFileSync(sitemapPath, sitemap);
 
         console.log(`Sitemap generated successfully at ${sitemapPath}`);
-        console.log(`Total URLs: ${staticRoutes.length + categoryData.length + productData.length}`);
+        console.log(`Total URLs: ${staticRoutes.length + categoryData.length + productData.length + blogData.length}`);
 
     } catch (error) {
         console.error('Error generating sitemap:', error);

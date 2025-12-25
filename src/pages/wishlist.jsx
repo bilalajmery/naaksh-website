@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import { NavLink } from "react-router-dom";
 import { Heart } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 export default function Wishlist() {
   const [wishlistProducts, setWishlistProducts] = useState([]);
@@ -83,6 +84,11 @@ export default function Wishlist() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Wishlist | NAAKSH</title>
+        <meta name="description" content="View your favorite streetwear items in your wishlist." />
+        <link rel="canonical" href="https://naakshofficial.com/wishlist" />
+      </Helmet>
       <div className="max-w-7xl mx-auto px-6 py-12">
         <nav className="mb-8" aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm">

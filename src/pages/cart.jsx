@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, Plus, Minus, Trash2, ShoppingBag, ChevronDown } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 export default function Cart() {
     const [cartItems, setCartItems] = useState(() => {
@@ -130,6 +131,11 @@ export default function Cart() {
 
     return (
         <div className="min-h-screen bg-white">
+            <Helmet>
+                <title>Cart | NAAKSH</title>
+                <meta name="description" content="View your cart and proceed to checkout." />
+                <link rel="canonical" href="https://naakshofficial.com/cart" />
+            </Helmet>
             <div className="max-w-7xl mx-auto px-6 py-6">
 
                 {/* Breadcrumbs */}

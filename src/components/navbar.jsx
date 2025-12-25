@@ -42,6 +42,7 @@ function Navbar({ categories, loadingCategories }) {
   const navItems = [
     { to: "/", label: "Home" },
     { to: "/shop", label: "Shop" },
+    { to: "/blog", label: "Journal" },
     { to: "/about", label: "About Us" },
     { to: "/contact", label: "Contact Us" },
   ];
