@@ -19,7 +19,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   // CHANGE ONLY THIS ONE LINE → FULL COLLECTION SECTION CHANGES
-  const featuredCategory = "Hoodies";
+  const featuredCategory = "Drop Shoulder Tees";
 
   // Fetch Products + Categories in Parallel
   useEffect(() => {
@@ -40,8 +40,13 @@ export default function Home() {
       });
   }, []);
 
-  // Latest 8 products → New Arrivals
-  const newArrivals = products.slice(0, 8);
+  // Selected categories for New Arrivals
+  const newArrivalCategories = ["Drop Shoulder Tees"];
+
+  // Latest 8 products from selected categories → New Arrivals
+  const newArrivals = products
+    .filter((p) => newArrivalCategories.includes(p.category))
+    .slice(0, 8);
 
   // Latest 8 from featured category
   const featuredProducts = products.filter((p) => p.category === featuredCategory).slice(0, 8);

@@ -19,6 +19,8 @@ export default function ProductDetail() {
     const [activeTab, setActiveTab] = useState('description');
     const [isFavorite, setIsFavorite] = useState(false);
     const [mainImage, setMainImage] = useState(0);
+    const [zoomPos, setZoomPos] = useState({ x: 0, y: 0 });
+    const [showZoom, setShowZoom] = useState(false);
 
     // Load product data
     useEffect(() => {
@@ -87,6 +89,13 @@ export default function ProductDetail() {
     const handleQuantityChange = (action) => {
         if (action === 'increment') setQuantity(q => q + 1);
         if (action === 'decrement' && quantity > 1) setQuantity(q => q - 1);
+    };
+
+    const handleMouseMove = (e) => {
+        const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+        const x = ((e.clientX - left) / width) * 100;
+        const y = ((e.clientY - top) / height) * 100;
+        setZoomPos({ x, y });
     };
 
     const addToCart = (isBuyNow = false) => {
@@ -196,11 +205,29 @@ export default function ProductDetail() {
                                     playsInline
                                 />
                             ) : (
-                                <img
-                                    src={currentImages[mainImage] || '/placeholder.jpg'}
-                                    alt={product.name}
-                                    className="w-full h-full object-cover"
-                                />
+                                <div
+                                    className="relative w-full h-full cursor-zoom-in"
+                                    onMouseMove={handleMouseMove}
+                                    onMouseEnter={() => setShowZoom(true)}
+                                    onMouseLeave={() => setShowZoom(false)}
+                                >
+                                    <img
+                                        src={currentImages[mainImage] || '/placeholder.jpg'}
+                                        alt={product.name}
+                                        className="w-full h-full object-cover"
+                                    />
+                                    {showZoom && (
+                                        <div
+                                            className="absolute inset-0 pointer-events-none z-20 transition-opacity duration-300"
+                                            style={{
+                                                backgroundImage: `url(${currentImages[mainImage]})`,
+                                                backgroundPosition: `${zoomPos.x}% ${zoomPos.y}%`,
+                                                backgroundSize: '250%',
+                                                backgroundRepeat: 'no-repeat'
+                                            }}
+                                        />
+                                    )}
+                                </div>
                             )}
 
                             <div className="absolute top-6 right-6 flex gap-3">
