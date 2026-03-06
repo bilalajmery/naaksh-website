@@ -48,8 +48,14 @@ export default function Home() {
     .filter((p) => newArrivalCategories.includes(p.category))
     .slice(0, 8);
 
+  // Products with isFeatured: true → shuffled & max 8
+  const featuredProducts = products
+    .filter((p) => p.isFeatured === true)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 8);
+
   // Latest 8 from featured category
-  const featuredProducts = products.filter((p) => p.category === featuredCategory).slice(0, 8);
+  const categoryFeaturedProducts = products.filter((p) => p.category === featuredCategory).slice(0, 8);
 
   if (loading) {
     return (
@@ -140,8 +146,32 @@ export default function Home() {
           </div>
         </section>
 
-        {/* NEW ARRIVALS */}
-        <section className="py-24 bg-white">
+        {/* FEATURED PRODUCTS */}
+        {featuredProducts.length > 0 && (
+          <section className="py-24 bg-white">
+            <div className="max-w-7xl mx-auto px-6">
+              <h2 className="text-5xl md:text-2xl font-black text-center mb-16 tracking-tighter">
+                FEATURED <span className="text-yellow-400">PRODUCTS</span>
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+                {featuredProducts.map((p) => (
+                  <ProductCard key={p.id} product={p} />
+                ))}
+              </div>
+              <div className="text-center mt-16">
+                <NavLink
+                  to="/shop"
+                  className="inline-block bg-black text-white px-12 py-4 text-sm font-medium tracking-wider hover:bg-gray-600 cursor-pointer uppercase rounded"
+                >
+                  <span className="text-yellow-400">See All Products</span>
+                </NavLink>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* NEW ARRIVALS - commented out for now */}
+        {/* <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-5xl md:text-2xl font-black text-center mb-16 tracking-tighter">
               NEW <span className="text-yellow-400">ARRIVALS</span>
@@ -160,9 +190,9 @@ export default function Home() {
               </NavLink>
             </div>
           </div>
-        </section>
+        </section> */}
 
-        {/* SHOP BY CATEGORY → FROM /category/data.json */}
+        {/* SHOP BY CATEGORY */}
         <section className="py-24 bg-black text-white">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-5xl md:text-7xl font-black text-center mb-16 tracking-tighter">
@@ -200,10 +230,10 @@ export default function Home() {
               {featuredCategory.toUpperCase()} <span className="text-yellow-400">COLLECTION</span>
             </h2>
 
-            {featuredProducts.length > 0 ? (
+            {categoryFeaturedProducts.length > 0 ? (
               <>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-                  {featuredProducts.map((p) => (
+                  {categoryFeaturedProducts.map((p) => (
                     <ProductCard key={p.id} product={p} />
                   ))}
                 </div>

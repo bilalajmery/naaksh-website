@@ -3,6 +3,7 @@
     "id": 1,
     "slug": "discipline-white-hoodie",
     "name": "Mens Premium DISCIPLINE White Hoodie",
+    "isFeatured": false,
     "price": "PKR 1,199",
     "priceNum": 1199,
     "original": "PKR 2,399",
@@ -58,6 +59,7 @@
     "id": 2,
     "slug": "focus-black-sweatshirt",
     "name": "Men’s Premium “FOCUS” Printed Black Sweatshirt",
+    "isFeatured": false,
     "price": "PKR 1,099",
     "priceNum": 1099,
     "original": "PKR 2,400",
@@ -388,6 +390,7 @@
     "id": 8,
     "slug": "navy-blue-hoodie",
     "name": "Men’s Premium Blue Hoodie",
+    "isFeatured": false,
     "price": "PKR 1,199",
     "priceNum": 1199,
     "original": "PKR 2,399",
@@ -605,6 +608,7 @@
     "id": 12,
     "slug": "rich-club-black-hoodie",
     "name": "Mens Rich Club Premium Hoodie Luxury Streetwear Edition",
+    "isFeatured": false,
     "price": "PKR 1,199",
     "priceNum": 1199,
     "original": "PKR 2,399",
@@ -1194,6 +1198,7 @@
     "originalNum": 1999,
     "badge": "40% OFF",
     "rating": 4.9,
+    "isFeatured": true,
     "category": "Drop Shoulder Tees",
     "description": "The NEVER STOP DREAMING Drop Shoulder Tee is designed for those who chase goals fearlessly. Featuring a bold motivational graphic on a deep black base, this tee brings inspiration and style together. Made with premium soft cotton and an oversized drop-shoulder cut, it offers all-day comfort, modern streetwear vibes, and a powerful message that stands out anywhere.",
     "features": [
@@ -1215,8 +1220,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/never-stop-dreaming-drop-shoulder-tee/1.png",
-          "/product/never-stop-dreaming-drop-shoulder-tee/2.png"
+          "/product/never-stop-dreaming-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -1679,6 +1683,7 @@
     "originalNum": 1799,
     "badge": "33% OFF",
     "rating": 4.8,
+    "isFeatured": true,
     "category": "Drop Shoulder Tees",
     "description": "The Seek Graphic Print Drop Shoulder Tees is designed for a bold streetwear look with everyday comfort. Crafted from premium soft fabric, it features a standout graphic print on a classic black base, making it perfect for casual wear, winter layering, and modern street style.",
     "features": [
@@ -1733,6 +1738,7 @@
     "originalNum": 1799,
     "badge": "33% OFF",
     "rating": 4.7,
+    "isFeatured": true,
     "category": "Drop Shoulder Tees",
     "description": "The Focus Graphic Print Drop Shoulder Tee is designed for those who stay driven and motivated. Featuring a clean yet bold Focus typography print on a deep black base, this oversized tee blends minimal street style with everyday comfort. Perfect for casual wear, university, gym layering, and modern street fashion.",
     "features": [
@@ -1842,6 +1848,7 @@
     "originalNum": 1799,
     "badge": "33% OFF",
     "rating": 4.9,
+    "isFeatured": true,
     "category": "Drop Shoulder Tees",
     "description": "The Vegeta Graphic Print Drop Shoulder Tee is designed for anime lovers who want a bold streetwear look with everyday comfort. Crafted from premium soft fabric, it features a powerful Vegeta-inspired graphic print on a classic black base, making it perfect for casual wear, winter layering, and modern street style.",
     "features": [
@@ -1911,6 +1918,7 @@
     "originalNum": 1799,
     "badge": "33% OFF",
     "rating": 4.8,
+    "isFeatured": true,
     "category": "Drop Shoulder Tees",
     "description": "The Break Rules Graphic Print Drop Shoulder Tee is made for those who live bold and fearless. Designed with a powerful street-style graphic, this oversized tee delivers premium comfort with a modern urban vibe. Perfect for casual wear, hangouts, travel, and everyday street fashion.",
     "features": [
@@ -2031,6 +2039,7 @@
     "originalNum": 1899,
     "badge": "47% OFF",
     "rating": 4.9,
+    "isFeatured": true,
     "category": "Drop Shoulder Tees",
     "description": "THE FUTURE Drop Shoulder T-Shirt brings a bold statement look with its clean vertical typography. Designed with an oversized modern streetwear fit, this tee offers premium comfort, soft breathable fabric, and long-lasting print quality. Perfect for casual wear, summer outfits, gym sessions, and everyday styling.",
     "features": [
@@ -2048,17 +2057,17 @@
     ],
     "colors": [
       {
-        "name": "White",
-        "hex": "#ffffff",
-        "images": [
-          "/product/the-future-drop-shoulder-tee/2.png"
-        ]
-      },
-      {
         "name": "Teal",
         "hex": "#207C8C",
         "images": [
           "/product/the-future-drop-shoulder-tee/1.png"
+        ]
+      },
+      {
+        "name": "White",
+        "hex": "#ffffff",
+        "images": [
+          "/product/the-future-drop-shoulder-tee/2.png"
         ]
       },
       {
@@ -2097,6 +2106,7 @@
     "originalNum": 1999,
     "badge": "45% OFF",
     "rating": 4.9,
+    "isFeatured": true,
     "category": "Drop Shoulder Tees",
     "description": "The MELTING Drop Shoulder T-Shirt brings a bold streetwear vibe with its unique 3D melting text design on both the front and back. Crafted with premium breathable cotton-blend fabric, this tee offers a relaxed oversized fit—perfect for casual wear, urban styling, and everyday comfort. A statement piece designed for those who love expressive and modern fashion.",
     "features": [
@@ -2210,6 +2220,7 @@
     "originalNum": 1899,
     "badge": "42% OFF",
     "rating": 4.8,
+    "isFeatured": true,
     "category": "Drop Shoulder Tees",
     "description": "This Japanese Calligraphy Drop Shoulder T-Shirt brings a bold and artistic streetwear vibe with its striking red sun emblem and clean vertical Kanji print. Crafted with premium soft cotton, this oversized tee offers maximum comfort, breathable fabric, and a unique modern aesthetic. Perfect for casual wear, street style, and everyday fashion.",
     "features": [
