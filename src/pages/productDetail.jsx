@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { ShoppingBag, Check, Star, Heart, Minus, Plus, Truck } from 'lucide-react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
@@ -19,8 +19,14 @@ export default function ProductDetail() {
     const [activeTab, setActiveTab] = useState('description');
     const [isFavorite, setIsFavorite] = useState(false);
     const [mainImage, setMainImage] = useState(0);
-    const [zoomPos, setZoomPos] = useState({ x: 0, y: 0 });
+
+    // Advanced Zoom State
     const [showZoom, setShowZoom] = useState(false);
+    const [lensPos, setLensPos] = useState({ x: 0, y: 0 });
+    const [zoomBg, setZoomBg] = useState({ x: 0, y: 0 });
+    const imgContainerRef = useRef(null);
+    const LENS_SIZE = 150; // px
+    const ZOOM_LEVEL = 2.5;
 
     // Load product data
     useEffect(() => {
@@ -91,12 +97,26 @@ export default function ProductDetail() {
         if (action === 'decrement' && quantity > 1) setQuantity(q => q - 1);
     };
 
-    const handleMouseMove = (e) => {
-        const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-        const x = ((e.clientX - left) / width) * 100;
-        const y = ((e.clientY - top) / height) * 100;
-        setZoomPos({ x, y });
-    };
+    const handleMouseMove = useCallback((e) => {
+        const container = imgContainerRef.current;
+        if (!container) return;
+
+        const { left, top, width, height } = container.getBoundingClientRect();
+        const mouseX = e.clientX - left;
+        const mouseY = e.clientY - top;
+
+        // Clamp lens position within image bounds
+        const halfLens = LENS_SIZE / 2;
+        const lensX = Math.max(halfLens, Math.min(mouseX, width - halfLens));
+        const lensY = Math.max(halfLens, Math.min(mouseY, height - halfLens));
+
+        setLensPos({ x: lensX - halfLens, y: lensY - halfLens });
+
+        // Calculate zoom background position (percentage)
+        const bgX = (lensX / width) * 100;
+        const bgY = (lensY / height) * 100;
+        setZoomBg({ x: bgX, y: bgY });
+    }, [LENS_SIZE]);
 
     const addToCart = (isBuyNow = false) => {
         if (!selectedSize) {
@@ -186,8 +206,10 @@ export default function ProductDetail() {
                 <div className="grid lg:grid-cols-2 gap-12">
 
                     {/* Images */}
-                    <div className="space-y-4">
-                        <div className="relative bg-gray-50 rounded-xl overflow-hidden aspect-square">
+                    <div className="space-y-4 relative">
+                        <div className="relative bg-gray-50 rounded-xl overflow-hidden aspect-square"
+                            ref={imgContainerRef}
+                        >
                             {product.badge && (
                                 <div className="absolute top-6 left-6 bg-black text-white px-4 py-2 text-sm font-bold z-10">
                                     {discount}% OFF
@@ -206,7 +228,7 @@ export default function ProductDetail() {
                                 />
                             ) : (
                                 <div
-                                    className="relative w-full h-full cursor-zoom-in"
+                                    className="relative w-full h-full cursor-crosshair"
                                     onMouseMove={handleMouseMove}
                                     onMouseEnter={() => setShowZoom(true)}
                                     onMouseLeave={() => setShowZoom(false)}
@@ -214,23 +236,37 @@ export default function ProductDetail() {
                                     <img
                                         src={currentImages[mainImage] || '/placeholder.jpg'}
                                         alt={product.name}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-cover select-none"
+                                        draggable={false}
                                     />
+
+                                    {/* Magnifying Lens Circle */}
                                     {showZoom && (
                                         <div
-                                            className="absolute inset-0 pointer-events-none z-20 transition-opacity duration-300"
+                                            className="absolute pointer-events-none z-20 rounded-full border-[3px] border-black/70 shadow-[0_0_0_3px_rgba(255,255,255,0.6),0_8px_32px_rgba(0,0,0,0.3)] hidden lg:block"
                                             style={{
+                                                width: LENS_SIZE,
+                                                height: LENS_SIZE,
+                                                left: lensPos.x,
+                                                top: lensPos.y,
                                                 backgroundImage: `url(${currentImages[mainImage]})`,
-                                                backgroundPosition: `${zoomPos.x}% ${zoomPos.y}%`,
-                                                backgroundSize: '250%',
-                                                backgroundRepeat: 'no-repeat'
+                                                backgroundSize: `${ZOOM_LEVEL * 100}%`,
+                                                backgroundPosition: `${zoomBg.x}% ${zoomBg.y}%`,
+                                                backgroundRepeat: 'no-repeat',
+                                                transition: 'left 0.05s ease-out, top 0.05s ease-out',
                                             }}
-                                        />
+                                        >
+                                            {/* Crosshair */}
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <div className="w-px h-full bg-black/20 absolute" />
+                                                <div className="h-px w-full bg-black/20 absolute" />
+                                            </div>
+                                        </div>
                                     )}
                                 </div>
                             )}
 
-                            <div className="absolute top-6 right-6 flex gap-3">
+                            <div className="absolute top-6 right-6 flex gap-3 z-10">
                                 <button
                                     onClick={toggleWishlist}
                                     className={`w-12 h-12 rounded-full backdrop-blur-md flex items-center justify-center transition-all ${isFavorite ? 'bg-red-500 text-white' : 'bg-white/80 hover:bg-white'}`}
@@ -262,6 +298,31 @@ export default function ProductDetail() {
                                 </button>
                             ))}
                         </div>
+
+                        {/* Zoom Preview Panel - appears on right side on desktop */}
+                        {showZoom && !isVideo(currentImages[mainImage]) && (
+                            <div
+                                className="hidden lg:block absolute top-0 left-[calc(100%+16px)] w-[500px] h-[500px] rounded-2xl overflow-hidden border-2 border-gray-200 bg-white z-50 shadow-2xl"
+                                style={{
+                                    backgroundImage: `url(${currentImages[mainImage]})`,
+                                    backgroundSize: `${ZOOM_LEVEL * 100}%`,
+                                    backgroundPosition: `${zoomBg.x}% ${zoomBg.y}%`,
+                                    backgroundRepeat: 'no-repeat',
+                                    animation: 'zoomFadeIn 0.2s ease-out',
+                                }}
+                            >
+                                <div className="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] font-bold px-2 py-1 rounded-md tracking-wider uppercase">
+                                    {ZOOM_LEVEL}x Zoom
+                                </div>
+                            </div>
+                        )}
+
+                        <style>{`
+                            @keyframes zoomFadeIn {
+                                from { opacity: 0; transform: scale(0.95); }
+                                to { opacity: 1; transform: scale(1); }
+                            }
+                        `}</style>
                     </div>
 
                     <div>
