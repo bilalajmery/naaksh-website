@@ -54,8 +54,11 @@ export default function Home() {
     .sort(() => Math.random() - 0.5)
     .slice(0, 8);
 
-  // Latest 8 from featured category
-  const categoryFeaturedProducts = products.filter((p) => p.category === featuredCategory).slice(0, 8);
+  // Random 8 from featured category
+  const categoryFeaturedProducts = products
+    .filter((p) => p.category === featuredCategory)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 8);
 
   if (loading) {
     return (
