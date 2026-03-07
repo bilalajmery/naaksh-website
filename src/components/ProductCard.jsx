@@ -63,6 +63,14 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
           </div>
         )}
 
+        {product.isFeatured && (
+          <div
+            className={`absolute ${product.badge ? 'top-10' : 'top-3'} left-3 px-2.5 py-1 text-[9px] font-bold tracking-widest z-10 uppercase bg-yellow-400 text-black`}
+          >
+            ★ Featured
+          </div>
+        )}
+
         {/* Wishlist Button */}
         <button
           onClick={toggleWishlist}
