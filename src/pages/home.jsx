@@ -72,10 +72,9 @@ export default function Home() {
   }
 
   const bannerImages = [
-    "/hero-section/1.jpg",
-    "/hero-section/2.jpg",
-    "/hero-section/3.jpg",
-    "/hero-section/4.jpg",
+    "/hero-section/5.png",
+    "/hero-section/6.png",
+    "/hero-section/7.png",
   ];
 
   const testimonials = [
@@ -117,7 +116,7 @@ export default function Home() {
       </Helmet>
       <div>
         {/* HERO BANNER */}
-        <section className="relative h-[25vh] md:h-screen">
+        <section className="relative w-full">
           <Swiper
             modules={[Navigation, Autoplay, EffectFade]}
             effect="fade"
@@ -126,12 +125,12 @@ export default function Home() {
             speed={1200}
             navigation={{ prevEl: ".prev", nextEl: ".next" }}
             pagination={{ clickable: true }}
-            className="h-full"
+            className="w-full"
           >
             {bannerImages.map((img, i) => (
               <SwiperSlide key={i}>
-                <div className="relative h-full">
-                  <img src={img} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                <div className="relative w-full">
+                  <img src={img} alt="" className="w-full h-auto block" />
                   <div className="absolute inset-0 bg-black opacity-10" />
                 </div>
               </SwiperSlide>
@@ -257,7 +256,7 @@ export default function Home() {
 
         {/* PROMO BANNER SECTION */}
         <section className="w-full">
-          <NavLink to="/product/dream-maroon-sweatshirt">
+          <NavLink to="/product/dreams-drop-shoulder-tee">
             <img src="/home_banner.png" alt="Naaksh Promo Banner" className="w-full h-auto object-cover" />
           </NavLink>
         </section>

@@ -52,9 +52,9 @@ function Navbar({ categories, loadingCategories }) {
       {/* 11.11 SALE BAR */}
       <div className="hidden md:block relative z-[60] bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-black text-center py-1 shadow-xl">
         <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-sm md:text-base">
-          <span>12.12 MEGA SALE IS LIVE NOW!</span>
-          <span className="hidden sm:inline opacity-90">(Up to 50% OFF + Free Delivery Pakistan Wide)</span>
-          <span>1 - 31 Dec</span>
+          <span>EID MEGA SALE IS LIVE NOW!</span>
+          <span className="hidden sm:inline opacity-90">(Oversized Tees Just Rs. 1,199 + Free Delivery All Over Pakistan)</span>
+          <span>Limited Time Eid Offer</span>
           <NavLink to="/shop" className="underline font-bold">
             SHOP NOW
           </NavLink>
