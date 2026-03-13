@@ -196,7 +196,7 @@ export default function ProductDetail() {
                 <nav className="flex items-center gap-2 text-sm text-gray-600">
                     <Link to="/" className="hover:text-black">Home</Link>
                     <span>/</span>
-                    <Link to={`/shop?category=${product.category.toLowerCase()}`} className="hover:text-black">{product.category}</Link>
+                    <Link to={`/category/${product.category.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-black">{product.category}</Link>
                     <span>/</span>
                     <span className="text-black font-medium">{product.name}</span>
                 </nav>

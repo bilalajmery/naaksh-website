@@ -121,7 +121,7 @@ function Navbar({ categories, loadingCategories }) {
                           categories.map((cat) => (
                             <NavLink
                               key={cat.slug}
-                              to={`/shop?category=${cat.name}`}
+                              to={`/category/${cat.slug}`}
                               className="block px-8 py-4 text-sm font-medium text-gray-300 hover:bg-yellow-500 hover:text-black transition"
                               onClick={() => setIsShopDropdownOpen(false)}
                             >
@@ -279,7 +279,7 @@ function Navbar({ categories, loadingCategories }) {
                             categories.map((cat) => (
                               <NavLink
                                 key={cat.slug}
-                                to={`/shop?category=${cat.name}`}
+                                to={`/category/${cat.slug}`}
                                 onClick={() => setIsMenuOpen(false)}
                                 className="block py-3 text-center text-gray-300 hover:text-yellow-400 transition font-medium"
                               >

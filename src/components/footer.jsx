@@ -151,7 +151,7 @@ function Footer({ categories, loadingCategories }) {
               <ul className="space-y-4 text-gray-300">
                 {memoizedCategory.map((cat) => (
                   <li key={cat.slug}>
-                    <NavLink to={`/shop?category=${cat.name}`} className="hover:text-yellow-400 transition">
+                    <NavLink to={`/category/${cat.slug}`} className="hover:text-yellow-400 transition">
                       {cat.name}
                     </NavLink>
                   </li>

@@ -627,7 +627,7 @@ export default function Home() {
               {categories.map((cat) => (
                 <NavLink
                   key={cat.slug}
-                  to={`/shop?category=${cat.name}`}
+                  to={`/category/${cat.slug}`}
                   className="cat-card"
                 >
                   <img src={cat.image} alt={cat.name} />
@@ -664,7 +664,7 @@ export default function Home() {
                   {featuredCategory.split(" ").slice(0, -1).join(" ")} <em>{featuredCategory.split(" ").slice(-1)}</em>
                 </h2>
               </div>
-              <NavLink to={`/shop?category=${featuredCategory}`} className="sec-cta">
+              <NavLink to={`/category/${categories.find(c => c.name === featuredCategory)?.slug || ''}`} className="sec-cta">
                 See Full Collection <ArrowRight size={14} />
               </NavLink>
             </div>

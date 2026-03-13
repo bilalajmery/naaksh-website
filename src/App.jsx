@@ -11,6 +11,7 @@ import Wishlist from "./pages/wishlist";
 import Checkout from "./pages/checkout";
 import ProductDetail from "./pages/productDetail";
 import NotFound from "./pages/NotFound";
+import CategoryProducts from "./pages/categoryProducts";
 import Privacy from "./pages/privacy";
 import Terms from "./pages/terms";
 import Blog from "./pages/blog";
@@ -68,8 +69,9 @@ function App() {
   }, [location.pathname]);
 
   useEffect(() => {
-    // Exception for product detail pages (handled dynamically)
+    // Exception for product detail & category pages (handled dynamically)
     if (location.pathname.startsWith('/product/')) return;
+    if (location.pathname.startsWith('/category/')) return;
 
     document.title = titles[location.pathname] || "NAAKSH | Premium Streetwear & Urban Fashion in Pakistan";
   }, [location.pathname]);
@@ -88,6 +90,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/product/:slug" element={<ProductDetail />} />
+        <Route path="/category/:slug" element={<CategoryProducts />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/blog" element={<Blog />} />

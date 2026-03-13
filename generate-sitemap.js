@@ -58,7 +58,7 @@ async function generateSitemap() {
         categoryData.forEach(cat => {
             sitemap += `
                 <url>
-                    <loc>${BASE_URL}/shop?category=${encodeURIComponent(cat.name)}</loc>
+                    <loc>${BASE_URL}/category/${cat.slug}</loc>
                     <changefreq>weekly</changefreq>
                     <priority>0.8</priority>
                 </url>`;

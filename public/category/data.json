@@ -1,38 +1,47 @@
 [
     {
         "name": "Hoodies",
+        "slug": "hoodies",
         "image": "/category/Hoodies/img.jpg"
     },
     {
         "name": "Denim Jackets",
+        "slug": "denim-jackets",
         "image": "/category/Denim Jackets/img.jpg"
     },
     {
         "name": "Classic Polo Shirts",
+        "slug": "classic-polo-shirts",
         "image": "/category/Classic Polo Shirts/img.jpg"
     },
     {
         "name": "Knitted Polo Tees",
+        "slug": "knitted-polo-tees",
         "image": "/category/Knitted Polo T-Shirts/img.jpg"
     },
     {
         "name": "Normal Basic Tees",
+        "slug": "normal-basic-tees",
         "image": "/category/Normal Basic T-shirts/img.jpg"
     },
     {
         "name": "Drop Shoulder Tees",
+        "slug": "drop-shoulder-tees",
         "image": "/category/Drop Shoulder T-shirts/img.jpg"
     },
     {
         "name": "Cargo Trouzer",
+        "slug": "cargo-trouzer",
         "image": "/category/Cargo Trouzer/img.jpg"
     },
     {
         "name": "Sweat Shirt",
+        "slug": "sweat-shirt",
         "image": "/category/Sweat Shirt/img.jpg"
     },
     {
         "name": "Textured Shirt",
+        "slug": "textured-shirt",
         "image": "/category/Textured Shirt/img.png"
     }
 ]
