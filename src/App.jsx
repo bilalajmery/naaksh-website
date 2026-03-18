@@ -44,7 +44,7 @@ function App() {
   const [isPageLoading, setIsPageLoading] = useState(false);
 
   useEffect(() => {
-    fetch("/category/data.json")
+    fetch("/category-assets/data.json")
       .then((res) => (res.ok ? res.json() : []))
       .then((data) => {
         setCategories(data);

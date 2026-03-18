@@ -21,7 +21,7 @@ export default function Wishlist() {
 
       try {
         // Fetch all products
-        const response = await fetch('/product/data.json');
+        const response = await fetch('/product-assets/data.json');
         const allProducts = await response.json();
 
         // Filter products that are in the wishlist

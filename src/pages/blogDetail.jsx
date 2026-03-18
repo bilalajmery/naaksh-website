@@ -11,7 +11,7 @@ export default function BlogDetail() {
     const [suggestedPosts, setSuggestedPosts] = useState([]);
 
     useEffect(() => {
-        fetch("/blog/data.json")
+        fetch("/blog-assets/data.json")
             .then((res) => (res.ok ? res.json() : []))
             .then((data) => {
                 const foundPost = data.find((p) => p.slug === slug);

@@ -33,7 +33,7 @@
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/discipline-hoodie/1.jpg"
+          "/product-assets/discipline-hoodie/1.jpg"
         ]
       }
     ],
@@ -88,7 +88,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/focus-sweartshirt/1.jpg"
+          "/product-assets/focus-sweartshirt/1.jpg"
         ]
       }
     ],
@@ -152,7 +152,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/badman-sweatshirt/1.jpg"
+          "/product-assets/badman-sweatshirt/1.jpg"
         ]
       }
     ],
@@ -206,7 +206,7 @@
         "name": "Beige",
         "hex": "#E6D7BE",
         "images": [
-          "/product/don't-lose/1.jpg"
+          "/product-assets/don't-lose/1.jpg"
         ]
       }
     ],
@@ -255,7 +255,7 @@
         "name": "Sea Green",
         "hex": "007872",
         "images": [
-          "/product/sea green-sweatshirt/1.jpg"
+          "/product-assets/sea green-sweatshirt/1.jpg"
         ]
       }
     ],
@@ -309,7 +309,7 @@
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/look-sweatshirt/1.jpg"
+          "/product-assets/look-sweatshirt/1.jpg"
         ]
       }
     ],
@@ -363,8 +363,8 @@
         "name": "Mahroon",
         "hex": "800000",
         "images": [
-          "/product/dream-sweatshirt/1.jpg",
-          "/product/dream-sweatshirt/2.jpg"
+          "/product-assets/dream-sweatshirt/1.jpg",
+          "/product-assets/dream-sweatshirt/2.jpg"
         ]
       }
     ],
@@ -420,7 +420,7 @@
         "name": "Blue",
         "hex": "#0C0038",
         "images": [
-          "/product/navy-blue-hoodie/1.jpg"
+          "/product-assets/navy-blue-hoodie/1.jpg"
         ]
       }
     ],
@@ -474,7 +474,7 @@
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/highway-hoodie/1.jpg"
+          "/product-assets/highway-hoodie/1.jpg"
         ]
       }
     ],
@@ -528,7 +528,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/dalkdok-hoodie/1.jpg"
+          "/product-assets/dalkdok-hoodie/1.jpg"
         ]
       }
     ],
@@ -582,7 +582,7 @@
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/focus-hoodie/1.jpg"
+          "/product-assets/focus-hoodie/1.jpg"
         ]
       }
     ],
@@ -637,7 +637,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/rich-hoodie/1.jpg"
+          "/product-assets/rich-hoodie/1.jpg"
         ]
       }
     ],
@@ -691,8 +691,8 @@
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/astute-hoodie/1.png",
-          "/product/astute-hoodie/2.png"
+          "/product-assets/astute-hoodie/1.png",
+          "/product-assets/astute-hoodie/2.png"
         ]
       }
     ],
@@ -744,42 +744,42 @@
         "name": "Green",
         "hex": "#112C19",
         "images": [
-          "/product/basic-tshirt/1.jpg"
+          "/product-assets/basic-tshirt/1.jpg"
         ]
       },
       {
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/basic-tshirt/2.jpg"
+          "/product-assets/basic-tshirt/2.jpg"
         ]
       },
       {
         "name": "Yellow",
         "hex": "#F39800",
         "images": [
-          "/product/basic-tshirt/3.jpg"
+          "/product-assets/basic-tshirt/3.jpg"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/basic-tshirt/4.jpg"
+          "/product-assets/basic-tshirt/4.jpg"
         ]
       },
       {
         "name": "Mahroon",
         "hex": "#3F1114",
         "images": [
-          "/product/basic-tshirt/5.jpg"
+          "/product-assets/basic-tshirt/5.jpg"
         ]
       },
       {
         "name": "Blue",
         "hex": "#0C1D27",
         "images": [
-          "/product/basic-tshirt/6.jpg"
+          "/product-assets/basic-tshirt/6.jpg"
         ]
       }
     ],
@@ -834,7 +834,7 @@
         "name": "Maroon",
         "hex": "#800000",
         "images": [
-          "/product/maroon-premium-hoodie/1.jpg"
+          "/product-assets/maroon-premium-hoodie/1.jpg"
         ]
       }
     ],
@@ -887,7 +887,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/tokyo-drop-shoulder-tee/1.jpg"
+          "/product-assets/tokyo-drop-shoulder-tee/1.jpg"
         ]
       }
     ],
@@ -940,8 +940,8 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/moon-howl-drop-shoulder-tee/1.jpg",
-          "/product/moon-howl-drop-shoulder-tee/2.jpg"
+          "/product-assets/moon-howl-drop-shoulder-tee/1.jpg",
+          "/product-assets/moon-howl-drop-shoulder-tee/2.jpg"
         ]
       }
     ],
@@ -996,9 +996,9 @@
         "name": "White",
         "hex": "#ffffff",
         "images": [
-          "/product/psalm-91-oversized-drop-shoulder-tee/1.png",
-          "/product/psalm-91-oversized-drop-shoulder-tee/2.png",
-          "/product/psalm-91-oversized-drop-shoulder-tee/video.mp4"
+          "/product-assets/psalm-91-oversized-drop-shoulder-tee/1.png",
+          "/product-assets/psalm-91-oversized-drop-shoulder-tee/2.png",
+          "/product-assets/psalm-91-oversized-drop-shoulder-tee/video.mp4"
         ]
       }
     ],
@@ -1051,14 +1051,14 @@
         "name": "Navy Blue",
         "hex": "#1D2A45",
         "images": [
-          "/product/authentic-vibes-only-drop-shoulder-tee/1.jpg"
+          "/product-assets/authentic-vibes-only-drop-shoulder-tee/1.jpg"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/authentic-vibes-only-drop-shoulder-tee/2.jpg"
+          "/product-assets/authentic-vibes-only-drop-shoulder-tee/2.jpg"
         ]
       }
     ],
@@ -1111,7 +1111,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/futuristic-drop-shoulder-tee/1.jpg"
+          "/product-assets/futuristic-drop-shoulder-tee/1.jpg"
         ]
       }
     ],
@@ -1166,7 +1166,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/plain-black-pure-vibe-drop-shoulder-tee/1.jpg"
+          "/product-assets/plain-black-pure-vibe-drop-shoulder-tee/1.jpg"
         ]
       }
     ],
@@ -1220,7 +1220,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/never-stop-dreaming-drop-shoulder-tee/1.png"
+          "/product-assets/never-stop-dreaming-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -1272,7 +1272,7 @@
         "name": "Camel",
         "hex": "#C69C6D",
         "images": [
-          "/product/camel-denim-jacket/1.jpg"
+          "/product-assets/camel-denim-jacket/1.jpg"
         ]
       }
     ],
@@ -1324,7 +1324,7 @@
         "name": "Blue",
         "hex": "#1E4F8A",
         "images": [
-          "/product/blue-denim-jacket/1.jpg"
+          "/product-assets/blue-denim-jacket/1.jpg"
         ]
       }
     ],
@@ -1377,14 +1377,14 @@
         "name": "Olive Green",
         "hex": "#556B2F",
         "images": [
-          "/product/cotton-baggy-cargo-trouser/1.jpg"
+          "/product-assets/cotton-baggy-cargo-trouser/1.jpg"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/cotton-baggy-cargo-trouser/2.jpg"
+          "/product-assets/cotton-baggy-cargo-trouser/2.jpg"
         ]
       }
     ],
@@ -1436,21 +1436,21 @@
         "name": "Beige",
         "hex": "#D8CFC4",
         "images": [
-          "/product/textured-short-sleeve-shirt/1.jpg"
+          "/product-assets/textured-short-sleeve-shirt/1.jpg"
         ]
       },
       {
         "name": "Brown",
         "hex": "#C2A46D",
         "images": [
-          "/product/textured-short-sleeve-shirt/2.jpg"
+          "/product-assets/textured-short-sleeve-shirt/2.jpg"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/textured-short-sleeve-shirt/3.jpg"
+          "/product-assets/textured-short-sleeve-shirt/3.jpg"
         ]
       }
     ],
@@ -1503,21 +1503,21 @@
         "name": "Blue",
         "hex": "#3A6EA5",
         "images": [
-          "/product/knitted-polo-t-shirt/1.jpg"
+          "/product-assets/knitted-polo-t-shirt/1.jpg"
         ]
       },
       {
         "name": "Brown",
         "hex": "#5A3A2E",
         "images": [
-          "/product/knitted-polo-t-shirt/2.jpg"
+          "/product-assets/knitted-polo-t-shirt/2.jpg"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/knitted-polo-t-shirt/3.jpg"
+          "/product-assets/knitted-polo-t-shirt/3.jpg"
         ]
       }
     ],
@@ -1569,35 +1569,35 @@
         "name": "Maroon",
         "hex": "#800000",
         "images": [
-          "/product/classic-polo-shirt/1.jpg"
+          "/product-assets/classic-polo-shirt/1.jpg"
         ]
       },
       {
         "name": "Green",
         "hex": "#1F7A1F",
         "images": [
-          "/product/classic-polo-shirt/2.jpg"
+          "/product-assets/classic-polo-shirt/2.jpg"
         ]
       },
       {
         "name": "Navy Blue",
         "hex": "#0A1F44",
         "images": [
-          "/product/classic-polo-shirt/3.jpg"
+          "/product-assets/classic-polo-shirt/3.jpg"
         ]
       },
       {
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/classic-polo-shirt/4.jpg"
+          "/product-assets/classic-polo-shirt/4.jpg"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/classic-polo-shirt/5.jpg"
+          "/product-assets/classic-polo-shirt/5.jpg"
         ]
       }
     ],
@@ -1650,8 +1650,8 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/seek-sweat-shirt/1.jpg",
-          "/product/seek-sweat-shirt/2.jpg"
+          "/product-assets/seek-sweat-shirt/1.jpg",
+          "/product-assets/seek-sweat-shirt/2.jpg"
         ]
       }
     ],
@@ -1706,7 +1706,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/seek-drop-shoulder-tee/1.png"
+          "/product-assets/seek-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -1761,7 +1761,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/focus-drop-shoulder-tee/1.png"
+          "/product-assets/focus-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -1816,7 +1816,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/never-stop-dreaming-drop-shoulder-tee/1.png"
+          "/product-assets/never-stop-dreaming-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -1872,21 +1872,21 @@
         "name": "Mustard Brown",
         "hex": "#976513",
         "images": [
-          "/product/vegeta-drop-shoulder-tee/3.png"
+          "/product-assets/vegeta-drop-shoulder-tee/3.png"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/vegeta-drop-shoulder-tee/1.png"
+          "/product-assets/vegeta-drop-shoulder-tee/1.png"
         ]
       },
       {
         "name": "Blue",
         "hex": "#0000FF",
         "images": [
-          "/product/vegeta-drop-shoulder-tee/2.png"
+          "/product-assets/vegeta-drop-shoulder-tee/2.png"
         ]
       }
     ],
@@ -1941,21 +1941,21 @@
         "name": "Mehroon",
         "hex": "#800000",
         "images": [
-          "/product/break-rules-drop-shoulder-tee/2.png"
+          "/product-assets/break-rules-drop-shoulder-tee/2.png"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/break-rules-drop-shoulder-tee/1.png"
+          "/product-assets/break-rules-drop-shoulder-tee/1.png"
         ]
       },
       {
         "name": "Dark Blue",
         "hex": "#0e101d",
         "images": [
-          "/product/break-rules-drop-shoulder-tee/3.png"
+          "/product-assets/break-rules-drop-shoulder-tee/3.png"
         ]
       }
     ],
@@ -2007,7 +2007,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/drop-shoulder-black/1.png"
+          "/product-assets/drop-shoulder-black/1.png"
         ]
       }
     ],
@@ -2060,21 +2060,21 @@
         "name": "Teal",
         "hex": "#207C8C",
         "images": [
-          "/product/the-future-drop-shoulder-tee/1.png"
+          "/product-assets/the-future-drop-shoulder-tee/1.png"
         ]
       },
       {
         "name": "White",
         "hex": "#ffffff",
         "images": [
-          "/product/the-future-drop-shoulder-tee/2.png"
+          "/product-assets/the-future-drop-shoulder-tee/2.png"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/the-future-drop-shoulder-tee/3.png"
+          "/product-assets/the-future-drop-shoulder-tee/3.png"
         ]
       }
     ],
@@ -2128,7 +2128,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/melting-drop-shoulder-tee/1.png"
+          "/product-assets/melting-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -2181,14 +2181,14 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/discipline-drop-shoulder-tee/2.png"
+          "/product-assets/discipline-drop-shoulder-tee/2.png"
         ]
       },
       {
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/discipline-drop-shoulder-tee/1.png"
+          "/product-assets/discipline-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -2242,7 +2242,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/japanese-calligraphy-drop-shoulder-tee/1.png"
+          "/product-assets/japanese-calligraphy-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -2296,14 +2296,14 @@
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/echo-drop-shoulder-tee/1.png"
+          "/product-assets/echo-drop-shoulder-tee/1.png"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/echo-drop-shoulder-tee/2.png"
+          "/product-assets/echo-drop-shoulder-tee/2.png"
         ]
       }
     ],
@@ -2357,7 +2357,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/disaster-drop-shoulder-tee/1.png"
+          "/product-assets/disaster-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -2410,7 +2410,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/black-minimalist-drop-shoulder-tee/1.png"
+          "/product-assets/black-minimalist-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -2463,7 +2463,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/94-drop-shoulder-tee/1.png"
+          "/product-assets/94-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -2516,42 +2516,42 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/unique-drop-shoulder-tee/1.png"
+          "/product-assets/unique-drop-shoulder-tee/1.png"
         ]
       },
       {
         "name": "Mehroon",
         "hex": "#800000",
         "images": [
-          "/product/unique-drop-shoulder-tee/2.png"
+          "/product-assets/unique-drop-shoulder-tee/2.png"
         ]
       },
       {
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/unique-drop-shoulder-tee/3.png"
+          "/product-assets/unique-drop-shoulder-tee/3.png"
         ]
       },
       {
         "name": "Navy Dark Blue",
         "hex": "#1E3A8A",
         "images": [
-          "/product/unique-drop-shoulder-tee/4.png"
+          "/product-assets/unique-drop-shoulder-tee/4.png"
         ]
       },
       {
         "name": "Teal",
         "hex": "#0e4453",
         "images": [
-          "/product/unique-drop-shoulder-tee/5.png"
+          "/product-assets/unique-drop-shoulder-tee/5.png"
         ]
       },
       {
         "name": "Deep Dark Green",
         "hex": "#064E3B",
         "images": [
-          "/product/unique-drop-shoulder-tee/6.png"
+          "/product-assets/unique-drop-shoulder-tee/6.png"
         ]
       }
     ],
@@ -2604,7 +2604,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/brave-drop-shoulder-tee/1.png"
+          "/product-assets/brave-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -2657,14 +2657,14 @@
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/astute-drop-shoulder-tee/1.png"
+          "/product-assets/astute-drop-shoulder-tee/1.png"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/astute-drop-shoulder-tee/2.png"
+          "/product-assets/astute-drop-shoulder-tee/2.png"
         ]
       }
     ],
@@ -2717,7 +2717,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/guku-drop-shoulder-tee/1.png"
+          "/product-assets/guku-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -2770,35 +2770,35 @@
         "name": "Mehroon",
         "hex": "#800000",
         "images": [
-          "/product/liberte-drop-shoulder-tee/1.png"
+          "/product-assets/liberte-drop-shoulder-tee/1.png"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/liberte-drop-shoulder-tee/2.png"
+          "/product-assets/liberte-drop-shoulder-tee/2.png"
         ]
       },
       {
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/liberte-drop-shoulder-tee/3.png"
+          "/product-assets/liberte-drop-shoulder-tee/3.png"
         ]
       },
       {
         "name": "Navy Dark Blue",
         "hex": "#1E3A8A",
         "images": [
-          "/product/liberte-drop-shoulder-tee/4.png"
+          "/product-assets/liberte-drop-shoulder-tee/4.png"
         ]
       },
       {
         "name": "Deep Dark Green",
         "hex": "#064E3B",
         "images": [
-          "/product/liberte-drop-shoulder-tee/5.png"
+          "/product-assets/liberte-drop-shoulder-tee/5.png"
         ]
       }
     ],
@@ -2851,14 +2851,14 @@
         "name": "Deep Dark Green",
         "hex": "#064E3B",
         "images": [
-          "/product/batman-minimal-drop-shoulder-tee/1.png"
+          "/product-assets/batman-minimal-drop-shoulder-tee/1.png"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/batman-minimal-drop-shoulder-tee/2.jpg"
+          "/product-assets/batman-minimal-drop-shoulder-tee/2.jpg"
         ]
       }
     ],
@@ -2911,14 +2911,14 @@
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/look-drop-shoulder-tee/1.png"
+          "/product-assets/look-drop-shoulder-tee/1.png"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/look-drop-shoulder-tee/2.png"
+          "/product-assets/look-drop-shoulder-tee/2.png"
         ]
       }
     ],
@@ -2971,7 +2971,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/dreams-drop-shoulder-tee/1.png"
+          "/product-assets/dreams-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -3024,21 +3024,21 @@
         "name": "Mustard",
         "hex": "#FFBF00",
         "images": [
-          "/product/embrace-drop-shoulder-tee/1.png"
+          "/product-assets/embrace-drop-shoulder-tee/1.png"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/embrace-drop-shoulder-tee/2.png"
+          "/product-assets/embrace-drop-shoulder-tee/2.png"
         ]
       },
       {
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/embrace-drop-shoulder-tee/3.png"
+          "/product-assets/embrace-drop-shoulder-tee/3.png"
         ]
       }
     ],
@@ -3091,7 +3091,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/if-not-know-drop-shoulder-tee/1.png"
+          "/product-assets/if-not-know-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -3144,7 +3144,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/dont-lose-your-self-drop-shoulder-tee/1.png"
+          "/product-assets/dont-lose-your-self-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -3196,7 +3196,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/me-drop-shoulder-tee/1.png"
+          "/product-assets/me-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -3249,14 +3249,14 @@
         "name": "White",
         "hex": "#FFFFFF",
         "images": [
-          "/product/x-face-drop-shoulder-tee/1.png"
+          "/product-assets/x-face-drop-shoulder-tee/1.png"
         ]
       },
       {
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/x-face-drop-shoulder-tee/2.png"
+          "/product-assets/x-face-drop-shoulder-tee/2.png"
         ]
       }
     ],
@@ -3309,8 +3309,8 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/humanity-drop-shoulder-tee/1.png",
-          "/product/humanity-drop-shoulder-tee/2.png"
+          "/product-assets/humanity-drop-shoulder-tee/1.png",
+          "/product-assets/humanity-drop-shoulder-tee/2.png"
         ]
       }
     ],
@@ -3363,7 +3363,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/bunny-drop-shoulder-tee/1.png"
+          "/product-assets/bunny-drop-shoulder-tee/1.png"
         ]
       }
     ],
@@ -3416,7 +3416,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product/rich-buddy-drop-shoulder-tee/1.png"
+          "/product-assets/rich-buddy-drop-shoulder-tee/1.png"
         ]
       }
     ],

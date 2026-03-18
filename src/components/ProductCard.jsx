@@ -99,7 +99,7 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               onError={(e) => {
                 e.target.onerror = null; // Prevent infinite loop
-                e.target.src = "/product/placeholder.png";
+                e.target.src = "/product-assets/placeholder.png";
               }}
             />
           )}

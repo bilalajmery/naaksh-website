@@ -37,7 +37,7 @@ export default function ProductDetail() {
 
         async function loadProduct() {
             try {
-                const res = await fetch('/product/data.json');
+                const res = await fetch('/product-assets/data.json');
                 if (!res.ok) throw new Error('Failed to fetch');
 
                 const products = await res.json();

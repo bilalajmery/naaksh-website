@@ -18,8 +18,8 @@ export default function CategoryProducts() {
   // Fetch data
   useEffect(() => {
     Promise.all([
-      fetch("/product/data.json").then((r) => (r.ok ? r.json() : [])),
-      fetch("/category/data.json").then((r) => (r.ok ? r.json() : [])),
+      fetch("/product-assets/data.json").then((r) => (r.ok ? r.json() : [])),
+      fetch("/category-assets/data.json").then((r) => (r.ok ? r.json() : [])),
     ])
       .then(([productData, categoryData]) => {
         setProducts(productData);

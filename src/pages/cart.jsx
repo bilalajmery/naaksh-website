@@ -26,7 +26,7 @@ export default function Cart() {
         }
 
         // Fetch all products to get available sizes/colors for dropdowns
-        fetch('/product/data.json')
+        fetch('/product-assets/data.json')
             .then(res => res.json())
             .then(data => setAllProducts(data))
             .catch(err => console.error("Failed to load products", err));

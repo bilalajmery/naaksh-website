@@ -27,8 +27,8 @@ export default function Home() {
   // Fetch Products + Categories in Parallel
   useEffect(() => {
     Promise.all([
-      fetch("/product/data.json").then((r) => (r.ok ? r.json() : [])),
-      fetch("/category/data.json").then((r) => (r.ok ? r.json() : [])),
+      fetch("/product-assets/data.json").then((r) => (r.ok ? r.json() : [])),
+      fetch("/category-assets/data.json").then((r) => (r.ok ? r.json() : [])),
     ])
       .then(([productData, categoryData]) => {
         const sortedProducts = productData.sort((a, b) => (b.id || 0) - (a.id || 0));

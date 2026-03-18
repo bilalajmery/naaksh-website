@@ -8,7 +8,7 @@ export default function Blog() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("/blog/data.json")
+        fetch("/blog-assets/data.json")
             .then((res) => (res.ok ? res.json() : []))
             .then((data) => {
                 setPosts(data);

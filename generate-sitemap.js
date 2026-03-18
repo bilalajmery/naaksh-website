@@ -22,15 +22,15 @@ const staticRoutes = [
 async function generateSitemap() {
     try {
         // Read Product Data
-        const productDataPath = path.join(__dirname, 'public', 'product', 'data.json');
+        const productDataPath = path.join(__dirname, 'public', 'product-assets', 'data.json');
         const productData = JSON.parse(fs.readFileSync(productDataPath, 'utf-8'));
 
         // Read Category Data
-        const categoryDataPath = path.join(__dirname, 'public', 'category', 'data.json');
+        const categoryDataPath = path.join(__dirname, 'public', 'category-assets', 'data.json');
         const categoryData = JSON.parse(fs.readFileSync(categoryDataPath, 'utf-8'));
 
         // Read Blog Data
-        const blogDataPath = path.join(__dirname, 'public', 'blog', 'data.json');
+        const blogDataPath = path.join(__dirname, 'public', 'blog-assets', 'data.json');
         const blogData = JSON.parse(fs.readFileSync(blogDataPath, 'utf-8'));
 
         let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
