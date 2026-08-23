@@ -1,7 +1,7 @@
-// src/components/Navbar.js  (ya jahan bhi hai)
-
-import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+'use client';
+import React, { useState, useEffect } from "react";
+import NavLink from "./NavLink";
+import Link from "next/link";
 import { Menu, X, ShoppingCart, Heart, ChevronDown } from "lucide-react";
 
 function Navbar({ categories, loadingCategories }) {
@@ -83,9 +83,8 @@ function Navbar({ categories, loadingCategories }) {
             <div className="hidden lg:flex items-center justify-center flex-1 gap-16">
               {/* Main Links */}
               {navItems.map((item, index) => (
-                <>
+                <React.Fragment key={item.to}>
                   <NavLink
-                    key={item.to}
                     to={item.to}
                     className={({ isActive }) =>
                       `text-sm font-bold tracking-widest uppercase transition-all ${isActive ? "text-yellow-400" : "text-gray-200 hover:text-yellow-400"
@@ -132,7 +131,7 @@ function Navbar({ categories, loadingCategories }) {
                       </div>
                     </div>
                   )}
-                </>
+                </React.Fragment>
               ))}
             </div>
 

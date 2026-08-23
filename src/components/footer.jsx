@@ -1,15 +1,16 @@
-import { NavLink, Link } from "react-router-dom";
+'use client';
+import NavLink from "./NavLink";
+import Link from "next/link";
 import { Instagram, Facebook, Music2, Send, Youtube } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { toast } from 'react-toastify';
 
 function Footer({ categories, loadingCategories }) {
-  const randomNumberRef = useRef(Math.random());
   const [email, setEmail] = useState('');
   const [isSubscribing, setIsSubscribing] = useState(false);
 
   const memoizedCategory = useMemo(() => {
-    return [...categories].sort(() => randomNumberRef.current - 0.5).slice(0, 5);
+    return categories ? categories.slice(0, 5) : [];
   }, [categories]);
 
   const handleSubscribe = async (e) => {
@@ -24,7 +25,7 @@ function Footer({ categories, loadingCategories }) {
     setIsSubscribing(true);
 
     try {
-      const response = await fetch(import.meta.env.VITE_SERVER_URL + '/subscribe', {
+      const response = await fetch(process.env.NEXT_PUBLIC_SERVER_URL + '/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -193,10 +194,10 @@ function Footer({ categories, loadingCategories }) {
         <div className="border-t border-gray-800 pt-8 mt-12 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           <p>© {new Date().getFullYear()} NAAKSH® – All Rights Reserved</p>
           <div className="flex gap-8 mt-4 md:mt-0">
-            <Link to="/privacy" className="hover:text-yellow-400 transition">
+            <Link href="/privacy" className="hover:text-yellow-400 transition">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="hover:text-yellow-400 transition">
+            <Link href="/terms" className="hover:text-yellow-400 transition">
               Terms of Service
             </Link>
           </div>

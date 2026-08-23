@@ -1,5 +1,6 @@
+'use client';
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import Link from "next/link";
 import { Heart } from "lucide-react";
 import { toast } from 'react-toastify';
 
@@ -48,8 +49,8 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
   };
 
   return (
-    <NavLink
-      to={`/product/${product.slug}`}
+    <Link
+      href={`/product/${product.slug}`}
       className="block group"
       onMouseEnter={() => images.length > 1 && setHoverImgIndex(1)}
       onMouseLeave={() => setHoverImgIndex(0)}
@@ -192,7 +193,7 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
           </div>
         </div>
       </div>
-    </NavLink>
+    </Link>
   );
 };
 
