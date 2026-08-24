@@ -5,6 +5,7 @@
   "/category/[slug]/page": "/category/[slug]",
   "/page": "/",
   "/privacy/page": "/privacy",
+  "/product/[slug]/page": "/product/[slug]",
   "/shop/page": "/shop",
   "/terms/page": "/terms"
 }

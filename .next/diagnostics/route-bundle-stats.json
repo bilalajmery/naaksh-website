@@ -15,6 +15,20 @@
     ]
   },
   {
+    "route": "/product/[slug]",
+    "firstLoadUncompressedJsBytes": 540576,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\22jq5z3m8y90y.js",
+      ".next\\static\\chunks\\165ro4-yb__4g.js",
+      ".next\\static\\chunks\\0qxk7e8b8pbuf.js",
+      ".next\\static\\chunks\\0jvhpaew_uadu.js",
+      ".next\\static\\chunks\\19mx3mg6lkumu.js",
+      ".next\\static\\chunks\\3odwqsnjc--hl.js",
+      ".next\\static\\chunks\\2-rtuqsgzmno4.js",
+      ".next\\static\\chunks\\turbopack-0hca3fc4j64cl.js"
+    ]
+  },
+  {
     "route": "/shop",
     "firstLoadUncompressedJsBytes": 534838,
     "firstLoadChunkPaths": [

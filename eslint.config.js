@@ -27,6 +27,8 @@ export default defineConfig([
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
       'react-hooks/purity': ['warn'],
       'react-hooks/set-state-in-effect': ['warn'],
+      'react-hooks/preserve-manual-memoization': ['off'],
+      'react-hooks/exhaustive-deps': ['warn'],
     },
   },
 ])

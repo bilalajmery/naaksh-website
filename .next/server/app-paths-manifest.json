@@ -5,6 +5,7 @@
   "/category/[slug]/page": "app/category/[slug]/page.js",
   "/page": "app/page.js",
   "/privacy/page": "app/privacy/page.js",
+  "/product/[slug]/page": "app/product/[slug]/page.js",
   "/shop/page": "app/shop/page.js",
   "/terms/page": "app/terms/page.js"
 }

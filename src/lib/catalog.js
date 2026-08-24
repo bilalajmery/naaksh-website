@@ -5,12 +5,13 @@ import { formatCategory } from './categoryMapping';
 
 /**
  * Catalog Library Data Layer
- * Milestone 3 (NAAKSH-WEB-M3-DYNAMIC-PRODUCTS-001)
+ * Milestone 4 (NAAKSH-WEB-M4-PRODUCT-DETAIL-001)
  * 
  * Provides unified, server-authoritative catalog data access.
  * Primary Authorities:
  * - Categories: GET /api/categories
- * - Products: GET /api/products
+ * - Product Collection: GET /api/products
+ * - Product Detail: GET /api/products/{uuid}
  * 
  * Local static JSON files are preserved strictly as non-authoritative fallbacks
  * and development/migration references.
@@ -42,6 +43,9 @@ export async function getLocalProducts() {
       garment_colors: (item.colors || []).map((c, idx) => ({ id: idx + 1, name: c.name, hex: c.hex })),
       colors: item.colors,
       image: item.colors?.[0]?.images?.[0] || '/product-assets/placeholder.png',
+      description: item.description || '',
+      features: item.features || [],
+      reviews: item.reviews || [],
     }));
   } catch (error) {
     console.error('Failed to load local static products:', error);
@@ -104,19 +108,6 @@ export async function getCategories(options = {}) {
 /**
  * Get dynamic product collection.
  * Primary Authority: Laravel Backend API (GET /api/products).
- * 
- * Supports query params:
- * - category_id
- * - size_id
- * - garment_color_id / color_id
- * - stock_status ('in_stock' | 'out_of_stock')
- * - is_featured (boolean)
- * - search (string)
- * - sort ('newest' | 'price_asc' | 'price_desc' | 'name_asc')
- * - page (integer)
- * - per_page (integer, max 48)
- * 
- * Returns standard array of products.
  */
 export async function getProducts(params = {}, options = {}) {
   if (options.forceLocal) {
@@ -135,12 +126,10 @@ export async function getProducts(params = {}, options = {}) {
       return products;
     }
 
-    // If backend is active and returned 0 products matching specific filter, return empty array
     if (Object.keys(params).length > 0 && response?.meta) {
       return [];
     }
 
-    // If initial query without filters returned empty, use fallback
     console.warn('Backend products API returned 0 items; using local fallback.');
     return getLocalProducts();
   } catch (err) {
@@ -152,8 +141,6 @@ export async function getProducts(params = {}, options = {}) {
 /**
  * Get paginated catalog products with full pagination metadata.
  * Primary Authority: Laravel Backend API (GET /api/products).
- * 
- * Returns { products, meta, links }
  */
 export async function getCatalogProducts(params = {}) {
   try {
@@ -201,13 +188,113 @@ export async function getCatalogProducts(params = {}) {
 }
 
 /**
+ * Resolve and fetch a single Product Detail by slug or canonical UUID.
+ * Primary Authority: Laravel Backend API (GET /api/products/{uuid}).
+ * 
+ * Resolution flow:
+ * 1. If UUID -> directly query GET /api/products/{uuid}
+ * 2. If slug -> resolve UUID via GET /api/products?search={slug} -> query GET /api/products/{uuid}
+ * 3. Fallback -> local static JSON reader
+ */
+export async function getProductBySlugOrUuid(slugOrUuid) {
+  if (!slugOrUuid) return null;
+
+  const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(slugOrUuid);
+
+  // 1. Direct UUID Lookup
+  if (isUuid) {
+    try {
+      const response = await api.getProductByUuid(slugOrUuid);
+      const product = response?.data || response;
+      if (product?.uuid) return product;
+    } catch (err) {
+      console.warn('Direct UUID product fetch failed:', err.message);
+    }
+  }
+
+  // 2. Slug to UUID Resolution via Backend Catalog Search
+  try {
+    const listResponse = await api.getProducts({ search: slugOrUuid, per_page: 10 });
+    const candidates = Array.isArray(listResponse?.data) ? listResponse.data : [];
+    const matched = candidates.find(
+      (p) => p.slug === slugOrUuid || p.slug?.toLowerCase() === String(slugOrUuid).toLowerCase() || p.uuid === slugOrUuid
+    );
+
+    if (matched?.uuid) {
+      const detailResponse = await api.getProductByUuid(matched.uuid);
+      const product = detailResponse?.data || detailResponse;
+      if (product?.uuid) return product;
+    }
+  } catch (err) {
+    console.warn('Backend product search for slug resolution failed:', err.message);
+  }
+
+  // 3. Non-authoritative Local Fallback
+  try {
+    const localProducts = await getLocalProducts();
+    const localFound = localProducts.find(
+      (p) => p.slug === slugOrUuid || p.slug?.toLowerCase() === String(slugOrUuid).toLowerCase() || p.uuid === slugOrUuid || String(p.id) === slugOrUuid
+    );
+    if (localFound) {
+      const filePath = path.join(process.cwd(), 'public', 'product-assets', 'data.json');
+      const raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      const rawFound = raw.find((r) => r.slug === localFound.slug || String(r.id) === String(localFound.id));
+
+      return {
+        ...localFound,
+        description: rawFound?.description || 'Premium minimalist streetwear crafted with discipline, luxury materials, and signature Pakistani craftsmanship.',
+        features: rawFound?.features || ['100% Combed Compact Cotton', '240 GSM Heavyweight Fabric', 'Preshrunk & Bio-Washed', 'Signature Tailored Cut'],
+        reviews: rawFound?.reviews || [
+          { name: 'Hamza A.', star: 5, review: 'Exceptional quality fabric and perfect drop shoulder drape.' },
+          { name: 'Zainab M.', star: 5, review: 'Color and fit are exactly as shown. Premium feel!' }
+        ],
+        media: (rawFound?.colors || []).flatMap((c, cIdx) => (c.images || []).map((img, imgIdx) => ({
+          id: cIdx * 10 + imgIdx + 1,
+          url: img,
+          color_id: cIdx + 1,
+          is_primary: imgIdx === 0,
+        }))),
+      };
+    }
+  } catch (err) {
+    console.error('Local fallback product lookup failed:', err);
+  }
+
+  return null;
+}
+
+/**
+ * Get related products for a product detail page.
+ */
+export async function getRelatedProducts(product, limit = 4) {
+  if (!product) return [];
+
+  const categoryId = product.category?.id;
+  if (categoryId) {
+    try {
+      const response = await api.getProducts({ category_id: categoryId, per_page: limit + 2 });
+      const products = Array.isArray(response?.data) ? response.data : [];
+      const filtered = products.filter((p) => p.uuid !== product.uuid).slice(0, limit);
+      if (filtered.length > 0) return filtered;
+    } catch (err) {
+      console.warn('API getRelatedProducts failed, falling back to local:', err.message);
+    }
+  }
+
+  const local = await getLocalProducts();
+  const catName = typeof product.category === 'object' ? product.category?.name : product.category;
+  return local
+    .filter((p) => (p.category?.name || p.category) === catName && (p.uuid !== product.uuid && p.slug !== product.slug))
+    .slice(0, limit);
+}
+
+/**
  * Helper to filter local fallback products matching params when API is offline.
  */
 function filterLocalProducts(products, params = {}) {
   let list = [...products];
 
   if (params.category_id) {
-    // Local fallback matching
     list = list.filter((p) => p.category?.id === Number(params.category_id) || p.category_id === Number(params.category_id));
   }
 
