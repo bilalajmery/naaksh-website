@@ -479,7 +479,7 @@ export default async function Home() {
             <div className="category-grid">
               {categories.map((cat) => (
                 <Link
-                  key={cat.slug}
+                  key={cat.id || cat.slug}
                   href={`/category/${cat.slug}`}
                   className="cat-card"
                 >

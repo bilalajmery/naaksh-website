@@ -1,14 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import * as api from './api';
+import { formatCategory } from './categoryMapping';
 
 /**
  * Catalog Library Data Layer
- * Milestone 1 Foundation (NAAKSH-WEB-M1-FOUNDATION-001)
+ * Milestone 2 (NAAKSH-WEB-M2-DYNAMIC-CATEGORIES-001)
  * 
- * Provides unified access to catalog datasets.
- * Prepares the architecture to seamlessly transition from local JSON fallbacks
- * to authoritative Laravel Backend APIs in subsequent milestones.
+ * Provides unified, server-authoritative catalog data access.
+ * Backend Category API (GET /api/categories) is the primary authoritative source.
+ * Local static JSON is preserved strictly as a non-authoritative fallback during development.
  */
 
 // Local Static JSON Fallback Readers
@@ -27,7 +28,8 @@ export async function getLocalCategories() {
   const filePath = path.join(process.cwd(), 'public', 'category-assets', 'data.json');
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileContents);
+    const raw = JSON.parse(fileContents);
+    return raw.map((item, index) => formatCategory({ id: index + 1, ...item }));
   } catch (error) {
     console.error('Failed to load local static categories:', error);
     return [];
@@ -45,9 +47,42 @@ export async function getLocalJournalPosts() {
   }
 }
 
-// Current catalog accessors (Static JSON retained for M1; prepared for API delegation)
+/**
+ * Get dynamic categories.
+ * Primary Authority: Laravel Backend API (GET /api/categories).
+ * Enriched with deterministic UI presentation slug and image mappings.
+ */
+export async function getCategories(options = {}) {
+  // If explicitly forcing local fallback
+  if (options.forceLocal) {
+    return getLocalCategories();
+  }
+
+  try {
+    const response = await api.getCategories();
+    const rawCategories = Array.isArray(response?.data)
+      ? response.data
+      : Array.isArray(response)
+      ? response
+      : [];
+
+    if (rawCategories.length > 0) {
+      return rawCategories.map(formatCategory);
+    }
+    
+    // If backend returned empty array, use local fallback
+    console.warn('Backend categories API returned 0 items; using local fallback.');
+    return getLocalCategories();
+  } catch (err) {
+    console.warn('Backend categories API unavailable; using local fallback:', err.message);
+    return getLocalCategories();
+  }
+}
+
+/**
+ * Get products (Milestone 1 baseline; Milestone 3 will make fully dynamic).
+ */
 export async function getProducts(options = {}) {
-  // If remote API is explicitly requested or when cutover flag is enabled
   if (options.remote) {
     try {
       const response = await api.getProducts(options.params || {});
@@ -60,23 +95,9 @@ export async function getProducts(options = {}) {
   return getLocalProducts();
 }
 
-export async function getCategories(options = {}) {
-  // If remote API is explicitly requested or when cutover flag is enabled
-  if (options.remote) {
-    try {
-      const response = await api.getCategories();
-      return response?.data || [];
-    } catch (err) {
-      console.warn('API getCategories failed, falling back to local static categories:', err.message);
-      return getLocalCategories();
-    }
-  }
-  return getLocalCategories();
-}
-
 export async function getJournalPosts() {
   return getLocalJournalPosts();
 }
 
-// Re-export central API functions for direct consumer access
-export { api };
+// Re-export central API functions and mapping helpers
+export { api, formatCategory };

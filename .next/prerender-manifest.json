@@ -5,7 +5,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 151623,
+      "htmlSize": 146086,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -17,7 +17,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 300,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/",
       "dataRoute": "/index.rsc",
       "allowHeader": [
@@ -62,7 +63,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 28675,
+      "htmlSize": 28988,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -74,7 +75,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 300,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/_not-found",
       "dataRoute": "/_not-found.rsc",
       "allowHeader": [
@@ -90,7 +92,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 41459,
+      "htmlSize": 41772,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -102,7 +104,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 300,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/about",
       "dataRoute": "/about.rsc",
       "allowHeader": [
@@ -118,7 +121,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 39379,
+      "htmlSize": 39692,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -130,7 +133,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 300,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/privacy",
       "dataRoute": "/privacy.rsc",
       "allowHeader": [
@@ -146,7 +150,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 41297,
+      "htmlSize": 41610,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -158,7 +162,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 300,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/terms",
       "dataRoute": "/terms.rsc",
       "allowHeader": [

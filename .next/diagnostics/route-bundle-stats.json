@@ -1,10 +1,10 @@
 [
   {
     "route": "/",
-    "firstLoadUncompressedJsBytes": 629193,
+    "firstLoadUncompressedJsBytes": 629211,
     "firstLoadChunkPaths": [
       ".next\\static\\chunks\\22jq5z3m8y90y.js",
-      ".next\\static\\chunks\\0gn8bt6nu088c.js",
+      ".next\\static\\chunks\\0wi55zr8u14th.js",
       ".next\\static\\chunks\\2aw_qcfpx3kxt.js",
       ".next\\static\\chunks\\0jvhpaew_uadu.js",
       ".next\\static\\chunks\\19mx3mg6lkumu.js",
@@ -15,10 +15,10 @@
   },
   {
     "route": "/_not-found",
-    "firstLoadUncompressedJsBytes": 519363,
+    "firstLoadUncompressedJsBytes": 519381,
     "firstLoadChunkPaths": [
       ".next\\static\\chunks\\22jq5z3m8y90y.js",
-      ".next\\static\\chunks\\0gn8bt6nu088c.js",
+      ".next\\static\\chunks\\0wi55zr8u14th.js",
       ".next\\static\\chunks\\0jvhpaew_uadu.js",
       ".next\\static\\chunks\\19mx3mg6lkumu.js",
       ".next\\static\\chunks\\3odwqsnjc--hl.js",
@@ -28,10 +28,10 @@
   },
   {
     "route": "/about",
-    "firstLoadUncompressedJsBytes": 519363,
+    "firstLoadUncompressedJsBytes": 519381,
     "firstLoadChunkPaths": [
       ".next\\static\\chunks\\22jq5z3m8y90y.js",
-      ".next\\static\\chunks\\0gn8bt6nu088c.js",
+      ".next\\static\\chunks\\0wi55zr8u14th.js",
       ".next\\static\\chunks\\0jvhpaew_uadu.js",
       ".next\\static\\chunks\\19mx3mg6lkumu.js",
       ".next\\static\\chunks\\3odwqsnjc--hl.js",
@@ -41,10 +41,10 @@
   },
   {
     "route": "/privacy",
-    "firstLoadUncompressedJsBytes": 519363,
+    "firstLoadUncompressedJsBytes": 519381,
     "firstLoadChunkPaths": [
       ".next\\static\\chunks\\22jq5z3m8y90y.js",
-      ".next\\static\\chunks\\0gn8bt6nu088c.js",
+      ".next\\static\\chunks\\0wi55zr8u14th.js",
       ".next\\static\\chunks\\0jvhpaew_uadu.js",
       ".next\\static\\chunks\\19mx3mg6lkumu.js",
       ".next\\static\\chunks\\3odwqsnjc--hl.js",
@@ -54,10 +54,10 @@
   },
   {
     "route": "/terms",
-    "firstLoadUncompressedJsBytes": 519363,
+    "firstLoadUncompressedJsBytes": 519381,
     "firstLoadChunkPaths": [
       ".next\\static\\chunks\\22jq5z3m8y90y.js",
-      ".next\\static\\chunks\\0gn8bt6nu088c.js",
+      ".next\\static\\chunks\\0wi55zr8u14th.js",
       ".next\\static\\chunks\\0jvhpaew_uadu.js",
       ".next\\static\\chunks\\19mx3mg6lkumu.js",
       ".next\\static\\chunks\\3odwqsnjc--hl.js",
