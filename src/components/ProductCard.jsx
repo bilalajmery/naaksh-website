@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Heart } from "lucide-react";
 import { toast } from 'react-toastify';
+import { addToCart } from "../lib/cart";
+import { isInWishlist, toggleWishlist } from "../lib/wishlist";
 
 const ProductCard = ({ product, onRemoveFromWishlist }) => {
   const [hoverImgIndex, setHoverImgIndex] = useState(0);
@@ -18,37 +20,41 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
   const displayPrice = product?.price || product?.price_display || (product?.selling_price ? `PKR ${Number(product.selling_price).toLocaleString()}` : '');
   const displayOriginal = product?.original || product?.original_price_display || (product?.original_selling_price ? `PKR ${Number(product.original_selling_price).toLocaleString()}` : '');
   const isPurchasable = product?.purchasable !== false && product?.stock_status !== 'out_of_stock';
-  const productIdentifier = product?.slug || product?.uuid || product?.id;
+  const canonicalUuid = product?.uuid || product?.id;
+  const productSlug = product?.slug || canonicalUuid;
 
-  // Helper function to check if file is a video
   const isVideo = (url) => {
     return url?.toLowerCase().endsWith('.mp4');
   };
 
-  // Check initial wishlist status
+  // Check and sync wishlist status
   useEffect(() => {
-    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    setIsFavorite(wishlist.includes(productIdentifier));
-  }, [productIdentifier]);
+    const updateFav = () => {
+      setIsFavorite(isInWishlist(canonicalUuid) || isInWishlist(productSlug));
+    };
 
-  const toggleWishlist = (e) => {
+    updateFav();
+    window.addEventListener("wishlist-updated", updateFav);
+    window.addEventListener("storage", updateFav);
+
+    return () => {
+      window.removeEventListener("wishlist-updated", updateFav);
+      window.removeEventListener("storage", updateFav);
+    };
+  }, [canonicalUuid, productSlug]);
+
+  const handleToggleWishlist = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
-    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    let updatedWishlist;
+    const targetId = canonicalUuid || productSlug;
+    const added = toggleWishlist(targetId);
+    setIsFavorite(added);
 
-    if (isFavorite) {
-      updatedWishlist = wishlist.filter((item) => item !== productIdentifier);
-      if (onRemoveFromWishlist) {
-        onRemoveFromWishlist(productIdentifier);
-      }
-    } else {
-      updatedWishlist = [...wishlist, productIdentifier];
+    if (!added && onRemoveFromWishlist) {
+      onRemoveFromWishlist(targetId);
     }
-
-    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
-    setIsFavorite(!isFavorite);
+    toast.info(added ? 'Added to wishlist!' : 'Removed from wishlist');
   };
 
   const handleColorClick = (colorIndex) => {
@@ -57,7 +63,7 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
 
   return (
     <Link
-      href={`/product/${productIdentifier}`}
+      href={`/product/${productSlug}`}
       className="block group"
       onMouseEnter={() => images.length > 1 && setHoverImgIndex(1)}
       onMouseLeave={() => setHoverImgIndex(0)}
@@ -89,7 +95,8 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
 
         {/* Wishlist Button */}
         <button
-          onClick={toggleWishlist}
+          onClick={handleToggleWishlist}
+          aria-label="Toggle wishlist"
           className={`absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isFavorite
             ? "bg-red-500 text-white shadow-md"
             : "bg-white/80 text-gray-900 hover:bg-white hover:shadow-md translate-y-[-10px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
@@ -131,45 +138,27 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
                 }
 
                 const rawSize = product?.sizes?.[0];
-                const sizeToUse = typeof rawSize === 'object' ? rawSize?.name : rawSize || '';
+                const sizeId = typeof rawSize === 'object' ? rawSize?.id : null;
+                const sizeName = typeof rawSize === 'object' ? rawSize?.name : (rawSize || 'Standard');
 
-                if (product?.sizes?.length > 0 && !sizeToUse) {
-                  toast.error('Please select a size on product page');
-                  return;
-                }
+                const colorId = currentColorObj?.id || null;
+                const colorName = currentColorObj?.name || 'Default';
 
-                const cartItem = {
-                  id: Date.now(),
-                  productId: product?.uuid || product?.id,
-                  uuid: product?.uuid || null,
-                  name: product?.name,
-                  slug: product?.slug || productIdentifier,
-                  price: displayPrice,
-                  priceNum: product?.selling_price || product?.priceNum || 0,
-                  color: currentColorObj?.name || 'Default',
-                  size: sizeToUse,
+                addToCart({
+                  product_uuid: canonicalUuid,
                   quantity: 1,
+                  size_id: sizeId,
+                  size_name: sizeName,
+                  garment_color_id: colorId,
+                  garment_color_name: colorName,
+                  name: product?.name,
+                  slug: productSlug,
+                  price: displayPrice,
+                  priceNum: product?.selling_price || 0,
                   image: currentImage,
-                  stock: isPurchasable ? 99 : 0
-                };
+                  stock: isPurchasable ? 99 : 0,
+                });
 
-                const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-
-                const existingItemIndex = existingCart.findIndex(item =>
-                  (item.uuid && product?.uuid ? item.uuid === product.uuid : item.slug === cartItem.slug) &&
-                  item.size === cartItem.size &&
-                  item.color === cartItem.color
-                );
-
-                let updatedCart;
-                if (existingItemIndex > -1) {
-                  updatedCart = [...existingCart];
-                  updatedCart[existingItemIndex].quantity += 1;
-                } else {
-                  updatedCart = [...existingCart, cartItem];
-                }
-
-                localStorage.setItem('cart', JSON.stringify(updatedCart));
                 toast.success(`Added ${product?.name} to cart!`);
               }}
               disabled={!isPurchasable}

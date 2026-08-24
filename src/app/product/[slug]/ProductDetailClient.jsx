@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import { ShoppingBag, Check, Star, Heart, Minus, Plus, Truck } from 'lucide-react';
 import ProductCard from '../../../components/ProductCard';
 import { toast } from 'react-toastify';
+import { addToCart as addItemToCart } from '../../../lib/cart';
+import { isInWishlist, toggleWishlist as toggleWishlistAction } from '../../../lib/wishlist';
 
 export default function ProductDetailClient({ product, relatedProducts = [] }) {
   const router = useRouter();
@@ -24,7 +26,8 @@ export default function ProductDetailClient({ product, relatedProducts = [] }) {
   const LENS_SIZE = 150; // px
   const ZOOM_LEVEL = 2.5;
 
-  const productIdentifier = product?.slug || product?.uuid;
+  const canonicalUuid = product?.uuid || product?.id;
+  const productSlug = product?.slug || canonicalUuid;
   const isPurchasable = product?.purchasable !== false && product?.stock_status !== 'out_of_stock';
 
   // Extract garment colors & sizes from M16 Backend response
@@ -53,25 +56,25 @@ export default function ProductDetailClient({ product, relatedProducts = [] }) {
 
   // Sync wishlist status
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-      setIsFavorite(wishlist.includes(productIdentifier));
-    }
-  }, [productIdentifier]);
+    const updateFav = () => {
+      setIsFavorite(isInWishlist(canonicalUuid) || isInWishlist(productSlug));
+    };
 
-  const toggleWishlist = () => {
-    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    let updatedWishlist;
+    updateFav();
+    window.addEventListener("wishlist-updated", updateFav);
+    window.addEventListener("storage", updateFav);
 
-    if (isFavorite) {
-      updatedWishlist = wishlist.filter((item) => item !== productIdentifier);
-    } else {
-      updatedWishlist = [...wishlist, productIdentifier];
-    }
+    return () => {
+      window.removeEventListener("wishlist-updated", updateFav);
+      window.removeEventListener("storage", updateFav);
+    };
+  }, [canonicalUuid, productSlug]);
 
-    localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
-    setIsFavorite(!isFavorite);
-    toast.info(isFavorite ? 'Removed from wishlist' : 'Added to wishlist!');
+  const handleToggleWishlist = () => {
+    const target = canonicalUuid || productSlug;
+    const added = toggleWishlistAction(target);
+    setIsFavorite(added);
+    toast.info(added ? 'Added to wishlist!' : 'Removed from wishlist');
   };
 
   const handleQuantityChange = (action) => {
@@ -98,7 +101,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }) {
     setZoomBg({ x: bgX, y: bgY });
   }, [LENS_SIZE]);
 
-  const addToCart = (isBuyNow = false) => {
+  const handleAddToCart = (isBuyNow = false) => {
     if (!isPurchasable) {
       toast.info('This product is currently out of stock.');
       return;
@@ -111,39 +114,27 @@ export default function ProductDetailClient({ product, relatedProducts = [] }) {
 
     const selectedColorObj = availableColors[selectedColor] || availableColors[0];
     const colorName = typeof selectedColorObj === 'object' ? selectedColorObj?.name : selectedColorObj || 'Default';
+    const colorId = typeof selectedColorObj === 'object' ? selectedColorObj?.id : null;
 
-    const cartItem = {
-      id: Date.now(),
-      productId: product.uuid || product.id,
-      uuid: product.uuid || null,
+    const selectedSizeObj = availableSizes.find(
+      (s) => (typeof s === 'object' ? s.name : s) === selectedSize
+    );
+    const sizeId = typeof selectedSizeObj === 'object' ? selectedSizeObj?.id : null;
+
+    addItemToCart({
+      product_uuid: canonicalUuid,
+      quantity: quantity,
+      size_id: sizeId,
+      size_name: selectedSize,
+      garment_color_id: colorId,
+      garment_color_name: colorName,
       name: product.name,
-      slug: product.slug || productIdentifier,
+      slug: productSlug,
       price: product.price_display || `PKR ${Number(product.selling_price).toLocaleString()}`,
       priceNum: Number(product.selling_price) || 0,
-      color: colorName,
-      size: selectedSize,
-      quantity: quantity,
       image: currentMainImage,
       stock: isPurchasable ? 99 : 0,
-    };
-
-    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-    const existingItemIndex = existingCart.findIndex(
-      (item) =>
-        (item.uuid && product.uuid ? item.uuid === product.uuid : item.slug === cartItem.slug) &&
-        item.size === cartItem.size &&
-        item.color === cartItem.color
-    );
-
-    let updatedCart;
-    if (existingItemIndex > -1) {
-      updatedCart = [...existingCart];
-      updatedCart[existingItemIndex].quantity += quantity;
-    } else {
-      updatedCart = [...existingCart, cartItem];
-    }
-
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    });
 
     if (isBuyNow) {
       router.push('/checkout');
@@ -211,7 +202,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }) {
               {/* Wishlist Button */}
               <div className="absolute top-4 right-4 z-10">
                 <button
-                  onClick={toggleWishlist}
+                  onClick={handleToggleWishlist}
                   className={`w-11 h-11 rounded-full shadow-md backdrop-blur-md flex items-center justify-center transition-all ${
                     isFavorite ? 'bg-red-500 text-white' : 'bg-white/90 text-gray-900 hover:bg-white'
                   }`}
@@ -453,7 +444,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }) {
             {/* Order Action Buttons */}
             <div className="space-y-3">
               <button
-                onClick={() => addToCart(false)}
+                onClick={() => handleAddToCart(false)}
                 disabled={!isPurchasable}
                 className={`w-full py-4 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 rounded-xl transition ${
                   isPurchasable
@@ -467,7 +458,7 @@ export default function ProductDetailClient({ product, relatedProducts = [] }) {
 
               {isPurchasable && (
                 <button
-                  onClick={() => addToCart(true)}
+                  onClick={() => handleAddToCart(true)}
                   className="w-full py-4 bg-yellow-400 text-black text-xs font-extrabold uppercase tracking-widest hover:bg-yellow-500 rounded-xl transition shadow-md"
                 >
                   Buy It Now

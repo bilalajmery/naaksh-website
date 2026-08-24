@@ -1,0 +1,22 @@
+1:"$Sreact.fragment"
+2:I[62717,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js","/_next/static/chunks/1i-wp_o-504q5.js"],"default"]
+3:I[97367,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+8:I[97367,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"ViewportBoundary"]
+9:I[97367,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"MetadataBoundary"]
+a:I[27201,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"IconMark"]
+c:I[39756,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"LoadingBoundaryProvider"]
+d:I[39756,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"default"]
+e:I[37457,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"default"]
+7:X
+10:X
+10:C
+0:{"buildId":"ZuvDWoQT1VGiOoZLu73dQ","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","script","script-0",{"src":"/_next/static/chunks/1i-wp_o-504q5.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Direct Checkout | NAAKSH — Streetwear Pakistan"}],["$","meta","1",{"name":"description","content":"Complete your order with secure Cash on Delivery and free home delivery across Pakistan."}],["$","meta","2",{"property":"og:title","content":"NAAKSH | Premium Streetwear & Urban Fashion in Pakistan"}],["$","meta","3",{"property":"og:description","content":"Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs to help you stand out. Fashion, made personal."}],["$","meta","4",{"property":"og:url","content":"https://naakshofficial.com"}],["$","meta","5",{"property":"og:site_name","content":"NAAKSH"}],["$","meta","6",{"property":"og:image","content":"https://naakshofficial.com/logo/dark/sm.png"}],["$","meta","7",{"property":"og:image:width","content":"800"}],["$","meta","8",{"property":"og:image:height","content":"600"}],["$","meta","9",{"property":"og:type","content":"website"}],["$","meta","10",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","11",{"name":"twitter:title","content":"NAAKSH | Premium Streetwear & Urban Fashion in Pakistan"}],["$","meta","12",{"name":"twitter:description","content":"Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs to help you stand out. Fashion, made personal."}],["$","meta","13",{"name":"twitter:image","content":"https://naakshofficial.com/logo/dark/sm.png"}],["$","link","14",{"rel":"icon","href":"/favicon.svg"}],["$","$La","15",{}]]}]}]}],null]}],"isPartial":"$@b","staleTime":"$7","varyParams":null},{"rsc":["$","$Lc",null,{"loading":[["$","div","l",{"className":"min-h-screen bg-gray-50 py-10","children":["$","div",null,{"className":"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8","children":[["$","div",null,{"className":"h-8 w-48 bg-gray-200 rounded-xl mb-8 animate-pulse"}],["$","div",null,{"className":"grid lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2 space-y-6","children":[["$","div",null,{"className":"bg-white p-6 rounded-2xl border border-gray-200 h-56 animate-pulse"}],["$","div",null,{"className":"bg-white p-6 rounded-2xl border border-gray-200 h-72 animate-pulse"}]]}],["$","div",null,{"className":"lg:col-span-1","children":["$","div",null,{"className":"bg-white p-6 rounded-2xl border border-gray-200 h-96 animate-pulse"}]}]]}]]}]}],[],null],"children":["$","$1","c",{"children":[null,["$","$Ld",null,{"parallelRouterKey":"children","template":["$","$Le",null,{}]}]]}]}],"isPartial":"$@f","staleTime":"$7","varyParams":"$10"}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
+5:null
+12:true
+7:300
+7:C
+11:0
+b:"$undefined"
+f:"$undefined"
+6:"$undefined"

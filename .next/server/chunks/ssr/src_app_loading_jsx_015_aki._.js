@@ -1,0 +1,3 @@
+module.exports=[73418,a=>{"use strict";var b=a.i(7997);a.i(717),a.s(["default",0,function(){return(0,b.jsxs)("div",{className:"min-h-[70vh] bg-white flex flex-col items-center justify-center px-4",children:[(0,b.jsxs)("div",{className:"relative flex items-center justify-center",children:[(0,b.jsx)("div",{className:"w-16 h-16 border-4 border-gray-100 border-t-black rounded-full animate-spin"}),(0,b.jsx)("div",{className:"absolute w-8 h-8 border-2 border-yellow-400 border-b-transparent rounded-full animate-spin"})]}),(0,b.jsx)("p",{className:"mt-6 text-xs font-bold uppercase tracking-widest text-gray-400 animate-pulse",children:"Loading NAAKSH..."})]})}])},17691,function(a){a.n(a.i(73418))}];
+
+//# sourceMappingURL=src_app_loading_jsx_015_aki._.js.map

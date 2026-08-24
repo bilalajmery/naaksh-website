@@ -2,10 +2,15 @@
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
   "/about/page": "/about",
+  "/cart/page": "/cart",
   "/category/[slug]/page": "/category/[slug]",
+  "/checkout/page": "/checkout",
+  "/checkout/success/page": "/checkout/success",
+  "/contact/page": "/contact",
   "/page": "/",
   "/privacy/page": "/privacy",
   "/product/[slug]/page": "/product/[slug]",
   "/shop/page": "/shop",
-  "/terms/page": "/terms"
+  "/terms/page": "/terms",
+  "/wishlist/page": "/wishlist"
 }

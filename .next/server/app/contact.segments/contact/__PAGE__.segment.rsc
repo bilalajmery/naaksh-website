@@ -1,0 +1,21 @@
+1:"$Sreact.fragment"
+2:I[59953,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js","/_next/static/chunks/16mrt2pcaynak.js"],"default"]
+3:I[97367,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+8:I[97367,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"ViewportBoundary"]
+9:I[97367,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"MetadataBoundary"]
+a:I[27201,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"IconMark"]
+c:I[39756,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"default"]
+d:I[37457,["/_next/static/chunks/06ncfgklve1dr.js","/_next/static/chunks/39bc4247ghaan.js"],"default"]
+7:X
+f:X
+f:C
+0:{"buildId":"ZuvDWoQT1VGiOoZLu73dQ","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","script","script-0",{"src":"/_next/static/chunks/16mrt2pcaynak.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Contact Us | NAAKSH — Streetwear Pakistan"}],["$","meta","1",{"name":"description","content":"Get in touch with NAAKSH. Questions regarding orders, custom sizes, collaborations or support."}],["$","meta","2",{"property":"og:title","content":"NAAKSH | Premium Streetwear & Urban Fashion in Pakistan"}],["$","meta","3",{"property":"og:description","content":"Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs to help you stand out. Fashion, made personal."}],["$","meta","4",{"property":"og:url","content":"https://naakshofficial.com"}],["$","meta","5",{"property":"og:site_name","content":"NAAKSH"}],["$","meta","6",{"property":"og:image","content":"https://naakshofficial.com/logo/dark/sm.png"}],["$","meta","7",{"property":"og:image:width","content":"800"}],["$","meta","8",{"property":"og:image:height","content":"600"}],["$","meta","9",{"property":"og:type","content":"website"}],["$","meta","10",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","11",{"name":"twitter:title","content":"NAAKSH | Premium Streetwear & Urban Fashion in Pakistan"}],["$","meta","12",{"name":"twitter:description","content":"Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs to help you stand out. Fashion, made personal."}],["$","meta","13",{"name":"twitter:image","content":"https://naakshofficial.com/logo/dark/sm.png"}],["$","link","14",{"rel":"icon","href":"/favicon.svg"}],["$","$La","15",{}]]}]}]}],null]}],"isPartial":"$@b","staleTime":"$7","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"isPartial":"$@e","staleTime":"$7","varyParams":"$f"}],"isUpgradeableISRFallback":false,"a":"$@10","rootVaryParams":null,"needsRuntimeRequest":"$@11"}
+5:null
+11:true
+7:300
+7:C
+10:0
+b:"$undefined"
+e:"$undefined"
+6:"$undefined"

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import NavLink from "./NavLink";
 import Link from "next/link";
 import { Menu, X, ShoppingCart, Heart, ChevronDown } from "lucide-react";
+import { getCart } from "../lib/cart";
+import { getWishlist } from "../lib/wishlist";
 
 function Navbar({ categories, loadingCategories }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,19 +18,21 @@ function Navbar({ categories, loadingCategories }) {
 
   useEffect(() => {
     const updateCounts = () => {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      const cart = getCart();
+      const wishlist = getWishlist();
       setCartItems(cart);
       setCartCount(cart.reduce((total, item) => total + (item.quantity || 1), 0));
       setWishlistCount(wishlist.length);
     };
 
     updateCounts();
-    const interval = setInterval(updateCounts, 1000); // Poll for changes
+    window.addEventListener("cart-updated", updateCounts);
+    window.addEventListener("wishlist-updated", updateCounts);
     window.addEventListener("storage", updateCounts);
 
     return () => {
-      clearInterval(interval);
+      window.removeEventListener("cart-updated", updateCounts);
+      window.removeEventListener("wishlist-updated", updateCounts);
       window.removeEventListener("storage", updateCounts);
     };
   }, []);
@@ -214,7 +218,7 @@ function Navbar({ categories, loadingCategories }) {
                       <div className="flex justify-between items-center mb-4 text-sm">
                         <span className="text-gray-300">Subtotal:</span>
                         <span className="text-white font-bold text-lg">
-                          PKR {cartItems.reduce((acc, item) => acc + (parseInt(item.price.replace(/[^\d]/g, '')) * (item.quantity || 1)), 0).toLocaleString()}
+                          PKR {cartItems.reduce((acc, item) => acc + ((item.priceNum || parseFloat(String(item.price || 0).replace(/[^0-9.]/g, '')) || 0) * (item.quantity || 1)), 0).toLocaleString()}
                         </span>
                       </div>
                       <NavLink
