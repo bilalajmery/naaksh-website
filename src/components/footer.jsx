@@ -2,8 +2,9 @@
 import NavLink from "./NavLink";
 import Link from "next/link";
 import { Instagram, Facebook, Music2, Send, Youtube } from "lucide-react";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { toast } from 'react-toastify';
+import { subscribeNewsletter } from '../lib/api';
 
 function Footer({ categories, loadingCategories }) {
   const [email, setEmail] = useState('');
@@ -25,37 +26,12 @@ function Footer({ categories, loadingCategories }) {
     setIsSubscribing(true);
 
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_SERVER_URL + '/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      const result = await response.json();
-
-      // Handle validation errors (422) or other error responses
-      if (!response.ok) {
-        if (response.status === 422 && result.errors) {
-          // Extract first error message from errors object
-          const firstErrorKey = Object.keys(result.errors)[0];
-          const errorMessage = result.errors[firstErrorKey][0];
-          toast.error(errorMessage);
-        } else if (result.message) {
-          // Use the message from API if available
-          toast.error(result.message);
-        } else {
-          toast.error('Failed to subscribe. Please try again.');
-        }
-        return;
-      }
-
+      await subscribeNewsletter(email);
       toast.success('Successfully subscribed to our newsletter!');
       setEmail(''); // Clear input on success
     } catch (error) {
       console.error('Subscribe Error:', error);
-      toast.error('Failed to subscribe. Please try again.');
+      toast.error(error.friendlyMessage || 'Failed to subscribe. Please try again.');
     } finally {
       setIsSubscribing(false);
     }
@@ -67,7 +43,7 @@ function Footer({ categories, loadingCategories }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
           {/* Logo + Description */}
           <div className="lg:col-span-4">
-            <img src="logo/sm.png" alt="NAAKSH" className="h-24 mb-6" />
+            <img src="/logo/sm.png" alt="NAAKSH" className="h-24 mb-6" />
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Premium Pakistani streetwear crafted with discipline, luxury, and passion.
             </p>

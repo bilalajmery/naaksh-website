@@ -9,8 +9,11 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
   const [selectedColor, setSelectedColor] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const images = product?.colors?.[selectedColor]?.images || [];
-  const currentImage = images[hoverImgIndex] || images[0] || "/placeholder.jpg";
+  const images = product?.colors?.[selectedColor]?.images || (product?.media ? product.media.map(m => m.url) : []);
+  const currentImage = images[hoverImgIndex] || images[0] || product?.primary_media?.url || product?.image || "/placeholder.jpg";
+  const categoryName = typeof product?.category === 'object' ? product?.category?.name : product?.category;
+  const displayPrice = product?.price || product?.price_display || (product?.selling_price ? `PKR ${Number(product.selling_price).toLocaleString()}` : '');
+  const displayOriginal = product?.original || product?.original_price_display || (product?.original_selling_price ? `PKR ${Number(product.original_selling_price).toLocaleString()}` : '');
 
   // Helper function to check if file is a video
   const isVideo = (url) => {
@@ -160,9 +163,11 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
         </div>
 
         <div className="pt-4 pb-2">
-          <p className="text-[10px] font-medium tracking-widest text-gray-500 mb-2 uppercase">
-            {product.category}
-          </p>
+          {categoryName && (
+            <p className="text-[10px] font-medium tracking-widest text-gray-500 mb-2 uppercase">
+              {categoryName}
+            </p>
+          )}
           <h3 className="text-sm font-medium mb-2 text-gray-900 group-hover:text-black">{product.name}</h3>
 
           {product.colors && product.colors.length > 1 && (
@@ -186,9 +191,9 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
           )}
 
           <div className="flex items-baseline gap-2">
-            <span className="text-base font-semibold text-black">{product.price}</span>
-            {product.original && (
-              <span className="text-xs text-gray-400 line-through">{product.original}</span>
+            <span className="text-base font-semibold text-black">{displayPrice}</span>
+            {displayOriginal && (
+              <span className="text-xs text-gray-400 line-through">{displayOriginal}</span>
             )}
           </div>
         </div>

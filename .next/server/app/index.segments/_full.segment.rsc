@@ -1,0 +1,442 @@
+1:"$Sreact.fragment"
+4:I[97367,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],"OutletBoundary"]
+5:"$Sreact.suspense"
+7:I[97367,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],"ViewportBoundary"]
+9:I[97367,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],"MetadataBoundary"]
+b:I[68027,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],"default",1]
+:HL["/_next/static/chunks/0xh76uqucf8o1.css","style"]
+:HL["/_next/static/chunks/4346ojs8-pfzx.css","style"]
+0:{"P":null,"c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0xh76uqucf8o1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/22jq5z3m8y90y.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0gn8bt6nu088c.js","async":true,"nonce":"$undefined"}]],"$L2"]}],{"children":[["$","$1","c",{"children":["$L3",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/4346ojs8-pfzx.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/2aw_qcfpx3kxt.js","async":true,"nonce":"$undefined"}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],{},null,false,null]},null,false,null],["$","$1","h",{"children":[null,["$","$L7",null,{"children":"$L8"}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$La"}]}]}],null]}],false]],"m":"$undefined","G":["$b",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0xh76uqucf8o1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"aTKP99M9aF6mTH2wgvlo8"}
+c:I[79520,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],""]
+e:I[30757,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],"Providers"]
+f:I[790,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],"default"]
+10:I[39756,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],"default"]
+11:I[37457,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],"default"]
+12:I[78839,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],"default"]
+13:I[15316,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],"default"]
+:HL["https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap","style"]
+d:["$","iframe",null,{"src":"https://www.googletagmanager.com/ns.html?id=GTM-KBVMK4RW","height":"0","width":"0","style":{"display":"none","visibility":"hidden"}}]
+2:["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap","rel":"stylesheet"}],["$","$Lc",null,{"id":"gtm-script","strategy":"afterInteractive","children":"\n            (function (w, d, s, l, i) {\n              w[l] = w[l] || []; w[l].push({\n                'gtm.start':\n                  new Date().getTime(), event: 'gtm.js'\n              }); var f = d.getElementsByTagName(s)[0],\n                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =\n                  'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);\n            })(window, document, 'script', 'dataLayer', 'GTM-KBVMK4RW');\n          "}],["$","$Lc",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-0YP46PKCRZ","strategy":"afterInteractive"}],["$","$Lc",null,{"id":"gtag-init","strategy":"afterInteractive","children":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag() { dataLayer.push(arguments); }\n            gtag('js', new Date());\n            gtag('config', 'G-0YP46PKCRZ');\n          "}]]}],["$","body",null,{"children":[["$","noscript",null,{"children":"$d"}],["$","$Le",null,{"children":[["$","$Lf",null,{"categories":[{"name":"Hoodies","slug":"hoodies","image":"/category-assets/Hoodies/img.jpg"},{"name":"Denim Jackets","slug":"denim-jackets","image":"/category-assets/Denim Jackets/img.jpg"},{"name":"Classic Polo Shirts","slug":"classic-polo-shirts","image":"/category-assets/Classic Polo Shirts/img.jpg"},{"name":"Knitted Polo Tees","slug":"knitted-polo-tees","image":"/category-assets/Knitted Polo T-Shirts/img.jpg"},{"name":"Normal Basic Tees","slug":"normal-basic-tees","image":"/category-assets/Normal Basic T-shirts/img.jpg"},{"name":"Drop Shoulder Tees","slug":"drop-shoulder-tees","image":"/category-assets/Drop Shoulder T-shirts/img.jpg"},{"name":"Cargo Trouzer","slug":"cargo-trouzer","image":"/category-assets/Cargo Trouzer/img.jpg"},{"name":"Sweat Shirt","slug":"sweat-shirt","image":"/category-assets/Sweat Shirt/img.jpg"},{"name":"Textured Shirt","slug":"textured-shirt","image":"/category-assets/Textured Shirt/img.png"}],"loadingCategories":false}],["$","$L10",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L11",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L12",null,{}],["$","$L13",null,{"categories":"$2:props:children:1:props:children:1:props:children:0:props:categories","loadingCategories":false}]]}]]}]]}]
+14:T3fca,
+        /* ─── HOME PAGE STYLES ─────────────────────────────────── */
+        .home-hero-slide { position: relative; width: 100%; overflow: hidden; }
+        .home-hero-slide img { width: 100%; height: 100vh; object-fit: cover; display: block; }
+        @media (max-width: 768px) { .home-hero-slide img { height: 85vh; } }
+        .home-hero-gradient {
+          position: absolute; inset: 0;
+          background: linear-gradient(
+            to right,
+            rgba(0,0,0,0.78) 0%,
+            rgba(0,0,0,0.40) 55%,
+            rgba(0,0,0,0.05) 100%
+          );
+        }
+        .home-hero-content {
+          position: absolute; inset: 0;
+          display: flex; flex-direction: column; justify-content: center;
+          padding: 0 6vw;
+          max-width: 700px;
+        }
+        .home-hero-label {
+          display: inline-flex; align-items: center; gap: 8px;
+          font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+          color: #fdc700; text-transform: uppercase;
+          background: rgba(253,199,0,0.12);
+          border: 1px solid rgba(253,199,0,0.3);
+          padding: 6px 14px; border-radius: 100px;
+          margin-bottom: 24px; width: fit-content;
+        }
+        .home-hero-label::before {
+          content: ""; width: 6px; height: 6px;
+          background: #fdc700; border-radius: 50%;
+          animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(0.7); }
+        }
+        .home-hero-heading {
+          font-size: clamp(40px, 7vw, 88px);
+          font-weight: 900; line-height: 1.0;
+          color: #fff; letter-spacing: -0.02em;
+          margin: 0 0 20px; white-space: pre-line;
+          text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+        .home-hero-heading span { color: #fdc700; }
+        .home-hero-sub {
+          font-size: 15px; color: rgba(255,255,255,0.7);
+          letter-spacing: 0.08em; text-transform: uppercase;
+          margin-bottom: 36px; font-weight: 500;
+        }
+        .home-hero-cta {
+          display: inline-flex; align-items: center; gap: 10px;
+          background: #fdc700; color: #000;
+          font-size: 13px; font-weight: 800;
+          letter-spacing: 0.12em; text-transform: uppercase;
+          padding: 16px 32px; border-radius: 4px;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          width: fit-content;
+          box-shadow: 0 8px 30px rgba(253,199,0,0.35);
+        }
+        .home-hero-cta:hover {
+          background: #fff; color: #000;
+          box-shadow: 0 12px 40px rgba(255,255,255,0.2);
+          transform: translateY(-2px);
+        }
+        .home-hero-cta svg { transition: transform 0.3s; }
+        .home-hero-cta:hover svg { transform: translateX(4px); }
+
+        /* Swiper nav buttons */
+        .hero-prev, .hero-next {
+          position: absolute; top: 50%; z-index: 20; cursor: pointer;
+          transform: translateY(-50%);
+        }
+        .hero-prev { left: 24px; }
+        .hero-next { right: 24px; }
+        @media (max-width: 768px) { .hero-prev { left: 12px; } .hero-next { right: 12px; } }
+        .hero-nav-btn {
+          width: 48px; height: 48px;
+          border: 1.5px solid rgba(255,255,255,0.25);
+          background: rgba(255,255,255,0.07);
+          backdrop-filter: blur(12px);
+          border-radius: 50%; display: flex;
+          align-items: center; justify-content: center;
+          color: #fff; transition: all 0.3s;
+        }
+        .hero-nav-btn:hover { background: rgba(253,199,0,0.2); border-color: #fdc700; color: #fdc700; }
+
+        /* Slide counter */
+        .hero-counter {
+          position: absolute; bottom: 32px; right: 40px;
+          z-index: 20; font-size: 12px; font-weight: 700;
+          color: rgba(255,255,255,0.6); letter-spacing: 0.1em;
+          display: flex; align-items: center; gap: 8px;
+        }
+        .hero-counter-active { color: #fdc700; font-size: 20px; }
+
+        /* ─── FEATURE STRIP ─── */
+        .feature-strip {
+          background: #111; border-top: 1px solid #1e1e1e;
+          border-bottom: 1px solid #1e1e1e;
+          padding: 20px 24px;
+        }
+        .feature-strip-grid {
+          max-width: 1200px; margin: 0 auto;
+          display: grid; grid-template-columns: repeat(4,1fr);
+          gap: 16px;
+        }
+        @media (max-width: 768px) {
+          .feature-strip-grid { grid-template-columns: repeat(2,1fr); }
+        }
+        .feature-item {
+          display: flex; align-items: center; gap: 14px;
+          padding: 12px 16px;
+          border-right: 1px solid #222;
+          color: #fff;
+        }
+        .feature-item:last-child { border-right: none; }
+        @media (max-width: 768px) {
+          .feature-item:nth-child(2) { border-right: none; }
+        }
+        .feature-icon {
+          width: 44px; height: 44px; border-radius: 10px;
+          background: rgba(253,199,0,0.1); border: 1px solid rgba(253,199,0,0.2);
+          display: flex; align-items: center; justify-content: center;
+          color: #fdc700; flex-shrink: 0;
+        }
+        .feature-title { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.2; }
+        .feature-sub { font-size: 11px; color: #666; margin-top: 2px; }
+
+        /* ─── SECTION HEADERS ─── */
+        .section-tag {
+          display: inline-block; font-size: 10px; font-weight: 800;
+          letter-spacing: 0.25em; text-transform: uppercase;
+          color: #fdc700; margin-bottom: 12px;
+          padding-bottom: 8px;
+          border-bottom: 2px solid #fdc700;
+        }
+        .section-heading {
+          font-size: clamp(28px, 4vw, 52px);
+          font-weight: 900; line-height: 1.05;
+          letter-spacing: -0.02em; color: #0d0d0d;
+          margin: 0;
+        }
+        .section-heading.light { color: #fff; }
+        .section-heading em { font-style: normal; color: #fdc700; }
+
+        /* ─── SECTION CTA BUTTON ─── */
+        .sec-cta {
+          display: inline-flex; align-items: center; gap: 10px;
+          border: 2px solid #0d0d0d; color: #0d0d0d;
+          font-size: 12px; font-weight: 800;
+          letter-spacing: 0.15em; text-transform: uppercase;
+          padding: 14px 28px; text-decoration: none;
+          transition: all 0.3s; border-radius: 4px;
+          background: transparent;
+        }
+        .sec-cta:hover { background: #0d0d0d; color: #fdc700; }
+        .sec-cta.inverted { border-color: #fdc700; color: #fdc700; background: transparent; }
+        .sec-cta.inverted:hover { background: #fdc700; color: #000; }
+        .sec-cta svg { transition: transform 0.3s; }
+        .sec-cta:hover svg { transform: translateX(4px); }
+
+        /* ─── FEATURED PRODUCTS ─── */
+        .featured-section {
+          padding: 80px 24px;
+          background: #fafafa;
+        }
+        .featured-inner { max-width: 1280px; margin: 0 auto; }
+        .featured-header {
+          display: flex; align-items: flex-end;
+          justify-content: space-between;
+          margin-bottom: 48px; gap: 20px;
+          flex-wrap: wrap;
+        }
+        .products-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 24px 20px;
+        }
+        @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { .products-grid { grid-template-columns: repeat(2, 1fr); gap: 16px 12px; } }
+        @media (max-width: 480px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        /* ─── CATEGORY SECTION ─── */
+        .category-section { background: #0d0d0d; padding: 80px 24px; }
+        .category-inner { max-width: 1280px; margin: 0 auto; }
+        .category-header { margin-bottom: 48px; }
+        .category-grid {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 16px;
+        }
+        @media (max-width: 1024px) { .category-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 600px) { .category-grid { grid-template-columns: repeat(2, 1fr); } }
+        .cat-card {
+          position: relative; overflow: hidden;
+          border-radius: 12px;
+          aspect-ratio: 3/4;
+          background: #1a1a1a;
+          text-decoration: none;
+          display: block;
+          border: 1px solid #222;
+          transition: border-color 0.3s, transform 0.3s;
+        }
+        .cat-card:hover { border-color: #fdc700; transform: translateY(-4px); }
+        .cat-card img {
+          width: 100%; height: 100%; object-fit: cover;
+          transition: transform 0.7s ease;
+        }
+        .cat-card:hover img { transform: scale(1.08); }
+        .cat-card-overlay {
+          position: absolute; inset: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+        }
+        .cat-card-name {
+          position: absolute; bottom: 16px; left: 16px; right: 16px;
+          font-size: 12px; font-weight: 800;
+          letter-spacing: 0.12em; text-transform: uppercase;
+          color: #fff;
+        }
+        .cat-card-name .arrow {
+          display: block; color: #fdc700; font-size: 16px;
+          margin-top: 4px; opacity: 0;
+          transform: translateX(-6px);
+          transition: all 0.3s;
+        }
+        .cat-card:hover .cat-card-name .arrow {
+          opacity: 1; transform: translateX(0);
+        }
+
+        /* ─── COLLECTION SECTION ─── */
+        .collection-section { padding: 80px 24px; background: #fff; }
+        .collection-inner { max-width: 1280px; margin: 0 auto; }
+
+        /* ─── PROMO BANNER ─── */
+        .promo-section { width: 100%; overflow: hidden; }
+        .promo-section a { display: block; }
+        .promo-section img { width: 100%; height: auto; display: block; }
+
+        /* ─── STATS SECTION ─── */
+        .stats-section {
+          background: linear-gradient(135deg, #0d0d0d 0%, #1a1a00 50%, #0d0d0d 100%);
+          padding: 64px 24px;
+          border-top: 1px solid #222;
+          border-bottom: 1px solid #222;
+        }
+        .stats-inner {
+          max-width: 900px; margin: 0 auto;
+          display: grid; grid-template-columns: repeat(4,1fr);
+          gap: 32px; text-align: center;
+        }
+        @media (max-width: 640px) { .stats-inner { grid-template-columns: repeat(2,1fr); gap: 24px; } }
+        .stat-value {
+          font-size: clamp(28px, 4vw, 44px);
+          font-weight: 900; color: #fdc700;
+          line-height: 1; letter-spacing: -0.02em;
+          margin-bottom: 8px;
+        }
+        .stat-label {
+          font-size: 12px; font-weight: 600;
+          color: #888; letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+
+        /* ─── TESTIMONIALS ─── */
+        .testimonials-section {
+          padding: 80px 24px; background: #fff;
+          position: relative; overflow: hidden;
+        }
+        .testimonials-inner { max-width: 1280px; margin: 0 auto; }
+        .testimonials-header {
+          display: flex; justify-content: space-between;
+          align-items: flex-end; margin-bottom: 48px; gap: 20px; flex-wrap: wrap;
+        }
+        .testimonials-trust {
+          display: flex; align-items: center; gap: 16px;
+        }
+        .trust-avatars { display: flex; }
+        .trust-avatar {
+          width: 40px; height: 40px;
+          border-radius: 50%; border: 2px solid #fff;
+          overflow: hidden; margin-left: -10px;
+          background: #eee;
+        }
+        .trust-avatar:first-child { margin-left: 0; }
+        .trust-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .trust-text { font-size: 11px; color: #888; }
+        .trust-stars { display: flex; gap: 2px; margin-bottom: 3px; }
+        .trust-star { color: #fdc700; font-size: 13px; }
+        .trust-count { font-size: 12px; font-weight: 700; color: #0d0d0d; }
+
+        .t-card {
+          background: #fff;
+          border: 1px solid #f0f0f0;
+          border-radius: 16px;
+          padding: 32px;
+          height: 100%;
+          display: flex; flex-direction: column;
+          transition: all 0.3s;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+          min-height: 280px;
+        }
+        .t-card:hover {
+          border-color: #fdc700;
+          box-shadow: 0 8px 32px rgba(253,199,0,0.12);
+          transform: translateY(-2px);
+        }
+        .t-stars { display: flex; gap: 3px; margin-bottom: 20px; }
+        .t-star { width: 16px; height: 16px; fill: #fdc700; color: #fdc700; }
+        .t-quote {
+          font-size: 15px; color: #444; line-height: 1.7;
+          flex-grow: 1; margin-bottom: 24px;
+          font-style: italic;
+        }
+        .t-quote::before { content: '"'; color: #fdc700; font-size: 24px; line-height: 0; vertical-align: -8px; margin-right: 3px; font-style: normal; }
+        .t-quote::after { content: '"'; color: #fdc700; font-size: 24px; line-height: 0; vertical-align: -8px; margin-left: 3px; font-style: normal; }
+        .t-divider { height: 1px; background: #f5f5f5; margin-bottom: 20px; }
+        .t-author { display: flex; align-items: center; gap: 12px; }
+        .t-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(253,199,0,0.3); }
+        .t-name { font-size: 13px; font-weight: 800; color: #0d0d0d; text-transform: uppercase; letter-spacing: 0.05em; }
+        .t-badge {
+          display: inline-block; font-size: 9px; font-weight: 700;
+          background: #d1fae5; color: #065f46;
+          padding: 2px 8px; border-radius: 100px;
+          letter-spacing: 0.08em; text-transform: uppercase;
+          margin-top: 3px;
+        }
+
+        /* Swiper customization */
+        .testimonials-swiper .swiper-pagination-bullet { background: #0d0d0d; opacity: 0.15; width: 8px; height: 8px; }
+        .testimonials-swiper .swiper-pagination-bullet-active { background: #fdc700; opacity: 1; width: 24px; border-radius: 4px; }
+
+        /* ─── BRAND PROMISE SECTION ──── */
+        .brand-section {
+          background: #0d0d0d; padding: 80px 24px;
+          position: relative; overflow: hidden;
+        }
+        .brand-section::before {
+          content: "NAAKSH";
+          position: absolute; top: 50%; left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: clamp(80px, 15vw, 200px);
+          font-weight: 900; color: rgba(255,255,255,0.03);
+          letter-spacing: -0.04em; white-space: nowrap;
+          pointer-events: none; user-select: none;
+        }
+        .brand-inner {
+          max-width: 900px; margin: 0 auto;
+          text-align: center; position: relative; z-index: 1;
+        }
+        .brand-tag {
+          font-size: 10px; font-weight: 800; letter-spacing: 0.3em;
+          color: #fdc700; text-transform: uppercase; margin-bottom: 20px;
+        }
+        .brand-heading {
+          font-size: clamp(32px, 5vw, 64px);
+          font-weight: 900; line-height: 1.05;
+          letter-spacing: -0.02em; color: #fff; margin: 0 0 24px;
+        }
+        .brand-heading em { font-style: normal; color: #fdc700; }
+        .brand-sub {
+          font-size: 16px; color: #777; line-height: 1.7;
+          max-width: 560px; margin: 0 auto 40px;
+        }
+        .brand-cta {
+          display: inline-flex; align-items: center; gap: 10px;
+          background: #fdc700; color: #000;
+          font-size: 13px; font-weight: 800;
+          letter-spacing: 0.12em; text-transform: uppercase;
+          padding: 16px 36px; border-radius: 4px;
+          text-decoration: none; transition: all 0.3s;
+          box-shadow: 0 8px 30px rgba(253,199,0,0.3);
+        }
+        .brand-cta:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,255,255,0.15); }
+        .brand-cta svg { transition: transform 0.3s; }
+        .brand-cta:hover svg { transform: translateX(4px); }
+
+        /* ─── GENERAL ─── */
+        @media (max-width: 768px) {
+          .featured-header { flex-direction: column; align-items: flex-start; }
+          .testimonials-header { flex-direction: column; align-items: flex-start; }
+        }
+      3:[["$","style",null,{"children":"$14"}],"$L15"]
+16:I[54244,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js","/_next/static/chunks/2aw_qcfpx3kxt.js"],"default"]
+17:I[22016,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js","/_next/static/chunks/2aw_qcfpx3kxt.js"],""]
+18:I[86114,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js","/_next/static/chunks/2aw_qcfpx3kxt.js"],"default"]
+15:["$","div",null,{"children":[["$","$L16",null,{}],["$","div",null,{"className":"feature-strip","children":["$","div",null,{"className":"feature-strip-grid","children":[["$","div","0",{"className":"feature-item","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":22,"height":22,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-truck","aria-hidden":"true","children":[["$","path","wrbu53",{"d":"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"}],["$","path","1lyqi6",{"d":"M15 18H9"}],["$","path","lysw3i",{"d":"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"}],["$","circle","332jqn",{"cx":"17","cy":"18","r":"2"}],["$","circle","19iecd",{"cx":"7","cy":"18","r":"2"}],"$undefined"]}]}],["$","div",null,{"children":[["$","div",null,{"className":"feature-title","children":"Free Delivery"}],["$","div",null,{"className":"feature-sub","children":"All Over Pakistan"}]]}]]}],["$","div","1",{"className":"feature-item","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":22,"height":22,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-shield","aria-hidden":"true","children":[["$","path","oel41y",{"d":"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"}],"$undefined"]}]}],["$","div",null,{"children":[["$","div",null,{"className":"feature-title","children":"Premium Quality"}],["$","div",null,{"className":"feature-sub","children":"Guaranteed Guarantee"}]]}]]}],["$","div","2",{"className":"feature-item","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":22,"height":22,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-rotate-ccw","aria-hidden":"true","children":[["$","path","1357e3",{"d":"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"}],["$","path","1xhq8a",{"d":"M3 3v5h5"}],"$undefined"]}]}],["$","div",null,{"children":[["$","div",null,{"className":"feature-title","children":"Easy Returns"}],["$","div",null,{"className":"feature-sub","children":"Hassle-Free Exchange"}]]}]]}],["$","div","3",{"className":"feature-item","children":[["$","div",null,{"className":"feature-icon","children":["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":22,"height":22,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-package","aria-hidden":"true","children":[["$","path","1a0edw",{"d":"M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"}],["$","path","d0xqtd",{"d":"M12 22V12"}],["$","polyline","ousv84",{"points":"3.29 7 12 12 20.71 7"}],["$","path","1c824w",{"d":"m7.5 4.27 9 5.15"}],"$undefined"]}]}],["$","div",null,{"children":[["$","div",null,{"className":"feature-title","children":"Secure Packaging"}],["$","div",null,{"className":"feature-sub","children":"Arrives Perfectly"}]]}]]}]]}]}],["$","section",null,{"className":"featured-section","children":["$","div",null,{"className":"featured-inner","children":[["$","div",null,{"className":"featured-header","children":[["$","div",null,{"children":[["$","span",null,{"className":"section-tag","children":"Handpicked for You"}],["$","h2",null,{"className":"section-heading","children":["Featured ",["$","em",null,{"children":"Products"}]]}]]}],["$","$L17",null,{"href":"/shop","className":"sec-cta","children":["View All Products ",["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":14,"height":14,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-right","aria-hidden":"true","children":[["$","path","1ays0h",{"d":"M5 12h14"}],["$","path","xquz4c",{"d":"m12 5 7 7-7 7"}],"$undefined"]}]]}]]}],["$","div",null,{"className":"products-grid","children":[["$","$L18","44",{"product":{"id":44,"slug":"break-rules-drop-shoulder-tee","name":"Break Rules Drop Shoulder Tee","price":"PKR 1,499","priceNum":1499,"original":"PKR 1,799","originalNum":1799,"badge":"17% OFF","rating":4.8,"isFeatured":true,"category":"Drop Shoulder Tees","description":"The Break Rules Graphic Print Drop Shoulder Tee is made for those who live bold and fearless. Designed with a powerful street-style graphic, this oversized tee delivers premium comfort with a modern urban vibe. Perfect for casual wear, hangouts, travel, and everyday street fashion.","features":["Premium Soft Cotton Fabric","Bold Break Rules Graphic Print","Oversized Drop Shoulder Fit","Breathable & Skin-Friendly Material","Fade-Resistant Colors","Strong & Durable Stitching","Perfect for Casual & Streetwear Looks"],"sizes":["S","M","L","XL"],"colors":[{"name":"Mehroon","hex":"#800000","images":["/product-assets/break-rules-drop-shoulder-tee/2.png"]},{"name":"Black","hex":"#000000","images":["/product-assets/break-rules-drop-shoulder-tee/1.png"]},{"name":"Dark Blue","hex":"#0e101d","images":["/product-assets/break-rules-drop-shoulder-tee/3.png"]}],"reviews":[{"name":"Ali Raza","star":5,"review":"Print bohot powerful lagta hai aur oversized fitting zabardast hai."},{"name":"Faizan Ahmed","star":5,"review":"Fabric soft hai aur colors bilkul fade nahi hote."},{"name":"Zain Khan","star":4,"review":"Streetwear look ke liye perfect tee hai, quality bhi achi hai."}]}}],"$L19","$L1a","$L1b","$L1c","$L1d","$L1e","$L1f"]}]]}]}],"$L20","$L21","$L22","$L23","$L24","$L25"]}]
+26:I[21871,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js","/_next/static/chunks/2aw_qcfpx3kxt.js"],"default"]
+2c:I[15221,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js","/_next/static/chunks/2aw_qcfpx3kxt.js"],"default"]
+2d:I[27201,["/_next/static/chunks/22jq5z3m8y90y.js","/_next/static/chunks/0gn8bt6nu088c.js"],"IconMark"]
+:HL["/category-assets/Hoodies/img.jpg","image"]
+:HL["/category-assets/Denim Jackets/img.jpg","image"]
+:HL["/category-assets/Classic Polo Shirts/img.jpg","image"]
+:HL["/category-assets/Knitted Polo T-Shirts/img.jpg","image"]
+:HL["/category-assets/Normal Basic T-shirts/img.jpg","image"]
+:HL["/category-assets/Drop Shoulder T-shirts/img.jpg","image"]
+:HL["/category-assets/Cargo Trouzer/img.jpg","image"]
+:HL["/category-assets/Sweat Shirt/img.jpg","image"]
+:HL["/category-assets/Textured Shirt/img.png","image"]
+:HL["/home_banner.png","image"]
+19:["$","$L18","46",{"product":{"id":46,"slug":"the-future-drop-shoulder-tee","name":"THE FUTURE Drop Shoulder T-Shirt","price":"PKR 1399","priceNum":1399,"original":"PKR 1,899","originalNum":1899,"badge":"26% OFF","rating":4.9,"isFeatured":true,"category":"Drop Shoulder Tees","description":"THE FUTURE Drop Shoulder T-Shirt brings a bold statement look with its clean vertical typography. Designed with an oversized modern streetwear fit, this tee offers premium comfort, soft breathable fabric, and long-lasting print quality. Perfect for casual wear, summer outfits, gym sessions, and everyday styling.","features":["Premium Soft Cotton-Blend fabric breathable & lightweight","Drop Shoulder Oversized Fit trendy streetwear style","Bold 'THE FUTURE' Vertical Print high-quality & crack-resistant","Smooth & Skin-Friendly Fabric for all-day comfort","Anti-Fade Color Treatment","Durable Stitching long-lasting wear"],"sizes":["M","L","XL"],"colors":[{"name":"Teal","hex":"#207C8C","images":["/product-assets/the-future-drop-shoulder-tee/1.png"]},{"name":"White","hex":"#ffffff","images":["/product-assets/the-future-drop-shoulder-tee/2.png"]},{"name":"Black","hex":"#000000","images":["/product-assets/the-future-drop-shoulder-tee/3.png"]}],"reviews":[{"name":"Bilal Ahmed","star":5,"review":"Teal color bohot unique hai! Fitting oversized and comfortable. Print quality top class."},{"name":"Shahzaib Noor","star":5,"review":"THE FUTURE design bohot stylish lagta hai. Fabric soft and premium feel deta hai."},{"name":"Hammad Raza","star":4,"review":"Quality great, stitching clean. Black color especially bohot stylish lagta hai."}]}}]
+1a:["$","$L18","47",{"product":{"id":47,"slug":"melting-drop-shoulder-tee","name":"MELTING Drop Shoulder T-Shirt","price":"PKR 1,499","priceNum":1499,"original":"PKR 1,999","originalNum":1999,"badge":"25% OFF","rating":4.9,"isFeatured":true,"category":"Drop Shoulder Tees","description":"The MELTING Drop Shoulder T-Shirt brings a bold streetwear vibe with its unique 3D melting text design on both the front and back. Crafted with premium breathable cotton-blend fabric, this tee offers a relaxed oversized fit—perfect for casual wear, urban styling, and everyday comfort. A statement piece designed for those who love expressive and modern fashion.","features":["Premium Cotton-Blend Fabric soft, breathable & durable","Oversized Drop Shoulder Fit trendy streetwear style","Front & Back 'MELTING' 3D Graphic high-quality print","Smooth & Skin-Friendly Material anti-irritation fabric","Double-stitched hems for long-lasting use","Fade-resistant black color with proper wash care"],"sizes":["S","M","L","XL"],"colors":[{"name":"Black","hex":"#000000","images":["/product-assets/melting-drop-shoulder-tee/1.png"]}],"reviews":[{"name":"Hassan Raza","star":5,"review":"Graphic bohot unique aur bold hai! Fabric soft aur fitting perfectly oversized."},{"name":"Moiz Siddiqui","star":5,"review":"Front & back design dono premium lagte hain. Quality expected se zyada achi!"},{"name":"Daniyal Arif","star":4,"review":"Comfort level great hai, delivery time theek tha. Overall stylish streetwear piece."}]}}]
+1b:["$","$L18","49",{"product":{"id":49,"slug":"japanese-calligraphy-drop-shoulder-tee","name":"Japanese Calligraphy – Black Drop Shoulder T-Shirt","price":"PKR 1,099","priceNum":1099,"original":"PKR 1,899","originalNum":1899,"badge":"42% OFF","rating":4.8,"isFeatured":true,"category":"Drop Shoulder Tees","description":"This Japanese Calligraphy Drop Shoulder T-Shirt brings a bold and artistic streetwear vibe with its striking red sun emblem and clean vertical Kanji print. Crafted with premium soft cotton, this oversized tee offers maximum comfort, breathable fabric, and a unique modern aesthetic. Perfect for casual wear, street style, and everyday fashion.","features":["Premium 180 200 GSM Soft Cotton Fabric","Oversized Drop Shoulder Fit","Bold Japanese Calligraphy Graphic (Front & Back)","Breathable, Soft & Skin-Friendly Material","Fade-Resistant Black Color","Ribbed Crew Neck for Durability","Perfect for Streetwear & Casual Outfits"],"sizes":["M","L","XL"],"colors":[{"name":"Black","hex":"#000000","images":["/product-assets/japanese-calligraphy-drop-shoulder-tee/1.png"]}],"reviews":[{"name":"Ahsan Raza","star":5,"review":"Design bohot unique hai! Especially red sun effect. Fabric bhi premium quality ka."},{"name":"Umer Shah","star":4,"review":"Streetwear lovers ke liye perfect tee. Print sharp aur clear hai."},{"name":"Farhan Ali","star":5,"review":"Comfort, fitting, design—sab top notch! Worth the price."}]}}]
+1c:["$","$L18","43",{"product":{"id":43,"slug":"vegeta-drop-shoulder-tee","name":"Vegeta Drop Shoulder Tee","price":"PKR 1,199","priceNum":1199,"original":"PKR 1,799","originalNum":1799,"badge":"33% OFF","rating":4.9,"isFeatured":true,"category":"Drop Shoulder Tees","description":"The Vegeta Graphic Print Drop Shoulder Tee is designed for anime lovers who want a bold streetwear look with everyday comfort. Crafted from premium soft fabric, it features a powerful Vegeta-inspired graphic print on a classic black base, making it perfect for casual wear, winter layering, and modern street style.","features":["Premium Soft Fabric for Winter Comfort","Bold Vegeta Anime Graphic Print","Drop Shoulder Oversized Fit","Ribbed Cuffs & Hem for Perfect Fit","Warm, Breathable & Skin-Friendly Material","Fade-Resistant Black Color","Durable Stitching for Long-Lasting Wear","Perfect for Casual, Travel & Streetwear Looks"],"sizes":["S","M","L","XL"],"colors":[{"name":"Mustard Brown","hex":"#976513","images":["/product-assets/vegeta-drop-shoulder-tee/3.png"]},{"name":"Black","hex":"#000000","images":["/product-assets/vegeta-drop-shoulder-tee/1.png"]},{"name":"Blue","hex":"#0000FF","images":["/product-assets/vegeta-drop-shoulder-tee/2.png"]}],"reviews":[{"name":"Hassan Raza","star":5,"review":"Vegeta ka print bohot zabardast hai, bilkul premium feel deta hai."},{"name":"Usman Tariq","star":5,"review":"Fabric soft aur warm hai, winter ke liye perfect choice hai."},{"name":"Bilal Ahmed","star":4,"review":"Fitting aur oversized look dono hi bohot achay lagte hain."}]}}]
+1d:["$","$L18","41",{"product":{"id":41,"slug":"focus-drop-shoulder-tee","name":"Focus Drop Shoulder Tee","price":"PKR 1,199","priceNum":1199,"original":"PKR 1,799","originalNum":1799,"badge":"33% OFF","rating":4.7,"isFeatured":true,"category":"Drop Shoulder Tees","description":"The Focus Graphic Print Drop Shoulder Tee is designed for those who stay driven and motivated. Featuring a clean yet bold Focus typography print on a deep black base, this oversized tee blends minimal street style with everyday comfort. Perfect for casual wear, university, gym layering, and modern street fashion.","features":["Premium Soft Cotton Fabric","Minimal & Bold Focus Print","Oversized Drop Shoulder Fit","Breathable & Skin-Friendly Material","Fade-Resistant Deep Black Color","Strong & Durable Stitching","Perfect for Casual & Everyday Streetwear"],"sizes":["S","M","L","XL"],"colors":[{"name":"Black","hex":"#000000","images":["/product-assets/focus-drop-shoulder-tee/1.png"]}],"reviews":[{"name":"Umar Farooq","star":5,"review":"Simple aur classy design hai, black color bohot premium lagta hai."},{"name":"Hamdan Ali","star":5,"review":"Fabric comfortable hai aur daily wear ke liye perfect hai."},{"name":"Shahzaib Malik","star":4,"review":"Oversized fitting bohot achi hai, bilkul modern street style feel deta hai."}]}}]
+1e:["$","$L18","32",{"product":{"id":32,"slug":"never-stop-dreaming-drop-shoulder-tee","name":"NEVER STOP DREAMING – Drop Shoulder T-Shirt","price":"PKR 1,699","priceNum":1699,"original":"PKR 1,999","originalNum":1999,"badge":"15% OFF","rating":4.9,"isFeatured":true,"category":"Drop Shoulder Tees","description":"The NEVER STOP DREAMING Drop Shoulder Tee is designed for those who chase goals fearlessly. Featuring a bold motivational graphic on a deep black base, this tee brings inspiration and style together. Made with premium soft cotton and an oversized drop-shoulder cut, it offers all-day comfort, modern streetwear vibes, and a powerful message that stands out anywhere.","features":["Premium 180 200 GSM Soft Cotton Fabric","Oversized Drop Shoulder Streetwear Fit","Bold Motivational 'Never Stop Dreaming' Graphic","Soft, Breathable & Skin-Friendly Material","Fade-Resistant Black Color","Durable Ribbed Neckline","Perfect for Casual, Gym & Daily Wear"],"sizes":["M","L","XL"],"colors":[{"name":"Black","hex":"#000000","images":["/product-assets/never-stop-dreaming-drop-shoulder-tee/1.png"]}],"reviews":[{"name":"Bilal Ahmed","star":5,"review":"Motivational print bohot zabardast! Fabric soft aur perfect oversized fitting."},{"name":"Shahzaib Khan","star":5,"review":"Quality top-notch! Black color fade nahi hota. Streetwear lovers ke liye best."},{"name":"Danish Rafiq","star":4,"review":"Design and comfort amazing. Delivery thori late thi but product worth it!"}]}}]
+1f:["$","$L18","40",{"product":{"id":40,"slug":"seek-drop-shoulder-tee","name":"Seek Drop Shoulder Tee","price":"PKR 1,499","priceNum":1499,"original":"PKR 1,799","originalNum":1799,"badge":"17% OFF","rating":4.8,"isFeatured":true,"category":"Drop Shoulder Tees","description":"The Seek Graphic Print Drop Shoulder Tees is designed for a bold streetwear look with everyday comfort. Crafted from premium soft fabric, it features a standout graphic print on a classic black base, making it perfect for casual wear, winter layering, and modern street style.","features":["Premium Soft Fabric for Winter Comfort","Bold Seek Graphic Print Design","Ribbed Cuffs & Hem for Perfect Fit","Warm, Breathable & Skin-Friendly Material","Fade-Resistant Black Color","Durable Stitching for Long-Lasting Wear","Perfect for Casual, Travel & Streetwear Looks"],"sizes":["S","M","L","XL"],"colors":[{"name":"Black","hex":"#000000","images":["/product-assets/seek-drop-shoulder-tee/1.png"]}],"reviews":[{"name":"Ammar Khan","star":5,"review":"Graphic print bohot solid lagta hai aur fabric warm hai."},{"name":"Saad Ali","star":5,"review":"Winter wear ke liye perfect sweat shirt. Quality top-notch."},{"name":"Hamza Rafiq","star":4,"review":"Comfortable hai aur fitting bhi achi hai."}]}}]
+20:["$","section",null,{"className":"category-section","children":["$","div",null,{"className":"category-inner","children":[["$","div",null,{"className":"category-header","children":[["$","span",null,{"className":"section-tag","style":{"color":"#fdc700","borderColor":"#fdc700"},"children":"Browse Categories"}],["$","h2",null,{"className":"section-heading light","children":["Shop by ",["$","em",null,{"children":"Category"}]]}]]}],["$","div",null,{"className":"category-grid","children":[["$","$L17","hoodies",{"href":"/category/hoodies","className":"cat-card","children":[["$","img",null,{"src":"/category-assets/Hoodies/img.jpg","alt":"Hoodies"}],["$","div",null,{"className":"cat-card-overlay"}],["$","div",null,{"className":"cat-card-name","children":["HOODIES",["$","span",null,{"className":"arrow","children":"→"}]]}]]}],["$","$L17","denim-jackets",{"href":"/category/denim-jackets","className":"cat-card","children":[["$","img",null,{"src":"/category-assets/Denim Jackets/img.jpg","alt":"Denim Jackets"}],["$","div",null,{"className":"cat-card-overlay"}],["$","div",null,{"className":"cat-card-name","children":["DENIM JACKETS",["$","span",null,{"className":"arrow","children":"→"}]]}]]}],["$","$L17","classic-polo-shirts",{"href":"/category/classic-polo-shirts","className":"cat-card","children":[["$","img",null,{"src":"/category-assets/Classic Polo Shirts/img.jpg","alt":"Classic Polo Shirts"}],["$","div",null,{"className":"cat-card-overlay"}],["$","div",null,{"className":"cat-card-name","children":["CLASSIC POLO SHIRTS",["$","span",null,{"className":"arrow","children":"→"}]]}]]}],["$","$L17","knitted-polo-tees",{"href":"/category/knitted-polo-tees","className":"cat-card","children":[["$","img",null,{"src":"/category-assets/Knitted Polo T-Shirts/img.jpg","alt":"Knitted Polo Tees"}],["$","div",null,{"className":"cat-card-overlay"}],["$","div",null,{"className":"cat-card-name","children":["KNITTED POLO TEES",["$","span",null,{"className":"arrow","children":"→"}]]}]]}],["$","$L17","normal-basic-tees",{"href":"/category/normal-basic-tees","className":"cat-card","children":[["$","img",null,{"src":"/category-assets/Normal Basic T-shirts/img.jpg","alt":"Normal Basic Tees"}],["$","div",null,{"className":"cat-card-overlay"}],["$","div",null,{"className":"cat-card-name","children":["NORMAL BASIC TEES",["$","span",null,{"className":"arrow","children":"→"}]]}]]}],["$","$L17","drop-shoulder-tees",{"href":"/category/drop-shoulder-tees","className":"cat-card","children":[["$","img",null,{"src":"/category-assets/Drop Shoulder T-shirts/img.jpg","alt":"Drop Shoulder Tees"}],["$","div",null,{"className":"cat-card-overlay"}],["$","div",null,{"className":"cat-card-name","children":["DROP SHOULDER TEES",["$","span",null,{"className":"arrow","children":"→"}]]}]]}],["$","$L17","cargo-trouzer",{"href":"/category/cargo-trouzer","className":"cat-card","children":[["$","img",null,{"src":"/category-assets/Cargo Trouzer/img.jpg","alt":"Cargo Trouzer"}],["$","div",null,{"className":"cat-card-overlay"}],["$","div",null,{"className":"cat-card-name","children":["CARGO TROUZER",["$","span",null,{"className":"arrow","children":"→"}]]}]]}],["$","$L17","sweat-shirt",{"href":"/category/sweat-shirt","className":"cat-card","children":[["$","img",null,{"src":"/category-assets/Sweat Shirt/img.jpg","alt":"Sweat Shirt"}],["$","div",null,{"className":"cat-card-overlay"}],["$","div",null,{"className":"cat-card-name","children":["SWEAT SHIRT",["$","span",null,{"className":"arrow","children":"→"}]]}]]}],["$","$L17","textured-shirt",{"href":"/category/textured-shirt","className":"cat-card","children":[["$","img",null,{"src":"/category-assets/Textured Shirt/img.png","alt":"Textured Shirt"}],["$","div",null,{"className":"cat-card-overlay"}],["$","div",null,{"className":"cat-card-name","children":["TEXTURED SHIRT",["$","span",null,{"className":"arrow","children":"→"}]]}]]}]]}]]}]}]
+21:["$","$L26",null,{}]
+22:["$","section",null,{"className":"collection-section","children":["$","div",null,{"className":"collection-inner","children":[["$","div",null,{"className":"featured-header","children":[["$","div",null,{"children":[["$","span",null,{"className":"section-tag","children":"Full Drop"}],["$","h2",null,{"className":"section-heading","children":["Drop Shoulder"," ",["$","em",null,{"children":["Tees"]}]]}]]}],["$","$L17",null,{"href":"/category/drop-shoulder-tees","className":"sec-cta","children":["See Full Collection ",["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":14,"height":14,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-right","aria-hidden":"true","children":[["$","path","1ays0h",{"d":"M5 12h14"}],["$","path","xquz4c",{"d":"m12 5 7 7-7 7"}],"$undefined"]}]]}]]}],["$","div",null,{"className":"products-grid","children":[["$","$L18","42",{"product":{"id":42,"slug":"never-stop-dreaming-drop-shoulder-tee","name":"NEVER STOP DREAMING Streetwear Graphic Drop Shoulder Tee","price":"PKR 1,199","priceNum":1199,"original":"PKR 1,999","originalNum":1999,"badge":"40% OFF","rating":4.9,"category":"Drop Shoulder Tees","description":"The NEVER STOP DREAMING Drop Shoulder Tee brings a bold, motivational streetwear vibe with its powerful graphic print. Designed using premium soft cotton and an oversized silhouette, this tee offers the perfect mix of comfort, style, and confidence. Ideal for casual wear, streetwear fits, gym sessions, and everyday inspiration.","features":["Premium 100% Cotton (180 200 GSM)","Oversized Drop Shoulder Fit for a modern streetwear look","High-quality motivational graphic print","Soft, breathable & skin-friendly fabric","Ribbed neckline for durability","Fade-resistant print and fabric","Perfect for daily wear & street-style outfits"],"sizes":["S","M","L","XL","2XL"],"colors":[{"name":"Black","hex":"#000000","images":["/product-assets/never-stop-dreaming-drop-shoulder-tee/1.png"]}],"reviews":[{"name":"Haseeb Ali","star":5,"review":"Graphic bohot inspiring aur premium quality ka hai! Streetwear look perfect."},{"name":"Sameer Anwar","star":5,"review":"Fabric soft, fitting comfortable, aur design bohot unique!"},{"name":"Rao Daniyal","star":4,"review":"Quality zabardast hai. Print wash ke baad bhi bilkul fresh."}]}}],["$","$L18","50",{"product":{"id":50,"slug":"echo-drop-shoulder-tee","name":"Echo Drop Shoulder Tee","price":"PKR 1,199","priceNum":1199,"original":"PKR 1,799","originalNum":1799,"badge":"33% OFF","rating":4.8,"category":"Drop Shoulder Tees","description":"The Echo Graphic Print Drop Shoulder Tee is designed for a modern streetwear look with effortless comfort. Featuring a stylish Echo typography graphic on a deep black base, this oversized tee offers a clean aesthetic with a bold presence. Perfect for casual wear, hangouts, travel, and everyday street fashion.","features":["Premium Soft Cotton Fabric","Stylish Echo Typography Print","Oversized Drop Shoulder Fit","Breathable & Skin-Friendly Material","Fade-Resistant Deep Black Color","Strong & Durable Stitching","Perfect for Casual & Streetwear Looks"],"sizes":["S","M","L","XL"],"colors":[{"name":"White","hex":"#FFFFFF","images":["/product-assets/echo-drop-shoulder-tee/1.png"]},{"name":"Black","hex":"#000000","images":["/product-assets/echo-drop-shoulder-tee/2.png"]}],"reviews":[{"name":"Saad Hussain","star":5,"review":"Design simple lekin bohot stylish lagta hai."},{"name":"Danish Khan","star":5,"review":"Fabric soft hai aur oversized fitting bohot achi hai."},{"name":"Talha Sheikh","star":4,"review":"Daily wear ke liye perfect tee hai, quality bhi achi hai."}]}}],["$","$L18","66",{"product":{"id":66,"slug":"x-face-drop-shoulder-tee","name":"X Face Drop Shoulder T-Shirt","price":"PKR 1,199","priceNum":1199,"original":"PKR 1,899","originalNum":1899,"badge":"37% OFF","rating":4.9,"category":"Drop Shoulder Tees","description":"The X Face Drop Shoulder Tee is designed for bold streetwear lovers who enjoy modern graphic style. Featuring a striking 'X Face' graphic print with an oversized drop shoulder fit, this tee delivers comfort, premium quality, and everyday fashion vibes. Perfect for casual wear, hangouts, and urban street fashion.","features":["Premium Soft Cotton (180–200 GSM)","Oversized Drop Shoulder Fit","Bold 'X Face' Graphic Print","Soft, breathable & skin-friendly fabric","Ribbed neckline for comfort and durability","Fade-resistant print","Perfect for casual & streetwear outfits"],"sizes":["M","L","XL"],"colors":[{"name":"White","hex":"#FFFFFF","images":["/product-assets/x-face-drop-shoulder-tee/1.png"]},{"name":"Black","hex":"#000000","images":["/product-assets/x-face-drop-shoulder-tee/2.png"]}],"reviews":[{"name":"Ahsan Raza","star":5,"review":"X Face graphic bohot stylish aur fabric soft hai."},{"name":"Hamza Khan","star":5,"review":"Oversized fitting perfect hai, streetwear look ke liye best."},{"name":"Zain Malik","star":4,"review":"Casual aur daily wear ke liye comfortable tee hai."}]}}],"$L27","$L28","$L29","$L2a","$L2b"]}]]}]}]
+23:["$","section",null,{"className":"promo-section","children":["$","$L17",null,{"href":"/product/dreams-drop-shoulder-tee","children":["$","img",null,{"src":"/home_banner.png","alt":"Naaksh Promo Banner"}]}]}]
+24:["$","$L2c",null,{}]
+25:["$","section",null,{"className":"brand-section","children":["$","div",null,{"className":"brand-inner","children":[["$","p",null,{"className":"brand-tag","children":"Our Promise"}],["$","h2",null,{"className":"brand-heading","children":["We Don't Just Sell.",["$","br",null,{}],"We Build ",["$","em",null,{"children":"Culture."}]]}],["$","p",null,{"className":"brand-sub","children":"Every stitch. Every drop. Every customer interaction — designed to leave a mark. Naaksh is more than clothing. It's a statement of who you are."}],["$","$L17",null,{"href":"/shop","className":"brand-cta","children":["Explore the Collection ",["$","svg",null,{"ref":"$undefined","xmlns":"http://www.w3.org/2000/svg","width":15,"height":15,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-right","aria-hidden":"true","children":[["$","path","1ays0h",{"d":"M5 12h14"}],["$","path","xquz4c",{"d":"m12 5 7 7-7 7"}],"$undefined"]}]]}]]}]}]
+27:["$","$L18","43",{"product":"$1c:props:product"}]
+28:["$","$L18","63",{"product":{"id":63,"slug":"if-not-know-drop-shoulder-tee","name":"If Not Know Drop Shoulder T-Shirt","price":"PKR 1,099","priceNum":1099,"original":"PKR 1,899","originalNum":1899,"badge":"42% OFF","rating":4.8,"category":"Drop Shoulder Tees","description":"The If Not Know Drop Shoulder Tee is designed for those who love bold statements and streetwear confidence. Featuring a striking 'If Not Know' graphic print on a premium black base, this oversized tee combines comfort, style, and modern urban vibes. Perfect for casual wear, hangouts, and daily street fashion.","features":["Premium Soft Cotton (180–200 GSM)","Oversized Drop Shoulder Fit","Bold 'If Not Know' Graphic Print","Soft, breathable & skin-friendly fabric","Ribbed neckline for comfort and durability","Fade-resistant print","Perfect for casual & streetwear outfits"],"sizes":["M","L","XL"],"colors":[{"name":"Black","hex":"#000000","images":["/product-assets/if-not-know-drop-shoulder-tee/1.png"]}],"reviews":[{"name":"Ayaan Malik","star":5,"review":"Bold statement aur premium fabric. Fitting oversized aur comfortable hai."},{"name":"Usman Raza","star":5,"review":"Streetwear style ke liye perfect tee, quality top notch."},{"name":"Hamza Ali","star":4,"review":"Casual aur daily wear ke liye bohot achi tee."}]}}]
+29:["$","$L18","68",{"product":{"id":68,"slug":"bunny-drop-shoulder-tee","name":"Bunny Drop Shoulder T-Shirt","price":"PKR 1,099","priceNum":1099,"original":"PKR 1,899","originalNum":1899,"badge":"42% OFF","rating":4.8,"category":"Drop Shoulder Tees","description":"The Bunny Drop Shoulder Tee is designed for streetwear lovers who enjoy playful yet bold graphics. Featuring a fun 'Bunny' graphic print on a premium black base with an oversized drop shoulder fit, this tee delivers comfort, style, and everyday urban vibes. Perfect for casual wear, hangouts, and street fashion.","features":["Premium Soft Cotton (180–200 GSM)","Oversized Drop Shoulder Fit","Bold 'Bunny' Graphic Print","Soft, breathable & skin-friendly fabric","Ribbed neckline for comfort and durability","Fade-resistant print","Perfect for casual & streetwear outfits"],"sizes":["M","L","XL"],"colors":[{"name":"Black","hex":"#000000","images":["/product-assets/bunny-drop-shoulder-tee/1.png"]}],"reviews":[{"name":"Ali Raza","star":5,"review":"Bunny print bohot stylish aur playful lagta hai, fabric soft aur comfortable."},{"name":"Hamza Ahmed","star":5,"review":"Oversized fitting perfect hai, streetwear look ke liye best."},{"name":"Zain Malik","star":4,"review":"Casual aur daily wear ke liye comfortable tee hai."}]}}]
+2a:["$","$L18","58",{"product":{"id":58,"slug":"liberte-drop-shoulder-tee","name":"Liberte Drop Shoulder T-Shirt","price":"PKR 1,199","priceNum":1199,"original":"PKR 1,899","originalNum":1899,"badge":"37% OFF","rating":4.9,"category":"Drop Shoulder Tees","description":"The Liberte Drop Shoulder Tee is designed for those who love freedom of style and bold streetwear. Featuring a modern 'Liberte' graphic print with an oversized drop shoulder fit, this tee offers premium comfort, breathability, and everyday fashion-forward vibes. Perfect for casual wear, travel, and street style looks.","features":["Premium Soft Cotton (180–200 GSM)","Oversized Drop Shoulder Fit","Bold 'Liberte' Graphic Print","Soft, breathable & skin-friendly fabric","Ribbed neckline for comfort and durability","Fade-resistant print and colors","Perfect for casual & streetwear outfits"],"sizes":["M","L","XL"],"colors":[{"name":"Mehroon","hex":"#800000","images":["/product-assets/liberte-drop-shoulder-tee/1.png"]},{"name":"Black","hex":"#000000","images":["/product-assets/liberte-drop-shoulder-tee/2.png"]},{"name":"White","hex":"#FFFFFF","images":["/product-assets/liberte-drop-shoulder-tee/3.png"]},{"name":"Navy Dark Blue","hex":"#1E3A8A","images":["/product-assets/liberte-drop-shoulder-tee/4.png"]},{"name":"Deep Dark Green","hex":"#064E3B","images":["/product-assets/liberte-drop-shoulder-tee/5.png"]}],"reviews":[{"name":"Ayaan Malik","star":5,"review":"Colors bohot achay hain aur oversized fitting perfect hai."},{"name":"Hamza Rafiq","star":5,"review":"Fabric soft hai aur print stylish lagta hai."},{"name":"Zain Ali","star":4,"review":"Streetwear ke liye bohot achi tee, everyday wear bhi comfortable hai."}]}}]
+2b:["$","$L18","28",{"product":{"id":28,"slug":"authentic-vibes-only-drop-shoulder-tee","name":"AUTHENTIC VIBES ONLY Drop Shoulder T-Shirt","price":"PKR 1,199","priceNum":1199,"original":"PKR 1,999","originalNum":1999,"badge":"40% OFF","rating":4.9,"category":"Drop Shoulder Tees","description":"The AUTHENTIC VIBES ONLY Drop Shoulder Tee offers a clean, modern streetwear look with a premium oversized fit. Designed with a stylish script graphic and soft 180–200 GSM cotton fabric, this tee ensures maximum comfort, breathability, and durability. Perfect for casual wear, daily outfits, and minimal streetwear styling.","features":["Premium Soft Cotton Fabric (180 200 GSM)","Oversized Drop Shoulder Fit","Stylish 'Authentic Vibes Only' Script Graphic","Breathable & Skin-Friendly Material","Ribbed Neckline for Durability","Fade-Resistant High-Quality Print","Perfect for Streetwear & Casual Styling"],"sizes":["M","L","XL"],"colors":[{"name":"Navy Blue","hex":"#1D2A45","images":["/product-assets/authentic-vibes-only-drop-shoulder-tee/1.jpg"]},{"name":"Black","hex":"#000000","images":["/product-assets/authentic-vibes-only-drop-shoulder-tee/2.jpg"]}],"reviews":[{"name":"Hamza Yousaf","star":5,"review":"Navy color bohot premium lagta hai. Fabric soft and comfortable!"},{"name":"Zain Malik","star":5,"review":"Oversized fitting and print quality both perfect. Highly recommended!"},{"name":"Rehan Ahmed","star":4,"review":"Design simple but classy. Good value for money."}]}}]
+8:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:null
+a:[["$","title","0",{"children":"NAAKSH | Premium Streetwear & Urban Fashion in Pakistan"}],["$","meta","1",{"name":"description","content":"Discover premium minimalist clothing and streetwear in Pakistan. Shop high-quality oversized t-shirts, hoodies, and more at Naaksh."}],["$","link","2",{"rel":"canonical","href":"https://naakshofficial.com"}],["$","meta","3",{"property":"og:title","content":"NAAKSH | Premium Streetwear & Urban Fashion in Pakistan"}],["$","meta","4",{"property":"og:description","content":"Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs to help you stand out. Fashion, made personal."}],["$","meta","5",{"property":"og:url","content":"https://naakshofficial.com"}],["$","meta","6",{"property":"og:site_name","content":"NAAKSH"}],["$","meta","7",{"property":"og:image","content":"https://naakshofficial.com/logo/dark/sm.png"}],["$","meta","8",{"property":"og:image:width","content":"800"}],["$","meta","9",{"property":"og:image:height","content":"600"}],["$","meta","10",{"property":"og:type","content":"website"}],["$","meta","11",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","12",{"name":"twitter:title","content":"NAAKSH | Premium Streetwear & Urban Fashion in Pakistan"}],["$","meta","13",{"name":"twitter:description","content":"Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs to help you stand out. Fashion, made personal."}],["$","meta","14",{"name":"twitter:image","content":"https://naakshofficial.com/logo/dark/sm.png"}],["$","link","15",{"rel":"icon","href":"/favicon.svg"}],["$","$L2d","16",{}]]
