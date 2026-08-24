@@ -201,9 +201,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/heart.js [app-client] (ecmascript) <export default as Heart>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$toastify$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-toastify/dist/index.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/cart.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$wishlist$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/wishlist.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
+;
+;
 ;
 ;
 ;
@@ -213,82 +217,102 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
     const [hoverImgIndex, setHoverImgIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
     const [selectedColor, setSelectedColor] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
     const [isFavorite, setIsFavorite] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const images = product?.colors?.[selectedColor]?.images || [];
-    const currentImage = images[hoverImgIndex] || images[0] || "/placeholder.jpg";
-    // Helper function to check if file is a video
+    const availableColors = product?.colors || product?.garment_colors || [];
+    const currentColorObj = availableColors[selectedColor] || availableColors[0] || null;
+    const images = currentColorObj?.images || (product?.media ? product.media.map((m)=>m.url) : []);
+    const currentImage = images[hoverImgIndex] || images[0] || product?.primary_media?.url || product?.image || "/product-assets/placeholder.png";
+    const categoryName = typeof product?.category === 'object' ? product?.category?.name : product?.category;
+    const displayPrice = product?.price || product?.price_display || (product?.selling_price ? `PKR ${Number(product.selling_price).toLocaleString()}` : '');
+    const displayOriginal = product?.original || product?.original_price_display || (product?.original_selling_price ? `PKR ${Number(product.original_selling_price).toLocaleString()}` : '');
+    const isPurchasable = product?.purchasable !== false && product?.stock_status !== 'out_of_stock';
+    const canonicalUuid = product?.uuid || product?.id;
+    const productSlug = product?.slug || canonicalUuid;
     const isVideo = (url)=>{
         return url?.toLowerCase().endsWith('.mp4');
     };
-    // Check initial wishlist status
+    // Check and sync wishlist status
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ProductCard.useEffect": ()=>{
-            const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-            setIsFavorite(wishlist.includes(product.slug));
+            const updateFav = {
+                "ProductCard.useEffect.updateFav": ()=>{
+                    setIsFavorite((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$wishlist$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isInWishlist"])(canonicalUuid) || (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$wishlist$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["isInWishlist"])(productSlug));
+                }
+            }["ProductCard.useEffect.updateFav"];
+            updateFav();
+            window.addEventListener("wishlist-updated", updateFav);
+            window.addEventListener("storage", updateFav);
+            return ({
+                "ProductCard.useEffect": ()=>{
+                    window.removeEventListener("wishlist-updated", updateFav);
+                    window.removeEventListener("storage", updateFav);
+                }
+            })["ProductCard.useEffect"];
         }
     }["ProductCard.useEffect"], [
-        product.slug
+        canonicalUuid,
+        productSlug
     ]);
-    const toggleWishlist = (e)=>{
+    const handleToggleWishlist = (e)=>{
         e.preventDefault();
         e.stopPropagation();
-        const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-        let updatedWishlist;
-        if (isFavorite) {
-            updatedWishlist = wishlist.filter((item)=>item !== product.slug);
-            // Trigger callback if we are removing specifically
-            if (onRemoveFromWishlist) {
-                onRemoveFromWishlist(product.slug);
-            }
-        } else {
-            updatedWishlist = [
-                ...wishlist,
-                product.slug
-            ];
+        const targetId = canonicalUuid || productSlug;
+        const added = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$wishlist$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toggleWishlist"])(targetId);
+        setIsFavorite(added);
+        if (!added && onRemoveFromWishlist) {
+            onRemoveFromWishlist(targetId);
         }
-        localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
-        setIsFavorite(!isFavorite);
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$toastify$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].info(added ? 'Added to wishlist!' : 'Removed from wishlist');
     };
     const handleColorClick = (colorIndex)=>{
         setSelectedColor(colorIndex);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-        href: `/product/${product.slug}`,
+        href: `/product/${productSlug}`,
         className: "block group",
         onMouseEnter: ()=>images.length > 1 && setHoverImgIndex(1),
         onMouseLeave: ()=>setHoverImgIndex(0),
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "relative bg-white overflow-hidden transition-all duration-300",
             children: [
-                product.badge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                product?.badge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: `absolute top-3 left-3 px-2.5 py-1 text-[9px] font-bold tracking-widest z-10 uppercase bg-black text-white`,
                     children: product.badge
                 }, void 0, false, {
                     fileName: "[project]/src/components/ProductCard.jsx",
-                    lineNumber: 60,
+                    lineNumber: 73,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0)),
-                product.isFeatured && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: `absolute ${product.badge ? 'top-10' : 'top-3'} left-3 px-2.5 py-1 text-[9px] font-bold tracking-widest z-10 uppercase bg-yellow-400 text-black`,
+                product?.is_featured && !product?.badge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "absolute top-3 left-3 px-2.5 py-1 text-[9px] font-bold tracking-widest z-10 uppercase bg-yellow-400 text-black",
                     children: "★ Featured"
                 }, void 0, false, {
                     fileName: "[project]/src/components/ProductCard.jsx",
-                    lineNumber: 68,
+                    lineNumber: 81,
+                    columnNumber: 11
+                }, ("TURBOPACK compile-time value", void 0)),
+                !isPurchasable && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: `absolute ${product?.badge || product?.is_featured ? 'top-10' : 'top-3'} left-3 px-2.5 py-1 text-[9px] font-bold tracking-widest z-10 uppercase bg-red-600 text-white`,
+                    children: "Out of Stock"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/ProductCard.jsx",
+                    lineNumber: 89,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                    onClick: toggleWishlist,
+                    onClick: handleToggleWishlist,
+                    "aria-label": "Toggle wishlist",
                     className: `absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isFavorite ? "bg-red-500 text-white shadow-md" : "bg-white/80 text-gray-900 hover:bg-white hover:shadow-md translate-y-[-10px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100"}`,
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__["Heart"], {
                         size: 16,
                         fill: isFavorite ? "currentColor" : "none"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ProductCard.jsx",
-                        lineNumber: 83,
+                        lineNumber: 105,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/ProductCard.jsx",
-                    lineNumber: 76,
+                    lineNumber: 97,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -303,19 +327,19 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                             playsInline: true
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 88,
+                            lineNumber: 110,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                             src: currentImage,
-                            alt: product.name,
+                            alt: product?.name || 'Product',
                             className: "w-full h-full object-cover transition-transform duration-700 group-hover:scale-105",
                             onError: (e)=>{
-                                e.target.onerror = null; // Prevent infinite loop
+                                e.target.onerror = null;
                                 e.target.src = "/product-assets/placeholder.png";
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 97,
+                            lineNumber: 119,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -324,83 +348,72 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                                 onClick: (e)=>{
                                     e.preventDefault();
                                     e.stopPropagation();
-                                    // Logic adapted from productDetail.jsx
-                                    const sizeToUse = product.sizes?.[0] || '';
-                                    // If the product normally requires a size but none could be selected automatically
-                                    if (product.sizes?.length > 0 && !sizeToUse) {
-                                        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$toastify$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].error('Please select a size');
+                                    if (!isPurchasable) {
+                                        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$toastify$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].info('This product is currently out of stock.');
                                         return;
                                     }
-                                    const cartItem = {
-                                        id: Date.now(),
-                                        productId: product.id,
-                                        name: product.name,
-                                        slug: product.slug,
-                                        price: product.price,
-                                        priceNum: product.priceNum,
-                                        color: product.colors?.[selectedColor]?.name,
-                                        size: sizeToUse,
+                                    const rawSize = product?.sizes?.[0];
+                                    const sizeId = typeof rawSize === 'object' ? rawSize?.id : null;
+                                    const sizeName = typeof rawSize === 'object' ? rawSize?.name : rawSize || 'Standard';
+                                    const colorId = currentColorObj?.id || null;
+                                    const colorName = currentColorObj?.name || 'Default';
+                                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$cart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["addToCart"])({
+                                        product_uuid: canonicalUuid,
                                         quantity: 1,
-                                        image: product.colors?.[selectedColor]?.images?.[0] || '/placeholder.jpg',
-                                        stock: 99
-                                    };
-                                    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-                                    const existingItemIndex = existingCart.findIndex((item)=>item.slug === cartItem.slug && item.size === cartItem.size && item.color === cartItem.color);
-                                    let updatedCart;
-                                    if (existingItemIndex > -1) {
-                                        updatedCart = [
-                                            ...existingCart
-                                        ];
-                                        updatedCart[existingItemIndex].quantity += 1;
-                                    } else {
-                                        updatedCart = [
-                                            ...existingCart,
-                                            cartItem
-                                        ];
-                                    }
-                                    localStorage.setItem('cart', JSON.stringify(updatedCart));
-                                    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$toastify$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(`Added ${product.name} to cart!`);
+                                        size_id: sizeId,
+                                        size_name: sizeName,
+                                        garment_color_id: colorId,
+                                        garment_color_name: colorName,
+                                        name: product?.name,
+                                        slug: productSlug,
+                                        price: displayPrice,
+                                        priceNum: product?.selling_price || 0,
+                                        image: currentImage,
+                                        stock: isPurchasable ? 99 : 0
+                                    });
+                                    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$toastify$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"].success(`Added ${product?.name} to cart!`);
                                 },
-                                className: "w-full bg-black text-white py-3 text-sm font-medium tracking-wider hover:bg-gray-900 uppercase",
-                                children: "Add to Cart"
+                                disabled: !isPurchasable,
+                                className: `w-full py-3 text-sm font-medium tracking-wider uppercase transition ${isPurchasable ? 'bg-black text-white hover:bg-gray-900' : 'bg-gray-400 text-gray-200 cursor-not-allowed'}`,
+                                children: isPurchasable ? 'Add to Cart' : 'Out of Stock'
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ProductCard.jsx",
-                                lineNumber: 108,
+                                lineNumber: 130,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 107,
+                            lineNumber: 129,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ProductCard.jsx",
-                    lineNumber: 86,
+                    lineNumber: 108,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "pt-4 pb-2",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        categoryName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "text-[10px] font-medium tracking-widest text-gray-500 mb-2 uppercase",
-                            children: product.category
+                            children: categoryName
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 163,
-                            columnNumber: 11
+                            lineNumber: 178,
+                            columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                             className: "text-sm font-medium mb-2 text-gray-900 group-hover:text-black",
-                            children: product.name
+                            children: product?.name
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 166,
+                            lineNumber: 182,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
-                        product.colors && product.colors.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        availableColors.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex gap-1.5 mb-3",
-                            children: product.colors.map((color, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            children: availableColors.map((color, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     onClick: (e)=>{
                                         e.preventDefault();
                                         e.stopPropagation();
@@ -408,16 +421,17 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                                     },
                                     className: `w-5 h-5 rounded-full border cursor-pointer transition-all ${selectedColor === i ? "border-2 border-black ring-1 ring-gray-300" : "border border-gray-300 hover:border-gray-400"}`,
                                     style: {
-                                        backgroundColor: color.hex
-                                    }
-                                }, i, false, {
+                                        backgroundColor: color.hex || '#000000'
+                                    },
+                                    title: color.name
+                                }, color.id || i, false, {
                                     fileName: "[project]/src/components/ProductCard.jsx",
-                                    lineNumber: 171,
+                                    lineNumber: 187,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0)))
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 169,
+                            lineNumber: 185,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -425,41 +439,41 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "text-base font-semibold text-black",
-                                    children: product.price
+                                    children: displayPrice
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ProductCard.jsx",
-                                    lineNumber: 189,
+                                    lineNumber: 206,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
-                                product.original && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                displayOriginal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "text-xs text-gray-400 line-through",
-                                    children: product.original
+                                    children: displayOriginal
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ProductCard.jsx",
-                                    lineNumber: 191,
+                                    lineNumber: 208,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 188,
+                            lineNumber: 205,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ProductCard.jsx",
-                    lineNumber: 162,
+                    lineNumber: 176,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/ProductCard.jsx",
-            lineNumber: 58,
+            lineNumber: 71,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/components/ProductCard.jsx",
-        lineNumber: 52,
+        lineNumber: 65,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };

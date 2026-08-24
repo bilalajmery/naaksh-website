@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/40ixmrsssib70.css","style"]
+:HL["/_next/static/chunks/3_fohvc3vm30c.css","style"]
 :HL["/_next/static/chunks/4346ojs8-pfzx.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap","style"]
 :HL["/category-assets/Hoodies/img.jpg","image"]
@@ -11,4 +11,4 @@
 :HL["/category-assets/Sweat Shirt/img.jpg","image"]
 :HL["/category-assets/Textured Shirt/img.png","image"]
 :HL["/home_banner.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4116,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4224,"slots":null}}},"staleTime":300,"buildId":"DvmqgOd_dHge2Cwf-8xuz"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4116,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4224,"slots":null}}},"staleTime":300,"buildId":"8VeAUF5IdqzOySf14vzRL"}

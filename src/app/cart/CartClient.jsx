@@ -1,28 +1,39 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useSyncExternalStore, useMemo } from 'react';
 import Link from 'next/link';
 import { Trash2, Plus, Minus, ShoppingBag, Truck, ChevronRight } from 'lucide-react';
-import { getCart, updateCartQuantity, removeFromCart } from '../../lib/cart';
+import { updateCartQuantity, removeFromCart, normalizeCartItem } from '../../lib/cart';
+
+function subscribeCart(callback) {
+  if (typeof window === 'undefined') return () => {};
+  window.addEventListener('cart-updated', callback);
+  window.addEventListener('storage', callback);
+  return () => {
+    window.removeEventListener('cart-updated', callback);
+    window.removeEventListener('storage', callback);
+  };
+}
+
+function getCartSnapshot() {
+  if (typeof window === 'undefined') return '[]';
+  return localStorage.getItem('cart') || '[]';
+}
+
+function getServerCartSnapshot() {
+  return '[]';
+}
 
 export default function CartClient() {
-  const [cartItems, setCartItems] = useState([]);
-  const [mounted, setMounted] = useState(false);
+  const cartRaw = useSyncExternalStore(subscribeCart, getCartSnapshot, getServerCartSnapshot);
 
-  useEffect(() => {
-    setMounted(true);
-    const syncCart = () => {
-      setCartItems(getCart());
-    };
-
-    syncCart();
-    window.addEventListener('cart-updated', syncCart);
-    window.addEventListener('storage', syncCart);
-
-    return () => {
-      window.removeEventListener('cart-updated', syncCart);
-      window.removeEventListener('storage', syncCart);
-    };
-  }, []);
+  const cartItems = useMemo(() => {
+    try {
+      const parsed = JSON.parse(cartRaw);
+      return Array.isArray(parsed) ? parsed.map(normalizeCartItem) : [];
+    } catch {
+      return [];
+    }
+  }, [cartRaw]);
 
   const handleQuantityChange = (itemKey, newQty) => {
     if (newQty < 1) return;
@@ -41,32 +52,24 @@ export default function CartClient() {
   const shipping = 0; // Free Home Delivery All Over Pakistan
   const total = subtotal + shipping;
 
-  if (!mounted) {
-    return (
-      <div className="min-h-[60vh] bg-white flex items-center justify-center">
-        <div className="w-10 h-10 border-3 border-black border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
-  }
-
   if (cartItems.length === 0) {
     return (
       <div className="min-h-[70vh] bg-white flex items-center justify-center px-4 py-16">
         <div className="text-center max-w-md">
-          <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center text-gray-400">
-            <ShoppingBag size={40} />
+          <div className="w-20 h-20 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center text-gray-400">
+            <ShoppingBag size={36} />
           </div>
-          <h1 className="text-3xl font-black uppercase tracking-tight text-black mb-2">
+          <h1 className="text-2xl sm:text-3xl font-black uppercase text-black mb-2">
             Your Cart is Empty
           </h1>
-          <p className="text-gray-500 text-sm mb-8">
-            You have not added any streetwear pieces to your cart yet. Explore our latest drops!
+          <p className="text-gray-500 text-sm mb-8 leading-relaxed">
+            Looks like you haven&apos;t added any streetwear pieces to your bag yet.
           </p>
           <Link
             href="/shop"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white text-xs font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-black transition shadow-lg"
+            className="inline-block px-8 py-3.5 bg-black text-white text-xs font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-black rounded-xl transition shadow-lg"
           >
-            Start Shopping <ChevronRight size={16} />
+            Explore Catalog
           </Link>
         </div>
       </div>
@@ -74,175 +77,171 @@ export default function CartClient() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50 py-10">
       {/* Breadcrumbs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <nav className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-500">
           <Link href="/" className="hover:text-black transition">Home</Link>
-          <span>/</span>
-          <Link href="/shop" className="hover:text-black transition">Shop</Link>
           <span>/</span>
           <span className="text-black font-bold">Shopping Cart</span>
         </nav>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-        <div className="flex items-baseline justify-between mb-8 pb-4 border-b border-gray-200">
-          <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-black">
-            Shopping Cart <span className="text-gray-400 text-lg font-normal">({cartItems.length} items)</span>
-          </h1>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-8">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-yellow-600">Your Bag</span>
+            <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-black mt-1">
+              Shopping Cart ({cartItems.length})
+            </h1>
+          </div>
+          <Link
+            href="/shop"
+            className="text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black transition"
+          >
+            Continue Shopping &rarr;
+          </Link>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Cart Items List */}
+        <div className="grid lg:grid-cols-3 gap-8 items-start">
+          {/* Cart Line Items (2 Cols) */}
           <div className="lg:col-span-2 space-y-4">
             {cartItems.map((item) => (
               <div
                 key={item.key}
-                className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row gap-5 hover:shadow-md transition"
+                className="bg-white p-4 sm:p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col sm:flex-row gap-5 items-center justify-between transition hover:border-gray-300"
               >
-                {/* Product Image */}
-                <Link
-                  href={`/product/${item.slug || item.product_uuid}`}
-                  className="flex-shrink-0"
-                >
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 bg-gray-50 rounded-xl overflow-hidden border border-gray-100">
-                    <img
-                      src={item.image || '/product-assets/placeholder.png'}
-                      alt={item.name}
-                      className="w-full h-full object-cover object-center hover:scale-105 transition duration-500"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/product-assets/placeholder.png';
-                      }}
-                    />
-                  </div>
-                </Link>
-
-                {/* Details */}
-                <div className="flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="flex justify-between items-start gap-4">
-                      <div>
-                        <Link
-                          href={`/product/${item.slug || item.product_uuid}`}
-                          className="font-bold text-sm sm:text-base text-black hover:text-yellow-600 transition"
-                        >
-                          {item.name}
-                        </Link>
-                        <div className="flex flex-wrap gap-2 text-xs text-gray-500 mt-1.5">
-                          {item.color && (
-                            <span className="bg-gray-100 px-2 py-0.5 rounded text-gray-700 font-medium">
-                              Color: {item.color}
-                            </span>
-                          )}
-                          {item.size && (
-                            <span className="bg-gray-100 px-2 py-0.5 rounded text-gray-700 font-medium">
-                              Size: {item.size}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Remove Button */}
-                      <button
-                        onClick={() => handleRemove(item.key)}
-                        aria-label="Remove item"
-                        className="text-gray-400 hover:text-red-600 p-1.5 rounded-lg hover:bg-red-50 transition"
-                      >
-                        <Trash2 size={18} />
-                      </button>
+                <div className="flex items-center gap-4 w-full sm:w-auto">
+                  {/* Thumbnail */}
+                  <Link href={`/product/${item.slug || item.product_uuid}`} className="flex-shrink-0">
+                    <div className="w-20 h-24 sm:w-24 sm:h-28 bg-gray-100 rounded-xl overflow-hidden border border-gray-100">
+                      <img
+                        src={item.image || '/product-assets/placeholder.png'}
+                        alt={item.name}
+                        className="w-full h-full object-cover hover:scale-105 transition"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/product-assets/placeholder.png';
+                        }}
+                      />
                     </div>
-                  </div>
+                  </Link>
 
-                  {/* Quantity and Price */}
-                  <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-100">
-                    <div className="inline-flex items-center border border-gray-300 rounded-lg overflow-hidden">
-                      <button
-                        onClick={() => handleQuantityChange(item.key, item.quantity - 1)}
-                        disabled={item.quantity <= 1}
-                        className="p-2 hover:bg-gray-100 text-black transition disabled:opacity-30"
-                        aria-label="Decrease quantity"
-                      >
-                        <Minus size={14} />
-                      </button>
-                      <span className="px-3.5 py-1 text-xs font-bold text-black">
-                        {item.quantity}
-                      </span>
-                      <button
-                        onClick={() => handleQuantityChange(item.key, item.quantity + 1)}
-                        disabled={item.quantity >= (item.stock || 99)}
-                        className="p-2 hover:bg-gray-100 text-black transition disabled:opacity-30"
-                        aria-label="Increase quantity"
-                      >
-                        <Plus size={14} />
-                      </button>
-                    </div>
+                  {/* Details */}
+                  <div className="flex-1 min-w-0">
+                    <Link
+                      href={`/product/${item.slug || item.product_uuid}`}
+                      className="text-sm sm:text-base font-black uppercase tracking-tight text-black hover:text-yellow-600 transition truncate block"
+                    >
+                      {item.name}
+                    </Link>
 
-                    <div className="text-right">
-                      <span className="text-base sm:text-lg font-black text-black">
-                        PKR {((item.priceNum || 0) * item.quantity).toLocaleString()}
-                      </span>
-                      {item.quantity > 1 && (
-                        <p className="text-[10px] text-gray-400">
-                          PKR {(item.priceNum || 0).toLocaleString()} each
-                        </p>
+                    <div className="flex flex-wrap gap-2 mt-1.5 text-xs text-gray-500 font-medium">
+                      {item.color && (
+                        <span className="bg-gray-100 px-2.5 py-0.5 rounded-md text-gray-700">
+                          Color: <strong className="text-black font-bold">{item.color}</strong>
+                        </span>
+                      )}
+                      {item.size && (
+                        <span className="bg-gray-100 px-2.5 py-0.5 rounded-md text-gray-700">
+                          Size: <strong className="text-black font-bold">{item.size}</strong>
+                        </span>
                       )}
                     </div>
+
+                    <p className="text-xs font-bold text-black mt-2">
+                      PKR {item.priceNum ? item.priceNum.toLocaleString() : item.price}
+                    </p>
                   </div>
+                </div>
+
+                {/* Quantity & Actions */}
+                <div className="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto pt-3 sm:pt-0 border-t sm:border-t-0 border-gray-100">
+                  {/* Quantity Stepper */}
+                  <div className="flex items-center border border-gray-200 rounded-xl bg-gray-50 overflow-hidden">
+                    <button
+                      onClick={() => handleQuantityChange(item.key, item.quantity - 1)}
+                      disabled={item.quantity <= 1}
+                      className="p-2 text-gray-500 hover:text-black hover:bg-gray-200 transition disabled:opacity-30 disabled:cursor-not-allowed"
+                      aria-label="Decrease quantity"
+                    >
+                      <Minus size={14} />
+                    </button>
+                    <span className="px-3 text-xs font-bold text-black min-w-[2rem] text-center">
+                      {item.quantity}
+                    </span>
+                    <button
+                      onClick={() => handleQuantityChange(item.key, item.quantity + 1)}
+                      disabled={item.quantity >= 99}
+                      className="p-2 text-gray-500 hover:text-black hover:bg-gray-200 transition disabled:opacity-30 disabled:cursor-not-allowed"
+                      aria-label="Increase quantity"
+                    >
+                      <Plus size={14} />
+                    </button>
+                  </div>
+
+                  {/* Line item total */}
+                  <div className="text-right min-w-[5rem]">
+                    <span className="text-sm font-black text-black">
+                      PKR {((item.priceNum || 0) * item.quantity).toLocaleString()}
+                    </span>
+                  </div>
+
+                  {/* Remove Button */}
+                  <button
+                    onClick={() => handleRemove(item.key)}
+                    className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
+                    aria-label="Remove item"
+                  >
+                    <Trash2 size={16} />
+                  </button>
                 </div>
               </div>
             ))}
 
-            <div className="pt-4 flex justify-between items-center">
-              <Link
-                href="/shop"
-                className="text-xs font-bold uppercase tracking-wider text-gray-600 hover:text-black transition"
-              >
-                ← Continue Shopping
-              </Link>
+            {/* Delivery Banner */}
+            <div className="bg-yellow-50 border border-yellow-200/80 rounded-2xl p-4 flex items-center gap-3 text-yellow-900 text-xs">
+              <Truck size={20} className="text-yellow-700 flex-shrink-0" />
+              <span>
+                <strong>Free Express Home Delivery</strong> is active for all orders across Pakistan!
+              </span>
             </div>
           </div>
 
-          {/* Order Summary Box */}
+          {/* Summary Column (1 Col) */}
           <div className="lg:col-span-1">
-            <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8 sticky top-28">
-              <h2 className="text-xl font-black uppercase tracking-tight text-black mb-6">
+            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-sm sticky top-28 space-y-6">
+              <h2 className="text-base font-black uppercase tracking-wider text-black pb-4 border-b border-gray-100">
                 Order Summary
               </h2>
 
-              <div className="space-y-3.5 text-sm">
+              <div className="space-y-3 text-xs">
                 <div className="flex justify-between text-gray-600">
-                  <span>Subtotal</span>
+                  <span>Subtotal ({cartItems.length} items)</span>
                   <span className="font-bold text-black">PKR {subtotal.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
-                  <span>Shipping</span>
-                  <span className="font-bold text-green-600">FREE</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-green-700 bg-green-50 p-2.5 rounded-lg border border-green-200">
-                  <Truck size={16} />
-                  <span>Free delivery all across Pakistan</span>
+                  <span>Shipping Across Pakistan</span>
+                  <span className="font-bold text-green-600 uppercase">Free Delivery</span>
                 </div>
 
-                <div className="border-t border-gray-200 pt-4 mt-4">
-                  <div className="flex justify-between items-baseline">
-                    <span className="text-base font-bold text-black">Total</span>
-                    <span className="text-2xl font-black text-black">
-                      PKR {total.toLocaleString()}
-                    </span>
-                  </div>
-                  <p className="text-[10px] text-gray-400 mt-1">
-                    Tax included. Shipping calculated at checkout.
-                  </p>
+                <div className="pt-4 border-t border-gray-100 flex justify-between items-baseline">
+                  <span className="text-sm font-bold text-black uppercase">Estimated Total</span>
+                  <span className="text-2xl font-black text-black">
+                    PKR {total.toLocaleString()}
+                  </span>
                 </div>
+                <p className="text-[10px] text-gray-400">
+                  *Taxes and final total evaluated by server at checkout.
+                </p>
               </div>
 
               <Link
                 href="/checkout"
-                className="block w-full text-center bg-black text-white py-4 mt-6 text-xs font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-black rounded-xl transition shadow-lg"
+                className="w-full py-4 bg-black text-white text-xs font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-black rounded-xl transition flex items-center justify-center gap-2 shadow-lg hover:shadow-yellow-500/20"
               >
-                Proceed to Checkout
+                <span>Proceed to Checkout</span>
+                <ChevronRight size={16} />
               </Link>
             </div>
           </div>

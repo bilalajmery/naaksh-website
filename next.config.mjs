@@ -19,6 +19,23 @@ const nextConfig = {
         hostname: 'naakshofficial.com',
         pathname: '/**',
       },
+      {
+        protocol: 'http',
+        hostname: '192.168.100.152',
+        port: '1000',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '1000',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        pathname: '/**',
+      },
     ],
   },
   compress: true,
