@@ -19,8 +19,13 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${matched.name} | NAAKSH — Premium Streetwear Pakistan`,
+    title: matched.name,
     description: `Shop the latest ${matched.name} collection from NAAKSH. Premium fabrics, signature cuts, and bold Pakistani urban fashion.`,
+    openGraph: {
+      title: `${matched.name} | NAAKSH`,
+      description: `Shop the latest ${matched.name} collection from NAAKSH.`,
+      url: `https://naakshofficial.com/category/${matched.slug}`,
+    },
     alternates: {
       canonical: `https://naakshofficial.com/category/${matched.slug}`,
     },

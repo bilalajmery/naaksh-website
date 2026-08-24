@@ -7,18 +7,48 @@ import { getCategories } from '../lib/catalog';
 import Script from 'next/script';
 
 export const metadata = {
-  title: 'NAAKSH | Premium Streetwear & Urban Fashion in Pakistan',
-  description: 'Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs to help you stand out. Fashion, made personal.',
+  metadataBase: new URL('https://naakshofficial.com'),
+  title: {
+    default: 'NAAKSH | Premium Streetwear & Urban Fashion in Pakistan',
+    template: '%s | NAAKSH',
+  },
+  description: 'Naaksh is Pakistan’s premier streetwear label offering heavyweight oversized graphic tees, drop-shoulder hoodies, and luxury essentials crafted with bold Pakistani attitude.',
+  keywords: [
+    'Pakistani Streetwear',
+    'Oversized T-Shirts Pakistan',
+    'Streetwear Pakistan',
+    'Drop Shoulder Tees',
+    'Graphic Hoodies Karachi',
+    'Urban Clothing Brand Lahore',
+    'Heavyweight Cotton Tees',
+    'NAAKSH Official'
+  ],
+  authors: [{ name: 'NAAKSH', url: 'https://naakshofficial.com' }],
+  creator: 'NAAKSH',
+  publisher: 'NAAKSH',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: 'NAAKSH | Premium Streetwear & Urban Fashion in Pakistan',
-    description: 'Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs to help you stand out. Fashion, made personal.',
+    description: 'Naaksh offers high-grade 240 GSM bio-washed cotton streetwear, oversized drop-shoulder fits, and bold limited drops across Pakistan.',
     url: 'https://naakshofficial.com',
     siteName: 'NAAKSH',
+    locale: 'en_PK',
     images: [
       {
-        url: 'https://naakshofficial.com/logo/dark/sm.png',
+        url: '/logo/dark/sm.png',
         width: 800,
         height: 600,
+        alt: 'NAAKSH Streetwear Pakistan',
       },
     ],
     type: 'website',
@@ -26,16 +56,51 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'NAAKSH | Premium Streetwear & Urban Fashion in Pakistan',
-    description: 'Naaksh offers unique, customizable fashion with high-quality T-shirts, hoodies, and bold or minimalist designs to help you stand out. Fashion, made personal.',
-    images: ['https://naakshofficial.com/logo/dark/sm.png'],
+    description: 'Shop luxury oversized drop shoulder streetwear in Pakistan with free nationwide express delivery.',
+    images: ['/logo/dark/sm.png'],
   },
   icons: {
     icon: '/favicon.svg',
-  }
+    shortcut: '/favicon.svg',
+    apple: '/logo/sm.png',
+  },
 };
 
 export default async function RootLayout({ children }) {
   const categories = await getCategories();
+
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'NAAKSH',
+    url: 'https://naakshofficial.com',
+    logo: 'https://naakshofficial.com/logo/dark/sm.png',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+92-340-3577155',
+      contactType: 'customer service',
+      areaServed: 'PK',
+      availableLanguage: ['English', 'Urdu'],
+    },
+    sameAs: [
+      'https://www.instagram.com/naakshofficial/',
+      'https://www.facebook.com/naakshofficial',
+      'https://www.tiktok.com/@naakshofficial',
+      'https://www.youtube.com/@NaakshOfficial-f9h',
+    ],
+  };
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'NAAKSH',
+    url: 'https://naakshofficial.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://naakshofficial.com/shop?search={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  };
   
   return (
     <html lang="en">
@@ -43,6 +108,14 @@ export default async function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
         <Script id="gtm-script" strategy="afterInteractive">
           {`
             (function (w, d, s, l, i) {

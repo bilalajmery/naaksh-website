@@ -10,7 +10,9 @@
   "/page": "/",
   "/privacy/page": "/privacy",
   "/product/[slug]/page": "/product/[slug]",
+  "/robots.txt/route": "/robots.txt",
   "/shop/page": "/shop",
+  "/sitemap.xml/route": "/sitemap.xml",
   "/terms/page": "/terms",
   "/wishlist/page": "/wishlist"
 }

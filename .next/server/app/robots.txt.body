@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /
+Disallow: /cart
+Disallow: /checkout
+Disallow: /checkout/*
+Disallow: /wishlist
+Disallow: /api/*
+
+Sitemap: https://naakshofficial.com/sitemap.xml
