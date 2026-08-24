@@ -15,22 +15,23 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const products = await getProducts();
   const categories = await getCategories();
 
-  const sortedProducts = products.sort((a, b) => (b.id || 0) - (a.id || 0));
+  // Identify target showcase category (e.g. Drop Shoulder)
+  const targetCategory = categories.find(
+    (c) => c.name.toLowerCase().includes('drop shoulder') || c.slug.includes('drop-shoulder')
+  ) || categories[0] || { id: null, name: 'Drop Shoulder Tees', slug: 'drop-shoulder-tees' };
 
-  const featuredCategory = "Drop Shoulder Tees";
+  // Fetch deterministic product collections from M16 Backend API
+  const [featuredProducts, categoryFeaturedProducts] = await Promise.all([
+    getProducts({ is_featured: true, per_page: 8 }),
+    targetCategory?.id
+      ? getProducts({ category_id: targetCategory.id, per_page: 8 })
+      : getProducts({ per_page: 8, sort: 'newest' }),
+  ]);
 
-  const featuredProducts = sortedProducts
-    .filter((p) => p.isFeatured === true)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 8);
-
-  const categoryFeaturedProducts = sortedProducts
-    .filter((p) => p.category === featuredCategory)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 8);
+  const featuredCategoryName = targetCategory?.name || 'Drop Shoulder Tees';
+  const featuredCategorySlug = targetCategory?.slug || 'drop-shoulder-tees';
 
   const features = [
     { icon: <Truck size={22} />, title: "Free Delivery", sub: "All Over Pakistan" },
@@ -462,7 +463,7 @@ export default async function Home() {
               </div>
               <div className="products-grid">
                 {featuredProducts.map((p) => (
-                  <ProductCard key={p.id} product={p} />
+                  <ProductCard key={p.uuid || p.id} product={p} />
                 ))}
               </div>
             </div>
@@ -505,10 +506,10 @@ export default async function Home() {
               <div>
                 <span className="section-tag">Full Drop</span>
                 <h2 className="section-heading">
-                  {featuredCategory.split(" ").slice(0, -1).join(" ")} <em>{featuredCategory.split(" ").slice(-1)}</em>
+                  {featuredCategoryName.split(" ").slice(0, -1).join(" ")} <em>{featuredCategoryName.split(" ").slice(-1)}</em>
                 </h2>
               </div>
-              <Link href={`/category/${categories.find(c => c.name === featuredCategory)?.slug || ''}`} className="sec-cta">
+              <Link href={`/category/${featuredCategorySlug}`} className="sec-cta">
                 See Full Collection <ArrowRight size={14} />
               </Link>
             </div>
@@ -516,12 +517,12 @@ export default async function Home() {
             {categoryFeaturedProducts.length > 0 ? (
               <div className="products-grid">
                 {categoryFeaturedProducts.map((p) => (
-                  <ProductCard key={p.id} product={p} />
+                  <ProductCard key={p.uuid || p.id} product={p} />
                 ))}
               </div>
             ) : (
               <p style={{ textAlign: "center", color: "#999", fontSize: "16px" }}>
-                No products in {featuredCategory} yet.
+                No products in {featuredCategoryName} yet.
               </p>
             )}
           </div>

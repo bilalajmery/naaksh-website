@@ -2,7 +2,9 @@
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
   "/about/page": "/about",
+  "/category/[slug]/page": "/category/[slug]",
   "/page": "/",
   "/privacy/page": "/privacy",
+  "/shop/page": "/shop",
   "/terms/page": "/terms"
 }

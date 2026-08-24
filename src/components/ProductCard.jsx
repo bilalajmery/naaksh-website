@@ -9,11 +9,16 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
   const [selectedColor, setSelectedColor] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const images = product?.colors?.[selectedColor]?.images || (product?.media ? product.media.map(m => m.url) : []);
-  const currentImage = images[hoverImgIndex] || images[0] || product?.primary_media?.url || product?.image || "/placeholder.jpg";
+  const availableColors = product?.colors || product?.garment_colors || [];
+  const currentColorObj = availableColors[selectedColor] || availableColors[0] || null;
+
+  const images = currentColorObj?.images || (product?.media ? product.media.map(m => m.url) : []);
+  const currentImage = images[hoverImgIndex] || images[0] || product?.primary_media?.url || product?.image || "/product-assets/placeholder.png";
   const categoryName = typeof product?.category === 'object' ? product?.category?.name : product?.category;
   const displayPrice = product?.price || product?.price_display || (product?.selling_price ? `PKR ${Number(product.selling_price).toLocaleString()}` : '');
   const displayOriginal = product?.original || product?.original_price_display || (product?.original_selling_price ? `PKR ${Number(product.original_selling_price).toLocaleString()}` : '');
+  const isPurchasable = product?.purchasable !== false && product?.stock_status !== 'out_of_stock';
+  const productIdentifier = product?.slug || product?.uuid || product?.id;
 
   // Helper function to check if file is a video
   const isVideo = (url) => {
@@ -23,8 +28,8 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
   // Check initial wishlist status
   useEffect(() => {
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    setIsFavorite(wishlist.includes(product.slug));
-  }, [product.slug]);
+    setIsFavorite(wishlist.includes(productIdentifier));
+  }, [productIdentifier]);
 
   const toggleWishlist = (e) => {
     e.preventDefault();
@@ -34,13 +39,12 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
     let updatedWishlist;
 
     if (isFavorite) {
-      updatedWishlist = wishlist.filter((item) => item !== product.slug);
-      // Trigger callback if we are removing specifically
+      updatedWishlist = wishlist.filter((item) => item !== productIdentifier);
       if (onRemoveFromWishlist) {
-        onRemoveFromWishlist(product.slug);
+        onRemoveFromWishlist(productIdentifier);
       }
     } else {
-      updatedWishlist = [...wishlist, product.slug];
+      updatedWishlist = [...wishlist, productIdentifier];
     }
 
     localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
@@ -53,13 +57,13 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
 
   return (
     <Link
-      href={`/product/${product.slug}`}
+      href={`/product/${productIdentifier}`}
       className="block group"
       onMouseEnter={() => images.length > 1 && setHoverImgIndex(1)}
       onMouseLeave={() => setHoverImgIndex(0)}
     >
       <div className="relative bg-white overflow-hidden transition-all duration-300">
-        {product.badge && (
+        {product?.badge && (
           <div
             className={`absolute top-3 left-3 px-2.5 py-1 text-[9px] font-bold tracking-widest z-10 uppercase bg-black text-white`}
           >
@@ -67,11 +71,19 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
           </div>
         )}
 
-        {product.isFeatured && (
+        {product?.is_featured && !product?.badge && (
           <div
-            className={`absolute ${product.badge ? 'top-10' : 'top-3'} left-3 px-2.5 py-1 text-[9px] font-bold tracking-widest z-10 uppercase bg-yellow-400 text-black`}
+            className="absolute top-3 left-3 px-2.5 py-1 text-[9px] font-bold tracking-widest z-10 uppercase bg-yellow-400 text-black"
           >
             ★ Featured
+          </div>
+        )}
+
+        {!isPurchasable && (
+          <div
+            className={`absolute ${product?.badge || product?.is_featured ? 'top-10' : 'top-3'} left-3 px-2.5 py-1 text-[9px] font-bold tracking-widest z-10 uppercase bg-red-600 text-white`}
+          >
+            Out of Stock
           </div>
         )}
 
@@ -99,10 +111,10 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
           ) : (
             <img
               src={currentImage}
-              alt={product.name}
+              alt={product?.name || 'Product'}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               onError={(e) => {
-                e.target.onerror = null; // Prevent infinite loop
+                e.target.onerror = null;
                 e.target.src = "/product-assets/placeholder.png";
               }}
             />
@@ -113,33 +125,38 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
                 e.preventDefault();
                 e.stopPropagation();
 
-                // Logic adapted from productDetail.jsx
-                const sizeToUse = product.sizes?.[0] || '';
+                if (!isPurchasable) {
+                  toast.info('This product is currently out of stock.');
+                  return;
+                }
 
-                // If the product normally requires a size but none could be selected automatically
-                if (product.sizes?.length > 0 && !sizeToUse) {
-                  toast.error('Please select a size');
+                const rawSize = product?.sizes?.[0];
+                const sizeToUse = typeof rawSize === 'object' ? rawSize?.name : rawSize || '';
+
+                if (product?.sizes?.length > 0 && !sizeToUse) {
+                  toast.error('Please select a size on product page');
                   return;
                 }
 
                 const cartItem = {
                   id: Date.now(),
-                  productId: product.id,
-                  name: product.name,
-                  slug: product.slug,
-                  price: product.price,
-                  priceNum: product.priceNum,
-                  color: product.colors?.[selectedColor]?.name,
+                  productId: product?.uuid || product?.id,
+                  uuid: product?.uuid || null,
+                  name: product?.name,
+                  slug: product?.slug || productIdentifier,
+                  price: displayPrice,
+                  priceNum: product?.selling_price || product?.priceNum || 0,
+                  color: currentColorObj?.name || 'Default',
                   size: sizeToUse,
                   quantity: 1,
-                  image: product.colors?.[selectedColor]?.images?.[0] || '/placeholder.jpg',
-                  stock: 99
+                  image: currentImage,
+                  stock: isPurchasable ? 99 : 0
                 };
 
                 const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
 
                 const existingItemIndex = existingCart.findIndex(item =>
-                  item.slug === cartItem.slug &&
+                  (item.uuid && product?.uuid ? item.uuid === product.uuid : item.slug === cartItem.slug) &&
                   item.size === cartItem.size &&
                   item.color === cartItem.color
                 );
@@ -153,11 +170,16 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
                 }
 
                 localStorage.setItem('cart', JSON.stringify(updatedCart));
-                toast.success(`Added ${product.name} to cart!`);
+                toast.success(`Added ${product?.name} to cart!`);
               }}
-              className="w-full bg-black text-white py-3 text-sm font-medium tracking-wider hover:bg-gray-900 uppercase"
+              disabled={!isPurchasable}
+              className={`w-full py-3 text-sm font-medium tracking-wider uppercase transition ${
+                isPurchasable
+                  ? 'bg-black text-white hover:bg-gray-900'
+                  : 'bg-gray-400 text-gray-200 cursor-not-allowed'
+              }`}
             >
-              Add to Cart
+              {isPurchasable ? 'Add to Cart' : 'Out of Stock'}
             </button>
           </div>
         </div>
@@ -168,13 +190,13 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
               {categoryName}
             </p>
           )}
-          <h3 className="text-sm font-medium mb-2 text-gray-900 group-hover:text-black">{product.name}</h3>
+          <h3 className="text-sm font-medium mb-2 text-gray-900 group-hover:text-black">{product?.name}</h3>
 
-          {product.colors && product.colors.length > 1 && (
+          {availableColors.length > 1 && (
             <div className="flex gap-1.5 mb-3">
-              {product.colors.map((color, i) => (
+              {availableColors.map((color, i) => (
                 <button
-                  key={i}
+                  key={color.id || i}
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -184,7 +206,8 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
                     ? "border-2 border-black ring-1 ring-gray-300"
                     : "border border-gray-300 hover:border-gray-400"
                     }`}
-                  style={{ backgroundColor: color.hex }}
+                  style={{ backgroundColor: color.hex || '#000000' }}
+                  title={color.name}
                 />
               ))}
             </div>

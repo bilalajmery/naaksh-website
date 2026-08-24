@@ -123,7 +123,11 @@ export async function getProducts(params = {}) {
 
   Object.entries(params).forEach(([key, value]) => {
     if (value !== undefined && value !== null && value !== '') {
-      query.append(key, String(value));
+      if (typeof value === 'boolean') {
+        query.append(key, value ? '1' : '0');
+      } else {
+        query.append(key, String(value));
+      }
     }
   });
 
