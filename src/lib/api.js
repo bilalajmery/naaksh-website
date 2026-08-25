@@ -15,8 +15,13 @@ export function getApiBaseUrl() {
   if (typeof process !== 'undefined' && process.env?.NEXT_PUBLIC_SERVER_URL) {
     return process.env.NEXT_PUBLIC_SERVER_URL.replace(/\/+$/, '');
   }
-  // Fallback default
-  return 'https://backend.naakshofficial.com/api';
+  if (typeof window !== 'undefined' && window.location?.hostname) {
+    if (window.location.hostname.startsWith('192.168.')) {
+      return `${window.location.protocol}//${window.location.hostname}:1000/api`;
+    }
+  }
+  // Primary local backend server URL
+  return 'http://192.168.100.154:1000/api';
 }
 
 function getStoredToken() {
@@ -115,6 +120,21 @@ export async function getCategories() {
   return apiRequest('/categories', {
     method: 'GET',
     next: { revalidate: 300 }, // 5-minute cache in Next.js Server Components
+  });
+}
+
+/**
+ * Fetch announcement bar configuration and visibility status.
+ * GET /api/announcement
+ */
+export async function getAnnouncement() {
+  return apiRequest(`/announcement?_t=${Date.now()}`, {
+    method: 'GET',
+    cache: 'no-store',
+    headers: {
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+    },
   });
 }
 

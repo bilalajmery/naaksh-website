@@ -40,7 +40,7 @@ export async function getLocalProducts() {
       category: typeof item.category === 'string' ? { id: null, name: item.category } : item.category,
       primary_media: item.colors?.[0]?.images?.[0] ? { url: item.colors[0].images[0] } : null,
       sizes: (item.sizes || []).map((s, idx) => ({ id: idx + 1, name: s })),
-      garment_colors: (item.colors || []).map((c, idx) => ({ id: idx + 1, name: c.name, hex: c.hex })),
+      garment_colors: (item.colors || []).map((c, idx) => ({ id: idx + 1, name: c.name, hex: c.hex, images: c.images || [] })),
       colors: item.colors,
       image: item.colors?.[0]?.images?.[0] || '/product-assets/placeholder.png',
       description: item.description || '',

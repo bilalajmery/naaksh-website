@@ -208,7 +208,13 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
     const [isFavorite, setIsFavorite] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const availableColors = product?.colors || product?.garment_colors || [];
     const currentColorObj = availableColors[selectedColor] || availableColors[0] || null;
-    const images = currentColorObj?.images || (product?.media ? product.media.map((m)=>m.url) : []);
+    let colorImages = [];
+    if (currentColorObj?.images && Array.isArray(currentColorObj.images) && currentColorObj.images.length > 0) {
+        colorImages = currentColorObj.images;
+    } else if (currentColorObj?.id && product?.media && Array.isArray(product.media)) {
+        colorImages = product.media.filter((m)=>Number(m.color_id) === Number(currentColorObj.id)).map((m)=>m.url);
+    }
+    const images = colorImages.length > 0 ? colorImages : product?.media ? product.media.map((m)=>m.url) : [];
     const currentImage = images[hoverImgIndex] || images[0] || product?.primary_media?.url || product?.image || "/product-assets/placeholder.png";
     const categoryName = typeof product?.category === 'object' ? product?.category?.name : product?.category;
     const displayPrice = product?.price || product?.price_display || (product?.selling_price ? `PKR ${Number(product.selling_price).toLocaleString()}` : '');
@@ -262,7 +268,7 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                     children: product.badge
                 }, void 0, false, {
                     fileName: "[project]/src/components/ProductCard.jsx",
-                    lineNumber: 73,
+                    lineNumber: 80,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0)),
                 product?.is_featured && !product?.badge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -270,7 +276,7 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                     children: "★ Featured"
                 }, void 0, false, {
                     fileName: "[project]/src/components/ProductCard.jsx",
-                    lineNumber: 81,
+                    lineNumber: 88,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0)),
                 !isPurchasable && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -278,7 +284,7 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                     children: "Out of Stock"
                 }, void 0, false, {
                     fileName: "[project]/src/components/ProductCard.jsx",
-                    lineNumber: 89,
+                    lineNumber: 96,
                     columnNumber: 11
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -290,12 +296,12 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                         fill: isFavorite ? "currentColor" : "none"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ProductCard.jsx",
-                        lineNumber: 105,
+                        lineNumber: 112,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 }, void 0, false, {
                     fileName: "[project]/src/components/ProductCard.jsx",
-                    lineNumber: 97,
+                    lineNumber: 104,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -310,7 +316,7 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                             playsInline: true
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 110,
+                            lineNumber: 117,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                             src: currentImage,
@@ -322,7 +328,7 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 119,
+                            lineNumber: 126,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -361,18 +367,18 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                                 children: isPurchasable ? 'Add to Cart' : 'Out of Stock'
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ProductCard.jsx",
-                                lineNumber: 130,
+                                lineNumber: 137,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 129,
+                            lineNumber: 136,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ProductCard.jsx",
-                    lineNumber: 108,
+                    lineNumber: 115,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -383,7 +389,7 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                             children: categoryName
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 178,
+                            lineNumber: 185,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -391,7 +397,7 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                             children: product?.name
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 182,
+                            lineNumber: 189,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0)),
                         availableColors.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -409,12 +415,12 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                                     title: color.name
                                 }, color.id || i, false, {
                                     fileName: "[project]/src/components/ProductCard.jsx",
-                                    lineNumber: 187,
+                                    lineNumber: 194,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0)))
                         }, void 0, false, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 185,
+                            lineNumber: 192,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -425,7 +431,7 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                                     children: displayPrice
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ProductCard.jsx",
-                                    lineNumber: 206,
+                                    lineNumber: 213,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 displayOriginal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -433,30 +439,30 @@ const ProductCard = ({ product, onRemoveFromWishlist })=>{
                                     children: displayOriginal
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/ProductCard.jsx",
-                                    lineNumber: 208,
+                                    lineNumber: 215,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/ProductCard.jsx",
-                            lineNumber: 205,
+                            lineNumber: 212,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ProductCard.jsx",
-                    lineNumber: 176,
+                    lineNumber: 183,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/ProductCard.jsx",
-            lineNumber: 71,
+            lineNumber: 78,
             columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/src/components/ProductCard.jsx",
-        lineNumber: 65,
+        lineNumber: 72,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
