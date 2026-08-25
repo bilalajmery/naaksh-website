@@ -139,6 +139,21 @@ export async function getAnnouncement() {
 }
 
 /**
+ * Fetch active hero banners for website storefront homepage carousel.
+ * GET /api/hero-banners
+ */
+export async function getHeroBanners() {
+  return apiRequest(`/hero-banners?_t=${Date.now()}`, {
+    method: 'GET',
+    cache: 'no-store',
+    headers: {
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+    },
+  });
+}
+
+/**
  * Fetch paginated product collection with optional merchandising filters.
  * GET /api/products
  */

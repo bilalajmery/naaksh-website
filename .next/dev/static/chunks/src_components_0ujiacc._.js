@@ -15,6 +15,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$swiper$2f$mo
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$swiper$2f$modules$2f$effect$2d$fade$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__EffectFade$3e$__ = __turbopack_context__.i("[project]/node_modules/swiper/modules/effect-fade.mjs [app-client] (ecmascript) <export default as EffectFade>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronLeft$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/chevron-left.js [app-client] (ecmascript) <export default as ChevronLeft>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/chevron-right.js [app-client] (ecmascript) <export default as ChevronRight>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/arrow-right.js [app-client] (ecmascript) <export default as ArrowRight>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/api.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
@@ -26,10 +29,12 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
+;
 function HeroCarousel() {
     _s();
     const [activeSlide, setActiveSlide] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
-    const bannerSlides = [
+    const [bannerSlides, setBannerSlides] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([
         {
             img: "/hero-section/5.png"
         },
@@ -39,7 +44,40 @@ function HeroCarousel() {
         {
             img: "/hero-section/7.png"
         }
-    ];
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "HeroCarousel.useEffect": ()=>{
+            let isMounted = true;
+            const fetchBanners = {
+                "HeroCarousel.useEffect.fetchBanners": ()=>{
+                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$api$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getHeroBanners"])().then({
+                        "HeroCarousel.useEffect.fetchBanners": (data)=>{
+                            if (isMounted && Array.isArray(data) && data.length > 0) {
+                                setBannerSlides(data);
+                            }
+                        }
+                    }["HeroCarousel.useEffect.fetchBanners"]).catch({
+                        "HeroCarousel.useEffect.fetchBanners": ()=>{
+                        // preserve default initial slides fallback
+                        }
+                    }["HeroCarousel.useEffect.fetchBanners"]);
+                }
+            }["HeroCarousel.useEffect.fetchBanners"];
+            fetchBanners();
+            const handleFocus = {
+                "HeroCarousel.useEffect.handleFocus": ()=>fetchBanners()
+            }["HeroCarousel.useEffect.handleFocus"];
+            window.addEventListener("focus", handleFocus);
+            document.addEventListener("visibilitychange", handleFocus);
+            return ({
+                "HeroCarousel.useEffect": ()=>{
+                    isMounted = false;
+                    window.removeEventListener("focus", handleFocus);
+                    document.removeEventListener("visibilitychange", handleFocus);
+                }
+            })["HeroCarousel.useEffect"];
+        }
+    }["HeroCarousel.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         style: {
             position: "relative",
@@ -53,7 +91,7 @@ function HeroCarousel() {
                     __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$swiper$2f$modules$2f$effect$2d$fade$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__EffectFade$3e$__["EffectFade"]
                 ],
                 effect: "fade",
-                loop: true,
+                loop: bannerSlides.length > 1,
                 autoplay: {
                     delay: 5000,
                     disableOnInteraction: false
@@ -68,27 +106,92 @@ function HeroCarousel() {
                 children: bannerSlides.map((slide, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$swiper$2f$swiper$2d$react$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SwiperSlide"], {
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "home-hero-slide",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: slide.img,
-                                alt: ""
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/HeroCarousel.jsx",
-                                lineNumber: 36,
-                                columnNumber: 15
-                            }, this)
-                        }, void 0, false, {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: slide.img,
+                                    alt: slide.title || `Hero banner ${i + 1}`
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/HeroCarousel.jsx",
+                                    lineNumber: 63,
+                                    columnNumber: 15
+                                }, this),
+                                (slide.title || slide.subtitle) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "home-hero-gradient",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "home-hero-content",
+                                        children: [
+                                            slide.subtitle && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "home-hero-label",
+                                                children: slide.subtitle
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/HeroCarousel.jsx",
+                                                lineNumber: 68,
+                                                columnNumber: 23
+                                            }, this),
+                                            slide.title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                                className: "text-3xl md:text-5xl font-black uppercase text-white tracking-tight my-2",
+                                                children: slide.title
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/HeroCarousel.jsx",
+                                                lineNumber: 71,
+                                                columnNumber: 23
+                                            }, this),
+                                            slide.button_text && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "mt-4",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                    href: slide.button_link || "/shop",
+                                                    className: "inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-6 py-3 rounded-full text-xs uppercase tracking-widest transition-all duration-300 shadow-lg hover:scale-105",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: slide.button_text
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/HeroCarousel.jsx",
+                                                            lineNumber: 81,
+                                                            columnNumber: 27
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
+                                                            size: 14
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/components/HeroCarousel.jsx",
+                                                            lineNumber: 82,
+                                                            columnNumber: 27
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/components/HeroCarousel.jsx",
+                                                    lineNumber: 77,
+                                                    columnNumber: 25
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/HeroCarousel.jsx",
+                                                lineNumber: 76,
+                                                columnNumber: 23
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/HeroCarousel.jsx",
+                                        lineNumber: 66,
+                                        columnNumber: 19
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/HeroCarousel.jsx",
+                                    lineNumber: 65,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/src/components/HeroCarousel.jsx",
-                            lineNumber: 35,
+                            lineNumber: 62,
                             columnNumber: 13
                         }, this)
-                    }, i, false, {
+                    }, slide.id || i, false, {
                         fileName: "[project]/src/components/HeroCarousel.jsx",
-                        lineNumber: 34,
+                        lineNumber: 61,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/components/HeroCarousel.jsx",
-                lineNumber: 23,
+                lineNumber: 50,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -99,17 +202,17 @@ function HeroCarousel() {
                         size: 20
                     }, void 0, false, {
                         fileName: "[project]/src/components/HeroCarousel.jsx",
-                        lineNumber: 44,
+                        lineNumber: 96,
                         columnNumber: 39
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/HeroCarousel.jsx",
-                    lineNumber: 44,
+                    lineNumber: 96,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/HeroCarousel.jsx",
-                lineNumber: 43,
+                lineNumber: 95,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -120,17 +223,17 @@ function HeroCarousel() {
                         size: 20
                     }, void 0, false, {
                         fileName: "[project]/src/components/HeroCarousel.jsx",
-                        lineNumber: 47,
+                        lineNumber: 99,
                         columnNumber: 39
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/HeroCarousel.jsx",
-                    lineNumber: 47,
+                    lineNumber: 99,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/HeroCarousel.jsx",
-                lineNumber: 46,
+                lineNumber: 98,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -144,7 +247,7 @@ function HeroCarousel() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/HeroCarousel.jsx",
-                        lineNumber: 52,
+                        lineNumber: 104,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -155,7 +258,7 @@ function HeroCarousel() {
                         children: "/"
                     }, void 0, false, {
                         fileName: "[project]/src/components/HeroCarousel.jsx",
-                        lineNumber: 53,
+                        lineNumber: 105,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -165,23 +268,23 @@ function HeroCarousel() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/HeroCarousel.jsx",
-                        lineNumber: 54,
+                        lineNumber: 106,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/HeroCarousel.jsx",
-                lineNumber: 51,
+                lineNumber: 103,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/HeroCarousel.jsx",
-        lineNumber: 22,
+        lineNumber: 49,
         columnNumber: 5
     }, this);
 }
-_s(HeroCarousel, "dS+1ZOtSf2nhh/2pRGHyjeAvUCc=");
+_s(HeroCarousel, "aJKHId1376n2qtaK5lP8xLjfwyE=");
 _c = HeroCarousel;
 var _c;
 __turbopack_context__.k.register(_c, "HeroCarousel");
