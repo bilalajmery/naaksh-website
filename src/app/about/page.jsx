@@ -2,11 +2,39 @@ import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'About | NAAKSH',
-  description: "Learn about the story behind Naaksh, Pakistan's most fearless streetwear brand. Born in Lahore, built for the bold and ambitious.",
+  title: 'About Us — Our Story & Vision',
+  description: 'Discover the story behind NAAKSH, Pakistan’s premier streetwear label. Born on the streets of Lahore, engineered with 240 GSM premium cotton for fearless youth.',
+  keywords: [
+    'About NAAKSH',
+    'Pakistani Streetwear Brand',
+    'Lahore Fashion Label',
+    'Streetwear Story Pakistan',
+    'Ethical Urban Clothing',
+  ],
   alternates: {
     canonical: 'https://naakshofficial.com/about',
-  }
+  },
+  openGraph: {
+    title: 'About Us — Our Story & Vision | NAAKSH',
+    description: 'Learn how NAAKSH was built from the streets of Lahore to redefine modern Pakistani streetwear with uncompromising quality and bold design.',
+    url: 'https://naakshofficial.com/about',
+    siteName: 'NAAKSH',
+    type: 'website',
+    images: [
+      {
+        url: '/logo/dark/sm.png',
+        width: 800,
+        height: 600,
+        alt: 'About NAAKSH Streetwear',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us — Our Story & Vision | NAAKSH',
+    description: 'Discover how NAAKSH is shaping Pakistani streetwear culture with heavyweight fabrics and fearless designs.',
+    images: ['/logo/dark/sm.png'],
+  },
 };
 
 export default function About() {

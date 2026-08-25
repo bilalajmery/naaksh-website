@@ -3,6 +3,8 @@ Allow: /
 Disallow: /cart
 Disallow: /checkout
 Disallow: /checkout/*
+Disallow: /account
+Disallow: /account/*
 Disallow: /wishlist
 Disallow: /api/*
 

@@ -96,6 +96,12 @@
       "namedRegex": "^/about(?:/)?$"
     },
     {
+      "page": "/account",
+      "regex": "^/account(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/account(?:/)?$"
+    },
+    {
       "page": "/cart",
       "regex": "^/cart(?:/)?$",
       "routeKeys": {},

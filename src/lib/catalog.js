@@ -46,6 +46,9 @@ export async function getLocalProducts() {
       description: item.description || '',
       features: item.features || [],
       reviews: item.reviews || [],
+      meta_title: item.meta_title || (item.name ? `${item.name} | NAAKSH` : null),
+      meta_description: item.meta_description || item.description || null,
+      meta_keywords: item.meta_keywords || null,
     }));
   } catch (error) {
     console.error('Failed to load local static products:', error);

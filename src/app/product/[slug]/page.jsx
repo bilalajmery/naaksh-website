@@ -9,20 +9,27 @@ export async function generateMetadata({ params }) {
 
   if (!product) {
     return {
-      title: 'Product Not Found',
+      title: 'Product Not Found | NAAKSH',
       description: 'The requested product could not be found.',
     };
   }
 
   const primaryImageUrl = product.primary_media?.url || product.image || 'https://naakshofficial.com/logo/dark/sm.png';
 
+  // Dedicated Product SEO Priority Strategy
+  const metaTitle = product.meta_title?.trim() || `${product.name} | NAAKSH`;
+  const metaDescription = product.meta_description?.trim() || product.description?.trim() || `Buy ${product.name} at NAAKSH. Premium Pakistani streetwear, high-grade cotton fabric, and signature drop shoulder cuts.`;
+  const metaKeywords = product.meta_keywords?.trim() || undefined;
+  const canonicalUrl = `https://naakshofficial.com/product/${product.slug || product.uuid}`;
+
   return {
-    title: product.name,
-    description: product.description || `Buy ${product.name} at NAAKSH. Premium Pakistani streetwear, high-grade cotton fabric, and signature drop shoulder cuts.`,
+    title: metaTitle,
+    description: metaDescription,
+    keywords: metaKeywords,
     openGraph: {
-      title: `${product.name} | NAAKSH`,
-      description: product.description || `Buy ${product.name} at NAAKSH.`,
-      url: `https://naakshofficial.com/product/${product.slug || product.uuid}`,
+      title: metaTitle,
+      description: metaDescription,
+      url: canonicalUrl,
       images: [
         {
           url: primaryImageUrl,
@@ -32,8 +39,14 @@ export async function generateMetadata({ params }) {
         },
       ],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: metaTitle,
+      description: metaDescription,
+      images: [primaryImageUrl],
+    },
     alternates: {
-      canonical: `https://naakshofficial.com/product/${product.slug || product.uuid}`,
+      canonical: canonicalUrl,
     },
   };
 }
@@ -74,17 +87,18 @@ export default async function ProductPage({ params }) {
 
   const relatedProducts = await getRelatedProducts(product, 4);
 
-  // Build Schema.org Product JSON-LD
+  // Build Schema.org Product JSON-LD using dedicated SEO description
   const primaryImageUrl = product.primary_media?.url || product.image || 'https://naakshofficial.com/logo/dark/sm.png';
   const priceAmount = Number(product.price_raw) || 2500;
   const isInStock = product.stock_status !== 'out_of_stock' && product.purchasable !== false;
+  const schemaDescription = product.meta_description?.trim() || product.description?.trim() || `Buy ${product.name} at NAAKSH.`;
 
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
     image: primaryImageUrl,
-    description: product.description || `Buy ${product.name} at NAAKSH.`,
+    description: schemaDescription,
     sku: product.uuid,
     brand: {
       '@type': 'Brand',

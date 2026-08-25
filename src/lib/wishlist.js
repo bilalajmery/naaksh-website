@@ -1,15 +1,30 @@
 /**
  * Wishlist Storage & Business Layer
- * Milestone 5 (NAAKSH-WEB-M5-CART-WISHLIST-UUID-001)
+ * Milestone 5 & Milestone 12 Hybrid Wishlist Architecture
  * 
  * Invariant: PRODUCT UUID IS CANONICAL PRODUCT IDENTITY.
  * Wishlist stores canonical UUID strings: ["uuid-1", "uuid-2"]
+ *
+ * Hybrid Behavior:
+ * - Guest User: LocalStorage
+ * - Authenticated Customer: Synchronized with Database via Laravel API
  */
+
+import * as api from './api';
 
 export const WISHLIST_STORAGE_KEY = 'wishlist';
 
 function isClient() {
   return typeof window !== 'undefined';
+}
+
+function isAuthenticated() {
+  if (!isClient()) return false;
+  try {
+    return Boolean(localStorage.getItem('naaksh_auth_token'));
+  } catch {
+    return false;
+  }
 }
 
 function dispatchWishlistUpdated() {
@@ -20,7 +35,7 @@ function dispatchWishlistUpdated() {
 }
 
 /**
- * Get current wishlist UUIDs from localStorage.
+ * Get current wishlist UUIDs from local cache / storage.
  */
 export function getWishlist() {
   if (!isClient()) return [];
@@ -37,6 +52,20 @@ export function getWishlist() {
 }
 
 /**
+ * Save wishlist UUIDs to local storage and notify listeners.
+ */
+export function saveWishlist(items) {
+  if (!isClient()) return;
+  try {
+    const normalized = items.map((item) => String(item).trim()).filter(Boolean);
+    localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(normalized));
+    dispatchWishlistUpdated();
+  } catch (err) {
+    console.error('Failed to write wishlist to localStorage:', err);
+  }
+}
+
+/**
  * Check if a product UUID or slug is in the wishlist.
  */
 export function isInWishlist(productIdentifier) {
@@ -47,7 +76,7 @@ export function isInWishlist(productIdentifier) {
 }
 
 /**
- * Toggle product in wishlist.
+ * Toggle product in wishlist (Local + DB sync if authenticated).
  * Returns true if added, false if removed.
  */
 export function toggleWishlist(productIdentifier) {
@@ -68,13 +97,13 @@ export function toggleWishlist(productIdentifier) {
     added = true;
   }
 
-  if (isClient()) {
-    try {
-      localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(updated));
-      dispatchWishlistUpdated();
-    } catch (err) {
-      console.error('Failed to write wishlist to localStorage:', err);
-    }
+  saveWishlist(updated);
+
+  // Background DB sync if customer is authenticated
+  if (isAuthenticated()) {
+    api.addDbWishlistItem(target).catch((err) => {
+      console.warn('Database wishlist toggle sync failed:', err);
+    });
   }
 
   return added;
@@ -86,16 +115,40 @@ export function toggleWishlist(productIdentifier) {
 export function removeFromWishlist(productIdentifier) {
   if (!productIdentifier) return [];
   const current = getWishlist();
-  const targetLower = String(productIdentifier).trim().toLowerCase();
+  const target = String(productIdentifier).trim();
+  const targetLower = target.toLowerCase();
   const updated = current.filter((id) => id.toLowerCase() !== targetLower);
 
-  if (isClient()) {
-    try {
-      localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(updated));
-      dispatchWishlistUpdated();
-    } catch (err) {
-      console.error('Failed to update wishlist in localStorage:', err);
-    }
+  saveWishlist(updated);
+
+  // Background DB sync if authenticated
+  if (isAuthenticated()) {
+    api.removeDbWishlistItem(target).catch((err) => {
+      console.warn('Database wishlist remove sync failed:', err);
+    });
   }
+
   return updated;
+}
+
+/**
+ * Merge local guest wishlist with database wishlist upon login.
+ */
+export async function syncWishlistOnLogin() {
+  if (!isClient()) return;
+  const localUuids = getWishlist();
+
+  try {
+    if (localUuids.length > 0) {
+      const response = await api.mergeDbWishlist(localUuids);
+      const mergedUuids = response?.uuids || [];
+      saveWishlist(mergedUuids);
+    } else {
+      const response = await api.getDbWishlist();
+      const dbUuids = response?.uuids || [];
+      saveWishlist(dbUuids);
+    }
+  } catch (err) {
+    console.error('Failed to synchronize wishlist on login:', err);
+  }
 }

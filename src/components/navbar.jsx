@@ -2,19 +2,24 @@
 import React, { useState, useEffect } from "react";
 import NavLink from "./NavLink";
 import Link from "next/link";
-import { Menu, X, ShoppingCart, Heart, ChevronDown } from "lucide-react";
+import { Menu, X, ShoppingCart, Heart, ChevronDown, User, LogOut, Package, ShieldCheck } from "lucide-react";
 import { getCart } from "../lib/cart";
 import { getWishlist } from "../lib/wishlist";
+import { getAuthUser, logoutCustomer } from "../lib/auth";
+import AuthModal from "./AuthModal";
 
 function Navbar({ categories, loadingCategories }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
   const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [isMobileCategoriesOpen, setIsMobileCategoriesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
   const [wishlistCount, setWishlistCount] = useState(0);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
 
   useEffect(() => {
     const updateCounts = () => {
@@ -23,16 +28,19 @@ function Navbar({ categories, loadingCategories }) {
       setCartItems(cart);
       setCartCount(cart.reduce((total, item) => total + (item.quantity || 1), 0));
       setWishlistCount(wishlist.length);
+      setCurrentUser(getAuthUser());
     };
 
     updateCounts();
     window.addEventListener("cart-updated", updateCounts);
     window.addEventListener("wishlist-updated", updateCounts);
+    window.addEventListener("auth-changed", updateCounts);
     window.addEventListener("storage", updateCounts);
 
     return () => {
       window.removeEventListener("cart-updated", updateCounts);
       window.removeEventListener("wishlist-updated", updateCounts);
+      window.removeEventListener("auth-changed", updateCounts);
       window.removeEventListener("storage", updateCounts);
     };
   }, []);
@@ -42,6 +50,11 @@ function Navbar({ categories, loadingCategories }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSignOut = async () => {
+    setIsUserDropdownOpen(false);
+    await logoutCustomer();
+  };
 
   const navItems = [
     { to: "/", label: "Home" },
@@ -53,6 +66,13 @@ function Navbar({ categories, loadingCategories }) {
 
   return (
     <>
+      {/* Universal Auth Modal */}
+      <AuthModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+        onSuccess={(user) => setCurrentUser(user)}
+      />
+
       {/* 11.11 SALE BAR */}
       <div className="hidden md:block relative z-[60] bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-black text-center py-1 shadow-xl">
         <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-sm md:text-base">
@@ -140,10 +160,94 @@ function Navbar({ categories, loadingCategories }) {
             </div>
 
             {/* Icons */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 md:gap-4">
+              {/* User Account / Login Button */}
+              <div
+                className="relative"
+                onMouseEnter={() => currentUser && setIsUserDropdownOpen(true)}
+                onMouseLeave={() => setIsUserDropdownOpen(false)}
+              >
+                {currentUser ? (
+                  <Link
+                    href="/account"
+                    className="p-2 md:p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group relative flex items-center justify-center"
+                    aria-label="My Account"
+                  >
+                    <User className="w-5 h-5" strokeWidth={2.5} />
+                    <span className="absolute -top-1 -right-1 bg-green-500 w-3 h-3 rounded-full border-2 border-black" />
+                  </Link>
+                ) : (
+                  <button
+                    onClick={() => setAuthModalOpen(true)}
+                    className="p-2 md:p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group relative flex items-center justify-center"
+                    aria-label="Sign In"
+                  >
+                    <User className="w-5 h-5" strokeWidth={2.5} />
+                  </button>
+                )}
+
+                {/* User Dropdown for Authenticated Customer */}
+                {currentUser && (
+                  <div
+                    className={`hidden md:block absolute top-full right-0 mt-4 w-64 bg-black/95 backdrop-blur-xl border border-yellow-900/30 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 transform origin-top-right ${
+                      isUserDropdownOpen ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-95"
+                    }`}
+                  >
+                    <div className="p-4 border-b border-white/10">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-yellow-400">
+                        Signed in as
+                      </p>
+                      <p className="text-white font-bold text-sm truncate mt-0.5">
+                        {currentUser.name}
+                      </p>
+                      <p className="text-gray-400 text-xs truncate">{currentUser.email}</p>
+                    </div>
+
+                    <div className="py-2 text-xs">
+                      <Link
+                        href="/account"
+                        onClick={() => setIsUserDropdownOpen(false)}
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-gray-300 hover:bg-yellow-500 hover:text-black transition font-medium"
+                      >
+                        <ShieldCheck size={16} />
+                        <span>Account Dashboard</span>
+                      </Link>
+                      <Link
+                        href="/account"
+                        onClick={() => setIsUserDropdownOpen(false)}
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-gray-300 hover:bg-yellow-500 hover:text-black transition font-medium"
+                      >
+                        <Package size={16} />
+                        <span>Order History</span>
+                      </Link>
+                      <Link
+                        href="/wishlist"
+                        onClick={() => setIsUserDropdownOpen(false)}
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-gray-300 hover:bg-yellow-500 hover:text-black transition font-medium"
+                      >
+                        <Heart size={16} />
+                        <span>Saved Wishlist</span>
+                      </Link>
+                    </div>
+
+                    <div className="p-2 bg-white/5 border-t border-white/10">
+                      <button
+                        onClick={handleSignOut}
+                        className="w-full flex items-center justify-center gap-2 py-2 text-xs font-bold text-red-400 hover:bg-red-500/10 rounded-lg transition uppercase tracking-wider"
+                      >
+                        <LogOut size={14} />
+                        <span>Sign Out</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Wishlist Button */}
               <NavLink
                 to="/wishlist"
                 className="p-2 md:p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group relative"
+                aria-label="Wishlist"
               >
                 <Heart className="w-5 h-5 group-hover:fill-current" strokeWidth={2.5} />
                 {wishlistCount > 0 && (
@@ -152,6 +256,7 @@ function Navbar({ categories, loadingCategories }) {
                   </span>
                 )}
               </NavLink>
+
               {/* Cart Button with Dropdown */}
               <div
                 className="relative"
@@ -161,6 +266,7 @@ function Navbar({ categories, loadingCategories }) {
                 <NavLink
                   to="/cart"
                   className="p-2 md:p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group relative flex items-center justify-center"
+                  aria-label="Shopping Cart"
                 >
                   <ShoppingCart className="w-5 h-5 group-hover:fill-current" strokeWidth={2.5} />
                   {cartCount > 0 && (
@@ -239,7 +345,7 @@ function Navbar({ categories, loadingCategories }) {
               </div>
 
               {/* Mobile Menu Toggle */}
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden text-white">
+              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden text-white" aria-label="Toggle Menu">
                 {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
               </button>
             </div>
@@ -251,6 +357,36 @@ function Navbar({ categories, loadingCategories }) {
           <>
             <div className="lg:hidden absolute top-full left-0 w-full z-50 bg-black/98 backdrop-blur-2xl border-t border-yellow-900/30 h-screen overflow-y-auto pb-40 shadow-2xl">
               <div className="px-6 py-8">
+                {/* User Status in Mobile Menu */}
+                {currentUser ? (
+                  <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-yellow-900/30 flex items-center justify-between">
+                    <div>
+                      <p className="text-xs font-bold text-white">{currentUser.name}</p>
+                      <p className="text-[10px] text-gray-400">{currentUser.email}</p>
+                    </div>
+                    <Link
+                      href="/account"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="text-xs font-bold text-yellow-400 underline"
+                    >
+                      Dashboard
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="mb-6">
+                    <button
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setAuthModalOpen(true);
+                      }}
+                      className="w-full py-3 bg-yellow-500 text-black font-bold uppercase text-xs tracking-wider rounded-xl hover:bg-yellow-400 transition flex items-center justify-center gap-2"
+                    >
+                      <User size={16} />
+                      <span>Member Sign In / Register</span>
+                    </button>
+                  </div>
+                )}
+
                 {/* Main Links */}
                 {navItems.map((item, index) => (
                   <div key={item.to}>
@@ -296,9 +432,20 @@ function Navbar({ categories, loadingCategories }) {
                   </div>
                 ))}
 
-
-
-
+                {currentUser && (
+                  <div className="mt-8 pt-6 border-t border-white/10 text-center">
+                    <button
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        handleSignOut();
+                      }}
+                      className="text-sm font-bold text-red-400 hover:text-red-300 uppercase tracking-wider flex items-center justify-center gap-2 mx-auto"
+                    >
+                      <LogOut size={16} />
+                      <span>Sign Out</span>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
 

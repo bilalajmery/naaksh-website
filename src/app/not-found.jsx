@@ -3,8 +3,12 @@ import Link from 'next/link';
 import { ArrowLeft, ShoppingBag } from 'lucide-react';
 
 export const metadata = {
-  title: '404 - Page Not Found | NAAKSH',
+  title: '404 - Page Not Found',
   description: 'The streetwear drop or page you were looking for does not exist or has moved.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function NotFound() {

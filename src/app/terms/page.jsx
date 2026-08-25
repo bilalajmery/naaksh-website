@@ -1,11 +1,37 @@
 import { FileText } from 'lucide-react';
 
 export const metadata = {
-  title: 'Terms of Service | NAAKSH',
-  description: 'Terms of Service for NAAKSH - Read our terms and conditions for using our website and purchasing our products.',
+  title: 'Terms of Service',
+  description: 'Review the official Terms of Service for NAAKSH. Learn about our ordering process, cash on delivery terms, nationwide shipping policies, and conditions of use.',
+  keywords: [
+    'NAAKSH Terms of Service',
+    'Online Shopping Terms Pakistan',
+    'Cash on Delivery Terms',
+  ],
   alternates: {
     canonical: 'https://naakshofficial.com/terms',
-  }
+  },
+  openGraph: {
+    title: 'Terms of Service | NAAKSH',
+    description: 'Understand your rights and store policies when purchasing streetwear items on NAAKSH.',
+    url: 'https://naakshofficial.com/terms',
+    siteName: 'NAAKSH',
+    type: 'website',
+    images: [
+      {
+        url: '/logo/dark/sm.png',
+        width: 800,
+        height: 600,
+        alt: 'NAAKSH Terms of Service',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service | NAAKSH',
+    description: 'Official terms and conditions for ordering streetwear products from NAAKSH.',
+    images: ['/logo/dark/sm.png'],
+  },
 };
 
 export default function Terms() {

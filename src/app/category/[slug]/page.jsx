@@ -13,21 +13,49 @@ export async function generateMetadata({ params }) {
 
   if (!matched) {
     return {
-      title: 'Category Not Found | NAAKSH',
+      title: 'Category Not Found',
       description: 'The requested category could not be found.',
     };
   }
 
+  const categoryTitle = matched.name;
+  const categoryDescription = `Explore the ${matched.name} collection at NAAKSH. Premium bio-washed fabrics, precision streetwear tailoring, and signature Pakistani cuts.`;
+  const canonicalUrl = `https://naakshofficial.com/category/${matched.slug}`;
+  const categoryImage = matched.image || '/logo/dark/sm.png';
+
   return {
-    title: matched.name,
-    description: `Shop the latest ${matched.name} collection from NAAKSH. Premium fabrics, signature cuts, and bold Pakistani urban fashion.`,
-    openGraph: {
-      title: `${matched.name} | NAAKSH`,
-      description: `Shop the latest ${matched.name} collection from NAAKSH.`,
-      url: `https://naakshofficial.com/category/${matched.slug}`,
-    },
+    title: categoryTitle,
+    description: categoryDescription,
+    keywords: [
+      `${matched.name} Pakistan`,
+      `Buy ${matched.name} Online`,
+      `NAAKSH ${matched.name}`,
+      'Streetwear Pakistan',
+      'Urban Clothing Brand',
+    ],
     alternates: {
-      canonical: `https://naakshofficial.com/category/${matched.slug}`,
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: `${categoryTitle} | NAAKSH`,
+      description: categoryDescription,
+      url: canonicalUrl,
+      siteName: 'NAAKSH',
+      type: 'website',
+      images: [
+        {
+          url: categoryImage,
+          width: 800,
+          height: 600,
+          alt: `${categoryTitle} - NAAKSH`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${categoryTitle} | NAAKSH`,
+      description: categoryDescription,
+      images: [categoryImage],
     },
   };
 }

@@ -1,11 +1,13 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ChevronDown, Search, Check, MapPin, Loader2, ShoppingBag, ShieldCheck, Truck } from 'lucide-react';
+import { ChevronDown, Search, Check, MapPin, Loader2, ShoppingBag, ShieldCheck, Truck, UserCheck } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { getCart, clearCart } from '../../lib/cart';
-import { submitStructuredCheckout } from '../../lib/api';
+import { submitStructuredCheckout, checkEmailExists } from '../../lib/api';
+import { getAuthUser, isAuthenticated } from '../../lib/auth';
+import CheckoutLoginModal from './LoginModal';
 
 const PAKISTAN_STATES = [
   "Punjab",
@@ -110,6 +112,11 @@ export default function CheckoutClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [saveAddress, setSaveAddress] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
+
+  // Inline Checkout Login Modal State
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const [loginModalEmail, setLoginModalEmail] = useState('');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -121,10 +128,28 @@ export default function CheckoutClient() {
     instruction: ''
   });
 
-  useEffect(() => {
-    setMounted(true);
+  const refreshCart = useCallback(() => {
     const cart = getCart();
     setCartItems(cart);
+  }, []);
+
+  useEffect(() => {
+    setMounted(true);
+    refreshCart();
+
+    const user = getAuthUser();
+    if (user) {
+      setCurrentUser(user);
+      setFormData(prev => ({
+        ...prev,
+        name: user.name || prev.name,
+        email: user.email || prev.email,
+        phone: user.phone || prev.phone,
+        address: user.address || prev.address,
+        city: user.city || prev.city,
+        state: user.state || prev.state,
+      }));
+    }
 
     if (typeof window !== 'undefined') {
       try {
@@ -134,7 +159,21 @@ export default function CheckoutClient() {
         console.error('Error loading saved addresses:', e);
       }
     }
-  }, []);
+
+    const handleAuthChange = () => {
+      const updatedUser = getAuthUser();
+      setCurrentUser(updatedUser);
+      refreshCart();
+    };
+
+    window.addEventListener('auth-changed', handleAuthChange);
+    window.addEventListener('cart-updated', refreshCart);
+
+    return () => {
+      window.removeEventListener('auth-changed', handleAuthChange);
+      window.removeEventListener('cart-updated', refreshCart);
+    };
+  }, [refreshCart]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -178,34 +217,23 @@ export default function CheckoutClient() {
   const shipping = 0; // Free delivery all across Pakistan
   const estimatedTotal = subtotal + shipping;
 
-  const handleSubmitOrder = async (e) => {
-    e.preventDefault();
+  /**
+   * Final Order Execution Logic
+   */
+  const executeOrderPlacement = async (targetFormData = formData) => {
+    setIsSubmitting(true);
+    setFormErrors({});
 
-    if (cartItems.length === 0) {
+    const currentCart = getCart();
+    if (currentCart.length === 0) {
       toast.error("Your cart is empty.");
+      setIsSubmitting(false);
       router.push('/cart');
       return;
     }
 
-    // Client-side quick validation
-    const errors = {};
-    if (!formData.name.trim()) errors.name = "Full name is required";
-    if (!formData.phone.trim()) errors.phone = "Phone number is required";
-    if (!formData.address.trim()) errors.address = "Delivery address is required";
-    if (!formData.city.trim()) errors.city = "City is required";
-
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      toast.error("Please fill in all required fields.");
-      return;
-    }
-
-    setIsSubmitting(true);
-    setFormErrors({});
-
     // Map cart items into authoritative M17 Structured Checkout payload
-    const structuredItems = cartItems.map((item) => {
-      // Ensure product_uuid is valid
+    const structuredItems = currentCart.map((item) => {
       const rawUuid = item.product_uuid || item.productId || item.uuid;
       const sizeId = Number(item.size_id) > 0 ? Number(item.size_id) : 1;
       const colorId = Number(item.garment_color_id) > 0 ? Number(item.garment_color_id) : 1;
@@ -221,13 +249,13 @@ export default function CheckoutClient() {
 
     const payload = {
       customer: {
-        name: formData.name.trim(),
-        email: formData.email.trim() || null,
-        phone: formData.phone.trim(),
-        address: formData.address.trim(),
-        city: formData.city.trim(),
-        state: formData.state?.trim() || null,
-        instruction: formData.instruction.trim() || null
+        name: targetFormData.name.trim(),
+        email: targetFormData.email.trim() || null,
+        phone: targetFormData.phone.trim(),
+        address: targetFormData.address.trim(),
+        city: targetFormData.city.trim(),
+        state: targetFormData.state?.trim() || null,
+        instruction: targetFormData.instruction.trim() || null
       },
       items: structuredItems
     };
@@ -240,12 +268,12 @@ export default function CheckoutClient() {
       if (saveAddress && typeof window !== 'undefined') {
         const newAddress = {
           id: Date.now(),
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          state: formData.state,
-          city: formData.city,
-          address: formData.address
+          name: targetFormData.name,
+          email: targetFormData.email,
+          phone: targetFormData.phone,
+          state: targetFormData.state,
+          city: targetFormData.city,
+          address: targetFormData.address
         };
         const existingAddresses = [...savedAddresses];
         const isDuplicate = existingAddresses.some(
@@ -286,6 +314,77 @@ export default function CheckoutClient() {
     }
   };
 
+  /**
+   * Handle checkout form submission with inline account check
+   */
+  const handleSubmitOrder = async (e) => {
+    e.preventDefault();
+
+    if (cartItems.length === 0) {
+      toast.error("Your cart is empty.");
+      router.push('/cart');
+      return;
+    }
+
+    // Client-side quick validation
+    const errors = {};
+    if (!formData.name.trim()) errors.name = "Full name is required";
+    if (!formData.phone.trim()) errors.phone = "Phone number is required";
+    if (!formData.address.trim()) errors.address = "Delivery address is required";
+    if (!formData.city.trim()) errors.city = "City is required";
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+
+    // Check if entered email belongs to a registered customer when not logged in
+    const emailToTest = formData.email.trim();
+    if (!isAuthenticated() && emailToTest) {
+      setIsSubmitting(true);
+      try {
+        const checkRes = await checkEmailExists(emailToTest);
+        if (checkRes?.exists) {
+          setIsSubmitting(false);
+          setLoginModalEmail(emailToTest);
+          setLoginModalOpen(true);
+          return;
+        }
+      } catch (err) {
+        console.warn('Email check error, proceeding with standard checkout:', err);
+      } finally {
+        setIsSubmitting(false);
+      }
+    }
+
+    // Proceed with checkout placement
+    await executeOrderPlacement(formData);
+  };
+
+  /**
+   * Inline Login Callback from Modal
+   */
+  const handleInlineLoginSuccess = async (loggedInUser) => {
+    setCurrentUser(loggedInUser);
+    const updatedForm = {
+      ...formData,
+      name: formData.name || loggedInUser.name || '',
+      email: loggedInUser.email || formData.email,
+      phone: formData.phone || loggedInUser.phone || '',
+      address: formData.address || loggedInUser.address || '',
+      city: formData.city || loggedInUser.city || 'Lahore',
+      state: formData.state || loggedInUser.state || 'Punjab',
+    };
+    setFormData(updatedForm);
+
+    // Refresh cart items that might have merged
+    refreshCart();
+
+    // Automatically submit order after successful inline login
+    await executeOrderPlacement(updatedForm);
+  };
+
   if (!mounted) {
     return (
       <div className="min-h-[70vh] bg-white flex items-center justify-center">
@@ -316,6 +415,14 @@ export default function CheckoutClient() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-10">
+      {/* Inline Checkout Login Modal */}
+      <CheckoutLoginModal
+        isOpen={loginModalOpen}
+        onClose={() => setLoginModalOpen(false)}
+        email={loginModalEmail}
+        onLoginSuccess={handleInlineLoginSuccess}
+      />
+
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <nav className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-500">
@@ -328,11 +435,24 @@ export default function CheckoutClient() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <span className="text-xs font-bold uppercase tracking-widest text-yellow-600">Secure Direct Checkout</span>
-          <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-black mt-1">
-            Shipping & Payment
-          </h1>
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-yellow-600">Secure Direct Checkout</span>
+            <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-black mt-1">
+              Shipping & Payment
+            </h1>
+          </div>
+
+          {currentUser ? (
+            <div className="inline-flex items-center gap-2 bg-yellow-100 text-yellow-900 px-4 py-2 rounded-xl text-xs font-bold">
+              <UserCheck size={16} />
+              <span>Ordering as Member: {currentUser.name}</span>
+            </div>
+          ) : (
+            <div className="text-xs text-gray-500">
+              Checking out as Guest • Optional account creation available
+            </div>
+          )}
         </div>
 
         <form onSubmit={handleSubmitOrder}>
@@ -419,7 +539,7 @@ export default function CheckoutClient() {
 
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
-                    Email Address <span className="text-gray-400 font-normal lowercase">(optional for order tracking)</span>
+                    Email Address <span className="text-gray-400 font-normal lowercase">(for order tracking & receipts)</span>
                   </label>
                   <input
                     type="email"

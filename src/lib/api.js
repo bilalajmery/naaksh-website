@@ -1,9 +1,10 @@
 /**
  * NAAKSH Central API Client Layer
- * Milestone 1 Foundation (NAAKSH-WEB-M1-FOUNDATION-001)
+ * Milestone 1 Foundation & Milestone 12 Customer Commerce
  * 
  * Provides centralized, server- and client-safe communication with the Laravel Backend.
- * Standardizes endpoints, query parameters, error extraction, and environment base URL resolution.
+ * Standardizes endpoints, query parameters, error extraction, environment base URL resolution,
+ * and Bearer token authentication header injection.
  */
 
 // Resolves the Backend API Base URL across Server Components and Client Components
@@ -18,6 +19,15 @@ export function getApiBaseUrl() {
   return 'https://backend.naakshofficial.com/api';
 }
 
+function getStoredToken() {
+  if (typeof window === 'undefined') return null;
+  try {
+    return localStorage.getItem('naaksh_auth_token') || null;
+  } catch {
+    return null;
+  }
+}
+
 /**
  * Low-level request handler with standardized error extraction and JSON parsing.
  */
@@ -30,6 +40,11 @@ export async function apiRequest(endpoint, options = {}) {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   };
+
+  const token = getStoredToken();
+  if (token) {
+    defaultHeaders['Authorization'] = `Bearer ${token}`;
+  }
 
   const config = {
     ...options,
@@ -106,17 +121,6 @@ export async function getCategories() {
 /**
  * Fetch paginated product collection with optional merchandising filters.
  * GET /api/products
- * 
- * Supported params:
- * - category_id (integer)
- * - size_id (integer)
- * - garment_color_id (integer)
- * - stock_status ('in_stock' | 'out_of_stock')
- * - is_featured (boolean)
- * - search (string)
- * - sort ('newest' | 'price_asc' | 'price_desc' | 'name_asc')
- * - page (integer)
- * - per_page (integer, max 48)
  */
 export async function getProducts(params = {}) {
   const query = new URLSearchParams();
@@ -136,7 +140,7 @@ export async function getProducts(params = {}) {
 
   return apiRequest(endpoint, {
     method: 'GET',
-    next: { revalidate: 60 }, // 1-minute cache in Next.js Server Components
+    next: { revalidate: 60 },
   });
 }
 
@@ -153,18 +157,12 @@ export async function getProductByUuid(uuid) {
 }
 
 /* ==========================================================================
-   COMMERCE & CHECKOUT APIS (M17)
+   COMMERCE & CHECKOUT APIS (M17 & M12)
    ========================================================================== */
 
 /**
  * Submit server-authoritative structured website checkout.
  * POST /api/checkout/structured
- * 
- * Payload contract:
- * {
- *   customer: { name, email, phone, address, city, state, instruction },
- *   items: [{ product_uuid, size_id, garment_color_id, quantity }]
- * }
  */
 export async function submitStructuredCheckout(orderData) {
   return apiRequest('/checkout/structured', {
@@ -185,15 +183,241 @@ export async function submitLegacyCheckout(orderData) {
 }
 
 /* ==========================================================================
+   CUSTOMER AUTHENTICATION & IDENTITY APIS (M12)
+   ========================================================================== */
+
+/**
+ * Register a new customer account.
+ * POST /api/register
+ */
+export async function registerCustomer(data) {
+  return apiRequest('/register', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+/**
+ * Log in an existing customer account.
+ * POST /api/login
+ */
+export async function loginCustomer(credentials) {
+  return apiRequest('/login', {
+    method: 'POST',
+    body: JSON.stringify(credentials),
+  });
+}
+
+/**
+ * Log out authenticated customer.
+ * POST /api/logout
+ */
+export async function logoutCustomer() {
+  return apiRequest('/logout', {
+    method: 'POST',
+  });
+}
+
+/**
+ * Check if an email already belongs to a registered customer.
+ * POST /api/auth/check-email
+ */
+export async function checkEmailExists(email) {
+  if (!email || !String(email).trim()) return { exists: false };
+  return apiRequest('/auth/check-email', {
+    method: 'POST',
+    body: JSON.stringify({ email: String(email).trim() }),
+  });
+}
+
+/**
+ * Request password reset instructions.
+ * POST /api/forgot-password
+ */
+export async function forgotPassword(email) {
+  return apiRequest('/forgot-password', {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+  });
+}
+
+/**
+ * Submit new password reset.
+ * POST /api/reset-password
+ */
+export async function resetPassword(data) {
+  return apiRequest('/reset-password', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+/**
+ * Get authenticated customer user profile.
+ * GET /api/user
+ */
+export async function getCurrentUser() {
+  return apiRequest('/user', {
+    method: 'GET',
+  });
+}
+
+/**
+ * Update authenticated customer user profile.
+ * PUT /api/user
+ */
+export async function updateUserProfile(data) {
+  return apiRequest('/user', {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+}
+
+/**
+ * Update authenticated customer password.
+ * PUT /api/user/password
+ */
+export async function updateUserPassword(data) {
+  return apiRequest('/user/password', {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+}
+
+/* ==========================================================================
+   DATABASE CART APIS (M12)
+   ========================================================================== */
+
+/**
+ * Fetch authenticated customer's database cart items.
+ * GET /api/cart
+ */
+export async function getDbCart() {
+  return apiRequest('/cart', {
+    method: 'GET',
+  });
+}
+
+/**
+ * Add or update an item in the database cart.
+ * POST /api/cart
+ */
+export async function saveDbCartItem(item) {
+  return apiRequest('/cart', {
+    method: 'POST',
+    body: JSON.stringify(item),
+  });
+}
+
+/**
+ * Merge guest cart array with database cart.
+ * POST /api/cart/merge
+ */
+export async function mergeDbCart(items) {
+  return apiRequest('/cart/merge', {
+    method: 'POST',
+    body: JSON.stringify({ items }),
+  });
+}
+
+/**
+ * Remove an item from database cart.
+ * DELETE /api/cart/item
+ */
+export async function removeDbCartItem(itemIdentifier) {
+  return apiRequest('/cart/item', {
+    method: 'DELETE',
+    body: JSON.stringify(itemIdentifier),
+  });
+}
+
+/**
+ * Clear authenticated customer's database cart.
+ * DELETE /api/cart
+ */
+export async function clearDbCart() {
+  return apiRequest('/cart', {
+    method: 'DELETE',
+  });
+}
+
+/* ==========================================================================
+   DATABASE WISHLIST APIS (M12)
+   ========================================================================== */
+
+/**
+ * Fetch authenticated customer's database wishlist items.
+ * GET /api/wishlist
+ */
+export async function getDbWishlist() {
+  return apiRequest('/wishlist', {
+    method: 'GET',
+  });
+}
+
+/**
+ * Add or toggle an item in the database wishlist.
+ * POST /api/wishlist
+ */
+export async function addDbWishlistItem(productUuid) {
+  return apiRequest('/wishlist', {
+    method: 'POST',
+    body: JSON.stringify({ product_uuid: productUuid }),
+  });
+}
+
+/**
+ * Remove an item from the database wishlist.
+ * DELETE /api/wishlist/{uuid}
+ */
+export async function removeDbWishlistItem(productUuid) {
+  return apiRequest(`/wishlist/${productUuid}`, {
+    method: 'DELETE',
+  });
+}
+
+/**
+ * Merge guest wishlist UUIDs array with database wishlist.
+ * POST /api/wishlist/merge
+ */
+export async function mergeDbWishlist(uuids) {
+  return apiRequest('/wishlist/merge', {
+    method: 'POST',
+    body: JSON.stringify({ uuids }),
+  });
+}
+
+/* ==========================================================================
+   CUSTOMER ORDERS APIS (M12)
+   ========================================================================== */
+
+/**
+ * Fetch authenticated customer's order history.
+ * GET /api/orders
+ */
+export async function getCustomerOrders() {
+  return apiRequest('/orders', {
+    method: 'GET',
+  });
+}
+
+/**
+ * Fetch single order details for authenticated customer.
+ * GET /api/orders/{orderNumber}
+ */
+export async function getCustomerOrderDetails(orderNumber) {
+  return apiRequest(`/orders/${orderNumber}`, {
+    method: 'GET',
+  });
+}
+
+/* ==========================================================================
    CUSTOMER INTERACTION APIS (M18)
    ========================================================================== */
 
 /**
  * Submit public customer contact message.
  * POST /api/contact
- * 
- * Payload contract:
- * { name, email, subject, message }
  */
 export async function submitContact(contactData) {
   return apiRequest('/contact', {
@@ -205,9 +429,6 @@ export async function submitContact(contactData) {
 /**
  * Subscribe customer email to newsletter.
  * POST /api/subscribe
- * 
- * Payload contract:
- * { email }
  */
 export async function subscribeNewsletter(email) {
   return apiRequest('/subscribe', {

@@ -7,11 +7,43 @@ import TestimonialCarousel from '../components/TestimonialCarousel';
 import StatsCounter from '../components/StatsCounter';
 
 export const metadata = {
-  title: 'NAAKSH | Premium Streetwear & Urban Fashion in Pakistan',
-  description: 'Discover premium minimalist clothing and streetwear in Pakistan. Shop high-quality oversized t-shirts, hoodies, and more at Naaksh.',
+  title: {
+    absolute: 'NAAKSH | Premium Streetwear & Urban Fashion in Pakistan',
+  },
+  description: 'Discover premium streetwear in Pakistan by NAAKSH. Shop heavyweight 240 GSM oversized t-shirts, drop shoulder tees, hoodies, and signature streetwear essentials.',
+  keywords: [
+    'Pakistani Streetwear',
+    'Oversized T-Shirts Pakistan',
+    'Streetwear Brand Pakistan',
+    'Drop Shoulder Tees Lahore',
+    'Graphic Hoodies Karachi',
+    'Heavyweight Cotton Tees Pakistan',
+    'NAAKSH Official',
+  ],
   alternates: {
     canonical: 'https://naakshofficial.com',
-  }
+  },
+  openGraph: {
+    title: 'NAAKSH | Premium Streetwear & Urban Fashion in Pakistan',
+    description: 'Discover premium streetwear in Pakistan by NAAKSH. Heavyweight 240 GSM oversized tees, drop shoulder hoodies, and urban essentials.',
+    url: 'https://naakshofficial.com',
+    siteName: 'NAAKSH',
+    type: 'website',
+    images: [
+      {
+        url: '/logo/dark/sm.png',
+        width: 800,
+        height: 600,
+        alt: 'NAAKSH Streetwear Pakistan',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NAAKSH | Premium Streetwear & Urban Fashion in Pakistan',
+    description: 'Shop luxury oversized drop shoulder streetwear in Pakistan with nationwide express delivery.',
+    images: ['/logo/dark/sm.png'],
+  },
 };
 
 export default async function Home() {

@@ -37,12 +37,35 @@ npm run dev
 # 3. Run ESLint code quality audit
 npm run lint
 
-# 4. Create optimized production build
+# 4. Generate dynamic sitemap from Laravel API
+npm run generate:sitemap
+
+# 5. Create optimized production build
 npm run build
 
-# 5. Start production server
+# 6. Start production server
 npm start
 ```
+
+---
+
+## 🗺️ Dynamic Sitemap Generation
+
+Generate or update the static XML sitemap from the authoritative live Laravel catalog API:
+
+```bash
+npm run generate:sitemap
+```
+
+### Features & Behavior:
+- **Authoritative Endpoints**: Consumes `GET /api/categories` and `GET /api/products`.
+- **Multi-Page Pagination**: Automatically paginates through all catalog products with `per_page=48` (strictly respecting backend limit `<= 48`) until `current_page >= last_page`.
+- **Output File**: Generates `Website/public/sitemap.xml`.
+- **Failure-Safe Preservation**: If the Laravel API is offline or returns an error, the existing `public/sitemap.xml` is preserved intact, a failure message is logged, and the process exits with code 1.
+- **URL Deduplication**: Deterministic Set/Map-based deduplication preventing repeated entries.
+- **Private Route Exclusions**: Strictly omits `/cart`, `/checkout`, `/wishlist`, `/account`, `/api/*`, and admin routes.
+- **Canonical Domain**: All `<loc>` tags use canonical `https://naakshofficial.com`.
+
 
 ---
 

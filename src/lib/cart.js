@@ -1,16 +1,31 @@
 /**
  * Cart Storage & Business Layer
- * Milestone 5 (NAAKSH-WEB-M5-CART-WISHLIST-UUID-001)
+ * Milestone 5 & Milestone 12 Hybrid Cart Architecture
  * 
  * Invariant: PRODUCT UUID IS CANONICAL COMMERCE IDENTITY.
  * Cart items are identified by unique composite key:
- * `${product_uuid}_${size_id || 'none'}_${garment_color_id || 'none'}`
+ * `${product_uuid}::${size_id || 'none'}::${garment_color_id || 'none'}`
+ *
+ * Hybrid Behavior:
+ * - Guest User: LocalStorage
+ * - Authenticated Customer: Synchronized with Database via Laravel API
  */
+
+import * as api from './api';
 
 export const CART_STORAGE_KEY = 'cart';
 
 function isClient() {
   return typeof window !== 'undefined';
+}
+
+function isAuthenticated() {
+  if (!isClient()) return false;
+  try {
+    return Boolean(localStorage.getItem('naaksh_auth_token'));
+  } catch {
+    return false;
+  }
 }
 
 function dispatchCartUpdated() {
@@ -47,10 +62,10 @@ export function normalizeCartItem(raw) {
     price: raw.price_display || raw.price || `PKR ${priceNum.toLocaleString()}`,
     priceNum: priceNum,
     size: raw.size || raw.size_name || '',
-    size_id: raw.size_id !== undefined ? raw.size_id : null,
+    size_id: raw.size_id !== undefined && raw.size_id !== null ? Number(raw.size_id) : null,
     size_name: raw.size_name || raw.size || '',
     color: raw.color || raw.garment_color_name || '',
-    garment_color_id: raw.garment_color_id !== undefined ? raw.garment_color_id : null,
+    garment_color_id: raw.garment_color_id !== undefined && raw.garment_color_id !== null ? Number(raw.garment_color_id) : null,
     garment_color_name: raw.garment_color_name || raw.color || '',
     image: raw.image || '/product-assets/placeholder.png',
     stock: raw.stock !== undefined ? raw.stock : 99,
@@ -58,7 +73,7 @@ export function normalizeCartItem(raw) {
 }
 
 /**
- * Get current cart items from localStorage.
+ * Get current cart items from local cache / storage.
  */
 export function getCart() {
   if (!isClient()) return [];
@@ -75,7 +90,7 @@ export function getCart() {
 }
 
 /**
- * Save cart items to localStorage and notify listeners.
+ * Save cart items to local cache / storage and notify listeners.
  */
 export function saveCart(items) {
   if (!isClient()) return;
@@ -89,7 +104,7 @@ export function saveCart(items) {
 }
 
 /**
- * Add or increment item in cart.
+ * Add or increment item in cart (Local + Backend sync if logged in).
  */
 export function addToCart(itemInput) {
   const current = getCart();
@@ -109,6 +124,18 @@ export function addToCart(itemInput) {
   }
 
   saveCart(updated);
+
+  // Background DB sync if customer is authenticated
+  if (isAuthenticated()) {
+    api.saveDbCartItem({
+      product_uuid: normalized.product_uuid,
+      size_id: normalized.size_id,
+      garment_color_id: normalized.garment_color_id,
+      quantity: normalized.quantity,
+      overwrite: false,
+    }).catch((err) => console.warn('Database cart sync failed:', err));
+  }
+
   return updated;
 }
 
@@ -121,14 +148,28 @@ export function updateCartQuantity(itemKey, newQuantity) {
     return removeFromCart(itemKey);
   }
 
+  let targetItem = null;
   const updated = current.map((item) => {
     if (item.key === itemKey || getCartItemKey(item) === itemKey) {
-      return { ...item, quantity: newQuantity };
+      targetItem = { ...item, quantity: newQuantity };
+      return targetItem;
     }
     return item;
   });
 
   saveCart(updated);
+
+  // Background DB sync if customer is authenticated
+  if (isAuthenticated() && targetItem) {
+    api.saveDbCartItem({
+      product_uuid: targetItem.product_uuid,
+      size_id: targetItem.size_id,
+      garment_color_id: targetItem.garment_color_id,
+      quantity: newQuantity,
+      overwrite: true,
+    }).catch((err) => console.warn('Database cart sync failed:', err));
+  }
+
   return updated;
 }
 
@@ -142,7 +183,8 @@ export function updateCartItemVariant(itemKey, updates) {
   );
   if (targetIndex === -1) return current;
 
-  const currentItem = { ...current[targetIndex], ...updates };
+  const oldItem = current[targetIndex];
+  const currentItem = { ...oldItem, ...updates };
   currentItem.key = getCartItemKey(currentItem);
 
   // Check if updating creates a duplicate with an existing item
@@ -162,6 +204,25 @@ export function updateCartItemVariant(itemKey, updates) {
   }
 
   saveCart(updated);
+
+  // DB Sync if authenticated
+  if (isAuthenticated()) {
+    // Remove old variant, add updated variant
+    api.removeDbCartItem({
+      product_uuid: oldItem.product_uuid,
+      size_id: oldItem.size_id,
+      garment_color_id: oldItem.garment_color_id,
+    }).then(() => {
+      return api.saveDbCartItem({
+        product_uuid: currentItem.product_uuid,
+        size_id: currentItem.size_id,
+        garment_color_id: currentItem.garment_color_id,
+        quantity: currentItem.quantity,
+        overwrite: true,
+      });
+    }).catch((err) => console.warn('Database cart variant update failed:', err));
+  }
+
   return updated;
 }
 
@@ -170,10 +231,24 @@ export function updateCartItemVariant(itemKey, updates) {
  */
 export function removeFromCart(itemKey) {
   const current = getCart();
+  const targetItem = current.find(
+    (item) => item.key === itemKey || getCartItemKey(item) === itemKey
+  );
+
   const updated = current.filter(
     (item) => item.key !== itemKey && getCartItemKey(item) !== itemKey
   );
   saveCart(updated);
+
+  // DB Sync if authenticated
+  if (isAuthenticated() && targetItem) {
+    api.removeDbCartItem({
+      product_uuid: targetItem.product_uuid,
+      size_id: targetItem.size_id,
+      garment_color_id: targetItem.garment_color_id,
+    }).catch((err) => console.warn('Database cart removal sync failed:', err));
+  }
+
   return updated;
 }
 
@@ -182,4 +257,37 @@ export function removeFromCart(itemKey) {
  */
 export function clearCart() {
   saveCart([]);
+  if (isAuthenticated()) {
+    api.clearDbCart().catch((err) => console.warn('Database cart clear sync failed:', err));
+  }
+}
+
+/**
+ * Merge local guest cart with database cart upon login.
+ */
+export async function syncCartOnLogin() {
+  if (!isClient()) return;
+  const localItems = getCart();
+
+  try {
+    if (localItems.length > 0) {
+      // Send local items to merge endpoint
+      const mergePayload = localItems.map((item) => ({
+        product_uuid: item.product_uuid,
+        size_id: item.size_id,
+        garment_color_id: item.garment_color_id,
+        quantity: item.quantity,
+      }));
+      const response = await api.mergeDbCart(mergePayload);
+      const mergedList = response?.data || [];
+      saveCart(mergedList);
+    } else {
+      // Fetch user's existing DB cart
+      const response = await api.getDbCart();
+      const dbList = response?.data || [];
+      saveCart(dbList);
+    }
+  } catch (err) {
+    console.error('Failed to synchronize cart on login:', err);
+  }
 }

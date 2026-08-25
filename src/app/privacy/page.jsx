@@ -1,11 +1,37 @@
 import { Shield } from 'lucide-react';
 
 export const metadata = {
-  title: 'Privacy Policy | NAAKSH',
-  description: 'Privacy Policy for NAAKSH - Learn how we collect, use, and protect your personal information.',
+  title: 'Privacy Policy',
+  description: 'Read the official Privacy Policy of NAAKSH. Learn how we collect, safeguard, and responsibly process customer data for online orders across Pakistan.',
+  keywords: [
+    'NAAKSH Privacy Policy',
+    'Customer Data Protection Pakistan',
+    'Secure Shopping Privacy',
+  ],
   alternates: {
     canonical: 'https://naakshofficial.com/privacy',
-  }
+  },
+  openGraph: {
+    title: 'Privacy Policy | NAAKSH',
+    description: 'Read how NAAKSH protects customer privacy, secures checkout transactions, and handles personal data with integrity.',
+    url: 'https://naakshofficial.com/privacy',
+    siteName: 'NAAKSH',
+    type: 'website',
+    images: [
+      {
+        url: '/logo/dark/sm.png',
+        width: 800,
+        height: 600,
+        alt: 'NAAKSH Privacy Policy',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy | NAAKSH',
+    description: 'Official privacy policy and customer data protection principles of NAAKSH.',
+    images: ['/logo/dark/sm.png'],
+  },
 };
 
 export default function Privacy() {

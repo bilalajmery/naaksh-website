@@ -2,10 +2,38 @@ import { getCatalogProducts, getCategories } from '../../lib/catalog';
 import ShopClient from './ShopClient';
 
 export const metadata = {
-  title: 'Shop All Products | NAAKSH — Premium Streetwear Pakistan',
-  description: 'Explore the full NAAKSH collection of premium drop shoulder tees, hoodies, denim jackets, and urban fashion in Pakistan.',
+  title: 'Shop All Streetwear & Urban Fashion',
+  description: 'Explore the full NAAKSH streetwear collection in Pakistan. Shop premium oversized drop shoulder tees, heavyweight hoodies, graphic sweatpants, and luxury basics.',
+  keywords: [
+    'Shop Streetwear Pakistan',
+    'Buy Oversized T-Shirts Online',
+    'Graphic Hoodies Pakistan',
+    'Drop Shoulder Tees Karachi Lahore',
+    'Pakistani Urban Clothing Store',
+  ],
   alternates: {
     canonical: 'https://naakshofficial.com/shop',
+  },
+  openGraph: {
+    title: 'Shop All Streetwear & Urban Fashion | NAAKSH',
+    description: 'Explore the full NAAKSH streetwear collection in Pakistan. Shop premium oversized drop shoulder tees, heavyweight hoodies, and urban essentials.',
+    url: 'https://naakshofficial.com/shop',
+    siteName: 'NAAKSH',
+    type: 'website',
+    images: [
+      {
+        url: '/logo/dark/sm.png',
+        width: 800,
+        height: 600,
+        alt: 'Shop NAAKSH Streetwear',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shop All Streetwear & Urban Fashion | NAAKSH',
+    description: 'Explore the full NAAKSH streetwear collection. Premium drop shoulder tees, hoodies, and graphic apparel with nationwide delivery.',
+    images: ['/logo/dark/sm.png'],
   },
 };
 

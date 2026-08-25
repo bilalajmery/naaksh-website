@@ -2,8 +2,12 @@ import React, { Suspense } from 'react';
 import OrderSuccessClient from './OrderSuccessClient';
 
 export const metadata = {
-  title: 'Order Confirmed | NAAKSH — Streetwear Pakistan',
+  title: 'Order Confirmed',
   description: 'Your order has been successfully placed with NAAKSH.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function OrderSuccessPage() {
