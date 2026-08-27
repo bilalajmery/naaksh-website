@@ -76,7 +76,7 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
       onMouseLeave={() => setHoverImgIndex(0)}
     >
       {/* Visual Product Media Container */}
-      <div className="relative aspect-[3/4] overflow-hidden bg-zinc-950">
+      <div className="relative aspect-square overflow-hidden bg-zinc-950">
         
         {/* Badges Overlay */}
         <div className="absolute top-3 left-3 z-20 flex flex-col gap-1.5 pointer-events-none">
