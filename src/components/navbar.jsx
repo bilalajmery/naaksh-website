@@ -104,8 +104,8 @@ function Navbar({ categories, loadingCategories }) {
     { to: "/", label: "Home" },
     { to: "/shop", label: "Shop" },
     { to: "/blog", label: "Journal" },
-    { to: "/about", label: "About Us" },
-    { to: "/contact", label: "Contact Us" },
+    { to: "/about", label: "About" },
+    { to: "/contact", label: "Contact" },
   ];
 
   return (
@@ -119,15 +119,15 @@ function Navbar({ categories, loadingCategories }) {
 
       {/* DYNAMIC ANNOUNCEMENT SALE BAR */}
       {announcement.is_enabled && (
-        <div className="hidden md:block relative z-[60] bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-black text-center py-1 shadow-xl">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-sm md:text-base">
+        <div className="hidden md:block relative z-[60] bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-black text-center py-1.5 shadow-md">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-xs font-bold uppercase tracking-widest">
             {announcement.text_prefix && <span>{announcement.text_prefix}</span>}
             {announcement.text_middle && (
               <span className="hidden sm:inline opacity-90">{announcement.text_middle}</span>
             )}
             {announcement.text_suffix && <span>{announcement.text_suffix}</span>}
             {announcement.button_text && (
-              <NavLink to={announcement.button_link || "/shop"} className="underline font-bold">
+              <NavLink to={announcement.button_link || "/shop"} className="underline font-black hover:opacity-80 transition">
                 {announcement.button_text}
               </NavLink>
             )}
@@ -137,31 +137,32 @@ function Navbar({ categories, loadingCategories }) {
 
       {/* MAIN NAVBAR */}
       <nav
-        className={`sticky top-0 z-50 transition-all duration-500 bg-[#0d0d0d] ${scrolled
-          ? "shadow-2xl border-b border-yellow-900/20"
-          : ""
-          }`}
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-[#09090b]/95 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
+            : "bg-[#09090b] border-b border-white/5"
+        }`}
       >
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <NavLink to="/" className="z-10">
+            <NavLink to="/" className="z-10 flex items-center">
               <img
                 src="/logo/sm.png"
                 alt="NAAKSH"
-                className="h-14 md:h-16 w-auto drop-shadow-2xl hover:scale-105 transition"
+                className="h-10 sm:h-12 md:h-14 w-auto object-contain drop-shadow-md hover:opacity-90 transition"
               />
             </NavLink>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center justify-center flex-1 gap-16">
-              {/* Main Links */}
+            <div className="hidden lg:flex items-center justify-center flex-1 gap-10 xl:gap-14">
               {navItems.map((item, index) => (
                 <React.Fragment key={item.to}>
                   <NavLink
                     to={item.to}
                     className={({ isActive }) =>
-                      `text-sm font-bold tracking-widest uppercase transition-all ${isActive ? "text-yellow-400" : "text-gray-200 hover:text-yellow-400"
+                      `text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 ${
+                        isActive ? "text-yellow-400" : "text-zinc-300 hover:text-white"
                       }`
                     }
                   >
@@ -172,36 +173,40 @@ function Navbar({ categories, loadingCategories }) {
                       <button
                         onMouseEnter={() => setIsShopDropdownOpen(true)}
                         onMouseLeave={() => setIsShopDropdownOpen(false)}
-                        className="flex items-center gap-1 text-sm font-bold tracking-widest uppercase text-gray-200 hover:text-yellow-400 transition"
+                        className="flex items-center gap-1.5 text-xs font-bold tracking-[0.2em] uppercase text-zinc-300 hover:text-white transition-all duration-200 cursor-pointer"
                       >
-                        Categories <ChevronDown size={16} className="mt-0.5" />
+                        <span>Categories</span>
+                        <ChevronDown size={14} className="transition-transform duration-200 group-hover:rotate-180" />
                       </button>
 
                       {/* Dropdown */}
                       <div
                         onMouseEnter={() => setIsShopDropdownOpen(true)}
                         onMouseLeave={() => setIsShopDropdownOpen(false)}
-                        className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-64 bg-black/95 backdrop-blur-xl border border-yellow-900/30 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ${isShopDropdownOpen && !loadingCategories && categories.length > 0
-                          ? "opacity-100 visible translate-y-0"
-                          : "opacity-0 invisible -translate-y-4"
-                          }`}
+                        className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-[#0d0d0f]/98 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl overflow-hidden transition-all duration-300 ${
+                          isShopDropdownOpen && !loadingCategories && categories.length > 0
+                            ? "opacity-100 visible translate-y-0"
+                            : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                        }`}
                       >
-                        {loadingCategories ? (
-                          <div className="px-8 py-6 text-center text-gray-400">Loading...</div>
-                        ) : categories.length === 0 ? (
-                          <div className="px-8 py-6 text-center text-gray-400">No categories</div>
-                        ) : (
-                          categories.map((cat) => (
-                            <NavLink
-                              key={cat.id || cat.slug}
-                              to={`/category/${cat.slug}`}
-                              className="block px-8 py-4 text-sm font-medium text-gray-300 hover:bg-yellow-500 hover:text-black transition"
-                              onClick={() => setIsShopDropdownOpen(false)}
-                            >
-                              {cat.name}
-                            </NavLink>
-                          ))
-                        )}
+                        <div className="py-2">
+                          {loadingCategories ? (
+                            <div className="px-6 py-4 text-center text-xs text-zinc-400">Loading categories...</div>
+                          ) : categories.length === 0 ? (
+                            <div className="px-6 py-4 text-center text-xs text-zinc-400">No categories found</div>
+                          ) : (
+                            categories.map((cat) => (
+                              <NavLink
+                                key={cat.id || cat.slug}
+                                to={`/category/${cat.slug}`}
+                                className="block px-6 py-3 text-xs font-semibold tracking-wider text-zinc-300 hover:bg-yellow-500 hover:text-black transition"
+                                onClick={() => setIsShopDropdownOpen(false)}
+                              >
+                                {cat.name}
+                              </NavLink>
+                            ))
+                          )}
+                        </div>
                       </div>
                     </div>
                   )}
@@ -209,8 +214,8 @@ function Navbar({ categories, loadingCategories }) {
               ))}
             </div>
 
-            {/* Icons */}
-            <div className="flex items-center gap-3 md:gap-4">
+            {/* Action Icons */}
+            <div className="flex items-center gap-2.5 sm:gap-3.5">
               {/* User Account / Login Button */}
               <div
                 className="relative"
@@ -220,44 +225,44 @@ function Navbar({ categories, loadingCategories }) {
                 {currentUser ? (
                   <Link
                     href="/account"
-                    className="p-2 md:p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group relative flex items-center justify-center"
+                    className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-all duration-300 flex items-center justify-center relative cursor-pointer"
                     aria-label="My Account"
                   >
-                    <User className="w-5 h-5" strokeWidth={2.5} />
-                    <span className="absolute -top-1 -right-1 bg-green-500 w-3 h-3 rounded-full border-2 border-black" />
+                    <User className="w-4 h-4" />
+                    <span className="absolute top-1 right-1 bg-emerald-400 w-2 h-2 rounded-full ring-2 ring-black" />
                   </Link>
                 ) : (
                   <button
                     onClick={() => setAuthModalOpen(true)}
-                    className="p-2 md:p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group relative flex items-center justify-center"
+                    className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-yellow-400 text-zinc-300 hover:text-yellow-400 transition-all duration-300 flex items-center justify-center cursor-pointer"
                     aria-label="Sign In"
                   >
-                    <User className="w-5 h-5" strokeWidth={2.5} />
+                    <User className="w-4 h-4" />
                   </button>
                 )}
 
                 {/* User Dropdown for Authenticated Customer */}
                 {currentUser && (
                   <div
-                    className={`hidden md:block absolute top-full right-0 mt-4 w-64 bg-black/95 backdrop-blur-xl border border-yellow-900/30 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 transform origin-top-right ${
-                      isUserDropdownOpen ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-95"
+                    className={`hidden md:block absolute top-full right-0 mt-3 w-64 bg-[#0d0d0f]/98 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl overflow-hidden transition-all duration-300 transform origin-top-right ${
+                      isUserDropdownOpen ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-95 pointer-events-none"
                     }`}
                   >
-                    <div className="p-4 border-b border-white/10">
+                    <div className="p-4 border-b border-white/10 bg-white/[0.02]">
                       <p className="text-[10px] font-black uppercase tracking-widest text-yellow-400">
                         Signed in as
                       </p>
                       <p className="text-white font-bold text-sm truncate mt-0.5">
                         {currentUser.name}
                       </p>
-                      <p className="text-gray-400 text-xs truncate">{currentUser.email}</p>
+                      <p className="text-zinc-400 text-xs truncate">{currentUser.email}</p>
                     </div>
 
                     <div className="py-2 text-xs">
                       <Link
                         href="/account"
                         onClick={() => setIsUserDropdownOpen(false)}
-                        className="flex items-center gap-2.5 px-4 py-2.5 text-gray-300 hover:bg-yellow-500 hover:text-black transition font-medium"
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-zinc-300 hover:bg-yellow-500 hover:text-black transition font-medium"
                       >
                         <ShieldCheck size={16} />
                         <span>Account Dashboard</span>
@@ -265,7 +270,7 @@ function Navbar({ categories, loadingCategories }) {
                       <Link
                         href="/account"
                         onClick={() => setIsUserDropdownOpen(false)}
-                        className="flex items-center gap-2.5 px-4 py-2.5 text-gray-300 hover:bg-yellow-500 hover:text-black transition font-medium"
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-zinc-300 hover:bg-yellow-500 hover:text-black transition font-medium"
                       >
                         <Package size={16} />
                         <span>Order History</span>
@@ -273,7 +278,7 @@ function Navbar({ categories, loadingCategories }) {
                       <Link
                         href="/wishlist"
                         onClick={() => setIsUserDropdownOpen(false)}
-                        className="flex items-center gap-2.5 px-4 py-2.5 text-gray-300 hover:bg-yellow-500 hover:text-black transition font-medium"
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-zinc-300 hover:bg-yellow-500 hover:text-black transition font-medium"
                       >
                         <Heart size={16} />
                         <span>Saved Wishlist</span>
@@ -283,7 +288,7 @@ function Navbar({ categories, loadingCategories }) {
                     <div className="p-2 bg-white/5 border-t border-white/10">
                       <button
                         onClick={handleSignOut}
-                        className="w-full flex items-center justify-center gap-2 py-2 text-xs font-bold text-red-400 hover:bg-red-500/10 rounded-lg transition uppercase tracking-wider"
+                        className="w-full flex items-center justify-center gap-2 py-2 text-xs font-bold text-red-400 hover:bg-red-500/10 rounded-lg transition uppercase tracking-wider cursor-pointer"
                       >
                         <LogOut size={14} />
                         <span>Sign Out</span>
@@ -296,12 +301,12 @@ function Navbar({ categories, loadingCategories }) {
               {/* Wishlist Button */}
               <NavLink
                 to="/wishlist"
-                className="p-2 md:p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group relative"
+                className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-yellow-400 text-zinc-300 hover:text-yellow-400 transition-all duration-300 flex items-center justify-center relative"
                 aria-label="Wishlist"
               >
-                <Heart className="w-5 h-5 group-hover:fill-current" strokeWidth={2.5} />
+                <Heart className="w-4 h-4" />
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[11px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-md">
+                  <span className="absolute -top-1 -right-1 bg-yellow-400 text-black text-[10px] font-black w-4 h-4 flex items-center justify-center rounded-full shadow-md">
                     {wishlistCount}
                   </span>
                 )}
@@ -315,38 +320,44 @@ function Navbar({ categories, loadingCategories }) {
               >
                 <NavLink
                   to="/cart"
-                  className="p-2 md:p-3 border-2 border-yellow-500 rounded-full text-yellow-500 hover:bg-yellow-500 hover:text-black transition group relative flex items-center justify-center"
+                  className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:border-yellow-400 text-zinc-300 hover:text-yellow-400 transition-all duration-300 flex items-center justify-center relative"
                   aria-label="Shopping Cart"
                 >
-                  <ShoppingCart className="w-5 h-5 group-hover:fill-current" strokeWidth={2.5} />
+                  <ShoppingCart className="w-4 h-4" />
                   {cartCount > 0 && (
-                    <span className="absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[11px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-md">
+                    <span className="absolute -top-1 -right-1 bg-yellow-400 text-black text-[10px] font-black w-4 h-4 flex items-center justify-center rounded-full shadow-md">
                       {cartCount}
                     </span>
                   )}
                 </NavLink>
 
-                {/* Cart Dropdown - Hidden on Mobile to prevent UI issues */}
+                {/* Cart Dropdown */}
                 <div
-                  className={`hidden md:block absolute top-full right-0 mt-4 w-80 bg-black/95 backdrop-blur-xl border border-yellow-900/30 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 transform origin-top-right ${isCartDropdownOpen
-                    ? "opacity-100 visible scale-100"
-                    : "opacity-0 invisible scale-95"
-                    }`}
+                  className={`hidden md:block absolute top-full right-0 mt-3 w-80 bg-[#0d0d0f]/98 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl overflow-hidden transition-all duration-300 transform origin-top-right ${
+                    isCartDropdownOpen
+                      ? "opacity-100 visible scale-100"
+                      : "opacity-0 invisible scale-95 pointer-events-none"
+                  }`}
                 >
-                  <div className="p-4 border-b border-white/10">
-                    <h3 className="text-yellow-400 font-bold uppercase tracking-wider text-sm">Shopping Cart ({cartCount})</h3>
+                  <div className="p-4 border-b border-white/10 flex items-center justify-between">
+                    <h3 className="text-yellow-400 font-bold uppercase tracking-wider text-xs">
+                      Bag ({cartCount})
+                    </h3>
+                    <Link href="/cart" className="text-[10px] text-zinc-400 hover:text-white uppercase tracking-wider">
+                      View All
+                    </Link>
                   </div>
 
                   <div className="max-h-80 overflow-y-auto">
                     {cartItems.length === 0 ? (
-                      <div className="p-8 text-center text-gray-400 text-sm">
-                        Your cart is empty.
+                      <div className="p-8 text-center text-zinc-400 text-xs">
+                        Your bag is currently empty.
                       </div>
                     ) : (
-                      <div className="divide-y divide-white/10">
+                      <div className="divide-y divide-white/5">
                         {cartItems.map((item, idx) => (
-                          <div key={idx} className="flex gap-4 p-4 hover:bg-white/5 transition">
-                            <div className="w-16 h-16 rounded-md overflow-hidden flex-shrink-0 border border-white/10">
+                          <div key={idx} className="flex gap-3.5 p-4 hover:bg-white/[0.02] transition">
+                            <div className="w-14 h-16 rounded overflow-hidden flex-shrink-0 bg-neutral-900 border border-white/10">
                               <img
                                 src={item.image}
                                 alt={item.name}
@@ -354,13 +365,13 @@ function Navbar({ categories, loadingCategories }) {
                               />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <h4 className="text-white font-medium text-sm truncate">{item.name}</h4>
-                              <p className="text-gray-400 text-xs mt-1">
+                              <h4 className="text-white font-medium text-xs truncate">{item.name}</h4>
+                              <p className="text-zinc-400 text-[11px] mt-0.5">
                                 {item.color} / {item.size}
                               </p>
-                              <div className="flex items-center justify-between mt-2">
-                                <span className="text-gray-500 text-xs">Qty: {item.quantity}</span>
-                                <span className="text-yellow-500 text-sm font-bold">{item.price}</span>
+                              <div className="flex items-center justify-between mt-1.5">
+                                <span className="text-zinc-500 text-[11px]">Qty: {item.quantity}</span>
+                                <span className="text-yellow-400 text-xs font-bold">{item.price}</span>
                               </div>
                             </div>
                           </div>
@@ -370,56 +381,54 @@ function Navbar({ categories, loadingCategories }) {
                   </div>
 
                   {cartItems.length > 0 && (
-                    <div className="p-4 bg-white/5 border-t border-white/10">
-                      <div className="flex justify-between items-center mb-4 text-sm">
-                        <span className="text-gray-300">Subtotal:</span>
-                        <span className="text-white font-bold text-lg">
+                    <div className="p-4 bg-white/[0.02] border-t border-white/10">
+                      <div className="flex justify-between items-center mb-3 text-xs">
+                        <span className="text-zinc-400">Subtotal:</span>
+                        <span className="text-white font-bold text-sm">
                           PKR {cartItems.reduce((acc, item) => acc + ((item.priceNum || parseFloat(String(item.price || 0).replace(/[^0-9.]/g, '')) || 0) * (item.quantity || 1)), 0).toLocaleString()}
                         </span>
                       </div>
                       <NavLink
                         to="/checkout"
-                        className="block w-full bg-yellow-500 text-black text-center py-3 rounded-lg font-bold uppercase text-sm hover:bg-yellow-400 transition"
+                        className="block w-full bg-yellow-400 hover:bg-white text-black text-center py-3 font-extrabold uppercase text-xs tracking-widest transition duration-200"
                       >
-                        Checkout
-                      </NavLink>
-                      <NavLink
-                        to="/cart"
-                        className="block w-full text-center py-2 mt-2 text-gray-400 text-xs hover:text-white transition underline"
-                      >
-                        View Cart
+                        Proceed to Checkout
                       </NavLink>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Mobile Menu Toggle */}
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden text-white" aria-label="Toggle Menu">
-                {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
+              {/* Mobile Menu Hamburger Toggle */}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="lg:hidden w-10 h-10 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white hover:text-yellow-400 transition"
+                aria-label="Toggle Menu"
+              >
+                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Slide Drawer Menu */}
         {isMenuOpen && (
           <>
-            <div className="lg:hidden absolute top-full left-0 w-full z-50 bg-black/98 backdrop-blur-2xl border-t border-yellow-900/30 h-screen overflow-y-auto pb-40 shadow-2xl">
-              <div className="px-6 py-8">
+            <div className="lg:hidden absolute top-full left-0 w-full z-50 bg-[#09090b]/98 backdrop-blur-2xl border-t border-white/10 h-screen overflow-y-auto pb-40 shadow-2xl animate-fade-in">
+              <div className="px-6 py-6">
                 {/* User Status in Mobile Menu */}
                 {currentUser ? (
-                  <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-yellow-900/30 flex items-center justify-between">
+                  <div className="mb-6 p-4 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
                     <div>
                       <p className="text-xs font-bold text-white">{currentUser.name}</p>
-                      <p className="text-[10px] text-gray-400">{currentUser.email}</p>
+                      <p className="text-[10px] text-zinc-400">{currentUser.email}</p>
                     </div>
                     <Link
                       href="/account"
                       onClick={() => setIsMenuOpen(false)}
-                      className="text-xs font-bold text-yellow-400 underline"
+                      className="text-xs font-bold text-yellow-400 underline uppercase tracking-wider"
                     >
-                      Dashboard
+                      Account
                     </Link>
                   </div>
                 ) : (
@@ -429,58 +438,60 @@ function Navbar({ categories, loadingCategories }) {
                         setIsMenuOpen(false);
                         setAuthModalOpen(true);
                       }}
-                      className="w-full py-3 bg-yellow-500 text-black font-bold uppercase text-xs tracking-wider rounded-xl hover:bg-yellow-400 transition flex items-center justify-center gap-2"
+                      className="w-full py-3.5 bg-yellow-400 text-black font-extrabold uppercase text-xs tracking-widest transition flex items-center justify-center gap-2 cursor-pointer shadow-md"
                     >
-                      <User size={16} />
+                      <User size={15} />
                       <span>Member Sign In / Register</span>
                     </button>
                   </div>
                 )}
 
                 {/* Main Links */}
-                {navItems.map((item, index) => (
-                  <div key={item.to}>
-                    <NavLink
-                      to={item.to}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="block py-4 text-xl font-bold text-center rounded-xl text-gray-200 hover:bg-white/10 hover:text-yellow-400 transition"
-                    >
-                      {item.label}
-                    </NavLink>
+                <div className="space-y-1">
+                  {navItems.map((item, index) => (
+                    <div key={item.to}>
+                      <NavLink
+                        to={item.to}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="block py-3 text-base font-bold uppercase tracking-widest text-zinc-200 hover:text-yellow-400 transition"
+                      >
+                        {item.label}
+                      </NavLink>
 
-                    {/* Collapsible Categories Section (Only after Home/first link) */}
-                    {index === 0 && (
-                      <div className="border-t border-yellow-900/30 mt-2">
-                        <button
-                          onClick={() => setIsMobileCategoriesOpen(!isMobileCategoriesOpen)}
-                          className="w-full flex items-center justify-center gap-2 text-lg font-bold text-yellow-400 mb-6"
-                        >
-                          CATEGORIES
-                          <ChevronDown size={20} className={`transition-transform duration-300 ${isMobileCategoriesOpen ? 'rotate-180' : ''}`} />
-                        </button>
+                      {/* Collapsible Categories Section (Only after Home/first link) */}
+                      {index === 0 && (
+                        <div className="border-y border-white/5 py-2 my-2">
+                          <button
+                            onClick={() => setIsMobileCategoriesOpen(!isMobileCategoriesOpen)}
+                            className="w-full flex items-center justify-between py-2 text-xs font-bold uppercase tracking-widest text-yellow-400"
+                          >
+                            <span>EXPLORE CATEGORIES</span>
+                            <ChevronDown size={16} className={`transition-transform duration-300 ${isMobileCategoriesOpen ? 'rotate-180' : ''}`} />
+                          </button>
 
-                        <div className={`space-y-1 transition-all duration-300 ${isMobileCategoriesOpen ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                          {loadingCategories ? (
-                            <p className="text-center text-gray-400">Loading categories...</p>
-                          ) : categories.length === 0 ? (
-                            <p className="text-center text-gray-400">No categories available</p>
-                          ) : (
-                            categories.map((cat) => (
-                              <NavLink
-                                key={cat.id || cat.slug}
-                                to={`/category/${cat.slug}`}
-                                onClick={() => setIsMenuOpen(false)}
-                                className="block py-3 text-center text-gray-300 hover:text-yellow-400 transition font-medium"
-                              >
-                                {cat.name}
-                              </NavLink>
-                            ))
-                          )}
+                          <div className={`space-y-1 transition-all duration-300 ${isMobileCategoriesOpen ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                            {loadingCategories ? (
+                              <p className="text-center text-xs text-zinc-500 py-2">Loading categories...</p>
+                            ) : categories.length === 0 ? (
+                              <p className="text-center text-xs text-zinc-500 py-2">No categories</p>
+                            ) : (
+                              categories.map((cat) => (
+                                <NavLink
+                                  key={cat.id || cat.slug}
+                                  to={`/category/${cat.slug}`}
+                                  onClick={() => setIsMenuOpen(false)}
+                                  className="block py-2 px-3 text-xs font-medium text-zinc-400 hover:text-white transition"
+                                >
+                                  {cat.name}
+                                </NavLink>
+                              ))
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                      )}
+                    </div>
+                  ))}
+                </div>
 
                 {currentUser && (
                   <div className="mt-8 pt-6 border-t border-white/10 text-center">
@@ -489,9 +500,9 @@ function Navbar({ categories, loadingCategories }) {
                         setIsMenuOpen(false);
                         handleSignOut();
                       }}
-                      className="text-sm font-bold text-red-400 hover:text-red-300 uppercase tracking-wider flex items-center justify-center gap-2 mx-auto"
+                      className="text-xs font-bold text-red-400 uppercase tracking-widest flex items-center justify-center gap-2 mx-auto cursor-pointer"
                     >
-                      <LogOut size={16} />
+                      <LogOut size={15} />
                       <span>Sign Out</span>
                     </button>
                   </div>
@@ -499,14 +510,14 @@ function Navbar({ categories, loadingCategories }) {
               </div>
             </div>
 
-            {/* Mobile Overlay */}
+            {/* Mobile Overlay Backdrop */}
             <div
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 lg:hidden"
               onClick={() => setIsMenuOpen(false)}
             />
           </>
         )}
-      </nav >
+      </nav>
     </>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 import NavLink from "./NavLink";
 import Link from "next/link";
-import { Instagram, Facebook, Music2, Send, Youtube } from "lucide-react";
+import { Instagram, Facebook, Music2, Send, Youtube, ArrowRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from 'react-toastify';
 import { subscribeNewsletter } from '../lib/api';
@@ -27,8 +27,8 @@ function Footer({ categories, loadingCategories }) {
 
     try {
       await subscribeNewsletter(email);
-      toast.success('Successfully subscribed to our newsletter!');
-      setEmail(''); // Clear input on success
+      toast.success('Successfully subscribed to VIP drops!');
+      setEmail('');
     } catch (error) {
       console.error('Subscribe Error:', error);
       toast.error(error.friendlyMessage || 'Failed to subscribe. Please try again.');
@@ -38,97 +38,109 @@ function Footer({ categories, loadingCategories }) {
   };
 
   return (
-    <footer className="bg-black text-white">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
-          {/* Logo + Description */}
+    <footer className="bg-[#09090b] text-white border-t border-white/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-white/5">
+          
+          {/* Brand Column */}
           <div className="lg:col-span-4">
-            <img src="/logo/sm.png" alt="NAAKSH" className="h-24 mb-6" />
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-              Premium Pakistani streetwear crafted with discipline, luxury, and passion.
+            <Link href="/" className="inline-block mb-6">
+              <img src="/logo/sm.png" alt="NAAKSH" className="h-14 sm:h-16 w-auto object-contain" />
+            </Link>
+            <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed max-w-sm mb-6">
+              Pakistan's premier streetwear label. Engineered with 240 GSM combed compact cotton, drop-shoulder silhouettes, and unapologetic cultural attitude.
             </p>
 
-            <div className="flex gap-5 mt-8">
+            {/* Social Channels */}
+            <div className="flex items-center gap-3">
               <a
                 href="https://www.instagram.com/naakshofficial/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-300 hover:border-yellow-400 hover:text-yellow-400 hover:bg-black transition-all"
+                aria-label="Instagram"
               >
-                <Instagram size={20} />
+                <Instagram size={18} />
               </a>
               <a
                 href="https://www.facebook.com/naakshofficial"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-300 hover:border-yellow-400 hover:text-yellow-400 hover:bg-black transition-all"
+                aria-label="Facebook"
               >
-                <Facebook size={20} />
+                <Facebook size={18} />
               </a>
               <a
                 href="https://www.tiktok.com/@naakshofficial"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-300 hover:border-yellow-400 hover:text-yellow-400 hover:bg-black transition-all"
+                aria-label="TikTok"
               >
-                <Music2 size={20} />
+                <Music2 size={18} />
               </a>
               <a
                 href="https://www.youtube.com/@NaakshOfficial-f9h"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black transition"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-300 hover:border-yellow-400 hover:text-yellow-400 hover:bg-black transition-all"
+                aria-label="YouTube"
               >
-                <Youtube size={20} />
+                <Youtube size={18} />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-2">
-            <h3 className="font-bold text-yellow-400 text-lg mb-6 tracking-wider">QUICK LINKS</h3>
-            <ul className="space-y-4 text-gray-300">
+          <div className="lg:col-span-2 sm:col-span-1">
+            <h3 className="text-yellow-400 font-bold text-xs uppercase tracking-[0.2em] mb-6">
+              NAVIGATION
+            </h3>
+            <ul className="space-y-3.5 text-xs font-semibold uppercase tracking-wider text-zinc-400">
               <li>
-                <NavLink to="/" className="hover:text-yellow-400 transition">
+                <NavLink to="/" className="hover:text-white transition">
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/about" className="hover:text-yellow-400 transition">
-                  About
+                <NavLink to="/shop" className="hover:text-white transition">
+                  Shop Collection
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/shop" className="hover:text-yellow-400 transition">
-                  Shop
+                <NavLink to="/blog" className="hover:text-white transition">
+                  Journal
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contact" className="hover:text-yellow-400 transition">
+                <NavLink to="/about" className="hover:text-white transition">
+                  About Us
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact" className="hover:text-white transition">
                   Contact
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/cart" className="hover:text-yellow-400 transition">
-                  Cart
                 </NavLink>
               </li>
             </ul>
           </div>
 
-          {/* Dynamic Categories (Random 5) */}
-          <div className="lg:col-span-2">
-            <h3 className="font-bold text-yellow-400 text-lg mb-6 tracking-wider">CATEGORIES</h3>
+          {/* Categories */}
+          <div className="lg:col-span-2 sm:col-span-1">
+            <h3 className="text-yellow-400 font-bold text-xs uppercase tracking-[0.2em] mb-6">
+              COLLECTIONS
+            </h3>
 
             {loadingCategories ? (
-              <p className="text-gray-400 text-sm"></p>
+              <p className="text-zinc-500 text-xs">Loading...</p>
             ) : categories.length === 0 ? (
-              <p className="text-gray-400 text-sm">No categories available</p>
+              <p className="text-zinc-500 text-xs">No categories</p>
             ) : (
-              <ul className="space-y-4 text-gray-300">
+              <ul className="space-y-3.5 text-xs font-semibold uppercase tracking-wider text-zinc-400">
                 {memoizedCategory.map((cat) => (
                   <li key={cat.id || cat.slug}>
-                    <NavLink to={`/category/${cat.slug}`} className="hover:text-yellow-400 transition">
+                    <NavLink to={`/category/${cat.slug}`} className="hover:text-white transition">
                       {cat.name}
                     </NavLink>
                   </li>
@@ -137,43 +149,47 @@ function Footer({ categories, loadingCategories }) {
             )}
           </div>
 
-          {/* Newsletter */}
+          {/* Newsletter Subscription */}
           <div className="lg:col-span-4">
-            <h3 className="font-bold text-yellow-400 text-lg mb-6 tracking-wider">STAY CONNECTED</h3>
+            <h3 className="text-yellow-400 font-bold text-xs uppercase tracking-[0.2em] mb-2">
+              JOIN THE INNER CIRCLE
+            </h3>
+            <p className="text-zinc-400 text-xs leading-relaxed mb-6">
+              Receive secret drop announcements, early access invitations, and private sales.
+            </p>
 
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                placeholder="Your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={isSubscribing}
-                className="flex-1 px-6 py-4 bg-gray-900 border border-gray-800 rounded-full 
-                focus:outline-none focus:border-yellow-500 transition text-white placeholder-gray-500
-                disabled:opacity-50 disabled:cursor-not-allowed"
-              />
+            <form onSubmit={handleSubscribe} className="space-y-3">
+              <div className="relative">
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isSubscribing}
+                  className="w-full px-5 py-3.5 bg-[#0d0d0f] border border-white/10 focus:border-yellow-400 rounded-none text-xs text-white placeholder-zinc-500 outline-none transition disabled:opacity-50"
+                />
+              </div>
               <button
                 type="submit"
                 disabled={isSubscribing}
-                className="px-8 py-4 bg-yellow-500 text-black font-bold rounded-full 
-              hover:bg-yellow-400 transition flex items-center justify-center gap-2 shadow-lg 
-              hover:shadow-yellow-500/40 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3.5 bg-yellow-400 hover:bg-white text-black font-black uppercase text-xs tracking-[0.2em] transition flex items-center justify-center gap-2 cursor-pointer shadow-md disabled:opacity-50"
               >
-                <Send size={18} />
-                {isSubscribing ? 'Subscribing...' : 'Subscribe'}
+                <span>{isSubscribing ? 'SUBSCRIBING...' : 'GET EARLY ACCESS'}</span>
+                <ArrowRight size={14} />
               </button>
             </form>
           </div>
+
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 pt-8 mt-12 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} NAAKSH® – All Rights Reserved</p>
-          <div className="flex gap-8 mt-4 md:mt-0">
-            <Link href="/privacy" className="hover:text-yellow-400 transition">
+        {/* Bottom Rights & Links */}
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-500 gap-4">
+          <p>© {new Date().getFullYear()} NAAKSH® OFFICIAL. ALL RIGHTS RESERVED.</p>
+          <div className="flex gap-6 uppercase tracking-wider text-[11px]">
+            <Link href="/privacy" className="hover:text-zinc-300 transition">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-yellow-400 transition">
+            <Link href="/terms" className="hover:text-zinc-300 transition">
               Terms of Service
             </Link>
           </div>
