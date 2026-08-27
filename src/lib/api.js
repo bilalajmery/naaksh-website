@@ -471,3 +471,28 @@ export async function subscribeNewsletter(email) {
     body: JSON.stringify({ email }),
   });
 }
+
+/* ==========================================================================
+   SETTINGS & MARKETING APIS (Hero Banners & Announcement Bar)
+   ========================================================================== */
+
+/**
+ * Fetch announcement bar configuration.
+ * GET /api/announcement
+ */
+export async function getAnnouncement() {
+  return apiRequest('/announcement', {
+    method: 'GET',
+  });
+}
+
+/**
+ * Fetch active hero banners for website carousel.
+ * GET /api/hero-banners
+ */
+export async function getHeroBanners() {
+  return apiRequest('/hero-banners', {
+    method: 'GET',
+  });
+}
+
