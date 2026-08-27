@@ -1,4 +1,5 @@
 import { getProducts, getCategories } from '../lib/catalog';
+import { getHomepageSections } from '../lib/api';
 import Link from 'next/link';
 import { Truck, ShieldCheck, RotateCcw, PackageCheck, ArrowRight, Sparkles } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
@@ -48,28 +49,25 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const categories = await getCategories();
+  // Fetch dynamic catalog data and Admin-configured homepage sections concurrently
+  const [categories, featuredProducts, homepageSections] = await Promise.all([
+    getCategories(),
+    getProducts({ is_featured: true, per_page: 8 }),
+    getHomepageSections(),
+  ]);
 
-  // Populated-first category showcase resolution (guarantees populated category is selected)
-  const targetCategory =
-    categories.find(
-      (c) => (c.products_count ?? 0) > 0 && (c.name.toLowerCase().includes('drop shoulder') || c.slug.includes('drop-shoulder'))
-    ) ||
+  // Fallback category resolution if no Admin homepage sections exist yet
+  const fallbackCategory =
     categories.find((c) => (c.products_count ?? 0) > 0) ||
-    categories.find((c) => c.name.toLowerCase().includes('drop shoulder') || c.slug.includes('drop-shoulder')) ||
     categories[0] ||
     { id: 4, name: 'Drop Shoulder Tees', slug: 'drop-shoulder-tees' };
 
-  // Fetch deterministic product collections from Backend API
-  const [featuredProducts, categoryFeaturedProducts] = await Promise.all([
-    getProducts({ is_featured: true, per_page: 8 }),
-    targetCategory?.id
-      ? getProducts({ category_id: targetCategory.id, per_page: 8 })
-      : getProducts({ per_page: 8, sort: 'newest' }),
-  ]);
-
-  const featuredCategoryName = targetCategory?.name || 'Drop Shoulder Tees';
-  const featuredCategorySlug = targetCategory?.slug || 'drop-shoulder-tees';
+  let fallbackCategoryProducts = [];
+  if (!homepageSections || homepageSections.length === 0) {
+    fallbackCategoryProducts = fallbackCategory?.id
+      ? await getProducts({ category_id: fallbackCategory.id, per_page: 8 })
+      : await getProducts({ per_page: 8, sort: 'newest' });
+  }
 
   const serviceBenefits = [
     {
@@ -219,43 +217,80 @@ export default async function Home() {
       {/* ══ 5. THE NAAKSH STANDARD QUALITY SECTION ═════════════════ */}
       <NaakshStandard />
 
-      {/* ══ 6. SIGNATURE DROP SHOWCASE ════════════════════════════ */}
-      <section className="py-20 md:py-28 bg-[#09090b]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-6">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-yellow-400 text-[10px] font-bold uppercase tracking-[0.25em] mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
-                <span>SIGNATURE SHOWCASE</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight">
-                {featuredCategoryName.toUpperCase()}
-              </h2>
-            </div>
-            <Link
-              href={`/category/${featuredCategorySlug}`}
-              className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition"
-            >
-              <span>EXPLORE ALL ({categoryFeaturedProducts.length})</span>
-              <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
-            </Link>
-          </div>
+      {/* ══ 6. DYNAMIC ADMIN-CONFIGURED HOMEPAGE PRODUCT SECTIONS (M15) ══ */}
+      {homepageSections && homepageSections.length > 0 ? (
+        homepageSections.map((sec) => {
+          const categorySlug = sec.category?.slug || 'shop';
+          const sectionTitle = sec.title || sec.category?.name || 'Collection';
+          const sectionSubtitle = sec.subtitle || 'Signature 240 GSM Oversized Streetwear Fits';
+          const products = sec.products || [];
 
-          {/* Products Grid */}
-          {categoryFeaturedProducts.length > 0 ? (
+          if (products.length === 0) return null;
+
+          return (
+            <section key={sec.id} className="py-20 md:py-28 bg-[#09090b] border-b border-white/5">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Section Header */}
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-6">
+                  <div>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-yellow-400 text-[10px] font-bold uppercase tracking-[0.25em] mb-4">
+                      <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                      <span>{sectionSubtitle}</span>
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight">
+                      {sectionTitle.toUpperCase()}
+                    </h2>
+                  </div>
+                  <Link
+                    href={`/category/${categorySlug}`}
+                    className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition"
+                  >
+                    <span>EXPLORE ALL ({products.length})</span>
+                    <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
+                  </Link>
+                </div>
+
+                {/* Products Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                  {products.map((p) => (
+                    <ProductCard key={p.uuid || p.id} product={p} />
+                  ))}
+                </div>
+              </div>
+            </section>
+          );
+        })
+      ) : fallbackCategoryProducts.length > 0 ? (
+        /* Fallback section if API offline */
+        <section className="py-20 md:py-28 bg-[#09090b] border-b border-white/5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 gap-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-yellow-400 text-[10px] font-bold uppercase tracking-[0.25em] mb-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                  <span>SIGNATURE SHOWCASE</span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight">
+                  {fallbackCategory.name.toUpperCase()}
+                </h2>
+              </div>
+              <Link
+                href={`/category/${fallbackCategory.slug}`}
+                className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition"
+              >
+                <span>EXPLORE ALL ({fallbackCategoryProducts.length})</span>
+                <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
+            </div>
+
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-              {categoryFeaturedProducts.map((p) => (
+              {fallbackCategoryProducts.map((p) => (
                 <ProductCard key={p.uuid || p.id} product={p} />
               ))}
             </div>
-          ) : (
-            <div className="py-16 text-center text-zinc-500 text-sm">
-              No products found in {featuredCategoryName}.
-            </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      ) : null}
 
       {/* ══ 7. EDITORIAL PROMOTIONAL CAMPAIGN ══════════════════════ */}
       <section className="relative overflow-hidden bg-black border-t border-b border-white/5">

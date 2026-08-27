@@ -154,6 +154,26 @@ export async function getHeroBanners() {
 }
 
 /**
+ * Fetch dynamic active homepage category product sections.
+ * GET /api/homepage-sections
+ */
+export async function getHomepageSections() {
+  try {
+    const response = await apiRequest(`/homepage-sections?_t=${Date.now()}`, {
+      method: 'GET',
+      next: { revalidate: 60 },
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+      },
+    });
+    return Array.isArray(response?.data) ? response.data : (Array.isArray(response) ? response : []);
+  } catch (error) {
+    console.warn('Backend homepage-sections API unavailable:', error?.message || error);
+    return [];
+  }
+}
+
+/**
  * Fetch paginated product collection with optional merchandising filters.
  * GET /api/products
  */
