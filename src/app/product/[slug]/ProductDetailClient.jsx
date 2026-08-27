@@ -34,18 +34,28 @@ export default function ProductDetailClient({ product, relatedProducts = [] }) {
   const availableColors = product?.garment_colors || product?.colors || [];
   const availableSizes = product?.sizes || [];
 
-  // Determine media list: M16 media collection or color images
+  // Determine media list: filter by selected garment color if available
+  const currentColorObj = availableColors[selectedColor] || availableColors[0] || null;
   let mediaList = [];
-  if (product?.media && Array.isArray(product.media) && product.media.length > 0) {
-    mediaList = product.media.map((m) => m.url);
-  } else if (availableColors[selectedColor]?.images && Array.isArray(availableColors[selectedColor].images) && availableColors[selectedColor].images.length > 0) {
-    mediaList = availableColors[selectedColor].images;
-  } else if (product?.primary_media?.url) {
-    mediaList = [product.primary_media.url];
-  } else if (product?.image) {
-    mediaList = [product.image];
-  } else {
-    mediaList = ['/product-assets/placeholder.png'];
+
+  if (currentColorObj?.images && Array.isArray(currentColorObj.images) && currentColorObj.images.length > 0) {
+    mediaList = currentColorObj.images;
+  } else if (currentColorObj?.id && product?.media && Array.isArray(product.media)) {
+    mediaList = product.media
+      .filter((m) => Number(m.color_id) === Number(currentColorObj.id))
+      .map((m) => m.url);
+  }
+
+  if (mediaList.length === 0) {
+    if (product?.media && Array.isArray(product.media) && product.media.length > 0) {
+      mediaList = product.media.map((m) => m.url);
+    } else if (product?.primary_media?.url) {
+      mediaList = [product.primary_media.url];
+    } else if (product?.image) {
+      mediaList = [product.image];
+    } else {
+      mediaList = ['/product-assets/placeholder.png'];
+    }
   }
 
   const currentMainImage = mediaList[mainImage] || mediaList[0] || '/product-assets/placeholder.png';

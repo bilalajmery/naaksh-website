@@ -14,7 +14,14 @@ const ProductCard = ({ product, onRemoveFromWishlist }) => {
   const availableColors = product?.colors || product?.garment_colors || [];
   const currentColorObj = availableColors[selectedColor] || availableColors[0] || null;
 
-  const images = currentColorObj?.images || (product?.media ? product.media.map(m => m.url) : []);
+  let colorImages = [];
+  if (currentColorObj?.images && Array.isArray(currentColorObj.images) && currentColorObj.images.length > 0) {
+    colorImages = currentColorObj.images;
+  } else if (currentColorObj?.id && product?.media && Array.isArray(product.media)) {
+    colorImages = product.media.filter(m => Number(m.color_id) === Number(currentColorObj.id)).map(m => m.url);
+  }
+
+  const images = colorImages.length > 0 ? colorImages : (product?.media ? product.media.map(m => m.url) : []);
   const currentImage = images[hoverImgIndex] || images[0] || product?.primary_media?.url || product?.image || "/product-assets/placeholder.png";
   const categoryName = typeof product?.category === 'object' ? product?.category?.name : product?.category;
   const displayPrice = product?.price || product?.price_display || (product?.selling_price ? `PKR ${Number(product.selling_price).toLocaleString()}` : '');

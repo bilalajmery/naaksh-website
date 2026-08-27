@@ -6,6 +6,7 @@ import { Menu, X, ShoppingCart, Heart, ChevronDown, User, LogOut, Package, Shiel
 import { getCart } from "../lib/cart";
 import { getWishlist } from "../lib/wishlist";
 import { getAuthUser, logoutCustomer } from "../lib/auth";
+import { getAnnouncement } from "../lib/api";
 import AuthModal from "./AuthModal";
 
 function Navbar({ categories, loadingCategories }) {
@@ -20,6 +21,49 @@ function Navbar({ categories, loadingCategories }) {
   const [wishlistCount, setWishlistCount] = useState(0);
   const [currentUser, setCurrentUser] = useState(null);
   const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [announcement, setAnnouncement] = useState({
+    is_enabled: false,
+    text_prefix: "",
+    text_middle: "",
+    text_suffix: "",
+    button_text: "",
+    button_link: "/shop",
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchAnnouncement = () => {
+      getAnnouncement()
+        .then((data) => {
+          if (isMounted && data && typeof data.is_enabled === 'boolean') {
+            setAnnouncement(data);
+          }
+        })
+        .catch(() => {
+          // preserve fallback defaults on network/offline
+        });
+    };
+
+    fetchAnnouncement();
+
+    // Poll every 4 seconds for instant live updates across tabs
+    const intervalId = setInterval(fetchAnnouncement, 4000);
+
+    const handleFocus = () => {
+      fetchAnnouncement();
+    };
+
+    window.addEventListener("focus", handleFocus);
+    document.addEventListener("visibilitychange", handleFocus);
+
+    return () => {
+      isMounted = false;
+      clearInterval(intervalId);
+      window.removeEventListener("focus", handleFocus);
+      document.removeEventListener("visibilitychange", handleFocus);
+    };
+  }, []);
 
   useEffect(() => {
     const updateCounts = () => {
@@ -73,17 +117,23 @@ function Navbar({ categories, loadingCategories }) {
         onSuccess={(user) => setCurrentUser(user)}
       />
 
-      {/* 11.11 SALE BAR */}
-      <div className="hidden md:block relative z-[60] bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-black text-center py-1 shadow-xl">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-sm md:text-base">
-          <span>EID MEGA SALE IS LIVE NOW!</span>
-          <span className="hidden sm:inline opacity-90">(Oversized Tees Just Rs. 1,199 + Free Delivery All Over Pakistan)</span>
-          <span>Limited Time Eid Offer</span>
-          <NavLink to="/shop" className="underline font-bold">
-            SHOP NOW
-          </NavLink>
+      {/* DYNAMIC ANNOUNCEMENT SALE BAR */}
+      {announcement.is_enabled && (
+        <div className="hidden md:block relative z-[60] bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-600 text-black text-center py-1 shadow-xl">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-sm md:text-base">
+            {announcement.text_prefix && <span>{announcement.text_prefix}</span>}
+            {announcement.text_middle && (
+              <span className="hidden sm:inline opacity-90">{announcement.text_middle}</span>
+            )}
+            {announcement.text_suffix && <span>{announcement.text_suffix}</span>}
+            {announcement.button_text && (
+              <NavLink to={announcement.button_link || "/shop"} className="underline font-bold">
+                {announcement.button_text}
+              </NavLink>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* MAIN NAVBAR */}
       <nav
